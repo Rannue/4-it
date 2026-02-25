@@ -1,6 +1,8 @@
-import './App.css'
-import Header from './components/Header'
-import Button from './components/Button'
+import "./App.css";
+import Button from "./components/Button";
+import Header from "./components/Header";
+import ClientsSection from "./components/ClientsSection";
+import ArrowRightIcon from "./assets/icons/arrow-up-right.svg";
 
 function App() {
   return (
@@ -9,33 +11,91 @@ function App() {
 
       <main className="app-main">
         <section id="home" className="hero">
-          <h1>Главная страница 4-IT</h1>
-          <p>
-            Добро пожаловать! Здесь будет ваша основная информация — краткое
-            описание компании или проекта.
-          </p>
-          <Button variant="primary">Начать работу</Button>
+          <div className="hero-grid">
+            <div className="hero-grid__cell"></div>
+            <div className="hero-grid__cell">
+              <p>
+                Мы специализируемся на разработке сайтов, Интернет-магазинов,
+                B2B-порталах, online-сервисах, промо-сайтах, внедрении CRM, а
+                также интеграциях и настройке обмена данными с различными
+                системами. а также интеграциях и настройке обмена данными с
+                различными системами.
+              </p>
+            </div>
+            <div className="hero-grid__cell">
+              <h1>
+                Внедрение{" "}
+                <span
+                  style={{ backgroundColor: "#0062BA", padding: "2px 6px" }}
+                >
+                  Битрикс24
+                </span>
+                <br /> Кибербезопасность <br />
+                Комплексные IT УСлуги
+              </h1>
+            </div>
+            <div className="hero-grid__cell"></div>
+            <div className="hero-grid__cell">
+              <div className="hero-grid__button-container">
+                <Button iconRight={<img src={ArrowRightIcon} alt="" />}>
+                  Заказать звонок
+                </Button>
+                <Button>Оставить заявку</Button>
+              </div>
+            </div>
+            <div className="hero-grid__cell"></div>
+          </div>
         </section>
 
-        <section id="about" className="section">
-          <h2>О нас</h2>
-          <p>
-            Расскажите здесь, чем вы занимаетесь, какие технологии используете и чем можете быть полезны.
-          </p>
+        <section className="achievements">
+          <div className="achievements__grid">
+            <article className="achievements__card">
+              <h4 className="achievements__title">
+                <span
+                  style={{ backgroundColor: "#FFDD5D", padding: "0px 6px" }}
+                >
+                  Золотой
+                </span>{" "}
+                партнер Битрикс24
+              </h4>
+              <p className="achievements__text">
+                Автоматизация бизнеса на Битрикс24: внедрение, сопровождение,
+                обслуживание, проекты под ключ.
+              </p>
+            </article>
+
+            <article className="achievements__card">
+              <h4 className="achievements__title">
+                <span className="achievements__accent">15+</span> лет опыта
+              </h4>
+              <p className="achievements__text">
+                Предлагаем качественные услуги в IT‑сфере с 2008 года.
+              </p>
+            </article>
+
+            <article className="achievements__card">
+              <h4 className="achievements__title">Партнер Kaspersky</h4>
+              <p className="achievements__text">
+                Поставляем лицензии и комплексные программные решения.
+              </p>
+            </article>
+
+            <article className="achievements__card">
+              <h4 className="achievements__title">
+                <span className="achievements__accent">40+</span> направлений
+              </h4>
+              <p className="achievements__text">
+                Более 40 направлений в IT: разработка, автоматизация,
+                кибербезопасность.
+              </p>
+            </article>
+          </div>
         </section>
 
-        <section id="services" className="section">
-          <h2>Услуги</h2>
-          <p>Список основных услуг или направлений, которыми вы занимаетесь.</p>
-        </section>
-
-        <section id="contacts" className="section">
-          <h2>Контакты</h2>
-          <p>Укажите здесь email, телефон или форму обратной связи.</p>
-        </section>
+        <ClientsSection />
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

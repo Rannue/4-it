@@ -1,22 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap");
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #e5e7eb;
-  background-color: #020617;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Шрифты */
+  --font-family-base:
+    "Inter", "Roboto Condensed", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  --color-white: #ffffff;
+
+  --color-text-main: #111111;
+  --color-text-secondary: #5b5b66; 
+  --color-text-secondary-light: #7B7B89;
+
+  --color-btn-primary: #1e1e1e;
+
+  --color-primary: #0091EC;
+
+  --color-bg: #ffffff --color-surface: #f6f6f8;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--color-accent-hover);
 }
 
 body {
@@ -29,28 +38,50 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+p,
+a {
+  font-family: "Inter", var(--font-family-base);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 120%;
+}
+
+h1 {
+  font-family: "Roboto Condensed", var(--font-family-base);
+  font-size: 66px;
+  font-style: normal;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  line-height: 120%;
+  text-transform: uppercase;
 }
-button:hover {
-  border-color: #646cff;
+
+h2 {
+  color: #000;
+
+font-family: "Roboto Condensed";
+font-size: 56px;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 61.6px */
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+h4 {
+  font-family: "Inter", var(--font-family-base);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 28.8px */
 }
 
 @media (prefers-color-scheme: light) {
