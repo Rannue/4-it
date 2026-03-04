@@ -5,16 +5,19 @@
   --font-family-base:
     "Inter", "Roboto Condensed", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-
   --color-white: #ffffff;
 
   --color-text-main: #111111;
-  --color-text-secondary: #5b5b66; 
-  --color-text-secondary-light: #7B7B89;
+  --color-text-secondary: #5b5b66;
+  --color-text-secondary-light: #7b7b89;
+
+  --color-line: #c5d0e8;
 
   --color-btn-primary: #1e1e1e;
 
-  --color-primary: #0091EC;
+  --color-primary: #0091ec;
+
+  --gray-300: #d9d9d9;
 
   --color-bg: #ffffff --color-surface: #f6f6f8;
 }
@@ -24,14 +27,20 @@ a {
   color: var(--color-accent);
   text-decoration: inherit;
 }
+
 a:hover {
   color: var(--color-accent-hover);
+  text-decoration: inherit;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  font-family: "Inter", var(--font-family-base);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 130%;
 }
 
 #root {
@@ -54,7 +63,7 @@ a {
   font-family: "Inter", var(--font-family-base);
   font-size: 14px;
   font-weight: 300;
-  line-height: 120%;
+  line-height: 130%;
 }
 
 h1 {
@@ -69,11 +78,19 @@ h1 {
 h2 {
   color: #000;
 
-font-family: "Roboto Condensed";
-font-size: 56px;
-font-style: normal;
-font-weight: 500;
-line-height: 110%; /* 61.6px */
+  font-family: "Roboto Condensed";
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 110%; /* 61.6px */
+}
+
+h3 {
+  font-family: "Inter", var(--font-family-base);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%; /* 36.4px */
 }
 
 h4 {

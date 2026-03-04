@@ -39,7 +39,7 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
           <a href="#services-b24">Битрикс24</a>
         </li>
         <li>
-          <a href="#services-security">Кибербезопасность</a>
+          <a href="/cybersecurity">Кибербезопасность</a>
         </li>
         <li>
           <a href="#services-dev">Разработка сайтов</a>
@@ -88,7 +88,7 @@ function Header() {
         <div className="app-header__nav-wrapper">
           <nav className="app-header__nav">
             <a
-              href="#home"
+              href="/home"
               className="app-header__nav-item"
               onMouseEnter={() => setActiveMenu(null)}
             >
