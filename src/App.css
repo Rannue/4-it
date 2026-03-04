@@ -7,16 +7,16 @@
 .app-main {
   margin: 0 auto;
   max-width: 1400px;
-  padding: 0px 32px;
+  padding: 0px 42px;
 }
 
 .hero-grid {
   background-color: var(--color-primary);
-  margin-bottom: 32px;
+  margin-bottom: 42px;
   height: calc(100vh - 144px);
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: minmax(40px, 1fr) minmax(40px, 1.5fr) 116px;
+  grid-template-rows: minmax(40px, 1fr) minmax(40px, 1.8fr) 116px;
   gap: 1;
   width: 100%;
   border: 1px solid var(--color-primary);

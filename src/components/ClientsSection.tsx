@@ -2,13 +2,15 @@ import "../App.css";
 import "./ClientsSection.css";
 import proleasingLogo from "../assets/img/partners/Пролизинг.svg";
 import asbLogo from "../assets/img/partners/asb-new 1.svg";
+import belgospishepromLogo from "../assets/img/partners/Белгоспищепром.svg";
 import bnLogo from "../assets/img/partners/bn.svg";
+import santalogo from "../assets/img/partners/Santa.svg";
 
 const clients = [
   { name: "Proleasing", logo: proleasingLogo },
+  { name: "Белгоспищепром", logo: belgospishepromLogo },
   { name: "АСБ Лизинг", logo: asbLogo },
-  { name: "АСБ Лизинг", logo: asbLogo },
-  { name: "АСБ Лизинг", logo: asbLogo },
+  { name: "Санта", logo: santalogo },
   { name: "Белоруснефть", logo: bnLogo },
   { name: "АСБ Лизинг", logo: asbLogo },
   { name: "АСБ Лизинг", logo: asbLogo },
