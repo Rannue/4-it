@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from '../components/Header';
 
 function CybersecurityNetworkScreensPage() {
   return (
@@ -8,8 +8,8 @@ function CybersecurityNetworkScreensPage() {
         <section className="section">
           <h1>Сетевые экраны</h1>
           <p>
-            Страница услуги по проектированию и поддержке сетевых экранов и
-            связанных средств защиты периметра сети.
+            Страница услуги по проектированию и поддержке сетевых экранов и связанных средств защиты
+            периметра сети.
           </p>
         </section>
       </main>
@@ -18,4 +18,3 @@ function CybersecurityNetworkScreensPage() {
 }
 
 export default CybersecurityNetworkScreensPage;
-

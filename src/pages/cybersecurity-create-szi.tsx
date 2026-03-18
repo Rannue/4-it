@@ -1,21 +1,22 @@
-import Header from "../components/Header";
+import Header from '../components/Header';
+import SecondaryHero from '../components/SecondaryHero';
 
 function CybersecurityCreateSziPage() {
   return (
     <div className="app">
       <Header />
       <main className="app-main">
-        <section className="section">
-          <h1>Создание СЗИ</h1>
-          <p>
-            Страница услуги по созданию систем защиты информации. Здесь можно
-            будет описать внедрение, конфигурацию и запуск защитных решений.
-          </p>
-        </section>
+        <SecondaryHero
+          breadcrumbs={[
+            { label: 'Главная', href: '/' },
+            { label: 'Кибербезопасность', href: '/cybersecurity' },
+            { label: 'Создание СЗИ' },
+          ]}
+          title="Создание СЗИ"
+        />
       </main>
     </div>
   );
 }
 
 export default CybersecurityCreateSziPage;
-

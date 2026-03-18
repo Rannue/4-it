@@ -1,9 +1,16 @@
-import Header from "../components/Header";
-import "./Hero.css";
-import "../components/Services_Type2.css";
-import ArrowLongRightIcon from "../components/icons/ArrowLongRightIcon";
+import Header from '../components/Header';
+import './Hero.css';
+import ArrowLongRightIcon from '../components/icons/ArrowLongRightIcon';
+import { Link, useNavigate } from 'react-router-dom';
+import '../components/Services.css';
+import bookIcon from '../assets/icons/book.svg';
+import certificateIcon from '../assets/icons/certificate.svg';
+import trendingUpIcon from '../assets/icons/trending-up.svg';
+import InfoGridSection from '../components/InfoGridSection';
 
 function CybersecurityPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="app">
       <Header />
@@ -19,10 +26,7 @@ function CybersecurityPage() {
             <div className="hero-secondary-grid__cell">
               <div className="hero-secondary__content">
                 <div className="hero-secondary__title-wrapper">
-                  <nav
-                    className="hero-secondary__breadcrumbs"
-                    aria-label="Хлебные крошки"
-                  >
+                  <nav className="hero-secondary__breadcrumbs" aria-label="Хлебные крошки">
                     <ol>
                       <li>
                         <a href="/">Главная</a>
@@ -35,13 +39,12 @@ function CybersecurityPage() {
                   <h1 className="hero-secondary__title">Кибербезопасность</h1>
                 </div>
                 <p className="hero-secondary__description">
-                  <b>Кибербезопасность</b> — это комплекс мер, направленных на
-                  защиту информационных систем от несанкционированного доступа,
-                  утечек данных и кибератак. В современном мире, где информация
-                  является одним из ключевых активов, обеспечение её
-                  безопасности становится критически важным. Мы поможем вам
-                  защитить ваши данные, соблюдая требования законодательства
-                  Республики Беларусь и внедряя передовые технологии.
+                  <b>Кибербезопасность</b> — это комплекс мер, направленных на защиту информационных
+                  систем от несанкционированного доступа, утечек данных и кибератак. В современном
+                  мире, где информация является одним из ключевых активов, обеспечение её
+                  безопасности становится критически важным. Мы поможем вам защитить ваши данные,
+                  соблюдая требования законодательства Республики Беларусь и внедряя передовые
+                  технологии.
                 </p>
               </div>
             </div>
@@ -64,7 +67,7 @@ function CybersecurityPage() {
               <header
                 className="services-card__header"
                 onClick={() => {
-                  window.location.href = "/cybersecurity/audit";
+                  navigate('/cybersecurity/audit');
                 }}
               >
                 <h3 className="services-card__title">
@@ -79,17 +82,19 @@ function CybersecurityPage() {
                 </button>
               </header>
               <p className="services-card__text">
-                Проводим анализ информационных систем, выявляем уязвимости и
-                даём рекомендации по средствам защиты в соответствии с
-                законодательством Республики Беларусь.
+                Проводим анализ информационных систем, выявляем уязвимости и даём рекомендации по
+                средствам защиты в соответствии с законодательством Республики Беларусь.
               </p>
             </article>
 
             <article className="services-card">
-              <header className="services-card__header">
-                <h3 className="services-card__title">
-                  Аттестация системы защиты информации
-                </h3>
+              <header
+                className="services-card__header"
+                onClick={() => {
+                  navigate('/cybersecurity/certification');
+                }}
+              >
+                <h3 className="services-card__title">Аттестация системы защиты информации</h3>
                 <button
                   type="button"
                   className="services-card__icon"
@@ -99,34 +104,28 @@ function CybersecurityPage() {
                 </button>
               </header>
               <p className="services-card__text">
-                Проводим аттестацию средств защиты информации, подтверждаем
-                соответствие требованиям законодательства и сопровождаем полный
-                цикл проверок.
+                Проводим аттестацию средств защиты информации, подтверждаем соответствие требованиям
+                законодательства и сопровождаем полный цикл проверок.
               </p>
               <div className="services-card__tags">
-                <a className="services-tag" href="/cybersecurity/design-szi">
+                <Link className="services-tag" to="/cybersecurity/design-szi">
                   Проектирование СЗИ
-                </a>
-                <a className="services-tag" href="/cybersecurity/create-szi">
+                </Link>
+                <Link className="services-tag" to="/cybersecurity/create-szi">
                   Создание СЗИ
-                </a>
-                <a className="services-tag" href="/cybersecurity/attestation-szi">
+                </Link>
+                <Link className="services-tag" to="/cybersecurity/attestation-szi">
                   Аттестация СЗИ
-                </a>
-                <a
-                  className="services-tag"
-                  href="/cybersecurity/infrastructure-effectiveness"
-                >
+                </Link>
+                <Link className="services-tag" to="/cybersecurity/infrastructure-effectiveness">
                   Оценка эффективности защищённости инфраструктуры
-                </a>
+                </Link>
               </div>
             </article>
 
             <article className="services-card">
               <header className="services-card__header">
-                <h3 className="services-card__title">
-                  Поставка и внедрение СЗИ и оборудования
-                </h3>
+                <h3 className="services-card__title">Поставка и внедрение СЗИ и оборудования</h3>
                 <button
                   type="button"
                   className="services-card__icon"
@@ -136,27 +135,82 @@ function CybersecurityPage() {
                 </button>
               </header>
               <p className="services-card__text">
-                Обеспечиваем защиту данных и мониторинг угроз с использованием
-                решений ведущих производителей, включая настройку и
-                сопровождение.
+                Обеспечиваем защиту данных и мониторинг угроз с использованием решений ведущих
+                производителей, включая настройку и сопровождение.
               </p>
               <div className="services-card__tags">
-                <a className="services-tag" href="/cybersecurity/siem">
+                <Link className="services-tag" to="/cybersecurity/siem">
                   SIEM (Security Information and Event Management)
-                </a>
-                <a className="services-tag" href="/cybersecurity/dlp">
+                </Link>
+                <Link className="services-tag" to="/cybersecurity/dlp">
                   DLP (Data Loss Prevention)
-                </a>
-                <a className="services-tag" href="/cybersecurity/firewall">
+                </Link>
+                <Link className="services-tag" to="/cybersecurity/firewall">
                   Firewall
-                </a>
-                <a className="services-tag" href="/cybersecurity/network-screens">
+                </Link>
+                <Link className="services-tag" to="/cybersecurity/network-screens">
                   Сетевые экраны
-                </a>
+                </Link>
               </div>
             </article>
           </div>
         </section>
+
+        <InfoGridSection
+          title="Что вы получаете в рамках услуги"
+          columnsHtml={[
+            `
+              <div class="info-grid__group">
+                <h4>Отчёт о структуре информационной системы</h4>
+                <p>
+                  Детальный анализ текущего состояния ИС, включая физические и логические
+                  границы системы.
+                </p>
+              </div>
+              <img
+                src="${bookIcon}"
+                alt="Иконка отчёта"
+                class="info-grid__icon"
+              />
+            `,
+            `
+              <div class="info-grid__group">
+                <h4>Спецификации для систем защиты информации</h4>
+                <p>
+                  Рекомендации по необходимым средствам защиты для безопасного
+                  функционирования ИС.
+                </p>
+              </div>
+              <img
+                src="${certificateIcon}"
+                alt="Иконка спецификаций"
+                class="info-grid__icon"
+              />
+            `,
+            `
+            <div class="info-grid__group">
+            </div>
+          `,
+            `
+          <div class="info-grid__group">
+          </div>
+        `,
+            `
+              <div class="info-grid__group-type2">
+                <h4>Рекомендации по улучшению</h4>
+                <p>
+                  В Республике Беларусь вопросы защиты информации регулируются Указом Президента Республики Беларусь от 16.04.2013 № 196 ("Положение о технической и криптографической защите информации"). Согласно этому документу, руководители организаций несут персональную ответственность за обеспечение защиты информации.
+ Приказ Оперативно-аналитического центра при Президенте Республики Беларусь от 20.02.2020 № 66 (в редакции от 10.12.2024 № 259) регулирует вопросы создания, внедрения и аттестации систем защиты информации (СЗИ). Этот документ устанавливает порядок проведения работ, требования к документации и процедуры проверки соответствия СЗИ.
+                </p>
+              </div>
+              <img
+                src="${trendingUpIcon}"
+                alt="Иконка улучшений"
+                class="info-grid__icon"
+              />
+            `,
+          ]}
+        />
       </main>
     </div>
   );

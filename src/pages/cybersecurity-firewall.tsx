@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from '../components/Header';
 
 function CybersecurityFirewallPage() {
   return (
@@ -8,8 +8,8 @@ function CybersecurityFirewallPage() {
         <section className="section">
           <h1>Firewall</h1>
           <p>
-            Страница услуги по внедрению и сопровождению межсетевых экранов и
-            решений по фильтрации трафика.
+            Страница услуги по внедрению и сопровождению межсетевых экранов и решений по фильтрации
+            трафика.
           </p>
         </section>
       </main>
@@ -18,4 +18,3 @@ function CybersecurityFirewallPage() {
 }
 
 export default CybersecurityFirewallPage;
-

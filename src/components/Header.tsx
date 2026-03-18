@@ -1,9 +1,10 @@
-import "./Header.css";
-import { useState, type ReactNode } from "react";
-import logo4it from "../assets/Логотип 4-IT.svg";
-import Button from "./Button";
+import './Header.css';
+import { useEffect, useState, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
+import logo4it from '../assets/Логотип 4-IT.svg';
+import Button from './Button';
 
-type NavItemKey = "Компания" | "Услуги" | "Решения" | "Контакты";
+type NavItemKey = 'Компания' | 'Услуги' | 'Решения' | 'Контакты';
 
 const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
   Компания: (
@@ -78,47 +79,60 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
 
 function Header() {
   const [activeMenu, setActiveMenu] = useState<NavItemKey | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="app-header" onMouseLeave={() => setActiveMenu(null)}>
+    <header
+      className={`app-header${isScrolled ? ' app-header--scrolled' : ''}`}
+      onMouseLeave={() => setActiveMenu(null)}
+    >
       <div className="app-left-part">
         <div className="app-header__logo">
-          <img src={logo4it} alt="4-IT" />
+          <Link to="/">
+            <img src={logo4it} alt="4-IT" />
+          </Link>
         </div>
         <div className="app-header__nav-wrapper">
           <nav className="app-header__nav">
-            <a
-              href="/home"
-              className="app-header__nav-item"
-              onMouseEnter={() => setActiveMenu(null)}
-            >
+            <Link to="/" className="app-header__nav-item" onMouseEnter={() => setActiveMenu(null)}>
               Главная
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <button
+              type="button"
               className="app-header__nav-item"
-              onMouseEnter={() => setActiveMenu("Услуги")}
+              onMouseEnter={() => setActiveMenu('Услуги')}
             >
               Услуги
-            </a>
+            </button>
             <button
               type="button"
               className="app-header__nav-item app-header__nav-item--company"
-              onMouseEnter={() => setActiveMenu("Компания")}
+              onMouseEnter={() => setActiveMenu('Компания')}
             >
               Компания
             </button>
             <a
               href="#solutions"
               className="app-header__nav-item"
-              onMouseEnter={() => setActiveMenu("Решения")}
+              onMouseEnter={() => setActiveMenu('Решения')}
             >
               Решения
             </a>
             <a
               href="#contacts"
               className="app-header__nav-item"
-              onMouseEnter={() => setActiveMenu("Контакты")}
+              onMouseEnter={() => setActiveMenu('Контакты')}
             >
               Контакты
             </a>
@@ -141,9 +155,7 @@ function Header() {
             <div className="nav-menu__right">
               <div className="nav-menu__contacts">
                 <p>+375 29 000 00 00 (A1)</p>
-                <p className="nav-menu__contacts-muted">
-                  +375 29 000 00 00 (МТС)
-                </p>
+                <p className="nav-menu__contacts-muted">+375 29 000 00 00 (МТС)</p>
                 <p>info@4-it.by</p>
               </div>
               <div className="nav-menu__cv">

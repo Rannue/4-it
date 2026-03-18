@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from '../components/Header';
 
 function CybersecurityDesignSziPage() {
   return (
@@ -8,9 +8,8 @@ function CybersecurityDesignSziPage() {
         <section className="section">
           <h1>Проектирование СЗИ</h1>
           <p>
-            Страница услуги по проектированию систем защиты информации. Здесь
-            можно будет подробно описать этапы проектирования, методики и
-            используемые решения.
+            Страница услуги по проектированию систем защиты информации. Здесь можно будет подробно
+            описать этапы проектирования, методики и используемые решения.
           </p>
         </section>
       </main>
@@ -19,4 +18,3 @@ function CybersecurityDesignSziPage() {
 }
 
 export default CybersecurityDesignSziPage;
-

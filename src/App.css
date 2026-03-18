@@ -37,9 +37,9 @@
   gap: 16px;
 }
 
-.section {
+/* .section {
   padding: 2.5rem 0 0;
-}
+} */
 
 /* achievements */
 
@@ -82,13 +82,11 @@
   margin-bottom: 0.75rem;
 }
 
-.section p {
+/* .section p {
   color: var(--color-text-muted);
   max-width: 640px;
   line-height: 1.6;
-}
-
-
+} */
 
 @media (max-width: 640px) {
   .app-main {

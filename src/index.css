@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap');
 
 :root {
   /* Шрифты */
   --font-family-base:
-    "Inter", "Roboto Condensed", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+    'Inter', 'Roboto Condensed', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
   --color-white: #ffffff;
 
   --color-text-main: #111111;
@@ -19,7 +19,8 @@
 
   --gray-300: #d9d9d9;
 
-  --color-bg: #ffffff --color-surface: #f6f6f8;
+  --color-bg: #ffffff;
+  --color-surface: #f3f4f8;
 }
 
 a {
@@ -37,11 +38,17 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  font-family: "Inter", var(--font-family-base);
+  font-family: 'Inter', var(--font-family-base);
   font-size: 14px;
   font-weight: 300;
   line-height: 130%;
+  margin: 0 auto;
 }
+
+/* section {
+  max-width: 1400px;
+  margin: 0px 42px;
+} */
 
 #root {
   min-height: 100vh;
@@ -60,15 +67,15 @@ h6 {
 
 p,
 a {
-  font-family: "Inter", var(--font-family-base);
+  font-family: 'Inter', var(--font-family-base);
   font-size: 14px;
   font-weight: 300;
   line-height: 130%;
 }
 
 h1 {
-  font-family: "Roboto Condensed", var(--font-family-base);
-  font-size: 70px;
+  font-family: 'Roboto Condensed', var(--font-family-base);
+  font-size: 60px;
   font-style: normal;
   font-weight: 500;
   line-height: 120%;
@@ -77,16 +84,15 @@ h1 {
 
 h2 {
   color: #000;
-
-  font-family: "Roboto Condensed";
-  font-size: 56px;
+  font-family: 'Roboto Condensed';
+  font-size: 54px;
   font-style: normal;
   font-weight: 500;
   line-height: 110%; /* 61.6px */
 }
 
 h3 {
-  font-family: "Inter", var(--font-family-base);
+  font-family: 'Inter', var(--font-family-base);
   font-size: 28px;
   font-style: normal;
   font-weight: 600;
@@ -94,8 +100,8 @@ h3 {
 }
 
 h4 {
-  font-family: "Inter", var(--font-family-base);
-  font-size: 24px;
+  font-family: 'Inter', var(--font-family-base);
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: 120%; /* 28.8px */

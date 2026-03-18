@@ -1,14 +1,14 @@
 .btn {
   display: flex;
   height: 40px;
-  padding: 0 24px;
+  padding: 0 22px;
   align-items: center;
   gap: 8px;
   border-radius: 4px;
   cursor: pointer;
-  background: var(--color-btn-primary);
-  color: var(--color-white);
-  border: none;
+  background: var(--btn-bg, var(--color-btn-primary));
+  color: var(--btn-fg, var(--color-white));
+  border: 1px solid var(--btn-border, transparent);
 }
 
 .btn--primary {
@@ -24,6 +24,16 @@
 .btn__icon {
   height: 20px;
   width: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn__icon svg,
+.btn__icon img {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .btn--primary:hover:not(.btn--disabled) {
@@ -62,6 +72,8 @@
 
 .btn--full {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .btn--disabled {

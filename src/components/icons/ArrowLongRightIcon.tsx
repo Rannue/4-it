@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import type { SVGProps } from 'react';
 
 function ArrowLongRightIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -36,4 +36,3 @@ function ArrowLongRightIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 export default ArrowLongRightIcon;
-

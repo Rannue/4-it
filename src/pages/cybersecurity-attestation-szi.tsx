@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from '../components/Header';
 
 function CybersecurityAttestationSziPage() {
   return (
@@ -8,8 +8,8 @@ function CybersecurityAttestationSziPage() {
         <section className="section">
           <h1>Аттестация СЗИ</h1>
           <p>
-            Страница услуги по аттестации систем защиты информации. Здесь
-            появится описание требований, этапов проверки и итоговых документов.
+            Страница услуги по аттестации систем защиты информации. Здесь появится описание
+            требований, этапов проверки и итоговых документов.
           </p>
         </section>
       </main>
@@ -18,4 +18,3 @@ function CybersecurityAttestationSziPage() {
 }
 
 export default CybersecurityAttestationSziPage;
-

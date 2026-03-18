@@ -1,8 +1,8 @@
-import "./App.css";
-import Button from "./components/Button";
-import Header from "./components/Header";
-import ClientsSection from "./components/ClientsSection";
-import ArrowRightIcon from "./assets/icons/arrow-up-right.svg";
+import './App.css';
+import Button from './components/Button';
+import Header from './components/Header';
+import ClientsSection from './components/ClientsSection';
+import ArrowRightIcon from './assets/icons/arrow-up-right.svg';
 
 function App() {
   return (
@@ -15,21 +15,16 @@ function App() {
             <div className="hero-grid__cell"></div>
             <div className="hero-grid__cell">
               <p>
-                Мы специализируемся на разработке сайтов, Интернет-магазинов,
-                B2B-порталах, online-сервисах, промо-сайтах, внедрении CRM, а
-                также интеграциях и настройке обмена данными с различными
-                системами. а также интеграциях и настройке обмена данными с
+                Мы специализируемся на разработке сайтов, Интернет-магазинов, B2B-порталах,
+                online-сервисах, промо-сайтах, внедрении CRM, а также интеграциях и настройке обмена
+                данными с различными системами. а также интеграциях и настройке обмена данными с
                 различными системами.
               </p>
             </div>
             <div className="hero-grid__cell">
               <h1>
-                Внедрение{" "}
-                <span
-                  style={{ backgroundColor: "#0062BA", padding: "2px 6px" }}
-                >
-                  Битрикс24
-                </span>
+                Внедрение{' '}
+                <span style={{ backgroundColor: '#0062BA', padding: '2px 6px' }}>Битрикс24</span>
                 <br /> Кибербезопасность <br />
                 Комплексные IT УСлуги
               </h1>
@@ -37,9 +32,7 @@ function App() {
             <div className="hero-grid__cell"></div>
             <div className="hero-grid__cell">
               <div className="hero-grid__button-container">
-                <Button iconRight={<img src={ArrowRightIcon} alt="" />}>
-                  Заказать звонок
-                </Button>
+                <Button iconRight={<img src={ArrowRightIcon} alt="" />}>Заказать звонок</Button>
                 <Button>Оставить заявку</Button>
               </div>
             </div>
@@ -51,16 +44,12 @@ function App() {
           <div className="achievements__grid">
             <article className="achievements__card">
               <h4 className="achievements__title">
-                <span
-                  style={{ backgroundColor: "#FFDD5D", padding: "0px 6px" }}
-                >
-                  Золотой
-                </span>{" "}
+                <span style={{ backgroundColor: '#FFDD5D', padding: '0px 6px' }}>Золотой</span>{' '}
                 партнер Битрикс24
               </h4>
               <p className="achievements__text">
-                Автоматизация бизнеса на Битрикс24: внедрение, сопровождение,
-                обслуживание, проекты под ключ.
+                Автоматизация бизнеса на Битрикс24: внедрение, сопровождение, обслуживание, проекты
+                под ключ.
               </p>
             </article>
 
@@ -85,8 +74,7 @@ function App() {
                 <span className="achievements__accent">40+</span> направлений
               </h4>
               <p className="achievements__text">
-                Более 40 направлений в IT: разработка, автоматизация,
-                кибербезопасность.
+                Более 40 направлений в IT: разработка, автоматизация, кибербезопасность.
               </p>
             </article>
           </div>

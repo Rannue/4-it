@@ -1,64 +1,64 @@
 .clients {
-    padding: 120px 0 80px;
-  }
-  
-  .clients__header {
-    margin-bottom: 42px;
-  }
-  
-  .clients__title {
-    margin-bottom: 8px;
-  }
-  
-  .clients__subtitle {
-    color: var(--color-text-secondary-light);
-    max-width: 600px;
-  }
-  
-  .clients__grid {
-    margin-top: 24px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-  
-  .clients__cell {
-    min-height: 140px;
-    border-right: 1px solid #e5e7eb;
-    border-bottom: 1px solid #e5e7eb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-  }
-  
-  .clients__cell:nth-child(4n) {
-    border-right: none;
-  }
-  
-  .clients__cell:nth-last-child(-n + 4) {
-    border-bottom: none;
-  }
-  
-  .clients__logo-placeholder {
-    font-size: 18px;
-    font-weight: 500;
-    color: #9ca3af;
-  }
-  
-.clients__logo-image {
-    max-width: 200px;
-    object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.6;
-    transition:
-      filter 150ms ease,
-      opacity 150ms ease,
-      transform 150ms ease;
-  }
+  padding: 120px 0 80px;
+}
 
-  .clients__cell:hover .clients__logo-image {
-    filter: none;
-    opacity: 1;
-  }
+.clients__header {
+  margin-bottom: 42px;
+}
+
+.clients__title {
+  margin-bottom: 8px;
+}
+
+.clients__subtitle {
+  color: var(--color-text-secondary-light);
+  max-width: 600px;
+}
+
+.clients__grid {
+  margin-top: 24px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.clients__cell {
+  min-height: 140px;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.clients__cell:nth-child(4n) {
+  border-right: none;
+}
+
+.clients__cell:nth-last-child(-n + 4) {
+  border-bottom: none;
+}
+
+.clients__logo-placeholder {
+  font-size: 18px;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+.clients__logo-image {
+  max-width: 200px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition:
+    filter 150ms ease,
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+
+.clients__cell:hover .clients__logo-image {
+  filter: none;
+  opacity: 1;
+}

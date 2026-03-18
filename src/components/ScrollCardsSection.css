@@ -1,0 +1,85 @@
+.scroll-section {
+  position: relative;
+  padding: 100px 0;
+  /* даём секции достаточную высоту, чтобы отработал sticky */
+  /* min-height: 120vh; */
+}
+
+.scroll-section__inner {
+  position: sticky;
+  border-radius: 8px;
+  background: radial-gradient(
+    194.87% 141.42% at 100% 0%,
+    #1fa8ff 18.8%,
+    #0091ec 56.18%,
+    #0084d6 100%
+  );
+  padding: 42px;
+  overflow: hidden;
+}
+
+.scroll-section__title {
+  color: #ffffff;
+  margin-bottom: 42px;
+}
+
+.scroll-section__viewport {
+  overflow: hidden;
+}
+
+.scroll-section__track {
+  display: flex;
+  gap: 24px;
+  transition: transform 160ms ease-out;
+}
+
+.scroll-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 24px 24px 24px;
+  min-width: 320px;
+  /* box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15); */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.scroll-card h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.scroll-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.scroll-card__dots {
+  margin-top: 24px;
+  display: flex;
+  gap: 4px;
+}
+
+.scroll-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  background-color: #d1d5db;
+}
+
+.scroll-card__dot--active {
+  width: 8px;
+  background-color: var(--color-primary);
+}
+
+@media (max-width: 960px) {
+  .scroll-section__inner {
+    padding-inline: 24px;
+  }
+
+  .scroll-card {
+    min-width: 260px;
+  }
+}

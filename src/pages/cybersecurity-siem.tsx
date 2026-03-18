@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from '../components/Header';
 
 function CybersecuritySiemPage() {
   return (
@@ -8,9 +8,8 @@ function CybersecuritySiemPage() {
         <section className="section">
           <h1>SIEM (Security Information and Event Management)</h1>
           <p>
-            Страница услуги по внедрению и сопровождению SIEM-решений для
-            централизованного мониторинга и корреляции событий информационной
-            безопасности.
+            Страница услуги по внедрению и сопровождению SIEM-решений для централизованного
+            мониторинга и корреляции событий информационной безопасности.
           </p>
         </section>
       </main>
@@ -19,4 +18,3 @@ function CybersecuritySiemPage() {
 }
 
 export default CybersecuritySiemPage;
-

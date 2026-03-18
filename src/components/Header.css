@@ -8,6 +8,10 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.app-header--scrolled {
+  border-bottom: 1px solid var(--color-line);
+}
 .app-left-part {
   display: flex;
   align-items: center;

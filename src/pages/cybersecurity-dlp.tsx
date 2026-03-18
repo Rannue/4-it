@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from '../components/Header';
 
 function CybersecurityDlpPage() {
   return (
@@ -8,8 +8,8 @@ function CybersecurityDlpPage() {
         <section className="section">
           <h1>DLP (Data Loss Prevention)</h1>
           <p>
-            Страница услуги по внедрению и настройке DLP-систем для предотвращения
-            утечек конфиденциальной информации.
+            Страница услуги по внедрению и настройке DLP-систем для предотвращения утечек
+            конфиденциальной информации.
           </p>
         </section>
       </main>
@@ -18,4 +18,3 @@ function CybersecurityDlpPage() {
 }
 
 export default CybersecurityDlpPage;
-
