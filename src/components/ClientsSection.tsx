@@ -24,20 +24,26 @@ const clients = [
 function ClientsSection() {
   return (
     <section className="clients">
-      <header className="clients__header">
-        <h2 className="clients__title">Наши клиенты</h2>
-        <p className="clients__subtitle">
-          Представители международного бизнеса, государственного сектора и белорусских компаний,
-          лидеры своих отраслей.
-        </p>
-      </header>
+      <div className="section-wrapper">
+        <div className="section-wrapper__inner">
+          <header className="clients__header">
+            <h2 className="clients__title">Наши клиенты</h2>
+            <p className="clients__subtitle">
+              Представители международного бизнеса, государственного сектора и белорусских компаний,
+              лидеры своих отраслей.
+            </p>
+          </header>
+        </div>
+      </div>
 
-      <div className="clients__grid">
-        {clients.map((client, index) => (
-          <div key={index} className="clients__cell">
-            <img src={client.logo} alt={client.name} className="clients__logo-image" />
-          </div>
-        ))}
+      <div className="clients__grid-wrapper">
+        <div className="clients__grid">
+          {clients.map((client, index) => (
+            <div key={index} className="clients__cell">
+              <img src={client.logo} alt={client.name} className="clients__logo-image" />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import SecondaryHero from '../components/SecondaryHero';
 
 function CybersecurityCreateSziPage() {
@@ -15,6 +16,7 @@ function CybersecurityCreateSziPage() {
           title="Создание СЗИ"
         />
       </main>
+      <Footer />
     </div>
   );
 }

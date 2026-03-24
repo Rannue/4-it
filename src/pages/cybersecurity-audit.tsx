@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import './Hero.css';
 import InfoGridSection from '../components/InfoGridSection';
 import SecondaryHero from '../components/SecondaryHero';
@@ -64,7 +65,7 @@ function AnimatedAuditGoalText() {
                   <span
                     key={`${wordIdx}-${charIdx}`}
                     style={{
-                      color: revealed ? 'var(--color-primary)' : '#99D7FF',
+                      color: revealed ? '#111111' : '#D3D4DB',
                       transition: 'color 80ms linear',
                     }}
                   >
@@ -147,6 +148,7 @@ function CybersecurityAuditPage() {
 
         <ClientsSection />
       </main>
+      <Footer />
     </div>
   );
 }

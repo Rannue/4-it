@@ -1,5 +1,5 @@
 import './Header.css';
-import { useEffect, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import logo4it from '../assets/Логотип 4-IT.svg';
 import Button from './Button';
@@ -81,6 +81,17 @@ function Header() {
   const [activeMenu, setActiveMenu] = useState<NavItemKey | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const headerRef = useCallback((node: HTMLElement | null) => {
+    if (!node) return;
+    const update = () => {
+      document.documentElement.style.setProperty('--header-height', `${node.offsetHeight}px`);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(node);
+    return () => ro.disconnect();
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -94,6 +105,7 @@ function Header() {
 
   return (
     <header
+      ref={headerRef}
       className={`app-header${isScrolled ? ' app-header--scrolled' : ''}`}
       onMouseLeave={() => setActiveMenu(null)}
     >

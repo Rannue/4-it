@@ -57,8 +57,10 @@ function InterestingFacts() {
   const translateY = shift * progress;
 
   return (
-    <section className="facts">
-      <div className="facts__grid" ref={gridRef}>
+    <div className="section-wrapper">
+      <div className="section-wrapper__inner">
+        <section className="facts">
+          <div className="facts__grid" ref={gridRef}>
         <article
           className="facts-card facts-card--top"
           style={{ transform: `translateY(${translateY}px)` }}
@@ -115,7 +117,9 @@ function InterestingFacts() {
           </p>
         </article>
       </div>
-    </section>
+        </section>
+      </div>
+    </div>
   );
 }
 

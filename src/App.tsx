@@ -2,6 +2,7 @@ import './App.css';
 import Button from './components/Button';
 import Header from './components/Header';
 import ClientsSection from './components/ClientsSection';
+import Footer from './components/Footer';
 import ArrowRightIcon from './assets/icons/arrow-up-right.svg';
 
 function App() {
@@ -10,8 +11,10 @@ function App() {
       <Header />
 
       <main className="app-main">
-        <section id="home" className="hero">
-          <div className="hero-grid">
+        <div className="section-wrapper">
+          <div className="section-wrapper__inner">
+            <section id="home" className="hero">
+              <div className="hero-grid">
             <div className="hero-grid__cell"></div>
             <div className="hero-grid__cell">
               <p>
@@ -37,10 +40,14 @@ function App() {
               </div>
             </div>
             <div className="hero-grid__cell"></div>
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
 
-        <section className="achievements">
+        <div className="section-wrapper">
+          <div className="section-wrapper__inner">
+            <section className="achievements">
           <div className="achievements__grid">
             <article className="achievements__card">
               <h4 className="achievements__title">
@@ -77,11 +84,14 @@ function App() {
                 Более 40 направлений в IT: разработка, автоматизация, кибербезопасность.
               </p>
             </article>
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
 
         <ClientsSection />
       </main>
+      <Footer />
     </div>
   );
 }

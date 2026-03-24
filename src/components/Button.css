@@ -1,4 +1,5 @@
 .btn {
+  position: relative;
   display: flex;
   height: 40px;
   padding: 0 22px;
@@ -9,6 +10,34 @@
   background: var(--btn-bg, var(--color-btn-primary));
   color: var(--btn-fg, var(--color-white));
   border: 1px solid var(--btn-border, transparent);
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.25s ease, transform 0.35s ease;
+  background: radial-gradient(
+    180px circle at var(--btn-mx, 50%) var(--btn-my, 50%),
+    var(--btn-hover-overlay, rgba(15, 23, 42, 0.18)) 0%,
+    rgba(15, 23, 42, 0) 62%
+  );
+}
+
+.btn:hover:not(.btn--disabled)::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn__label,
+.btn__icon {
+  position: relative;
+  z-index: 1;
 }
 
 .btn--primary {

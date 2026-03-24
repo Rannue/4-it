@@ -1,0 +1,66 @@
+.cards-grid {
+  padding: 90px 0;
+}
+
+.cards-grid__header {
+  margin-bottom: 42px;
+}
+
+.cards-grid__title {
+  margin: 0;
+}
+
+.cards-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.cards-grid__card {
+  min-width: 0;
+}
+
+/* Helper styles for content inside HTML cards */
+.cards-grid__card .cards-grid__media {
+  border-radius: 8px;
+  background: #043a5e;
+  /* height: 150px; */
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+
+.cards-grid__card .cards-grid__media img,
+.cards-grid__card .cards-grid__media svg {
+  width: 100%;
+  height: auto;
+}
+
+.cards-grid__card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+.cards-grid__card p {
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 1300px) {
+  .cards-grid__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .cards-grid__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .cards-grid__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

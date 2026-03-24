@@ -7,6 +7,9 @@
 
 .services__sidebar {
   color: var(--color-white);
+  position: sticky;
+  top: 140px;
+  align-self: flex-start;
 }
 
 .services-card {
@@ -98,5 +101,6 @@
 
   .services__sidebar {
     order: -1;
+    position: static;
   }
 }

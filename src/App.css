@@ -2,12 +2,29 @@
   min-height: 100vh;
   color: var(--color-text-main);
   background-color: var(--color-white);
+  padding-top: var(--header-height, 88px);
 }
 
 .app-main {
   margin: 0 auto;
-  max-width: 1400px;
+  /* max-width: 1600px; */
+  /* padding: 0px 42px; */
+}
+
+.section-wrapper {
+  background-color: var(--color-white);
+  margin: 0 auto;
+}
+
+.section-wrapper__gray {
+  background-color: var(--color-surface);
+  margin: 0 auto;
+}
+
+.section-wrapper__inner {
+  max-width: 1600px;
   padding: 0px 42px;
+  margin: 0 auto;
 }
 
 .hero-grid {

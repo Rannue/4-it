@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode, MouseEvent } from 'react';
 import './Button.css';
 
 type ButtonProps = {
@@ -17,6 +17,12 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
 };
 
+type ButtonInlineStyle = CSSProperties & {
+  '--btn-bg'?: string;
+  '--btn-fg'?: string;
+  '--btn-border'?: string;
+};
+
 function Button({
   children,
   onClick,
@@ -29,12 +35,21 @@ function Button({
   disabled,
   type = 'button',
 }: ButtonProps) {
-  const style: CSSProperties | undefined =
+  const setPointerVars = (e: MouseEvent<HTMLButtonElement>) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    el.style.setProperty('--btn-mx', `${x}px`);
+    el.style.setProperty('--btn-my', `${y}px`);
+  };
+
+  const style: ButtonInlineStyle | undefined =
     color || textColor || borderColor
       ? {
-          ...(color ? { ['--btn-bg' as any]: color } : null),
-          ...(textColor ? { ['--btn-fg' as any]: textColor } : null),
-          ...(borderColor ? { ['--btn-border' as any]: borderColor } : null),
+          ...(color ? { '--btn-bg': color } : {}),
+          ...(textColor ? { '--btn-fg': textColor } : {}),
+          ...(borderColor ? { '--btn-border': borderColor } : {}),
         }
       : undefined;
 
@@ -43,6 +58,8 @@ function Button({
       type={type}
       className={['btn', className, disabled ? 'btn--disabled' : null].filter(Boolean).join(' ')}
       onClick={onClick}
+      onMouseMove={setPointerVars}
+      onMouseEnter={setPointerVars}
       style={style}
       disabled={disabled}
     >

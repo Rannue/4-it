@@ -1,8 +1,7 @@
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import SecondaryHero from '../../components/SecondaryHero';
 import InterestingFacts from '../../components/InterestingFacts';
-import { Link } from 'react-router-dom';
-import ArrowLongRightIcon from '../../components/icons/ArrowLongRightIcon';
 import InfoGridSection from '../../components/InfoGridSection';
 import HighlightGridSection from '../../components/HighlightGridSection';
 import certificateIcon from '../../assets/icons/certificate.svg';
@@ -10,6 +9,8 @@ import licenseIcon from '../../assets/icons/license.svg';
 import fingerprintIcon from '../../assets/icons/fingerprint.svg';
 import ScrollCardsSection from '../../components/ScrollCardsSection';
 import DocumentDetailsSection from '../../components/DocumentDetailsSection';
+import ServicesSection from '../../components/ServicesSection';
+import CertificatesSection from '../../components/CertificatesSection';
 
 function CertificationOfInformationSecurityToolsPage() {
   return (
@@ -27,102 +28,35 @@ function CertificationOfInformationSecurityToolsPage() {
         />
 
         <InterestingFacts />
-        <section className="services">
-          <aside className="services__sidebar">
-            <h2 className="services__sidebar-title">Услуги</h2>
-          </aside>
-
-          <div className="services__content">
-            <article className="services-card">
-              <header
-                className="services-card__header"
-                onClick={() => {
-                  navigate('/cybersecurity/design-szi');
-                }}
-              >
-                <h3 className="services-card__title">Проектирование СЗИ</h3>
-                <button
-                  type="button"
-                  className="services-card__icon"
-                  aria-label="Перейти к услуге Аудит инфраструктуры и информационной безопасности"
-                >
-                  <ArrowLongRightIcon />
-                </button>
-              </header>
-              <p className="services-card__text">
-                Проводим анализ информационных систем, выявляем уязвимости и даём рекомендации по
-                средствам защиты в соответствии с законодательством Республики Беларусь.
-              </p>
-            </article>
-
-            <article className="services-card">
-              <header
-                className="services-card__header"
-                onClick={() => {
-                  navigate('/cybersecurity/certification');
-                }}
-              >
-                <h3 className="services-card__title">Аттестация системы защиты информации</h3>
-                <button
-                  type="button"
-                  className="services-card__icon"
-                  aria-label="Перейти к услуге Аттестация системы защиты информации"
-                >
-                  <ArrowLongRightIcon />
-                </button>
-              </header>
-              <p className="services-card__text">
-                Проводим аттестацию средств защиты информации, подтверждаем соответствие требованиям
-                законодательства и сопровождаем полный цикл проверок.
-              </p>
-              <div className="services-card__tags">
-                <Link className="services-tag" to="/cybersecurity/design-szi">
-                  Проектирование СЗИ
-                </Link>
-                <Link className="services-tag" to="/cybersecurity/create-szi">
-                  Создание СЗИ
-                </Link>
-                <Link className="services-tag" to="/cybersecurity/attestation-szi">
-                  Аттестация СЗИ
-                </Link>
-                <Link className="services-tag" to="/cybersecurity/infrastructure-effectiveness">
-                  Оценка эффективности защищённости инфраструктуры
-                </Link>
-              </div>
-            </article>
-
-            <article className="services-card">
-              <header className="services-card__header">
-                <h3 className="services-card__title">Поставка и внедрение СЗИ и оборудования</h3>
-                <button
-                  type="button"
-                  className="services-card__icon"
-                  aria-label="Перейти к услуге Поставка и внедрение СЗИ и оборудования"
-                >
-                  <ArrowLongRightIcon />
-                </button>
-              </header>
-              <p className="services-card__text">
-                Обеспечиваем защиту данных и мониторинг угроз с использованием решений ведущих
-                производителей, включая настройку и сопровождение.
-              </p>
-              <div className="services-card__tags">
-                <Link className="services-tag" to="/cybersecurity/siem">
-                  SIEM (Security Information and Event Management)
-                </Link>
-                <Link className="services-tag" to="/cybersecurity/dlp">
-                  DLP (Data Loss Prevention)
-                </Link>
-                <Link className="services-tag" to="/cybersecurity/firewall">
-                  Firewall
-                </Link>
-                <Link className="services-tag" to="/cybersecurity/network-screens">
-                  Сетевые экраны
-                </Link>
-              </div>
-            </article>
-          </div>
-        </section>
+        <CertificatesSection />
+        <ServicesSection
+          items={[
+            {
+              title: 'Проектирование СЗИ',
+              description:
+                'Проводим анализ информационных систем, выявляем уязвимости и даём рекомендации по средствам защиты в соответствии с законодательством Республики Беларусь.',
+              to: '/cybersecurity/design-szi',
+            },
+            {
+              title: 'Создание СЗИ',
+              description:
+                'Разрабатываем и внедряем систему защиты информации под требования вашей инфраструктуры и действующего законодательства.',
+              to: '/cybersecurity/create-szi',
+            },
+            {
+              title: 'Поставка и внедрение СЗИ и оборудования',
+              description:
+                'Обеспечиваем защиту данных и мониторинг угроз с использованием решений ведущих производителей, включая настройку и сопровождение.',
+              to: '/cybersecurity/delivery',
+              tags: [
+                { label: 'SIEM (Security Information and Event Management)', to: '/cybersecurity/siem' },
+                { label: 'DLP (Data Loss Prevention)', to: '/cybersecurity/dlp' },
+                { label: 'Firewall', to: '/cybersecurity/firewall' },
+                { label: 'Сетевые экраны', to: '/cybersecurity/network-screens' },
+              ],
+            },
+          ]}
+        />
         <InfoGridSection
           title="Почему это важно?"
           columnsHtml={[
@@ -264,6 +198,7 @@ function CertificationOfInformationSecurityToolsPage() {
         <DocumentDetailsSection />
         <DocumentDetailsSection />
       </main>
+      <Footer />
     </div>
   );
 }

@@ -102,11 +102,13 @@ function ScrollCardsSection({ title, cardsHtml }: ScrollCardsSectionProps) {
   const translateX = -(maxShift * progress);
 
   return (
-    <section
-      className="scroll-section"
-      ref={sectionRef}
-      style={sectionMinHeight !== null ? { minHeight: `${sectionMinHeight}px` } : undefined}
-    >
+    <div className="section-wrapper">
+      <div className="section-wrapper__inner">
+        <section
+          className="scroll-section"
+          ref={sectionRef}
+          style={sectionMinHeight !== null ? { minHeight: `${sectionMinHeight}px` } : undefined}
+        >
       <div
         className="scroll-section__inner"
         style={stickyTop !== undefined ? { top: stickyTop } : undefined}
@@ -129,7 +131,9 @@ function ScrollCardsSection({ title, cardsHtml }: ScrollCardsSectionProps) {
           </div>
         </div>
       </div>
-    </section>
+        </section>
+      </div>
+    </div>
   );
 }
 

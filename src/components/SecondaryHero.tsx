@@ -17,7 +17,9 @@ type SecondaryHeroProps = {
 
 function SecondaryHero({ breadcrumbs, title, description }: SecondaryHeroProps) {
   return (
-    <section id="home" className="hero-secondary">
+    <div className="section-wrapper">
+      <div className="section-wrapper__inner">
+        <section id="home" className="hero-secondary">
       <div className="hero-secondary-grid">
         <div className="hero-secondary-grid__cell"></div>
         <div className="hero-secondary-grid__cell"></div>
@@ -64,7 +66,9 @@ function SecondaryHero({ breadcrumbs, title, description }: SecondaryHeroProps) 
         <div className="hero-secondary-grid__cell"></div>
         <div className="hero-secondary-grid__cell"></div>
       </div>
-    </section>
+        </section>
+      </div>
+    </div>
   );
 }
 

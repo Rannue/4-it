@@ -85,7 +85,7 @@ h1 {
 h2 {
   color: #000;
   font-family: 'Roboto Condensed';
-  font-size: 54px;
+  font-size: 56px;
   font-style: normal;
   font-weight: 500;
   line-height: 110%; /* 61.6px */
@@ -93,7 +93,7 @@ h2 {
 
 h3 {
   font-family: 'Inter', var(--font-family-base);
-  font-size: 28px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: 130%; /* 36.4px */

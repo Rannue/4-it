@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function CybersecurityFirewallPage() {
   return (
@@ -13,6 +14,7 @@ function CybersecurityFirewallPage() {
           </p>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }
