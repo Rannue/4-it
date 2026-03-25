@@ -1,9 +1,11 @@
 .clients {
-  padding: 90px 0;
+  padding: 100px 0;
 }
 
 .clients__header {
-  margin-bottom: 42px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 42px 42px;
 }
 
 .clients__title {

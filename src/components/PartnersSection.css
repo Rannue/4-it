@@ -2,18 +2,12 @@
   padding: 90px 0;
 }
 
-.partners__inner {
-  background: var(--color-surface);
-  border-radius: 8px;
-  padding: 48px;
-}
-
 .partners__header {
   margin-bottom: 42px;
 }
 
 .partners__title {
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
 .partners__description {
@@ -24,24 +18,23 @@
 
 .partners__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
 }
 
 .partners__card {
+  grid-column: span 3;
   background: #ffffff;
-  border: 1px solid rgba(148, 163, 184, 0.3);
   border-radius: 8px;
-  padding: 28px 24px;
+  padding: 32px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 80px;
+  justify-content: start;
 }
 
 .partners__logo {
   max-width: 100%;
-  max-height: 48px;
+  height: 32px;
   object-fit: contain;
   display: block;
 }

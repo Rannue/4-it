@@ -3,30 +3,55 @@
   background-color: var(--color-surface);
 }
 
-.document-details__inner {
-  gap: 0px 28px;
-  align-items: flex-start;
+.document-details > .section-wrapper {
+  background-color: transparent;
 }
 
-.document-details__main {
-  display: flex;
-  flex-direction: column;
-  gap: 42px;
+.document-details__header {
+  max-width: 1600px;
+  margin: 0 auto;
+  /* Широкий экран: колонка уже по центру — без доп. inset. Узкий: как у content-wrapper (42px). */
+  padding-bottom: 42px;
+  box-sizing: border-box;
 }
 
 .document-details__title {
-  margin-bottom: 8px;
+  margin: 0 0 12px;
+  font-family: 'Roboto Condensed', var(--font-family-base);
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--color-text-main);
+  text-wrap: balance;
 }
 
 .document-details__description {
+  margin: 0;
   color: var(--color-text-secondary);
   max-width: 800px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.55;
 }
 
 .document-details__link {
   color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.document-details__content-wrapper {
+  /* border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line); */
+  padding: 0 42px;
+}
+
+.document-details__content-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  /* border-left: 1px solid var(--color-line);
+  border-right: 1px solid var(--color-line); */
+  box-sizing: border-box;
 }
 
 .document-details__card {
@@ -121,10 +146,6 @@
 }
 
 @media (max-width: 960px) {
-  .document-details__inner {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
   .document-details__card-inner {
     grid-template-columns: minmax(0, 1fr);
   }

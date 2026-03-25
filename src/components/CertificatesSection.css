@@ -12,17 +12,39 @@
 }
 
 .certificates-carousel__header {
-  margin-bottom: 42px;
   flex: 0 0 auto;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-bottom: 42px;
 }
 
 .certificates-carousel__title {
   margin: 0;
 }
 
+.certificates__track-wrapper {
+  /* border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line); */
+  padding: 0 42px;
+}
+
+.certificates-carousel__inner {
+  width: 100%;
+  min-width: 0;
+  max-width: 1600px;
+  margin: 0 auto;
+  /* border-left: 1px solid var(--color-line);
+  border-right: 1px solid var(--color-line); */
+  overflow: hidden;
+}
+
 .certificates-carousel__track {
   display: flex;
   gap: 16px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   will-change: transform;
 }
 

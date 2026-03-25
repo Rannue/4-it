@@ -1,0 +1,214 @@
+.testimonials {
+  padding: 42px 42px;
+  background: var(--color-primary);
+}
+
+.testimonials__panel {
+  background: var(--color-white);
+  border-radius: 12px;
+  padding: 42px;
+}
+
+.testimonials__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 42px;
+}
+
+.testimonials__title {
+  margin: 0;
+}
+
+.testimonials__nav {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.testimonials__nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray-300);
+  background: var(--color-white);
+  color: var(--color-text-secondary-light);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.testimonials__nav-btn:hover:not(:disabled) {
+  border-color: var(--color-text-main);
+  color: var(--color-text-main);
+}
+
+.testimonials__nav-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.testimonials__nav-btn--active {
+  border-color: var(--color-text-main);
+  color: var(--color-text-main);
+}
+
+/* Видимая область = 12 колонок; ширина карточки = 8/12 этой области (container query). */
+.testimonials__viewport {
+  container-type: inline-size;
+  container-name: testimonials;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.testimonials__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(100cqw * 8 / 12);
+  gap: 20px;
+  width: max-content;
+  min-width: 100%;
+}
+
+.testimonials-card {
+  scroll-snap-align: start;
+  min-width: 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+
+.testimonials-card__quote {
+  margin: 0 0 auto;
+  padding-bottom: 32px;
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: 300;
+  flex: 1;
+}
+
+.testimonials-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.testimonials-card__person {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.testimonials-card__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-text-secondary-light);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.testimonials-card__author {
+  min-width: 0;
+}
+
+.testimonials-card__name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+.testimonials-card__role {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-text-secondary);
+}
+
+.testimonials-card__divider {
+  width: 1px;
+  height: 40px;
+  background: var(--color-line);
+  flex-shrink: 0;
+}
+
+.testimonials-card__logo {
+  height: 18px;
+  width: auto;
+  /* max-width: 120px; */
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+a.testimonials-card__link {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+a.testimonials-card__link:hover {
+  opacity: 0.88;
+  color: var(--color-primary);
+}
+
+.testimonials-card__link svg {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  transition: transform 0.25s ease;
+}
+
+a.testimonials-card__link:hover svg {
+  transform: rotate(45deg);
+}
+
+@media (max-width: 900px) {
+  .testimonials__panel {
+    padding: 24px 20px 28px;
+  }
+
+  .testimonials__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .testimonials__track {
+    grid-auto-columns: 85cqw;
+  }
+
+  a.testimonials-card__link {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

@@ -7,11 +7,7 @@ function CybersecurityNetworkScreensPage() {
       <Header />
       <main className="app-main">
         <section className="section">
-          <h1>Сетевые экраны</h1>
-          <p>
-            Страница услуги по проектированию и поддержке сетевых экранов и связанных средств защиты
-            периметра сети.
-          </p>
+          <h1>Средства линейного шифрования</h1>
         </section>
       </main>
       <Footer />

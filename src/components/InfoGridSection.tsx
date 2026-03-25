@@ -1,18 +1,13 @@
 import './InfoGridSection.css';
 
 type InfoGridSectionProps = {
-  /** Заголовок всего блока (h2) */
   title: string;
-  /** Описание под заголовком */
   description?: string;
-  /**
-   * Массив HTML‑строк для ячеек.
-   * Каждая строка может содержать заголовки, абзацы, иконки в формате HTML.
-   */
   columnsHtml: string[];
+  columns?: 2 | 3;
 };
 
-function InfoGridSection({ title, description, columnsHtml }: InfoGridSectionProps) {
+function InfoGridSection({ title, description, columnsHtml, columns = 3 }: InfoGridSectionProps) {
   return (
     <section className="info-grid">
       <header className="info-grid__header">
@@ -21,7 +16,7 @@ function InfoGridSection({ title, description, columnsHtml }: InfoGridSectionPro
       </header>
 
       <div className="info-grid__cols-wrapper">
-        <div className="info-grid__cols">
+        <div className={`info-grid__cols info-grid__cols--${columns}`}>
           {columnsHtml.map((html, index) => (
             <article
               key={index}

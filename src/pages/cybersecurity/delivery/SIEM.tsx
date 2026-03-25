@@ -21,6 +21,7 @@ function SiemPage() {
           breadcrumbs={[
             { label: 'Главная', href: '/' },
             { label: 'Кибербезопасность', href: '/cybersecurity' },
+            { label: 'Поставка и внедрение СЗИ и оборудования', href: '/cybersecurity/delivery' },
             { label: 'SIEM (Security Information and Event Management)' },
           ]}
           title="SIEM (Security Information and Event Management)"

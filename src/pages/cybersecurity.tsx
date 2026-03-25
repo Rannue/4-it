@@ -6,6 +6,8 @@ import certificateIcon from '../assets/icons/certificate.svg';
 import trendingUpIcon from '../assets/icons/trending-up.svg';
 import InfoGridSection from '../components/InfoGridSection';
 import ServicesSection from '../components/ServicesSection';
+import SecondaryHero from '../components/SecondaryHero';
+import DocumentDetailsSection from '../components/DocumentDetailsSection';
 
 function CybersecurityPage() {
   return (
@@ -13,46 +15,11 @@ function CybersecurityPage() {
       <Header />
 
       <main className="app-main">
-        <section id="home" className="hero-secondary">
-          <div className="hero-secondary-grid">
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell">
-              <div className="hero-secondary__content">
-                <div className="hero-secondary__title-wrapper">
-                  <nav className="hero-secondary__breadcrumbs" aria-label="Хлебные крошки">
-                    <ol>
-                      <li>
-                        <a href="/">Главная</a>
-                      </li>
-                      <li>
-                        <span>Кибербезопасность</span>
-                      </li>
-                    </ol>
-                  </nav>
-                  <h1 className="hero-secondary__title">Кибербезопасность</h1>
-                </div>
-                <p className="hero-secondary__description">
-                  <b>Кибербезопасность</b> — это комплекс мер, направленных на защиту информационных
-                  систем от несанкционированного доступа, утечек данных и кибератак. В современном
-                  мире, где информация является одним из ключевых активов, обеспечение её
-                  безопасности становится критически важным. Мы поможем вам защитить ваши данные,
-                  соблюдая требования законодательства Республики Беларусь и внедряя передовые
-                  технологии.
-                </p>
-              </div>
-            </div>
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell"></div>
-            <div className="hero-secondary-grid__cell"></div>
-          </div>
-        </section>
+        <SecondaryHero
+          breadcrumbs={[{ label: 'Главная', href: '/' }, { label: 'Кибербезопасность' }]}
+          title="Кибербезопасность"
+          description="Кибербезопасность — это комплекс мер, направленных на защиту информационных систем от несанкционированного доступа, утечек данных и кибератак. В современном мире, где информация является одним из ключевых активов, обеспечение её безопасности становится критически важным. Мы поможем вам защитить ваши данные, соблюдая требования законодательства Республики Беларусь и внедряя передовые технологии."
+        />
 
         <ServicesSection
           items={[
@@ -86,7 +53,10 @@ function CybersecurityPage() {
               to: '/cybersecurity/delivery',
               ariaLabel: 'Перейти к услуге Поставка и внедрение СЗИ и оборудования',
               tags: [
-                { label: 'SIEM (Security Information and Event Management)', to: '/cybersecurity/siem' },
+                {
+                  label: 'SIEM (Security Information and Event Management)',
+                  to: '/cybersecurity/siem',
+                },
                 { label: 'DLP (Data Loss Prevention)', to: '/cybersecurity/dlp' },
                 { label: 'Firewall', to: '/cybersecurity/firewall' },
                 { label: 'Сетевые экраны', to: '/cybersecurity/network-screens' },
@@ -139,7 +109,7 @@ function CybersecurityPage() {
                 <h4>Рекомендации по улучшению</h4>
                 <p>
                   В Республике Беларусь вопросы защиты информации регулируются Указом Президента Республики Беларусь от 16.04.2013 № 196 ("Положение о технической и криптографической защите информации"). Согласно этому документу, руководители организаций несут персональную ответственность за обеспечение защиты информации.
- Приказ Оперативно-аналитического центра при Президенте Республики Беларусь от 20.02.2020 № 66 (в редакции от 10.12.2024 № 259) регулирует вопросы создания, внедрения и аттестации систем защиты информации (СЗИ). Этот документ устанавливает порядок проведения работ, требования к документации и процедуры проверки соответствия СЗИ.
+Приказ Оперативно-аналитического центра при Президенте Республики Беларусь от 20.02.2020 № 66 (в редакции от 10.12.2024 № 259) регулирует вопросы создания, внедрения и аттестации систем защиты информации (СЗИ). Этот документ устанавливает порядок проведения работ, требования к документации и процедуры проверки соответствия СЗИ.
                 </p>
               </div>
               <img
@@ -150,6 +120,8 @@ function CybersecurityPage() {
             `,
           ]}
         />
+
+        <DocumentDetailsSection />
       </main>
       <Footer />
     </div>

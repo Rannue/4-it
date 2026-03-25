@@ -11,7 +11,7 @@ type PartnersSectionProps = {
 
 function PartnersSection({ title, description, logos }: PartnersSectionProps) {
   return (
-    <div className="section-wrapper">
+    <div className="section-wrapper__gray">
       <div className="section-wrapper__inner">
         <section className="partners">
           <div className="partners__inner">

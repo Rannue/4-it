@@ -47,6 +47,7 @@ function CertificationOfInformationSecurityToolsPage() {
               title: 'PAM (Privileged Access Management)',
               description:
                 'Средства управления привилегированным доступом для защиты критически важных данных и систем.',
+              to: '/cybersecurity/pam',
             },
             {
               title: 'Firewall (межсетевые экраны)',
@@ -109,10 +110,6 @@ function CertificationOfInformationSecurityToolsPage() {
               </p>
             `,
             `
-            <div class="cards-grid__media">
-            </div>
-          `,
-            `
               <div class="cards-grid__media">
                 <img src="${integrationIllustration}" alt="" aria-hidden="true" />
               </div>
@@ -120,6 +117,10 @@ function CertificationOfInformationSecurityToolsPage() {
               <p>
 Мы гарантируем совместимость наших решений с существующей ИТ-инфраструктурой, что минимизирует затраты на внедрение.              </p>
             `,
+            `
+            <div class="cards-grid__media">
+            </div>
+          `,
             `
             <div class="cards-grid__media">
             </div>

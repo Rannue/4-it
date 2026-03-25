@@ -7,11 +7,7 @@ function CybersecurityFirewallPage() {
       <Header />
       <main className="app-main">
         <section className="section">
-          <h1>Firewall</h1>
-          <p>
-            Страница услуги по внедрению и сопровождению межсетевых экранов и решений по фильтрации
-            трафика.
-          </p>
+          <h1>Firewall (межсетевые экраны)</h1>
         </section>
       </main>
       <Footer />
