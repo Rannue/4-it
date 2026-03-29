@@ -1,13 +1,14 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import './Hero.css';
-import bookIcon from '../assets/icons/book.svg';
-import certificateIcon from '../assets/icons/certificate.svg';
-import trendingUpIcon from '../assets/icons/trending-up.svg';
-import InfoGridSection from '../components/InfoGridSection';
-import ServicesSection from '../components/ServicesSection';
-import SecondaryHero from '../components/SecondaryHero';
-import DocumentDetailsSection from '../components/DocumentDetailsSection';
+import bookIcon from '@/assets/icons/book.svg';
+import certificateIcon from '@/assets/icons/certificate.svg';
+import trendingUpIcon from '@/assets/icons/trending-up.svg';
+import InfoGridSection from '@/components/sections/InfoGridSection';
+import ServicesSection from '@/components/sections/ServicesSection';
+import SecondaryHero from '@/components/sections/SecondaryHero';
+import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
+import ClientsSection from '@/components/sections/ClientsSection';
 
 function CybersecurityPage() {
   return (
@@ -60,6 +61,11 @@ function CybersecurityPage() {
                 { label: 'DLP (Data Loss Prevention)', to: '/cybersecurity/dlp' },
                 { label: 'Firewall', to: '/cybersecurity/firewall' },
                 { label: 'Сетевые экраны', to: '/cybersecurity/network-screens' },
+                { label: 'Виртуализация', to: '/virtualization' },
+                {
+                  label: 'Поставка серверов и коммутаторов',
+                  to: '/cybersecurity/servers-and-switches',
+                },
               ],
             },
           ]}
@@ -122,6 +128,7 @@ function CybersecurityPage() {
         />
 
         <DocumentDetailsSection />
+        <ClientsSection />
       </main>
       <Footer />
     </div>

@@ -1,5 +1,5 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 function CybersecurityFirewallPage() {
   return (
@@ -7,7 +7,7 @@ function CybersecurityFirewallPage() {
       <Header />
       <main className="app-main">
         <section className="section">
-          <h1>Firewall (межсетевые экраны)</h1>
+          <h1>Firewall</h1>
         </section>
       </main>
       <Footer />

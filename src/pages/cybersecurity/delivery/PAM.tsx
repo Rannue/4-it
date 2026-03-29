@@ -1,20 +1,20 @@
-import Header from '../../../components/Header';
-import SecondaryHero from '../../../components/SecondaryHero';
-import FeatureListSection from '../../../components/FeatureListSection';
-import DocumentDetailsSection from '../../../components/DocumentDetailsSection';
-import CertificatesSection from '../../../components/CertificatesSection';
-import ClientsSection from '../../../components/ClientsSection';
-import Footer from '../../../components/Footer';
-import searchIcon from '../../../assets/icons/search.svg';
-import databaseIcon from '../../../assets/icons/database.svg';
-import barrierIcon from '../../../assets/icons/barrier-block.svg';
-import presentationIcon from '../../../assets/icons/presentation.svg';
-import FeatureBanner from '../../../components/FeatureBanner';
-import PartnersSection from '../../../components/PartnersSection';
-import lawIllustration from '../../../assets/img/law.png';
-import infowatchLogo from '../../../assets/img/providers/Infowatch.svg';
-import stakhanovetsLogo from '../../../assets/img/providers/Стахановец_Логотип_SVG_Полноцвет.svg';
-import librasoftLogo from '../../../assets/img/providers/librasoft.svg';
+import Header from '@/components/layout/Header';
+import SecondaryHero from '@/components/sections/SecondaryHero';
+import FeatureListSection from '@/components/sections/FeatureListSection';
+import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
+import CertificatesSection from '@/components/sections/CertificatesSection';
+import ClientsSection from '@/components/sections/ClientsSection';
+import Footer from '@/components/layout/Footer';
+import searchIcon from '@/assets/icons/search.svg';
+import databaseIcon from '@/assets/icons/Database.svg';
+import barrierIcon from '@/assets/icons/barrier-block.svg';
+import presentationIcon from '@/assets/icons/presentation.svg';
+import FeatureBanner from '@/components/sections/FeatureBanner';
+import PartnersSection from '@/components/sections/PartnersSection';
+import lawIllustration from '@/assets/img/law.png';
+import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
+import stakhanovetsLogo from '@/assets/img/providers/Стахановец_Логотип_SVG_Полноцвет.svg';
+import librasoftLogo from '@/assets/img/providers/librasoft.svg';
 
 function PamPage() {
   return (

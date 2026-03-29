@@ -1,0 +1,131 @@
+.services {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 28px;
+  padding: 60px 0;
+}
+
+.services__sidebar {
+  color: var(--color-text-main);
+  position: sticky;
+  top: 140px;
+  align-self: flex-start;
+}
+
+.services-card {
+  padding: 32px 0px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.services-card--clickable {
+  cursor: pointer;
+}
+
+.services-card--clickable:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.services-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Как у карточек services2 («Битрикс24» и т.п.): Inter, жирный заголовок, стрелка */
+.services-card__title {
+  color: #000000;
+  transition: color 0.2s ease;
+}
+
+.services-card__title--accent {
+  color: var(--color-primary);
+}
+
+.services-card__text {
+  font-family: 'Inter', var(--font-family-base);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  color: var(--color-text-secondary-light);
+  padding-right: 32px;
+  transition: color 0.2s ease;
+}
+
+.services-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  gap: 8px;
+}
+
+.services-tag {
+  border-radius: 999px;
+  border: 1px solid #d9d9d9;
+  padding: 6px 12px;
+  font-family: 'Inter', var(--font-family-base);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-text-main);
+  background-color: var(--color-white);
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.services-tag:hover {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.services-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgba(15, 23, 42, 0.55);
+  transition: color 0.2s ease;
+  pointer-events: none;
+}
+
+.services-card--clickable:hover .services-card__title,
+.services-card--clickable:hover .services-card__title--accent {
+  color: var(--color-primary);
+}
+
+.services-card--clickable:hover .services-card__text {
+  color: var(--color-primary);
+}
+
+.services-card--clickable:hover .services-card__icon {
+  color: var(--color-primary);
+}
+
+.services-card__icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.services-card--clickable:hover .services-card__icon svg {
+  transform: rotate(45deg);
+}
+
+@media (max-width: 960px) {
+  .services {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .services__sidebar {
+    order: -1;
+    position: static;
+  }
+}

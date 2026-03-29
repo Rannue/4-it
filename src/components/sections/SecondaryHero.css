@@ -1,0 +1,115 @@
+.hero-secondary-grid {
+  border-radius: 8px;
+  background: var(--color-primary);
+  margin-bottom: 42px;
+  height: calc(100vh - 144px);
+  display: grid;
+  grid-template-columns: 32px 3fr 1fr 32px;
+  grid-template-rows: 32px 3fr 32px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.hero-secondary-grid__cell {
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-secondary__content {
+  padding: 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-secondary__texture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.8;
+  mix-blend-mode: luminosity;
+}
+
+.hero-secondary__breadcrumbs {
+  margin-bottom: 4px;
+}
+
+.hero-secondary__breadcrumbs ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  font-family: 'Inter', var(--font-family-base);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.hero-secondary__breadcrumbs a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.hero-secondary__breadcrumbs span {
+  color: var(--color-white);
+  opacity: 0.4;
+}
+
+.hero-secondary__breadcrumbs li + li::before {
+  content: '/';
+  margin: 0 8px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* audit goal animated line */
+
+.audit-goal {
+  /* padding: 100px 0; */
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  margin: 0 0 60px;
+}
+
+.audit-goal__text {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 140%;
+  color: #999999;
+  width: 94%;
+  padding: 32px;
+}
+
+.audit-goal__text span {
+  color: #999999;
+}
+
+.audit-goal__word {
+  display: inline-block;
+  margin-right: 0.3em;
+}
+
+.hero-secondary__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-secondary-grid__buttons-container {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  bottom: 32px;
+}
+
+.hero-secondary__description {
+  font-size: 18px;
+  line-height: 140%;
+  font-weight: 300;
+}

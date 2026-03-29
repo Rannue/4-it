@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App.tsx';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from '@/components/layout/ScrollToTop';
 import CybersecurityPage from './pages/cybersecurity';
 import CybersecurityAuditPage from './pages/cybersecurity-audit.tsx';
 import CybersecurityDesignSziPage from './pages/cybersecurity-design-szi.tsx';
@@ -17,6 +17,9 @@ import CybersecurityFirewallPage from './pages/cybersecurity-firewall.tsx';
 import CybersecurityNetworkScreensPage from './pages/cybersecurity-network-screens.tsx';
 import CertificationOfInformationSecurityToolsPage from './pages/cybersecurity/Certification.tsx';
 import CybersecurityDeliveryPage from './pages/cybersecurity/Delivery.tsx';
+import TechnicalSupportPage from './pages/TechnicalSupport.tsx';
+import VirtualizationPage from './pages/cybersecurity/delivery/Virtualization.tsx';
+import SupplyOfServersAndSwitchesPage from './pages/cybersecurity/delivery/SupplyOfServersAndSwitches.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -25,6 +28,8 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/home" element={<App />} />
+          <Route path="/technical-support" element={<TechnicalSupportPage />} />
+          <Route path="/virtualization" element={<VirtualizationPage />} />
 
           <Route path="/cybersecurity" element={<CybersecurityPage />} />
           <Route path="/cybersecurity/audit" element={<CybersecurityAuditPage />} />
@@ -51,6 +56,10 @@ createRoot(document.getElementById('root')!).render(
             element={<CertificationOfInformationSecurityToolsPage />}
           />
           <Route path="/cybersecurity/delivery" element={<CybersecurityDeliveryPage />} />
+          <Route
+            path="/cybersecurity/servers-and-switches"
+            element={<SupplyOfServersAndSwitchesPage />}
+          />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>

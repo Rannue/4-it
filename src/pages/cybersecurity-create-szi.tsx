@@ -1,6 +1,6 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import SecondaryHero from '../components/SecondaryHero';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import SecondaryHero from '@/components/sections/SecondaryHero';
 
 function CybersecurityCreateSziPage() {
   return (

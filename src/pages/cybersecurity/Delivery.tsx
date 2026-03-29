@@ -1,17 +1,17 @@
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import SecondaryHero from '../../components/SecondaryHero';
-import ServicesType2Section from '../../components/ServicesType2Section';
-import CardsGridSection from '../../components/CardsGridSection';
-import aimIllustration from '../../assets/img/illustrations/aim.svg';
-import complexIllustration from '../../assets/img/illustrations/complex.svg';
-import integrationIllustration from '../../assets/img/illustrations/integration.svg';
-import reliableIllustration from '../../assets/img/illustrations/reliability.svg';
-import certificationIllustration from '../../assets/img/illustrations/certification.svg';
-import chatIllustration from '../../assets/img/illustrations/сhat.svg';
-import DocumentDetailsSection from '../../components/DocumentDetailsSection';
-import CertificatesSection from '../../components/CertificatesSection';
-import ClientsSection from '../../components/ClientsSection';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import SecondaryHero from '@/components/sections/SecondaryHero';
+import ServicesType2Section from '@/components/sections/ServicesType2Section';
+import CardsGridSection from '@/components/sections/CardsGridSection';
+import aimIllustration from '@/assets/img/illustrations/aim.svg';
+import complexIllustration from '@/assets/img/illustrations/complex.svg';
+import integrationIllustration from '@/assets/img/illustrations/integration.svg';
+import reliableIllustration from '@/assets/img/illustrations/reliability.svg';
+import certificationIllustration from '@/assets/img/illustrations/certification.svg';
+import chatIllustration from '@/assets/img/illustrations/сhat.svg';
+import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
+import CertificatesSection from '@/components/sections/CertificatesSection';
+import ClientsSection from '@/components/sections/ClientsSection';
 
 function CertificationOfInformationSecurityToolsPage() {
   return (
@@ -70,6 +70,7 @@ function CertificationOfInformationSecurityToolsPage() {
               title: 'Поставка серверов и коммутаторов',
               description:
                 'Надёжное оборудование для поддержки работы систем защиты информации и построения защищённой инфраструктуры.',
+              to: '/cybersecurity/servers-and-switches',
             },
             {
               title: 'Резервное копирование',
@@ -80,6 +81,7 @@ function CertificationOfInformationSecurityToolsPage() {
               title: 'Виртуализация',
               description:
                 'Виртуализация позволяет запускать несколько систем на одном сервере, снижая затраты и повышая безопасность.',
+              to: '/virtualization',
             },
             {
               title: 'Решения для развития киберкультуры в компаниях',

@@ -1,0 +1,110 @@
+.sticky-heading-list {
+  padding: 100px 45px 100px;
+  background-color: var(--color-white);
+}
+
+.sticky-heading-list__container {
+  /* padding: 45px; */
+  box-sizing: border-box;
+}
+
+.sticky-heading-list__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+
+.sticky-heading-list__title-wrap {
+  position: sticky;
+  top: calc(var(--header-height, 88px) + 24px);
+  /* max-width: 420px; */
+}
+
+.sticky-heading-list__title {
+  color: var(--color-text-main);
+}
+
+.sticky-heading-list__title-accent {
+  color: var(--color-primary);
+}
+
+.sticky-heading-list__illustration {
+  margin-top: clamp(20px, 3vw, 32px);
+}
+
+.sticky-heading-list__illustration-img {
+  display: block;
+  width: 100%;
+  max-width: min(280px, 100%);
+  height: auto;
+  object-fit: contain;
+}
+
+.sticky-heading-list__rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-line);
+}
+
+.sticky-heading-list__row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 32px;
+  align-items: baseline;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.sticky-heading-list__index {
+  font-family: var(--font-family-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-secondary-light);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.sticky-heading-list__text {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+}
+
+@media (max-width: 900px) {
+  .sticky-heading-list {
+    padding: 56px 45px 72px;
+  }
+
+  .sticky-heading-list__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .sticky-heading-list__title-wrap {
+    position: static;
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .sticky-heading-list {
+    padding: 56px 16px 72px;
+  }
+
+  .sticky-heading-list__row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 18px 0;
+  }
+
+  .sticky-heading-list__text {
+    font-size: 12px;
+  }
+}

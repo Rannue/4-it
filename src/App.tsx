@@ -1,14 +1,15 @@
 import './App.css';
-import Button from './components/Button';
-import Header from './components/Header';
-import ClientsSection from './components/ClientsSection';
-import CasesSection from './components/CasesSection';
-import TestimonialsSection from './components/TestimonialsSection';
-import ServicesType2Section from './components/ServicesType2Section';
-import Footer from './components/Footer';
-import ArrowRightIcon from './assets/icons/arrow-up-right.svg';
-import CertificatesSection from './components/CertificatesSection';
-import AchievementsSection from './components/AchievementsSection';
+import Button from '@/components/ui/Button';
+import Header from '@/components/layout/Header';
+import ClientsSection from '@/components/sections/ClientsSection';
+import CasesSection from '@/components/sections/CasesSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import ServicesType2Section from '@/components/sections/ServicesType2Section';
+import Footer from '@/components/layout/Footer';
+import ArrowRightIcon from '@/assets/icons/arrow-up-right.svg';
+import CertificatesSection from '@/components/sections/CertificatesSection';
+import AchievementsSection from '@/components/sections/AchievementsSection';
+import ContactRequestForm from '@/components/sections/ContactRequestForm';
 
 function App() {
   return (
@@ -82,6 +83,17 @@ function App() {
               ],
             },
             {
+              title: 'Поддержка Битрикс24',
+              description:
+                'Обеспечим стабильную работу портала и поможем развивать CRM: администрирование, обновления, настройка под задачи бизнеса и оперативные консультации без штатного администратора.',
+              to: '/technical-support',
+              tags: [
+                { label: 'Сопровождение портала' },
+                { label: 'Настройка и доработки' },
+                { label: 'Консультации пользователей' },
+              ],
+            },
+            {
               title: 'Кибербезопасность',
               description:
                 'Комплексные решения для защиты информационных систем от кибератак, утечек данных и несанкционированного доступа. Работаем в соответствии с законодательством Республики Беларусь, применяя передовые технологии защиты.',
@@ -90,6 +102,17 @@ function App() {
                 { label: 'Аудит инфраструктуры и информационная безопасности' },
                 { label: 'Аттестация системы защиты информации' },
                 { label: 'Поставка и внедрение СЗИ и оборудования' },
+              ],
+            },
+            {
+              title: 'Виртуализация',
+              description:
+                'Проектируем и внедряем виртуальную инфраструктуру: консолидация серверов, миграция, резервирование и сопровождение. Снижаем затраты на оборудование и упрощаем администрирование.',
+              to: '/virtualization',
+              tags: [
+                { label: 'Проектирование и внедрение' },
+                { label: 'Миграция и консолидация' },
+                { label: 'Резервирование и мониторинг' },
               ],
             },
             {
@@ -106,13 +129,9 @@ function App() {
             {
               title: 'Техническая поддержка',
               description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-              tags: [
-                { label: 'Наименование услуги' },
-                { label: 'Наименование услуги' },
-                { label: 'Наименование услуги' },
-                { label: 'Наименование услуги' },
-              ],
+                'Обеспечиваем стабильную и безопасную работу ПО: администрируем, обновляем, восстанавливаем функциональность, адаптируем систему под новые задачи. Предоставляем технические консультации и сопровождаем на каждом этапе. Реакция — от 1 часа, в зависимости от приоритета запроса.',
+              to: '/technical-support',
+              supportFeatureBars: true,
             },
             {
               title: 'Электронный документооборот с ЭЦП',
@@ -128,6 +147,8 @@ function App() {
 
         <ClientsSection />
         <CertificatesSection />
+
+        <ContactRequestForm id="contacts" />
       </main>
       <Footer />
     </div>

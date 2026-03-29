@@ -1,5 +1,5 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 function CybersecurityInfrastructureEffectivenessPage() {
   return (
@@ -8,10 +8,6 @@ function CybersecurityInfrastructureEffectivenessPage() {
       <main className="app-main">
         <section className="section">
           <h1>Оценка эффективности защищённости инфраструктуры</h1>
-          <p>
-            Страница услуги по оценке эффективности защищённости инфраструктуры. Здесь можно будет
-            описать методики анализа, используемые метрики и формат отчётности.
-          </p>
         </section>
       </main>
       <Footer />

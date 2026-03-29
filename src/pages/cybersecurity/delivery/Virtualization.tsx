@@ -1,0 +1,64 @@
+import Header from '@/components/layout/Header';
+import SecondaryHero from '@/components/sections/SecondaryHero';
+import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
+import ClientsSection from '@/components/sections/ClientsSection';
+import CertificatesSection from '@/components/sections/CertificatesSection';
+import Footer from '@/components/layout/Footer';
+import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
+import PartnersSection from '@/components/sections/PartnersSection';
+import bytisLogo from '@/assets/img/providers/bytis.png';
+import zstackLogo from '@/assets/img/providers/ZStack.svg';
+import proxmoxLogo from '@/assets/img/providers/Proxmox.svg';
+import virtualizationIllustration from '@/assets/3d-icons/fire-front-clay.png';
+
+function VirtualizationPage() {
+  return (
+    <div className="app">
+      <Header />
+      <main className="app-main">
+        <SecondaryHero
+          breadcrumbs={[{ label: 'Главная', href: '/' }, { label: 'Виртуализация' }]}
+          title="Виртуализация"
+          description="Виртуализация — технология, позволяющая запускать несколько виртуальных машин на одном физическом сервере, что существенно повышает эффективность использования ИТ-ресурсов, снижает затраты и упрощает управление инфраструктурой. Мы внедряем решения виртуализации поддерживающие современные стандарты информационной безопасности."
+        />
+        <StickyHeadingListSection
+          id="virtualization-benefits"
+          title={
+            <>
+              Что даёт <span className="sticky-heading-list__title-accent">виртуализация?</span>
+            </>
+          }
+          illustration={{
+            src: virtualizationIllustration,
+            alt: '',
+          }}
+          items={[
+            { text: 'централизованное управление виртуальными машинами, хранилищами и сетями' },
+            { text: 'автоматизация развертывания и масштабирования ресурсов' },
+            { text: 'поддержка KVM-гипервизора и стандартных API' },
+            { text: 'высокая отказоустойчивость и гибкое распределение нагрузки' },
+            { text: 'многоуровневая безопасность и контроль доступа' },
+            { text: 'встроенные функции резервного копирования, миграции и восстановления' },
+            { text: 'интеграция с системами мониторинга и внешними хранилищами' },
+            { text: 'удобный веб-интерфейс для администраторов и пользователей.' },
+          ]}
+        />
+        <PartnersSection
+          title="Производители и их решения"
+          description="Мы работаем с решениями от ведущих производителей, соответствующих требованиям стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим регламентом Республики Беларусь (ТР 2013/027/BY)"
+          logos={[
+            { src: bytisLogo, alt: 'BYTIS' },
+            { src: zstackLogo, alt: 'ZStack' },
+            { src: proxmoxLogo, alt: 'Proxmox' },
+          ]}
+        />
+        <DocumentDetailsSection />
+        <CertificatesSection />
+        <ClientsSection />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default VirtualizationPage;

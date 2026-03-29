@@ -1,16 +1,16 @@
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import SecondaryHero from '../../components/SecondaryHero';
-import InterestingFacts from '../../components/InterestingFacts';
-import InfoGridSection from '../../components/InfoGridSection';
-import HighlightGridSection from '../../components/HighlightGridSection';
-import certificateIcon from '../../assets/icons/certificate.svg';
-import licenseIcon from '../../assets/icons/license.svg';
-import fingerprintIcon from '../../assets/icons/fingerprint.svg';
-import ScrollCardsSection from '../../components/ScrollCardsSection';
-import DocumentDetailsSection from '../../components/DocumentDetailsSection';
-import ServicesSection from '../../components/ServicesSection';
-import CertificatesSection from '../../components/CertificatesSection';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import SecondaryHero from '@/components/sections/SecondaryHero';
+import InterestingFacts from '@/components/sections/InterestingFacts';
+import InfoGridSection from '@/components/sections/InfoGridSection';
+import HighlightGridSection from '@/components/sections/HighlightGridSection';
+import certificateIcon from '@/assets/icons/certificate.svg';
+import licenseIcon from '@/assets/icons/license.svg';
+import fingerprintIcon from '@/assets/icons/fingerprint.svg';
+import ScrollCardsSection from '@/components/sections/ScrollCardsSection';
+import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
+import ServicesSection from '@/components/sections/ServicesSection';
+import CertificatesSection from '@/components/sections/CertificatesSection';
 
 function CertificationOfInformationSecurityToolsPage() {
   return (
@@ -49,7 +49,10 @@ function CertificationOfInformationSecurityToolsPage() {
                 'Обеспечиваем защиту данных и мониторинг угроз с использованием решений ведущих производителей, включая настройку и сопровождение.',
               to: '/cybersecurity/delivery',
               tags: [
-                { label: 'SIEM (Security Information and Event Management)', to: '/cybersecurity/siem' },
+                {
+                  label: 'SIEM (Security Information and Event Management)',
+                  to: '/cybersecurity/siem',
+                },
                 { label: 'DLP (Data Loss Prevention)', to: '/cybersecurity/dlp' },
                 { label: 'Firewall', to: '/cybersecurity/firewall' },
                 { label: 'Сетевые экраны', to: '/cybersecurity/network-screens' },
