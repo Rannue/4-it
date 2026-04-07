@@ -1,11 +1,11 @@
 import './App.css';
-import Button from '@/components/ui/Button';
-import Header from '@/components/layout/Header';
+import Button from '@/shared/ui/Button';
+import Header from '@/widgets/header/Header';
 import ClientsSection from '@/components/sections/ClientsSection';
 import CasesSection from '@/components/sections/CasesSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ServicesType2Section from '@/components/sections/ServicesType2Section';
-import Footer from '@/components/layout/Footer';
+import Footer from '@/widgets/footer/Footer';
 import ArrowRightIcon from '@/assets/icons/arrow-up-right.svg';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import AchievementsSection from '@/components/sections/AchievementsSection';

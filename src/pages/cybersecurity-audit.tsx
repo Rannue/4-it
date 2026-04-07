@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import './Hero.css';
 import InfoGridSection from '@/components/sections/InfoGridSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';

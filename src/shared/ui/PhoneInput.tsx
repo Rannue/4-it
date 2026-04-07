@@ -1,4 +1,8 @@
-import type { ReactNode, KeyboardEvent as ReactKeyboardEvent, MouseEvent as ReactMouseEvent } from 'react';
+import type {
+  ReactNode,
+  KeyboardEvent as ReactKeyboardEvent,
+  MouseEvent as ReactMouseEvent,
+} from 'react';
 import { useEffect, useId, useRef, useState } from 'react';
 import './PhoneInput.css';
 
@@ -21,13 +25,13 @@ function defaultDial(countries: readonly PhoneCountryOption[]): string {
 }
 
 function getPreset(dial: string, countries: readonly PhoneCountryOption[]): PhoneCountryOption {
-  return countries.find((c) => c.dial === dial) ?? countries[0];
+  return countries.find(c => c.dial === dial) ?? countries[0];
 }
 
 /** Разбор значения вида +375291234567 в код и национальные цифры */
 export function parseInternationalPhone(
   value: string,
-  countries: readonly PhoneCountryOption[] = DEFAULT_COUNTRIES,
+  countries: readonly PhoneCountryOption[] = DEFAULT_COUNTRIES
 ): { dial: string; digits: string } {
   if (!value) return { dial: defaultDial(countries), digits: '' };
   const sorted = [...countries].sort((a, b) => b.dial.length - a.dial.length);
@@ -70,7 +74,11 @@ function placeholderMask(groups: readonly number[]): string {
   return groups[0] === 2 ? '(--) --- -- --' : '(---) --- -- --';
 }
 
-function buildFullValue(dial: string, nationalDigits: string, countries: readonly PhoneCountryOption[]): string {
+function buildFullValue(
+  dial: string,
+  nationalDigits: string,
+  countries: readonly PhoneCountryOption[]
+): string {
   const max = getPreset(dial, countries).maxDigits;
   const d = nationalDigits.replace(/\D/g, '').slice(0, max);
   if (!d) return dial === defaultDial(countries) ? '' : dial;
@@ -91,7 +99,14 @@ type PhoneInputProps = {
 
 function CheckIcon() {
   return (
-    <svg className="phone-input__check" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      className="phone-input__check"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M20 6L9 17l-5-5"
         stroke="currentColor"
@@ -105,8 +120,21 @@ function CheckIcon() {
 
 function CaretIcon() {
   return (
-    <svg className="phone-input__caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      className="phone-input__caret"
+      width="10"
+      height="6"
+      viewBox="0 0 10 6"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M1 1l4 4 4-4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -171,7 +199,7 @@ function PhoneInput({
 
   const onCodeClick = (e: ReactMouseEvent) => {
     e.preventDefault();
-    setOpen((v) => !v);
+    setOpen(v => !v);
   };
 
   const fullHidden = (() => {
@@ -182,7 +210,9 @@ function PhoneInput({
 
   return (
     <div className={['phone-input', className].filter(Boolean).join(' ')}>
-      {name != null && name !== '' && <input type="hidden" name={name} value={fullHidden} readOnly />}
+      {name != null && name !== '' && (
+        <input type="hidden" name={name} value={fullHidden} readOnly />
+      )}
       <label className="phone-input__label" htmlFor={id}>
         {label}
         {required ? <span className="phone-input__required">*</span> : null}
@@ -215,14 +245,14 @@ function PhoneInput({
             className="phone-input__national"
             placeholder={placeholder}
             value={formatted}
-            onChange={(e) => onNationalChange(e.target.value)}
+            onChange={e => onNationalChange(e.target.value)}
             onKeyDown={onNationalKeyDown}
             required={required}
           />
         </div>
         {open && (
           <ul id={listId} className="phone-input__dropdown" role="listbox" aria-label="Код страны">
-            {countries.map((c) => {
+            {countries.map(c => {
               const active = c.dial === dial;
               return (
                 <li key={c.dial} role="none">
@@ -238,11 +268,13 @@ function PhoneInput({
                       .join(' ')}
                     onClick={() => selectDial(c.dial)}
                   >
-                    <span>
+                    <span className="phone-input__option-main">
                       <span className="phone-input__option-code">{c.dial}</span>
-                      <span className="phone-input__option-hint"> {c.hint}</span>
+                      <span className="phone-input__option-hint">{c.hint}</span>
                     </span>
-                    {active ? <CheckIcon /> : <span style={{ width: 18 }} aria-hidden />}
+                    <span className="phone-input__option-indicator" aria-hidden>
+                      {active ? <CheckIcon /> : null}
+                    </span>
                   </button>
                 </li>
               );

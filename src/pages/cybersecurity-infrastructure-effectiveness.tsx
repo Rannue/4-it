@@ -1,5 +1,5 @@
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 
 function CybersecurityInfrastructureEffectivenessPage() {
   return (

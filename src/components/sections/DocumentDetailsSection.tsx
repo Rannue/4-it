@@ -1,30 +1,28 @@
-import '@/App.css';
+import '@/app/App.css';
 import './DocumentDetailsSection.css';
 import licenseQr from '@/assets/img/QR.png';
-import Button from '@/components/ui/Button';
+import Button from '@/shared/ui/Button';
 import DownloadIcon from '@/assets/icons/download.svg';
 
 function DocumentDetailsSection() {
   return (
-    <section className="document-details">
-      <div className="section-wrapper">
-        <div className="section-wrapper__inner">
-          <header className="document-details__header">
-            <h2 className="document-details__title">Подтверждение предоставления лицензии</h2>
-            <p className="document-details__description">
-              Официальный портал государственных лицензий Республики Беларусь с подтверждением
-              действующей лицензии.{' '}
-              <a
-                href="https://info.licensing.gov.by/"
-                target="_blank"
-                rel="noreferrer"
-                className="document-details__link"
-              >
-                По ссылке можно ознакомиться с актуальной информацией о лицензии.
-              </a>
-            </p>
-          </header>
-        </div>
+    <section className=" section-wrapper document-details">
+      <div className="section-wrapper__inner">
+        <header className="document-details__header">
+          <h2 className="document-details__title">Подтверждение предоставления лицензии</h2>
+          <p className="document-details__description">
+            Официальный портал государственных лицензий Республики Беларусь с подтверждением
+            действующей лицензии.{' '}
+            <a
+              href="https://info.licensing.gov.by/"
+              target="_blank"
+              rel="noreferrer"
+              className="document-details__link"
+            >
+              По ссылке можно ознакомиться с актуальной информацией о лицензии.
+            </a>
+          </p>
+        </header>
       </div>
 
       <div className="document-details__content-wrapper">

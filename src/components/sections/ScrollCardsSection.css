@@ -30,7 +30,6 @@
 .scroll-section__track {
   display: flex;
   gap: 24px;
-  transition: transform 160ms ease-out;
 }
 
 .scroll-card {
@@ -66,12 +65,12 @@
   width: 8px;
   height: 8px;
   border-radius: 1px;
-  background-color: #d1d5db;
+  background-color: #eaeced;
 }
 
 .scroll-card__dot--active {
   width: 8px;
-  background-color: var(--color-primary);
+  background-color: #033860;
 }
 
 @media (max-width: 960px) {

@@ -1,9 +1,6 @@
 import type { SupportPlanFeatureRow } from '@/constants/supportPlans';
-import {
-  SUPPORT_DIRECTION_CARDS,
-  SUPPORT_PLAN_FEATURE_ROWS_START,
-} from '@/constants/supportPlans';
-import Button from '@/components/ui/Button';
+import { SUPPORT_DIRECTION_CARDS, SUPPORT_PLAN_FEATURE_ROWS_START } from '@/constants/supportPlans';
+import Button from '@/shared/ui/Button';
 import './SupportPlansSection.css';
 
 function valueAfterColon(value: string) {

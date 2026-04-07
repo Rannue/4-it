@@ -62,10 +62,14 @@ function Footer() {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/cybersecurity/certification">Аттестация системы защиты информации</Link>
+                      <Link to="/cybersecurity/certification">
+                        Аттестация системы защиты информации
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/cybersecurity/delivery">Поставка и внедрение СЗИ и оборудования</Link>
+                      <Link to="/cybersecurity/delivery">
+                        Поставка и внедрение СЗИ и оборудования
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -98,12 +102,12 @@ function Footer() {
                   20 этаж, 17 офис
                 </p>
                 <p>пн-пт 9.00 – 19.00</p>
-                  <a
-                    href={`https://yandex.by/maps/?text=${encodeURIComponent('г. Минск, Проспект Победителей 7А')}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="footer__link-external"
-                  >
+                <a
+                  href={`https://yandex.by/maps/?text=${encodeURIComponent('г. Минск, Проспект Победителей 7А')}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer__link-external"
+                >
                   Яндекс Карты <span aria-hidden="true">↗</span>
                 </a>
               </div>

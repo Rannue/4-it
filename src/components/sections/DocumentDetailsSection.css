@@ -1,5 +1,4 @@
 .document-details {
-  padding: 100px 0;
   background-color: var(--color-surface);
 }
 
@@ -33,12 +32,6 @@
   color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
-}
-
-.document-details__content-wrapper {
-  /* border-top: 1px solid var(--color-line);
-  border-bottom: 1px solid var(--color-line); */
-  padding: 0 42px;
 }
 
 .document-details__content-inner {

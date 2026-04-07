@@ -1,4 +1,4 @@
-import '@/App.css';
+import '@/app/App.css';
 import './ClientsSection.css';
 import proleasingLogo from '@/assets/img/partners/Пролизинг.svg';
 import asbLogo from '@/assets/img/partners/asb-new 1.svg';
@@ -26,16 +26,14 @@ const clients = [
 function ClientsSection() {
   return (
     <section className="clients">
-      <div className="section-wrapper">
-        <div className="section-wrapper__inner">
-          <header className="clients__header">
-            <h2 className="clients__title">Наши клиенты</h2>
-            <p className="clients__subtitle">
-              Представители международного бизнеса, государственного сектора и белорусских компаний,
-              лидеры своих отраслей.
-            </p>
-          </header>
-        </div>
+      <div className="section-wrapper__inner">
+        <header className="clients__header">
+          <h2 className="clients__title">Наши клиенты</h2>
+          <p className="clients__subtitle">
+            Представители международного бизнеса, государственного сектора и белорусских компаний,
+            лидеры своих отраслей.
+          </p>
+        </header>
       </div>
 
       <div className="clients__grid-wrapper">

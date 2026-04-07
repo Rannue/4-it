@@ -1,15 +1,13 @@
-import Header from '@/components/layout/Header';
+import Header from '@/widgets/header/Header';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/sections/ClientsSection';
-import InfoGridSection from '@/components/sections/InfoGridSection';
-import fileDownloadIcon from '@/assets/icons/file-download.svg';
-import presentationIcon from '@/assets/icons/presentation.svg';
-import bellIcon from '@/assets/icons/bell.svg';
-import clipboardIcon from '@/assets/icons/clipboard.svg';
+import KeyFeaturesGridSection from '@/components/sections/KeyFeaturesGridSection';
+import bitrixBoxImg from '@/assets/img/Битрикс.png';
+import bitrixScreenImg from '@/assets/img/Битрикс-скрин.png';
 import FeatureBanner from '@/components/sections/FeatureBanner';
-import Footer from '@/components/layout/Footer';
+import Footer from '@/widgets/footer/Footer';
 import lawIllustration from '@/assets/img/law.png';
 import PartnersSection from '@/components/sections/PartnersSection';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
@@ -31,34 +29,67 @@ function SiemPage() {
           title="SIEM (Security Information and Event Management)"
           description="SIEM (Security Information and Event Management) — это система управления событиями и информацией безопасности, которая обеспечивает мониторинг, анализ и оперативное реагирование на угрозы в реальном времени. SIEM объединяет данные из различных источников, таких как сетевые устройства, серверы и приложения, чтобы выявить подозрительную активность и предотвратить кибератаки."
         />
-        <InfoGridSection
+        <KeyFeaturesGridSection
           title={
             <>
-              Что такое <span className="info-grid__title-accent">SIEM?</span>
+              Ключевые возможности{' '}
+              <span className="key-features-grid__title-accent">Битрикс24</span>
             </>
           }
-          description="SIEM (Security Information and Event Management) — это технология, которая позволяет:"
-          columnsHtml={[
-            `<div class="info-grid__group">
-              <p><strong style="color: var(--color-text-main);">Собирать данные</strong> из различных источников, таких как сетевые устройства, серверы, приложения и системы безопасности</p>
-              <img class="info-grid__icon" src="${fileDownloadIcon}" alt="" aria-hidden="true" />
-            </div>`,
-            `<div class="info-grid__group">
-            <p><strong style="color: var(--color-text-main);">Анализировать события</strong> в реальном времени для выявления подозрительной активности</p>
-            <img class="info-grid__icon" src="${presentationIcon}" alt="" aria-hidden="true" />
-            </div>`,
-            `<div class="info-grid__group">
-            </div>`,
-            `<div class="info-grid__group">
-            </div>`,
-            `<div class="info-grid__group">
-            <p><strong style="color: var(--color-text-main);">Оперативно реагировать</strong> на угрозы, минимизируя возможный ущерб</p>
-            <img class="info-grid__icon" src="${bellIcon}" alt="" aria-hidden="true" />
-            </div>`,
-            `<div class="info-grid__group">
-            <p><strong style="color: var(--color-text-main);">Генерировать отчеты</strong> для анализа инцидентов и улучшения стратегии безопасности</p>
-            <img class="info-grid__icon" src="${clipboardIcon}" alt="" aria-hidden="true" />
-            </div>`,
+          cells={[
+            { kind: 'image', src: bitrixBoxImg, alt: '1С-Битрикс24, корпоративный портал' },
+            {
+              kind: 'text',
+              title: 'Настройка CRM и автоматизация продаж',
+              intro: 'Мы настраиваем CRM-модуль Битрикс24 под специфику вашего бизнеса:',
+              bullets: [
+                'настройка воронки продаж и этапов сделок',
+                'автоматизация повторяющихся задач',
+                'интеграция с телефонией, мессенджерами и email',
+                'отчётность по продажам и KPI',
+              ],
+              footnote:
+                'Это позволяет контролировать все этапы продаж и сокращать время обработки заявок.',
+            },
+            {
+              kind: 'text',
+              title: 'Организация задач и проектов',
+              intro: 'Мы настраиваем систему управления задачами и проектами:',
+              bullets: [
+                'распределение задач между сотрудниками',
+                'контроль сроков и статусов выполнения',
+                'автоматическое уведомление и отчёты по прогрессу',
+                'настройка шаблонов проектов и бизнес-процессов',
+              ],
+              footnote:
+                'Таким образом компания получает прозрачный контроль за всеми проектами и задачами.',
+            },
+            {
+              kind: 'text',
+              title: 'Интеграции с внешними системами',
+              intro: 'Битрикс24 можно интегрировать с любыми корпоративными системами:',
+              bullets: [
+                '1С — синхронизация клиентов, заказов и остатков',
+                'ERP и складские системы',
+                'интернет-магазины и маркетплейсы',
+                'сторонние CRM, телефония и мессенджеры',
+                'аналитические и маркетинговые сервисы',
+              ],
+              footnote:
+                'Интеграции позволяют автоматизировать обмен данными и сокращают ручной труд сотрудников.',
+            },
+            {
+              kind: 'text',
+              title: 'Обучение и поддержка',
+              intro:
+                'После внедрения мы проводим обучение сотрудников и предоставляем документацию по работе с системой. Также возможна техническая поддержка и сопровождение, чтобы ваши процессы оставались оптимизированными и эффективными.',
+            },
+            {
+              kind: 'image',
+              src: bitrixScreenImg,
+              alt: 'Интерфейс CRM Битрикс24, сделки',
+              layout: 'screen-corner',
+            },
           ]}
         />
         <FeatureBanner

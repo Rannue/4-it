@@ -1,6 +1,7 @@
 .btn {
   position: relative;
-  display: flex;
+  display: inline-flex;
+  box-sizing: border-box;
   height: 40px;
   padding: 0 22px;
   align-items: center;
@@ -11,6 +12,16 @@
   color: var(--btn-fg, var(--color-white));
   border: 1px solid var(--btn-border, transparent);
   overflow: hidden;
+  font: inherit;
+  line-height: 1.2;
+}
+
+a.btn {
+  text-decoration: none;
+}
+
+a.btn:hover {
+  color: var(--btn-fg, var(--color-white));
 }
 
 .btn::before {

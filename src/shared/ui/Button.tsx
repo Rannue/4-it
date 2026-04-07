@@ -15,6 +15,10 @@ type ButtonProps = {
   className?: string;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  /** Если задан — рендерится `<a>` с теми же стилями, что и кнопка */
+  href?: string;
+  target?: string;
+  rel?: string;
 };
 
 type ButtonInlineStyle = CSSProperties & {
@@ -34,8 +38,11 @@ function Button({
   className,
   disabled,
   type = 'button',
+  href,
+  target,
+  rel,
 }: ButtonProps) {
-  const setPointerVars = (e: MouseEvent<HTMLButtonElement>) => {
+  const setPointerVars = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -53,19 +60,53 @@ function Button({
         }
       : undefined;
 
+  const classNames = ['btn', className, disabled ? 'btn--disabled' : null].filter(Boolean).join(' ');
+
+  const inner = (
+    <>
+      {iconLeft && <span className="btn__icon">{iconLeft}</span>}
+      <span className="btn__label">{children}</span>
+      {iconRight && <span className="btn__icon">{iconRight}</span>}
+    </>
+  );
+
+  if (href != null && href !== '') {
+    if (disabled) {
+      return (
+        <span className={classNames} style={style} aria-disabled>
+          {inner}
+        </span>
+      );
+    }
+    const resolvedRel =
+      rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined);
+    return (
+      <a
+        href={href}
+        className={classNames}
+        onClick={onClick}
+        onMouseMove={setPointerVars}
+        onMouseEnter={setPointerVars}
+        style={style}
+        target={target}
+        rel={resolvedRel}
+      >
+        {inner}
+      </a>
+    );
+  }
+
   return (
     <button
       type={type}
-      className={['btn', className, disabled ? 'btn--disabled' : null].filter(Boolean).join(' ')}
+      className={classNames}
       onClick={onClick}
       onMouseMove={setPointerVars}
       onMouseEnter={setPointerVars}
       style={style}
       disabled={disabled}
     >
-      {iconLeft && <span className="btn__icon">{iconLeft}</span>}
-      <span className="btn__label">{children}</span>
-      {iconRight && <span className="btn__icon">{iconRight}</span>}
+      {inner}
     </button>
   );
 }

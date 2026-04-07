@@ -12,14 +12,12 @@
 }
 
 .certificates-carousel__header {
-  flex: 0 0 auto;
   max-width: 1600px;
+  padding: 0px 42px 42px;
   margin: 0 auto;
-  padding-bottom: 42px;
-}
-
-.certificates-carousel__title {
-  margin: 0;
+  display: flex;
+  width: 100%;
+  justify-content: start;
 }
 
 .certificates__track-wrapper {
@@ -61,4 +59,17 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: grayscale(1);
+  transition: filter 0.4s ease;
+}
+
+.certificates-carousel__item:hover .certificates-carousel__img {
+  filter: grayscale(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .certificates-carousel__img {
+    transition: none;
+    filter: grayscale(0);
+  }
 }

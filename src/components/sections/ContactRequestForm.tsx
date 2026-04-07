@@ -1,12 +1,12 @@
 import type { ChangeEvent, FormEvent } from 'react';
 import { useId, useRef, useState } from 'react';
-import Button from '@/components/ui/Button';
-import Input, { Select, Textarea } from '@/components/ui/Input';
-import PhoneInput from '@/components/ui/PhoneInput';
+import Button from '@/shared/ui/Button';
+import Input, { MultiSelect, Select, Textarea } from '@/shared/ui/Input';
+import PhoneInput from '@/shared/ui/PhoneInput';
 import './ContactRequestForm.css';
 
 const DEFAULT_SERVICE_OPTIONS = [
-  { value: '', label: 'Выберите услуги' },
+  { value: '', label: 'Выберите одну или несколько услуг' },
   { value: 'bitrix24', label: 'Битрикс24' },
   { value: 'support', label: 'Техническая поддержка' },
   { value: 'cybersecurity', label: 'Кибербезопасность' },
@@ -53,6 +53,49 @@ function PaperclipIcon() {
   );
 }
 
+function ReplaceFileIcon() {
+  return (
+    <svg
+      className="contact-request-form__file-action-icon"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M21 12a9 9 0 00-9-9 9.75 9.75 0 00-6.74 2.74L3 8"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3 3v5h5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3 12a9 9 0 009 9 9.75 9.75 0 006.74-2.74L21 16"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M21 21v-5h-5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function ContactRequestForm({
   className,
   id = 'contact-request',
@@ -66,7 +109,7 @@ function ContactRequestForm({
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
-  const [service, setService] = useState('');
+  const [services, setServices] = useState<string[]>([]);
   const [budget, setBudget] = useState('');
   const [comment, setComment] = useState('');
   const [consent, setConsent] = useState(false);
@@ -80,6 +123,17 @@ function ContactRequestForm({
 
   const handleAttachClick = () => {
     fileInputRef.current?.click();
+  };
+
+  const handleReplaceFile = () => {
+    const input = fileInputRef.current;
+    if (input) input.value = '';
+    input?.click();
+  };
+
+  const clearFile = () => {
+    setFileName(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -150,12 +204,12 @@ function ContactRequestForm({
                 />
               </div>
 
-              <Select
+              <MultiSelect
                 id={fieldId('service')}
                 label="Услуги, которые вас интересуют"
                 name="service"
-                value={service}
-                onChange={e => setService(e.target.value)}
+                value={services}
+                onChange={setServices}
                 options={serviceOptions}
               />
 
@@ -205,29 +259,58 @@ function ContactRequestForm({
                   tabIndex={-1}
                   onChange={handleFileChange}
                 />
-                <Button
-                  type="button"
-                  className="contact-request-form__attach"
-                  color="#ffffff"
-                  textColor="var(--color-text-main)"
-                  borderColor="var(--gray-300)"
-                  iconLeft={<PaperclipIcon />}
-                  onClick={handleAttachClick}
-                >
-                  Прикрепить файл
-                </Button>
-                {fileName && (
-                  <span className="contact-request-form__file-name" aria-live="polite">
-                    {fileName}
-                  </span>
-                )}
+                <div className="contact-request-form__actions-main">
+                  {fileName ? (
+                    <div
+                      className="contact-request-form__file-chip"
+                      aria-live="polite"
+                    >
+                      <span
+                        className="contact-request-form__file-chip-name"
+                        title={fileName}
+                      >
+                        {fileName}
+                      </span>
+                      <div className="contact-request-form__file-chip-actions">
+                        <button
+                          type="button"
+                          className="contact-request-form__file-icon-btn"
+                          aria-label="Заменить файл"
+                          onClick={handleReplaceFile}
+                        >
+                          <ReplaceFileIcon />
+                        </button>
+                        <button
+                          type="button"
+                          className="contact-request-form__file-icon-btn contact-request-form__file-icon-btn--remove"
+                          aria-label="Удалить файл"
+                          onClick={clearFile}
+                        >
+                          <span aria-hidden>×</span>
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <Button
+                      type="button"
+                      className="contact-request-form__attach contact-request-form__attach--block"
+                      color="#ffffff"
+                      textColor="var(--color-text-main)"
+                      borderColor="var(--gray-300)"
+                      iconLeft={<PaperclipIcon />}
+                      onClick={handleAttachClick}
+                    >
+                      Прикрепить файл
+                    </Button>
+                  )}
+                </div>
                 <Button
                   type="submit"
                   className="contact-request-form__submit"
                   color="#000000"
                   textColor="#ffffff"
                 >
-                  Отправить заявку
+                  Отправить
                 </Button>
               </div>
             </form>

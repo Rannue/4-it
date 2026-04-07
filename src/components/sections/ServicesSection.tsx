@@ -1,7 +1,20 @@
-import type { KeyboardEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import ArrowLongRightIcon from '@/components/icons/ArrowLongRightIcon';
+import { useId, type KeyboardEvent, type SVGProps } from 'react';
+import { Link, useNavigate, type NavigateFunction } from 'react-router-dom';
 import './ServicesSection.css';
+
+/** Клик и Enter/Space для «карточки-ссылки» (role="link" + tabIndex={0}). */
+function serviceCardLinkHandlers(to: string, navigate: NavigateFunction) {
+  const open = () => navigate(to);
+
+  return {
+    onClick: open,
+    onKeyDown: (event: KeyboardEvent<HTMLElement>) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      open();
+    },
+  };
+}
 
 export type ServiceTag = {
   label: string;
@@ -11,87 +24,171 @@ export type ServiceTag = {
 export type ServiceItem = {
   title: string;
   description?: string;
-  /** Route to navigate on card click */
   to?: string;
   tags?: ServiceTag[];
+  /** Для строки-ссылки (screen readers) */
   ariaLabel?: string;
 };
 
 type ServicesSectionProps = {
   sidebarTitle?: string;
   items: ServiceItem[];
+  /** «default» — колонка с заголовком слева; «list» — как на кибербезопасности: линии на всю ширину, контент в колонке */
+  variant?: 'default' | 'list';
 };
 
-function ServicesSection({ sidebarTitle = 'Услуги', items }: ServicesSectionProps) {
-  const navigate = useNavigate();
+function RowArrowIcon(props: SVGProps<SVGSVGElement>) {
+  const id = useId().replace(/:/g, '');
+  const clipId = `services-row-arrow-clip-${id}`;
 
   return (
-    <div className="section-wrapper">
-      <div className="section-wrapper__inner">
-        <section className="services">
+    <svg
+      width={34}
+      height={34}
+      viewBox="0 0 34 34"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+      {...props}
+    >
+      <g clipPath={`url(#${clipId})`}>
+        <path
+          d="M24.0834 9.91602L9.91675 24.0827"
+          stroke="currentColor"
+          strokeWidth={1.8}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M11.3333 9.91602H24.0833V22.666"
+          stroke="currentColor"
+          strokeWidth={1.8}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id={clipId}>
+          <rect width={34} height={34} fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
+
+function ServicesSection({
+  sidebarTitle = 'Услуги',
+  items,
+  variant = 'default',
+}: ServicesSectionProps) {
+  const navigate = useNavigate();
+  const isList = variant === 'list';
+
+  const tagsBlock = (item: ServiceItem) =>
+    item.tags && item.tags.length > 0 ? (
+      <div className="services-card__tags">
+        {item.tags.map((tag) => (
+          <Link
+            key={tag.label}
+            to={tag.to}
+            className="services-tag"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {tag.label}
+          </Link>
+        ))}
+      </div>
+    ) : null;
+
+  return (
+    <section
+      className={
+        isList ? 'services services--list' : 'section-wrapper services'
+      }
+    >
+      {isList ? (
+        <>
+          <div className="services__list-gutter">
+            <div className="services__list-column services__list-column--header">
+              <h2 className="services__heading">{sidebarTitle}</h2>
+            </div>
+          </div>
+          <div className="services__list-stack">
+            {items.map((item) => {
+              const isClickable = Boolean(item.to);
+              const cardClass = `services-card services-card--list${isClickable ? ' services-card--clickable' : ''}`;
+
+              return (
+                <div key={item.title} className="services__list-row-shell">
+                  <div className="services__list-gutter">
+                    <div className="services__list-column services__list-column--row">
+                      <article
+                        className={cardClass}
+                        role={isClickable ? 'link' : undefined}
+                        aria-label={item.ariaLabel}
+                        tabIndex={isClickable ? 0 : undefined}
+                        {...(item.to ? serviceCardLinkHandlers(item.to, navigate) : {})}
+                      >
+                        <div className="services-card__row">
+                          <h3 className="services-card__title">{item.title}</h3>
+                          <div className="services-card__body">
+                            {item.description && (
+                              <p className="services-card__text">{item.description}</p>
+                            )}
+                            {tagsBlock(item)}
+                          </div>
+                          {isClickable && (
+                            <span className="services-card__arrow" aria-hidden>
+                              <RowArrowIcon className="services-card__arrow-icon" />
+                            </span>
+                          )}
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <>
           <aside className="services__sidebar">
             <h2 className="services__sidebar-title">{sidebarTitle}</h2>
           </aside>
-
           <div className="services__content">
-            {items.map(item => {
-              const clickable = Boolean(item.to);
-              const go = () => {
-                if (item.to) navigate(item.to);
-              };
-              const onKeyDown = (e: KeyboardEvent) => {
-                if (clickable && (e.key === 'Enter' || e.key === ' ')) {
-                  e.preventDefault();
-                  go();
-                }
-              };
+            {items.map((item) => {
+              const isClickable = Boolean(item.to);
+              const cardClass = `services-card${isClickable ? ' services-card--clickable' : ''}`;
 
               return (
                 <article
                   key={item.title}
-                  className={['services-card', clickable ? 'services-card--clickable' : null]
-                    .filter(Boolean)
-                    .join(' ')}
-                  onClick={clickable ? go : undefined}
-                  onKeyDown={clickable ? onKeyDown : undefined}
-                  role={clickable ? 'link' : undefined}
-                  tabIndex={clickable ? 0 : undefined}
-                  aria-label={
-                    clickable
-                      ? (item.ariaLabel ?? `Перейти: ${item.title}`)
-                      : undefined
-                  }
+                  className={cardClass}
+                  role={isClickable ? 'link' : undefined}
+                  aria-label={item.ariaLabel}
+                  tabIndex={isClickable ? 0 : undefined}
+                  {...(item.to ? serviceCardLinkHandlers(item.to, navigate) : {})}
                 >
-                  <header className="services-card__header">
+                  <div className="services-card__header">
                     <h3 className="services-card__title">{item.title}</h3>
-                    <span className="services-card__icon" aria-hidden="true">
-                      <ArrowLongRightIcon />
-                    </span>
-                  </header>
-
-                  {item.description && <p className="services-card__text">{item.description}</p>}
-
-                  {item.tags && item.tags.length > 0 && (
-                    <div className="services-card__tags" onClick={e => e.stopPropagation()}>
-                      {item.tags.map(tag => (
-                        <Link
-                          key={`${item.title}:${tag.to}`}
-                          className="services-tag"
-                          to={tag.to}
-                          onClick={e => e.stopPropagation()}
-                        >
-                          {tag.label}
-                        </Link>
-                      ))}
-                    </div>
+                    {isClickable && (
+                      <span className="services-card__icon" aria-hidden>
+                        <RowArrowIcon />
+                      </span>
+                    )}
+                  </div>
+                  {item.description && (
+                    <p className="services-card__text">{item.description}</p>
                   )}
+                  {tagsBlock(item)}
                 </article>
               );
             })}
           </div>
-        </section>
-      </div>
-    </div>
+        </>
+      )}
+    </section>
   );
 }
 

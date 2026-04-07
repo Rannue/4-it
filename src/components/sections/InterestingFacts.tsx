@@ -73,7 +73,7 @@ function InterestingFacts() {
                 />
               </div>
               <p className="facts-card__text">
-                <strong>Более 60% компаний</strong> , пострадавших от кибератак, закрываются в
+                <strong>Более 60% компаний</strong>, пострадавших от кибератак, закрываются в
                 течение полугода после инцидента
               </p>
             </article>

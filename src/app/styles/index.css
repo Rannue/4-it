@@ -75,7 +75,8 @@ a {
 
 h1 {
   font-family: 'Roboto Condensed', var(--font-family-base);
-  font-size: 60px;
+  /* 60px при ширине вьюпорта 1400px; плавное масштабирование, минимум для мобильных */
+  font-size: clamp(30px, calc(100vw * 60 / 1400), 60px);
   font-style: normal;
   font-weight: 500;
   line-height: 120%;
@@ -84,19 +85,20 @@ h1 {
 
 h2 {
   color: #000;
-  font-family: 'Roboto Condensed';
-  font-size: 56px;
+  font-family: 'Roboto Condensed', var(--font-family-base);
+  font-size: clamp(32px, calc(100vw * 56 / 1400), 56px);
   font-style: normal;
   font-weight: 500;
-  line-height: 110%; /* 61.6px */
+  line-height: 110%;
 }
 
 h3 {
   font-family: 'Inter', var(--font-family-base);
-  font-size: 24px;
+  /* 24px при ~1400px вьюпорта; на узких не ниже 18px */
+  font-size: clamp(18px, calc(100vw * 24 / 1400), 24px);
   font-style: normal;
   font-weight: 600;
-  line-height: 130%; /* 36.4px */
+  line-height: 130%;
 }
 
 h4 {

@@ -137,8 +137,11 @@
 }
 
 .support-plans-card__btn {
-  flex: 1 1 0;
+  flex: 1 1 auto;
   min-width: 0;
+  min-height: 40px;
+  height: 40px;
+  box-sizing: border-box;
   justify-content: center;
   border-radius: 6px;
 }
@@ -159,50 +162,25 @@
   text-decoration: none;
 }
 
-@media (max-width: 900px) {
-  .support-plans__cards {
-    grid-template-columns: 1fr;
-  }
-
-  .support-plans__band {
-    margin: 0 24px;
-  }
-
-  .support-plans__footnote,
-  .support-plans__title {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-}
-
-@media (max-width: 640px) {
-  .support-hours-bars__row {
-    font-size: 12px;
-    padding: 10px 12px;
-    border-radius: 8px;
-  }
-
-  .support-plans {
-    padding: 56px 0 72px;
-  }
-
-  .support-plans__band {
-    margin: 0 16px;
-    padding: 16px 14px;
-  }
-
-  .support-plans__footnote,
-  .support-plans__title {
-    padding-right: 16px;
-    padding-left: 16px;
-  }
-
+@media (max-width: 1300px) {
   .support-plans-card__footer {
     flex-direction: column;
     align-items: stretch;
+    gap: 16px;
   }
 
   .support-plans-card__btn {
     width: 100%;
+  }
+
+  .support-plans__band {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .support-plans__cards {
+    gap: 16px;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }

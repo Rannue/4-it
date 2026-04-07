@@ -1,16 +1,69 @@
 import './Header.css';
-import { useCallback, useEffect, useState, type ReactNode } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useState,
+  useSyncExternalStore,
+  type MouseEvent,
+  type ReactNode,
+} from 'react';
 import { Link } from 'react-router-dom';
 import logo4it from '@/assets/Логотип 4-IT.svg';
 import instagramIcon from '@/assets/icons/instagram.svg';
 import linkedinIcon from '@/assets/icons/lin.svg';
-import Button from '@/components/ui/Button';
-import ArrowLongRightIcon from '@/components/icons/ArrowLongRightIcon';
+import Button from '@/shared/ui/Button';
+import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
 
 type NavItemKey = 'Компания' | 'Услуги';
 
 /** Временно: выпадающее меню всегда видно. Поставьте `true` для отладки вёрстки. */
 const NAV_MENU_ALWAYS_VISIBLE = false;
+
+const MOBILE_NAV_QUERY = '(max-width: 999px)';
+
+function subscribeMobileNav(onChange: () => void) {
+  const mql = window.matchMedia(MOBILE_NAV_QUERY);
+  mql.addEventListener('change', onChange);
+  return () => mql.removeEventListener('change', onChange);
+}
+
+function getMobileNavSnapshot() {
+  return window.matchMedia(MOBILE_NAV_QUERY).matches;
+}
+
+function getMobileNavServerSnapshot() {
+  return false;
+}
+
+function useIsMobileNav() {
+  return useSyncExternalStore(subscribeMobileNav, getMobileNavSnapshot, getMobileNavServerSnapshot);
+}
+
+function MenuBurgerIcon() {
+  return (
+    <svg width={24} height={18} viewBox="0 0 24 18" fill="none" aria-hidden>
+      <path
+        d="M1 1h22M1 9h22M1 17h22"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function MenuCloseIcon() {
+  return (
+    <svg width={22} height={22} viewBox="0 0 22 22" fill="none" aria-hidden>
+      <path
+        d="M4 4l14 14M18 4L4 18"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 function NavChevron() {
   return (
@@ -70,13 +123,7 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
           <p className="nav-menu__group-title">Битрикс24</p>
           <ul className="nav-menu__sublist">
             <li>
-              <a href="#services-b24-impl">Внедрение и настройка Битрикс24</a>
-            </li>
-            <li>
-              <a href="#services-b24-custom">Доработка Битрикс24</a>
-            </li>
-            <li>
-              <a href="#services-b24-integration">Интеграция Битрикс24</a>
+              <Link to="/bitrix24/implementation">Внедрение и настройка Битрикс24</Link>
             </li>
             <li>
               <Link to="/technical-support">Поддержка Битрикс24</Link>
@@ -121,9 +168,6 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
           <Link to="/technical-support" className="nav-menu__block-link">
             Техподдержка
           </Link>
-          <Link to="/virtualization" className="nav-menu__block-link">
-            Виртуализация
-          </Link>
           <a href="#edo" className="nav-menu__block-link">
             Электронный документооборот с ЭЦП
           </a>
@@ -134,12 +178,52 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
 };
 
 function Header() {
+  const isMobileNav = useIsMobileNav();
   const [activeMenu, setActiveMenu] = useState<NavItemKey | null>(
     NAV_MENU_ALWAYS_VISIBLE ? 'Услуги' : null
   );
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<NavItemKey | null>(null);
 
   const panelKey: NavItemKey | null = activeMenu ?? (NAV_MENU_ALWAYS_VISIBLE ? 'Услуги' : null);
+
+  const closeMobileMenu = useCallback(() => {
+    setMobileMenuOpen(false);
+    setMobileExpanded(null);
+  }, []);
+
+  const openMobileMenu = useCallback(() => {
+    setActiveMenu(null);
+    setMobileMenuOpen(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileNav && mobileMenuOpen) {
+      closeMobileMenu();
+    }
+  }, [isMobileNav, mobileMenuOpen, closeMobileMenu]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMobileMenu();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [mobileMenuOpen, closeMobileMenu]);
+
+  const onMobilePanelLinkAreaClick = (e: MouseEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLElement).closest('a')) closeMobileMenu();
+  };
 
   const headerRef = useCallback((node: HTMLElement | null) => {
     if (!node) return;
@@ -166,14 +250,14 @@ function Header() {
   return (
     <header
       ref={headerRef}
-      className={`app-header${isScrolled ? ' app-header--scrolled' : ''}`}
+      className={`app-header${isScrolled ? ' app-header--scrolled' : ''}${isMobileNav ? ' app-header--mobile-nav' : ''}`}
       onMouseLeave={() => {
-        if (!NAV_MENU_ALWAYS_VISIBLE) setActiveMenu(null);
+        if (!NAV_MENU_ALWAYS_VISIBLE && !isMobileNav) setActiveMenu(null);
       }}
     >
       <div className="app-left-part">
         <div className="app-header__logo">
-          <Link to="/">
+          <Link to="/" onClick={closeMobileMenu}>
             <img src={logo4it} alt="4-IT" />
           </Link>
         </div>
@@ -226,12 +310,164 @@ function Header() {
           </nav>
         </div>
       </div>
+      <div className="app-header__mobile-tools">
+        <button
+          type="button"
+          className="app-header__menu-toggle"
+          aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-nav-dialog"
+          onClick={() => (mobileMenuOpen ? closeMobileMenu() : openMobileMenu())}
+        >
+          {mobileMenuOpen ? <MenuCloseIcon /> : <MenuBurgerIcon />}
+        </button>
+      </div>
       <div className="app-right-part">
         <p>+375 (44) 555 44 16</p>
         <Button>Оставить заявку</Button>
       </div>
 
-      {panelKey && (
+      {mobileMenuOpen && isMobileNav && (
+        <div
+          className="mobile-menu"
+          id="mobile-nav-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Меню сайта"
+        >
+          <div className="mobile-menu__body">
+            <div className="mobile-menu__body-inner">
+              <div className="mobile-menu__nav">
+            <div className="mobile-menu__section">
+              <button
+                type="button"
+                className={[
+                  'mobile-menu__trigger',
+                  mobileExpanded === 'Услуги' ? 'mobile-menu__trigger--open' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                aria-expanded={mobileExpanded === 'Услуги'}
+                onClick={() =>
+                  setMobileExpanded((k) => (k === 'Услуги' ? null : 'Услуги'))
+                }
+              >
+                Услуги
+                <NavChevron />
+              </button>
+              {mobileExpanded === 'Услуги' && (
+                <div className="mobile-menu__panel">
+                  <div
+                    className="mobile-menu__panel-inner"
+                    onClick={onMobilePanelLinkAreaClick}
+                  >
+                    {NAV_CONTENT.Услуги}
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="mobile-menu__section">
+              <button
+                type="button"
+                className={[
+                  'mobile-menu__trigger',
+                  mobileExpanded === 'Компания' ? 'mobile-menu__trigger--open' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                aria-expanded={mobileExpanded === 'Компания'}
+                onClick={() =>
+                  setMobileExpanded((k) => (k === 'Компания' ? null : 'Компания'))
+                }
+              >
+                Компания
+                <NavChevron />
+              </button>
+              {mobileExpanded === 'Компания' && (
+                <div className="mobile-menu__panel">
+                  <div
+                    className="mobile-menu__panel-inner"
+                    onClick={onMobilePanelLinkAreaClick}
+                  >
+                    {NAV_CONTENT.Компания}
+                  </div>
+                </div>
+              )}
+            </div>
+            <Link
+              to="/#cases"
+              className="mobile-menu__link-row"
+              onClick={closeMobileMenu}
+            >
+              Кейсы
+            </Link>
+            <a
+              href="#contacts"
+              className="mobile-menu__link-row"
+              onClick={closeMobileMenu}
+            >
+              Контакты
+            </a>
+              </div>
+          <div className="mobile-menu__footer">
+            <div className="mobile-menu__cta">
+              <Button className="btn--full" onClick={closeMobileMenu}>
+                Обратный звонок
+              </Button>
+            </div>
+            <div className="mobile-menu__contacts">
+              <a href="tel:+375445554416">+375 (44) 555 44 16</a>
+              <a href="mailto:info@4-it.by">info@4-it.by</a>
+            </div>
+            <hr className="mobile-menu__rule" />
+            <a href="#vacancies" className="nav-menu__cv-link" onClick={closeMobileMenu}>
+              <span className="nav-menu__cv-label">Отправить CV</span>
+              <ArrowLongRightIcon
+                className="nav-menu__cv-arrow"
+                width={20}
+                height={20}
+                aria-hidden
+              />
+            </a>
+            <div className="nav-menu__social">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-menu__social-link"
+                aria-label="Instagram"
+              >
+                <img
+                  src={instagramIcon}
+                  alt=""
+                  className="nav-menu__social-icon"
+                  width={28}
+                  height={28}
+                />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-menu__social-link"
+                aria-label="LinkedIn"
+              >
+                <img
+                  src={linkedinIcon}
+                  alt=""
+                  className="nav-menu__social-icon"
+                  width={28}
+                  height={28}
+                />
+              </a>
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {panelKey && !isMobileNav && (
         <div className="nav-menu nav-menu--open">
           <div className="nav-menu__inner">
             <div className="nav-menu__left">

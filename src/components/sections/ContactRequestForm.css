@@ -83,9 +83,15 @@
 
 .contact-request-form__actions {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 16px;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.contact-request-form__actions-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
 }
 
 .contact-request-form__file-input {
@@ -105,23 +111,88 @@
   border-radius: 6px;
 }
 
+.contact-request-form__attach--block {
+  width: 100%;
+}
+
 .contact-request-form__clip-icon {
   display: block;
 }
 
-.contact-request-form__file-name {
+.contact-request-form__file-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 8px 0 14px;
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  background: var(--color-white);
+  box-sizing: border-box;
+}
+
+.contact-request-form__file-chip-name {
   flex: 1;
-  min-width: 120px;
-  font-size: 13px;
-  color: var(--color-text-secondary);
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--color-text-main);
+}
+
+.contact-request-form__file-chip-actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2px;
+}
+
+.contact-request-form__file-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.contact-request-form__file-icon-btn:hover {
+  color: var(--color-text-main);
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.contact-request-form__file-icon-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.contact-request-form__file-icon-btn--remove {
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.contact-request-form__file-action-icon {
+  display: block;
 }
 
 .contact-request-form__submit.btn {
-  flex: 1;
-  min-width: min(100%, 200px);
+  flex-shrink: 0;
+  min-width: 140px;
   height: 44px;
   border-radius: 6px;
 }
@@ -147,18 +218,17 @@
 
   .contact-request-form__actions {
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: stretch;
+  }
+
+  .contact-request-form__actions-main {
+    width: 100%;
   }
 
   .contact-request-form__attach.btn,
   .contact-request-form__submit.btn {
     width: 100%;
     min-width: 0;
-  }
-
-  .contact-request-form__file-name {
-    order: 3;
-    width: 100%;
-    text-align: center;
   }
 }

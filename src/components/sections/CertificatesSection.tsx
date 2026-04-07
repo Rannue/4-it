@@ -95,13 +95,9 @@ function CertificatesSection() {
   return (
     <section className="certificates" ref={sectionRef}>
       <div className="certificates__sticky" ref={stickyRef}>
-        <div className="section-wrapper">
-          <div className="section-wrapper__inner">
-            <header className="certificates-carousel__header">
-              <h2 className="certificates-carousel__title">Сертификаты и лицензии</h2>
-            </header>
-          </div>
-        </div>
+        <header className="certificates-carousel__header">
+          <h2 className="certificates-carousel__title">Сертификаты и лицензии</h2>
+        </header>
 
         <div className="certificates__track-wrapper">
           <div className="certificates-carousel__inner" ref={trackInnerRef}>

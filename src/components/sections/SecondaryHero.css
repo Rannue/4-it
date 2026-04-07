@@ -1,3 +1,8 @@
+.hero-secondary {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .hero-secondary-grid {
   border-radius: 8px;
   background: var(--color-primary);
@@ -7,6 +12,10 @@
   grid-template-columns: 32px 3fr 1fr 32px;
   grid-template-rows: 32px 3fr 32px;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: clip;
   border-radius: 8px;
 }
 
@@ -20,12 +29,42 @@
   overflow: hidden;
 }
 
+.hero-secondary-grid__cell--main {
+  justify-content: flex-start;
+  min-height: 0;
+  min-width: 0;
+  align-self: stretch;
+}
+
 .hero-secondary__content {
+  box-sizing: border-box;
   padding: 32px;
-  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.hero-secondary__title-wrapper {
+  min-width: 0;
+}
+
+/*
+  Отдельно от глобального h1 (там min 36px и без переноса длинных слов — на 360px сетка разъезжалась).
+*/
+.hero-secondary__title {
+  font-family: 'Roboto Condensed', var(--font-family-base);
+  font-weight: 500;
+  line-height: 1.12;
+  text-transform: uppercase;
+  /* font-size: clamp(1.25rem, 4.2vw + 0.65rem, 3.75rem); */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .hero-secondary__texture {
@@ -38,34 +77,67 @@
 }
 
 .hero-secondary__breadcrumbs {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
-.hero-secondary__breadcrumbs ol {
+.hero-secondary__breadcrumbs-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  gap: 8px;
+  max-width: 100%;
   font-family: 'Inter', var(--font-family-base);
   font-size: 14px;
   font-weight: 300;
 }
 
-.hero-secondary__breadcrumbs a {
+/* Текущая страница в отдельной колонке: переносы выравниваются по началу её названия */
+.hero-secondary__breadcrumbs-list--split {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0;
+  align-items: start;
+  min-width: 0;
+}
+
+.hero-secondary__breadcrumbs-prefix {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.hero-secondary__breadcrumbs-prefix-part {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.hero-secondary__breadcrumbs-slash {
+  margin: 0 0.35em;
+  color: rgba(255, 255, 255, 0.7);
+  flex-shrink: 0;
+}
+
+.hero-secondary__breadcrumbs-prefix a,
+.hero-secondary__breadcrumbs-prefix-text {
   color: var(--color-white);
   text-decoration: none;
 }
 
-.hero-secondary__breadcrumbs span {
-  color: var(--color-white);
-  opacity: 0.4;
+.hero-secondary__breadcrumbs-prefix a:hover {
+  text-decoration: underline;
 }
 
-.hero-secondary__breadcrumbs li + li::before {
-  content: '/';
-  margin: 0 8px 0 0;
-  color: rgba(255, 255, 255, 0.7);
+.hero-secondary__breadcrumbs-current {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.hero-secondary__breadcrumbs-current span,
+.hero-secondary__breadcrumbs-current a {
+  color: var(--color-white);
+  opacity: 0.4;
+  text-decoration: none;
 }
 
 /* audit goal animated line */
@@ -95,12 +167,6 @@
   margin-right: 0.3em;
 }
 
-.hero-secondary__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .hero-secondary-grid__buttons-container {
   position: absolute;
   left: 32px;
@@ -108,8 +174,162 @@
   bottom: 32px;
 }
 
+.hero-secondary-grid__buttons-container .btn:hover:not(.btn--disabled)::before {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.hero-secondary-grid__buttons-container .btn .btn__icon {
+  transition: transform 0.2s ease;
+}
+
+.hero-secondary-grid__buttons-container .btn:hover:not(.btn--disabled) .btn__icon {
+  transform: rotate(45deg);
+}
+
+.hero-secondary__description-cta {
+  display: contents;
+}
+
 .hero-secondary__description {
   font-size: 18px;
   line-height: 140%;
   font-weight: 300;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.hero-secondary__cta-mobile {
+  display: none;
+}
+
+/*
+  Узкая сетка: 3 колонки × 3 ряда — сверху и снизу по три ячейки, в центре боковые отступы и main.
+  Порядок узлов в SecondaryHero.tsx фиксирован (12 ячеек). Брейкпоинт 1200px.
+*/
+@media (max-width: 1200px) {
+  .hero-secondary-grid {
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+    grid-template-rows: 32px minmax(0, 1fr) 32px;
+  }
+
+  .hero-secondary-grid__cell--r1c1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero-secondary-grid__cell--r1c2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .hero-secondary-grid__cell--r1c3 {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .hero-secondary-grid__cell--r1c4 {
+    display: none;
+  }
+
+  .hero-secondary-grid__cell--r2c1 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .hero-secondary-grid__cell--main {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .hero-secondary-grid__cell--aside {
+    display: none;
+  }
+
+  .hero-secondary-grid__cell--r2c4 {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .hero-secondary-grid__cell--r3c1 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .hero-secondary-grid__cell--r3c2 {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .hero-secondary-grid__cell--r3c3 {
+    grid-column: 3;
+    grid-row: 3;
+  }
+
+  .hero-secondary-grid__cell--r3c4 {
+    display: none;
+  }
+
+  .hero-secondary-grid .hero-secondary__content {
+    gap: 20px;
+  }
+
+  .hero-secondary__description-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-secondary-grid .hero-secondary__cta-mobile {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-secondary-grid .hero-secondary__cta-mobile .btn {
+    width: 100%;
+  }
+
+  .hero-secondary__description {
+    font-size: 14px;
+  }
+}
+
+/* Без декоративных ячеек сверху, по бокам и снизу — только основной блок */
+@media (max-width: 900px) {
+  .hero-secondary__content {
+    padding: 32px;
+  }
+
+  .hero-secondary-grid {
+    min-height: calc(100vh - 92px - 16px);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-secondary-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .hero-secondary-grid__cell--r1c1,
+  .hero-secondary-grid__cell--r1c2,
+  .hero-secondary-grid__cell--r1c3,
+  .hero-secondary-grid__cell--r2c1,
+  .hero-secondary-grid__cell--r2c4,
+  .hero-secondary-grid__cell--r3c1,
+  .hero-secondary-grid__cell--r3c2,
+  .hero-secondary-grid__cell--r3c3,
+  .hero-secondary-grid__cell--r3c4 {
+    display: none;
+  }
+
+  .hero-secondary-grid__cell--main {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero-secondary__content {
+    padding: 16px;
+  }
 }

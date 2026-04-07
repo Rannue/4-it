@@ -5,7 +5,7 @@
 .clients__header {
   max-width: 1600px;
   margin: 0 auto;
-  padding-bottom: 42px;
+  padding: 0 42px 42px;
 }
 
 .clients__title {

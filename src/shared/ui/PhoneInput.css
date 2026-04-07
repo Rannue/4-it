@@ -40,6 +40,7 @@
 .phone-input__code-wrap {
   position: relative;
   flex-shrink: 0;
+  width: 100%;
 }
 
 .phone-input__code-btn {
@@ -86,54 +87,92 @@
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
+  right: 0;
   z-index: 20;
-  min-width: 100%;
+  width: 100%;
   margin: 0;
-  padding: 4px 0;
+  padding: 0;
   list-style: none;
   border: 1px solid var(--gray-300);
   border-radius: 6px;
   background: var(--color-white);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  box-shadow:
+    0 0 0 2px rgba(0, 145, 236, 0.12),
+    0 4px 16px rgba(15, 23, 42, 0.08);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.phone-input__code-wrap--open .phone-input__dropdown {
+  border-color: var(--color-primary);
 }
 
 .phone-input__option {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   width: 100%;
-  padding: 10px 14px;
+  min-height: 44px;
+  padding: 0 12px 0 14px;
   margin: 0;
   border: none;
-  background: transparent;
+  border-top: 1px solid var(--gray-300);
+  background: var(--color-surface);
   font-family: var(--font-family-base);
   font-size: 14px;
   font-weight: 400;
+  line-height: 1.35;
   color: var(--color-text-main);
   text-align: left;
   cursor: pointer;
   box-sizing: border-box;
 }
 
+.phone-input__dropdown li:first-child .phone-input__option {
+  border-top: none;
+}
+
 .phone-input__option:hover,
 .phone-input__option:focus-visible {
-  background: var(--color-surface);
+  background: #e8eaf1;
 }
 
 .phone-input__option--active {
-  font-weight: 600;
-  background: rgba(0, 145, 236, 0.08);
+  background: rgba(0, 145, 236, 0.1);
+}
+
+.phone-input__option--active:hover,
+.phone-input__option--active:focus-visible {
+  background: rgba(0, 145, 236, 0.14);
+}
+
+.phone-input__option-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
 }
 
 .phone-input__option-code {
   font-weight: 600;
+  color: var(--color-text-main);
 }
 
 .phone-input__option-hint {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--color-text-secondary);
+}
+
+.phone-input__option-indicator {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
 }
 
 .phone-input__check {
