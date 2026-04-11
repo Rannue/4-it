@@ -1,0 +1,106 @@
+/* ─── Секция ─── */
+.clients {
+  padding-block: clamp(56px, 10vw, 100px);
+}
+
+.clients__header-inner {
+  box-sizing: border-box;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 42px);
+}
+
+.clients__header {
+  padding-bottom: clamp(28px, 5vw, 42px);
+}
+
+.clients__title {
+  margin: 0 0 8px;
+}
+
+.clients__subtitle {
+  margin: 0;
+  max-width: 800px;
+  line-height: 140%;
+  color: var(--color-text-secondary-light);
+}
+
+/* ─── Сетка логотипов (швы через gap + фон линии) ─── */
+.clients__grid-wrapper {
+  padding-inline: clamp(16px, 4vw, 42px);
+  border-block: 1px solid var(--color-line);
+}
+
+.clients__grid {
+  box-sizing: border-box;
+  display: grid;
+  max-width: 1600px;
+  margin-inline: auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  border-inline: 1px solid var(--color-line);
+  background: var(--color-line);
+}
+
+.clients__cell {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(96px, 14vw, 140px);
+  padding: clamp(12px, 2.5vw, 24px) clamp(12px, 3vw, 28px);
+  background: var(--color-bg);
+}
+
+.clients__cell--placeholder {
+  pointer-events: none;
+}
+
+.clients__logo-image {
+  width: auto;
+  height: auto;
+  max-width: min(200px, 92%);
+  max-height: clamp(36px, 7.5vw, 50px);
+  object-fit: contain;
+}
+
+/* KAMVOL, Коммунарка — см. TUNED_LOGO_MARKERS в ClientsSection.tsx */
+.clients__logo-image--tuned {
+  max-height: clamp(40px, 9vw, 56px);
+}
+
+@media (max-width: 1200px) {
+  .clients__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .clients__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clients__cell {
+    min-height: clamp(88px, 22vw, 120px);
+  }
+
+  .clients__logo-image {
+    max-width: min(180px, 90%);
+    max-height: clamp(32px, 9vw, 46px);
+  }
+
+  .clients__logo-image--tuned {
+    max-height: clamp(40px, 10vw, 52px);
+  }
+}
+
+@media (max-width: 600px) {
+  .clients__logo-image {
+    max-width: min(148px, 88%);
+    max-height: clamp(28px, 8.5vw, 42px);
+  }
+
+  .clients__logo-image--tuned {
+    max-height: clamp(34px, 9.5vw, 46px);
+  }
+}

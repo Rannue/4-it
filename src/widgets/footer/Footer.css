@@ -130,7 +130,7 @@
 }
 
 .footer__list a:hover {
-  color: var(--color-text-main);
+  color: var(--color-text-secondary);
   text-decoration: underline;
 }
 
@@ -196,15 +196,12 @@
 }
 
 .footer__contacts-col > a:not(.footer__link-external):hover {
-  color: var(--color-text-main);
   text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .footer__contacts-col a.footer__link-external {
   color: var(--color-primary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  /* text-decoration: underline; */
   width: fit-content;
 }
 

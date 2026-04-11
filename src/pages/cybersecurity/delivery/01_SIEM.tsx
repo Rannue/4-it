@@ -2,7 +2,7 @@ import Header from '@/widgets/header/Header';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
-import ClientsSection from '@/components/sections/ClientsSection';
+import ClientsSection from '@/components/grids/ClientsSection';
 import KeyFeaturesGridSection from '@/components/sections/KeyFeaturesGridSection';
 import bitrixBoxImg from '@/assets/img/Битрикс.png';
 import bitrixScreenImg from '@/assets/img/Битрикс-скрин.png';

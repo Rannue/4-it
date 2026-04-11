@@ -1,7 +1,7 @@
 import './App.css';
 import Button from '@/shared/ui/Button';
 import Header from '@/widgets/header/Header';
-import ClientsSection from '@/components/sections/ClientsSection';
+import ClientsSection from '@/components/grids/ClientsSection';
 import CasesSection from '@/components/sections/CasesSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ServicesSectionSecondary from '@/components/sections/ServicesSectionSecondary';

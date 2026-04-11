@@ -1,12 +1,5 @@
-/* ─── Секция: токены и базовая сетка ─── */
+/* ─── Секция: базовая сетка ─── */
 .certificates {
-  --cert-inner-max: 1600px;
-  --cert-pad-inline: 42px;
-  --cert-pad-block: 84px;
-  --cert-gap: 16px;
-  --cert-slide-h: 360px;
-  --cert-header-pad-bottom: 42px;
-
   position: relative;
   box-sizing: border-box;
   width: 100%;
@@ -19,36 +12,36 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: var(--cert-pad-block) 0;
+  padding: 84px 0;
 }
 
 .certificates-carousel__header {
   box-sizing: border-box;
   display: flex;
   width: 100%;
-  max-width: var(--cert-inner-max);
+  max-width: 1600px;
   margin-inline: auto;
-  padding: 0 var(--cert-pad-inline) var(--cert-header-pad-bottom);
+  padding: 0 42px 42px;
   justify-content: flex-start;
 }
 
 .certificates__track-wrapper {
   box-sizing: border-box;
-  padding: 0 var(--cert-pad-inline);
+  padding: 0 42px;
 }
 
 .certificates-carousel__inner {
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
-  max-width: var(--cert-inner-max);
+  max-width: 1600px;
   margin-inline: auto;
   overflow: hidden;
 }
 
 .certificates-carousel__track {
   display: flex;
-  gap: var(--cert-gap);
+  gap: 16px;
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
@@ -60,7 +53,7 @@
   flex: 0 0 auto;
   box-sizing: border-box;
   width: auto;
-  height: var(--cert-slide-h);
+  height: 360px;
   margin: 0;
   padding: 0;
   border: none;
@@ -165,20 +158,22 @@
 
 /* ─── Планшет ─── */
 @media (max-width: 900px) {
-  .certificates {
-    --cert-pad-inline: 16px;
-    --cert-pad-block: 54px;
-    --cert-header-pad-bottom: 32px;
+  .certificates__track-wrapper {
+    padding: 0 16px;
+  }
+
+  .certificates__sticky {
+    padding: 54px 0;
+  }
+
+  .certificates-carousel__header {
+    padding: 0 16px 32px;
   }
 }
 
-/* ─── Мобильная колонка (логика скролла отключается в JS при том же брейкпоинте) ─── */
+/* ─── Мобильная колонка (скролл-анимация отключается в JS при max-width: 600px) ─── */
 @media (max-width: 600px) {
   .certificates {
-    --cert-header-pad-bottom: 24px;
-    --cert-stack-gap: 20px;
-    --cert-stack-pad-inline: 16px;
-
     max-width: 100%;
     overflow-x: clip;
   }
@@ -204,9 +199,13 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: stretch;
-    gap: var(--cert-stack-gap);
-    padding: 0 var(--cert-stack-pad-inline);
+    gap: 20px;
+    padding: 0 16px;
     will-change: auto;
+  }
+
+  .certificates-carousel__header {
+    padding: 0 16px 24px;
   }
 
   .certificates-carousel__item {

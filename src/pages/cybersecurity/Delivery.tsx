@@ -2,7 +2,7 @@ import Header from '@/widgets/header/Header';
 import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import ServicesSectionSecondary from '@/components/sections/ServicesSectionSecondary';
-import CardsGridSection from '@/components/sections/cards/CardsGridSection';
+import CardsGridSection from '@/components/grids/CardsGridSection';
 import aimIllustration from '@/assets/img/illustrations/aim.svg';
 import complexIllustration from '@/assets/img/illustrations/complex.svg';
 import integrationIllustration from '@/assets/img/illustrations/integration.svg';
@@ -11,7 +11,7 @@ import certificationIllustration from '@/assets/img/illustrations/certification.
 import chatIllustration from '@/assets/img/illustrations/сhat.svg';
 import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
-import ClientsSection from '@/components/sections/ClientsSection';
+import ClientsSection from '@/components/grids/ClientsSection';
 
 function CertificationOfInformationSecurityToolsPage() {
   return (
@@ -87,6 +87,7 @@ function CertificationOfInformationSecurityToolsPage() {
               title: 'Решения для развития киберкультуры в компаниях',
               description:
                 'Система обучения по информационной безопасности с тренингами, симуляциями атак и тестированием сотрудников для повышения устойчивости к фишингу и другим угрозам.',
+              to: '/cybersecurity/delivery/cyber-culture',
             },
           ]}
         />

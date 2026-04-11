@@ -1,9 +1,9 @@
 import Header from '@/widgets/header/Header';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import InfoGridSection from '@/components/sections/InfoGridSection';
+import InfoGridSection from '@/components/grids/InfoGridSection';
 import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
-import ClientsSection from '@/components/sections/ClientsSection';
+import ClientsSection from '@/components/grids/ClientsSection';
 import Footer from '@/widgets/footer/Footer';
 import searchIcon from '@/assets/icons/search.svg';
 import databaseIcon from '@/assets/icons/Database.svg';
@@ -43,13 +43,13 @@ function DlpPage() {
               <p><strong style="color: var(--color-text-main);">Мониторинг и контроль</strong> передачи данных через корпоративные каналы (электронная почта, мессенджеры, облачные хранилища, USB-устройства);</p>
               <img class="info-grid__icon" src="${databaseIcon}" alt="" aria-hidden="true" />
             </div>`,
-            `<div class="info-grid__group">
+            `<div class="info-grid__group info-grid__group--empty">
             </div>`,
             `<div class="info-grid__group">
               <p><strong style="color: var(--color-text-main);">Блокирование попыток утечки</strong> в реальном времени на основе заданных политик безопасности;</p>
               <img class="info-grid__icon" src="${barrierIcon}" alt="" aria-hidden="true" />
             </div>`,
-            `<div class="info-grid__group">
+            `<div class="info-grid__group info-grid__group--empty">
             </div>`,
             `<div class="info-grid__group">
               <p><strong style="color: var(--color-text-main);">Анализ инцидентов</strong> и формирование отчетов для аудита и соответствия регуляторным требованиям.</p>

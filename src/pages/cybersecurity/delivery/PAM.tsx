@@ -3,7 +3,7 @@ import SecondaryHero from '@/components/sections/SecondaryHero';
 import FeatureListSection from '@/components/sections/FeatureListSection';
 import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
-import ClientsSection from '@/components/sections/ClientsSection';
+import ClientsSection from '@/components/grids/ClientsSection';
 import Footer from '@/widgets/footer/Footer';
 import searchIcon from '@/assets/icons/search.svg';
 import databaseIcon from '@/assets/icons/Database.svg';

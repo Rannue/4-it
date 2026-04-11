@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './styles/index.css';
 import App from './App.tsx';
 import ScrollToTop from '@/widgets/scroll-to-top/ScrollToTop';
@@ -10,7 +10,7 @@ import CybersecurityDesignSziPage from '@/pages/cybersecurity-design-szi.tsx';
 import CybersecurityCreateSziPage from '@/pages/cybersecurity-create-szi.tsx';
 import CybersecurityAttestationSziPage from '@/pages/cybersecurity-attestation-szi.tsx';
 import CybersecurityInfrastructureEffectivenessPage from '@/pages/cybersecurity-infrastructure-effectiveness.tsx';
-import CybersecuritySiemPage from '@/pages/cybersecurity/delivery/SIEM.tsx';
+import CybersecuritySiemPage from '@/pages/cybersecurity/delivery/01_SIEM.tsx';
 import CybersecurityDlpPage from '@/pages/cybersecurity/delivery/DLP.tsx';
 import CybersecurityPamPage from '@/pages/cybersecurity/delivery/PAM.tsx';
 import CybersecurityFirewallPage from '@/pages/cybersecurity-firewall.tsx';
@@ -19,6 +19,7 @@ import CertificationOfInformationSecurityToolsPage from '@/pages/cybersecurity/C
 import CybersecurityDeliveryPage from '@/pages/cybersecurity/Delivery.tsx';
 import TechnicalSupportPage from '@/pages/TechnicalSupport.tsx';
 import VirtualizationPage from '@/pages/cybersecurity/delivery/Virtualization.tsx';
+import CyberCulturePage from '@/pages/cybersecurity/delivery/CyberCulture.tsx';
 import SupplyOfServersAndSwitchesPage from '@/pages/cybersecurity/delivery/SupplyOfServersAndSwitches.tsx';
 import Bitrix24ImplementationPage from '@/pages/bitrix24/Implementation.tsx';
 import EDMSWithSignaturePage from '@/pages/EDMSWithSignature.tsx';
@@ -62,6 +63,14 @@ createRoot(document.getElementById('root')!).render(
             element={<CertificationOfInformationSecurityToolsPage />}
           />
           <Route path="/cybersecurity/delivery" element={<CybersecurityDeliveryPage />} />
+          <Route
+            path="/cybersecurity/delivery/cyber-culture"
+            element={<CyberCulturePage />}
+          />
+          <Route
+            path="/cybersecurity/cyber-culture"
+            element={<Navigate to="/cybersecurity/delivery/cyber-culture" replace />}
+          />
           <Route
             path="/cybersecurity/servers-and-switches"
             element={<SupplyOfServersAndSwitchesPage />}

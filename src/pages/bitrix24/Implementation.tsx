@@ -1,9 +1,9 @@
 import Header from '@/widgets/header/Header';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import CertificatesSection from '@/components/sections/CertificatesSection';
-import ClientsSection from '@/components/sections/ClientsSection';
+import ClientsSection from '@/components/grids/ClientsSection';
 import Footer from '@/widgets/footer/Footer';
-import InfoGridSection from '@/components/sections/InfoGridSection';
+import InfoGridSection from '@/components/grids/InfoGridSection';
 import CtaLinksListSection from '@/components/sections/CtaLinksListSection';
 import bitrixBoxImg from '@/assets/img/Битрикс.png';
 import certificateIcon from '@/assets/icons/certificate.svg';
@@ -14,7 +14,7 @@ import timeIllustration from '@/assets/img/illustrations/time.svg';
 import groupIllustration from '@/assets/img/illustrations/group.svg';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
-import CardsGridSectionDark from '@/components/sections/cards/CardsGridSectionDark';
+import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
 
 const BITRIX24_IMPLEMENTATION_TIERS: readonly StackedFeatureCard[] = [
   {

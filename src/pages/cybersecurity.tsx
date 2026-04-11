@@ -4,14 +4,14 @@ import './Hero.css';
 import bookIcon from '@/assets/icons/book.svg';
 import certificateIcon from '@/assets/icons/certificate.svg';
 import trendingUpIcon from '@/assets/icons/trending-up.svg';
-import InfoGridSection from '@/components/sections/InfoGridSection';
+import InfoGridSection from '@/components/grids/InfoGridSection';
 import ServicesSection, { type ServiceItem } from '@/components/sections/ServicesSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
-import ClientsSection from '@/components/sections/ClientsSection';
+import ClientsSection from '@/components/grids/ClientsSection';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
-import CardsGridSection from '@/components/sections/cards/CardsGridSection';
+import CardsGridSection from '@/components/grids/CardsGridSection';
 import buildingIllustration from '@/assets/img/illustrations/buildings.svg';
 import scannerIllustration from '@/assets/img/illustrations/scaning.svg';
 
@@ -62,12 +62,16 @@ const CYBERSECURITY_SERVICES: ServiceItem[] = [
         label: 'Поставка серверов и коммутаторов',
         to: '/cybersecurity/servers-and-switches',
       },
+      {
+        label: 'Автоматизированная система обучения сотрудников',
+        to: '/cybersecurity/delivery/cyber-culture',
+      },
     ],
   },
 ];
 
 const INFO_GRID_EMPTY_GROUP = `
-  <div class="info-grid__group"></div>
+  <div class="info-grid__group info-grid__group--empty"></div>
 `;
 
 const CYBERSECURITY_CARDS_HTML = [
