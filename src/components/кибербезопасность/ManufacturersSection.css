@@ -60,4 +60,14 @@
   .manufacturers__card {
     padding: 20px 24px;
   }
+
+  .manufacturers__header {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .manufacturers__header {
+    margin-bottom: 24px;
+  }
 }
