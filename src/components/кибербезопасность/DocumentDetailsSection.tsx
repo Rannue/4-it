@@ -1,142 +1,118 @@
 import './DocumentDetailsSection.css';
-import licenseQr from '@/assets/img/QR.png';
-import Button from '@/shared/ui/Button';
-import DownloadIcon from '@/assets/icons/download.svg';
+import licenseQr from '@/assets/img/Кибербезопасность/QR.png';
 
-function DocumentDetailsSection() {
+/** Должен совпадать с URL, закодированным в QR-изображении. */
+const LICENSE_VERIFICATION_URL = 'https://license.gov.by/onelicense/176623' as const;
+
+const EXTERNAL_REL = 'noopener noreferrer' as const;
+
+const SECTION_TITLE = 'Подтверждение предоставления лицензии';
+
+const DESCRIPTION_LEAD =
+  'Официальный портал государственных лицензий Республики Беларусь с подтверждением действующей лицензии.';
+
+const LINK_TEXT = 'По ссылке можно ознакомиться с актуальной информацией о лицензии.';
+
+const QR_LINK_LABEL =
+  'Открыть сведения о лицензии в ГИС ЕРЛ (тот же адрес, что в QR-коде)';
+
+const QR_IMG_ALT = 'QR-код: переход к сведениям о лицензии в государственной системе ЕРЛ';
+
+/** Поля карточки лицензии (порядок = порядок на экране). */
+const LICENSE_ENTRIES = [
+  {
+    label: 'Наименование органа, предоставившего лицензию:',
+    value: 'Оперативно-аналитический центр при Президенте Республики Беларусь',
+  },
+  {
+    label: 'Вид деятельности:',
+    value: 'деятельность по технической и (или) криптографической защите информации',
+  },
+  { label: 'Статус лицензии:', value: 'действующая' },
+  { label: 'Тип лицензиата:', value: 'юридическое лицо' },
+  {
+    label: 'Наименование лицензиата:',
+    value: 'общество с ограниченной ответственностью "ФорАйТи"',
+  },
+  { label: 'УНП:', value: '191065975' },
+  {
+    label: 'Местонахождение лицензиата:',
+    value: '220074, г. Минск, ул. Харьковская, д. 75, комн.7',
+  },
+  { label: 'Номер лицензии в ЕРЛ:', value: '22250000081852' },
+  {
+    label: 'Номер принятия решения о предоставлении лицензии:',
+    value: '4/лиц',
+  },
+  {
+    label: 'Дата принятия решения о предоставлении лицензии:',
+    value: '26.02.2025',
+  },
+  { label: 'Дата добавления в ЕРЛ:', value: '26.02.2025' },
+] as const;
+
+const ROOT_CLASS = 'section-wrapper document-details';
+
+export default function DocumentDetailsSection() {
   return (
-    <section className=" section-wrapper document-details">
+    <section className={ROOT_CLASS}>
       <div className="section-wrapper__inner">
         <header className="document-details__header">
-          <h2 className="document-details__title">Подтверждение предоставления лицензии</h2>
+          <h2 className="document-details__title">{SECTION_TITLE}</h2>
           <p className="document-details__description">
-            Официальный портал государственных лицензий Республики Беларусь с подтверждением
-            действующей лицензии.{' '}
+            {DESCRIPTION_LEAD}{' '}
             <a
-              href="https://info.licensing.gov.by/"
+              href={LICENSE_VERIFICATION_URL}
               target="_blank"
-              rel="noreferrer"
+              rel={EXTERNAL_REL}
               className="document-details__link"
             >
-              По ссылке можно ознакомиться с актуальной информацией о лицензии.
+              {LINK_TEXT}
             </a>
           </p>
         </header>
       </div>
 
-      <div className="document-details__content-wrapper">
-        <div className="document-details__content-inner">
-          <div className="document-details__card">
-            <div className="document-details__card-inner">
-              <div className="document-details__table-wrapper">
-                <dl className="document-details__table">
-                  <div className="document-details__row">
+      <div className="document-details__content-inner">
+        <div className="document-details__card">
+          <div className="document-details__card-inner">
+            <div className="document-details__table-wrapper">
+              <dl className="document-details__table">
+                {LICENSE_ENTRIES.map((entry) => (
+                  <div key={entry.label} className="document-details__row">
                     <dt className="document-details__cell document-details__cell--label">
-                      Наименование органа, предоставившего лицензию:
+                      {entry.label}
                     </dt>
                     <dd className="document-details__cell document-details__cell--value">
-                      Оперативно-аналитический центр при Президенте Республики Беларусь
+                      {entry.value}
                     </dd>
                   </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">
-                      Вид деятельности:
-                    </dt>
-                    <dd className="document-details__cell document-details__cell--value">
-                      деятельность по технической и (или) криптографической защите информации
-                    </dd>
-                  </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">
-                      Статус лицензии:
-                    </dt>
-                    <dd className="document-details__cell document-details__cell--value">
-                      действующая
-                    </dd>
-                  </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">
-                      Тип лицензиата:
-                    </dt>
-                    <dd className="document-details__cell document-details__cell--value">
-                      юридическое лицо
-                    </dd>
-                  </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">
-                      Наименование лицензиата:
-                    </dt>
-                    <dd className="document-details__cell document-details__cell--value">
-                      общество с ограниченной ответственностью &quot;ФорАйТи&quot;
-                    </dd>
-                  </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">УНП:</dt>
-                    <dd className="document-details__cell document-details__cell--value">
-                      191065975
-                    </dd>
-                  </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">
-                      Местонахождение лицензиата:
-                    </dt>
-                    <dd className="document-details__cell document-details__cell--value">
-                      220074, г. Минск, ул. Харьковская, д. 75, комн.7
-                    </dd>
-                  </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">
-                      Номер лицензии в ЕРЛ:
-                    </dt>
-                    <dd className="document-details__cell document-details__cell--value">
-                      22250000081852
-                    </dd>
-                  </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">
-                      Номер принятия решения о предоставлении лицензии:
-                    </dt>
-                    <dd className="document-details__cell document-details__cell--value">4/лиц</dd>
-                  </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">
-                      Дата принятия решения о предоставлении лицензии:
-                    </dt>
-                    <dd className="document-details__cell document-details__cell--value">
-                      26.02.2025
-                    </dd>
-                  </div>
-                  <div className="document-details__row">
-                    <dt className="document-details__cell document-details__cell--label">
-                      Дата добавления в ЕРЛ:
-                    </dt>
-                    <dd className="document-details__cell document-details__cell--value">
-                      26.02.2025
-                    </dd>
-                  </div>
-                </dl>
-
-                <Button
-                  className="btn"
-                  color="var(--color-primary)"
-                  textColor="var(--color-white)"
-                  iconRight={<img src={DownloadIcon} alt="" />}
-                >
-                  Скачать лицензию
-                </Button>
-              </div>
-
-              <aside className="document-details__aside">
-                <div className="document-details__qr-card">
-                  <img className="document-details__qr-image" src={licenseQr} alt={licenseQr} />
-                </div>
-              </aside>
+                ))}
+              </dl>
             </div>
+
+            <aside className="document-details__aside" aria-label="QR-код проверки лицензии">
+              <div className="document-details__qr-card">
+                <a
+                  href={LICENSE_VERIFICATION_URL}
+                  target="_blank"
+                  rel={EXTERNAL_REL}
+                  className="document-details__qr-link"
+                  aria-label={QR_LINK_LABEL}
+                >
+                  <img
+                    className="document-details__qr-image"
+                    src={licenseQr}
+                    alt={QR_IMG_ALT}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-export default DocumentDetailsSection;

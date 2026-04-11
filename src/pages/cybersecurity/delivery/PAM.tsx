@@ -11,7 +11,7 @@ import barrierIcon from '@/assets/icons/barrier-block.svg';
 import presentationIcon from '@/assets/icons/presentation.svg';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
-import lawIllustration from '@/assets/img/law.png';
+import lawIllustration from '@/assets/img/illustrations/law.png';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
 import stakhanovetsLogo from '@/assets/img/providers/Стахановец_Логотип_SVG_Полноцвет.svg';
 import librasoftLogo from '@/assets/img/providers/librasoft.svg';

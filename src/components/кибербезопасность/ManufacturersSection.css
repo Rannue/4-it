@@ -23,6 +23,7 @@
   max-width: 800px;
   margin: 0;
   color: var(--color-text-secondary);
+  line-height: 140%;
 }
 
 .manufacturers__logos {

@@ -8,7 +8,7 @@ import bitrixBoxImg from '@/assets/img/Битрикс.png';
 import bitrixScreenImg from '@/assets/img/Битрикс-скрин.png';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import Footer from '@/widgets/footer/Footer';
-import lawIllustration from '@/assets/img/law.png';
+import lawIllustration from '@/assets/img/illustrations/law.png';
 import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
 import librasoftLogo from '@/assets/img/providers/librasoft.svg';
