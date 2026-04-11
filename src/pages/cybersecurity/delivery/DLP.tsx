@@ -1,7 +1,7 @@
 import Header from '@/widgets/header/Header';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import InfoGridSection from '@/components/sections/InfoGridSection';
-import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/sections/ClientsSection';
 import Footer from '@/widgets/footer/Footer';
@@ -10,7 +10,7 @@ import databaseIcon from '@/assets/icons/Database.svg';
 import barrierIcon from '@/assets/icons/barrier-block.svg';
 import presentationIcon from '@/assets/icons/presentation.svg';
 import FeatureBanner from '@/components/sections/FeatureBanner';
-import PartnersSection from '@/components/sections/PartnersSection';
+import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
 import lawIllustration from '@/assets/img/law.png';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
 import stakhanovetsLogo from '@/assets/img/providers/Стахановец_Логотип_SVG_Полноцвет.svg';
@@ -62,7 +62,7 @@ function DlpPage() {
           description="Мы предлагаем внедрение современных DLP-решений, соответствующих требованиям стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим регламентом Республики Беларусь «Информационные технологии. Средства защиты информации. Информационная безопасность» (ТР 2013/027/BY), утверждённых Приказом Оперативно-аналитического центра при Президенте Республики Беларусь от 12 марта 2020 г. № 77 (в редакции от 28.12.2022 № 207)."
           image={lawIllustration}
         />
-        <PartnersSection
+        <ManufacturersSection
           title="Производители и их решения"
           description="Мы работаем с решениями от ведущих производителей, соответствующих требованиям стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим регламентом Республики Беларусь (ТР 2013/027/BY)"
           logos={[

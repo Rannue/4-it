@@ -7,7 +7,7 @@ import trendingUpIcon from '@/assets/icons/trending-up.svg';
 import InfoGridSection from '@/components/sections/InfoGridSection';
 import ServicesSection, { type ServiceItem } from '@/components/sections/ServicesSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
 import ClientsSection from '@/components/sections/ClientsSection';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
@@ -179,7 +179,10 @@ function CybersecurityPage() {
 
         <CardsGridSection title="Кибербезопасность в цифрах" cardsHtml={CYBERSECURITY_CARDS_HTML} />
 
-        <InfoGridSection title="Что вы получаете в рамках услуги" columnsHtml={CYBERSECURITY_INFO_COLUMNS_HTML} />
+        <InfoGridSection
+          title="Что вы получаете в рамках услуги"
+          columnsHtml={CYBERSECURITY_INFO_COLUMNS_HTML}
+        />
 
         <DocumentDetailsSection />
         <ClientsSection />

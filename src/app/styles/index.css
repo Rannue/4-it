@@ -119,7 +119,6 @@ h4 {
 /* ─── Общие обёртки секций (используются на главной и внутренних страницах) ─── */
 
 .section-wrapper {
-  background-color: var(--color-white);
   padding: 84px 42px;
 }
 
@@ -132,12 +131,6 @@ h4 {
 /* Только горизонтальные отступы (без вертикали у обёртки) */
 .section-wrapper--px-only {
   background-color: var(--color-white);
-  padding: 0 42px;
-}
-
-/* Полоса на фоне --color-surface */
-.section-wrapper--surface {
-  background-color: var(--color-surface);
   padding: 0 42px;
 }
 

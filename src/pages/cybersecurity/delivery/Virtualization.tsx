@@ -4,8 +4,8 @@ import StickyHeadingListSection from '@/components/sections/StickyHeadingListSec
 import ClientsSection from '@/components/sections/ClientsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import Footer from '@/widgets/footer/Footer';
-import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
-import PartnersSection from '@/components/sections/PartnersSection';
+import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
 import bytisLogo from '@/assets/img/providers/bytis.png';
 import zstackLogo from '@/assets/img/providers/ZStack.svg';
 import proxmoxLogo from '@/assets/img/providers/Proxmox.svg';
@@ -42,7 +42,7 @@ function VirtualizationPage() {
             { text: 'удобный веб-интерфейс для администраторов и пользователей.' },
           ]}
         />
-        <PartnersSection
+        <ManufacturersSection
           title="Производители и их решения"
           description="Мы работаем с решениями от ведущих производителей, соответствующих требованиям стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим регламентом Республики Беларусь (ТР 2013/027/BY)"
           logos={[

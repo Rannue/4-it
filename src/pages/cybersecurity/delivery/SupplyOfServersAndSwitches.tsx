@@ -4,8 +4,8 @@ import StickyHeadingListSection from '@/components/sections/StickyHeadingListSec
 import ClientsSection from '@/components/sections/ClientsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import Footer from '@/widgets/footer/Footer';
-import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
-import PartnersSection from '@/components/sections/PartnersSection';
+import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
 import bvkLogo from '@/assets/img/providers/bvk.png';
 import delTechLogo from '@/assets/img/providers/dell_technologies.png';
 import fusionLogo from '@/assets/img/providers/fusion.png';
@@ -41,7 +41,7 @@ function SupplyOfServersAndSwitchesPage() {
             { text: 'техническая поддержка и сервисное обслуживание' },
           ]}
         />
-        <PartnersSection
+        <ManufacturersSection
           title="Производители и их решения"
           description="Мы работаем с решениями от ведущих производителей, соответствующих требованиям стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим регламентом Республики Беларусь (ТР 2013/027/BY)"
           logos={[

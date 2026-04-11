@@ -1,6 +1,6 @@
 import Header from '@/widgets/header/Header';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/sections/ClientsSection';
 import KeyFeaturesGridSection from '@/components/sections/KeyFeaturesGridSection';
@@ -9,7 +9,7 @@ import bitrixScreenImg from '@/assets/img/Битрикс-скрин.png';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import Footer from '@/widgets/footer/Footer';
 import lawIllustration from '@/assets/img/law.png';
-import PartnersSection from '@/components/sections/PartnersSection';
+import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
 import librasoftLogo from '@/assets/img/providers/librasoft.svg';
 import stakhanovetsLogo from '@/assets/img/providers/Стахановец_Логотип_SVG_Полноцвет.svg';
@@ -104,10 +104,10 @@ function SiemPage() {
           descriptionSecondary={SIEM_FEATURE_BANNER_DESCRIPTION_SECONDARY}
           image={lawIllustration}
         />
-        <PartnersSection
+        <ManufacturersSection
           title={
             <>
-              <span className="partners__title-accent">Производители</span> и их решения
+              <span className="manufacturers__title-accent">Производители</span> и их решения
             </>
           }
           description="Мы работаем с решениями от ведущих производителей, соответствующих требованиям стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим регламентом Республики Беларусь (ТР 2013/027/BY)"

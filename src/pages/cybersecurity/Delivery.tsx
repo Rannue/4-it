@@ -9,7 +9,7 @@ import integrationIllustration from '@/assets/img/illustrations/integration.svg'
 import reliableIllustration from '@/assets/img/illustrations/reliability.svg';
 import certificationIllustration from '@/assets/img/illustrations/certification.svg';
 import chatIllustration from '@/assets/img/illustrations/сhat.svg';
-import DocumentDetailsSection from '@/components/sections/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/sections/ClientsSection';
 
