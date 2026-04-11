@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { useId } from 'react';
-import '@/app/App.css';
 import './CtaLinksListSection.css';
 
 function CtaArrowIcon({ className }: { className?: string }) {

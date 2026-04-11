@@ -109,7 +109,7 @@ function HeroGrid({
 
 function SecondaryHero({ breadcrumbs, title, description }: SecondaryHeroProps) {
   return (
-    <div className="section-wrapper-secondary">
+    <div className="section-wrapper--px-only">
       <div className="section-wrapper__inner">
         <section id="home" className="hero-secondary">
           <HeroGrid breadcrumbs={breadcrumbs} title={title} description={description} />

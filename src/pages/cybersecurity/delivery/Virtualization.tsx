@@ -9,7 +9,6 @@ import PartnersSection from '@/components/sections/PartnersSection';
 import bytisLogo from '@/assets/img/providers/bytis.png';
 import zstackLogo from '@/assets/img/providers/ZStack.svg';
 import proxmoxLogo from '@/assets/img/providers/Proxmox.svg';
-import virtualizationIllustration from '@/assets/3d-icons/fire-front-clay.png';
 
 function VirtualizationPage() {
   return (
@@ -25,13 +24,13 @@ function VirtualizationPage() {
           id="virtualization-benefits"
           title={
             <>
-              Что даёт <span className="sticky-heading-list__title-accent">виртуализация?</span>
+              Что даёт{' '}
+              <span className="sticky-heading-list__title-accent">
+                <br />
+                виртуализация?
+              </span>
             </>
           }
-          illustration={{
-            src: virtualizationIllustration,
-            alt: '',
-          }}
           items={[
             { text: 'централизованное управление виртуальными машинами, хранилищами и сетями' },
             { text: 'автоматизация развертывания и масштабирования ресурсов' },

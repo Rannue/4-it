@@ -191,9 +191,10 @@ function ContactRequestForm({
         headers: { Accept: 'application/json' },
       });
       const raw = await res.text();
-      let data: { success?: boolean; ok?: boolean; message?: string } | null = null;
+      type SubmitJson = { success?: boolean; ok?: boolean; message?: string };
+      let data: SubmitJson | null = null;
       try {
-        data = raw ? (JSON.parse(raw) as typeof data) : null;
+        data = raw ? (JSON.parse(raw) as SubmitJson) : null;
       } catch {
         /* не JSON — не считаем успехом при сомнительном ответе */
       }

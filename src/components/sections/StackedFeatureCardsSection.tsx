@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import { useId } from 'react';
 import Button from '@/shared/ui/Button';
-import '@/app/App.css';
 import './StackedFeatureCardsSection.css';
 
 export type StackedFeatureCardFeature = {

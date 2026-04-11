@@ -6,7 +6,7 @@ function CasesSection() {
   return (
     <section
       id="cases"
-      className="cases section-wrapper section-wrapper__gray"
+      className="cases section-wrapper section-wrapper--surface"
       aria-labelledby="cases-heading"
     >
       <div className="section-wrapper__inner">

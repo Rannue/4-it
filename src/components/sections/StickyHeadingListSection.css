@@ -1,24 +1,15 @@
-.sticky-heading-list {
-  padding: 100px 45px 100px;
-  background-color: var(--color-white);
-}
-
-.sticky-heading-list__container {
-  /* padding: 45px; */
-  box-sizing: border-box;
-}
-
+/* Сетка: заголовок (липкий) + список */
 .sticky-heading-list__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(32px, 5vw, 80px);
+  gap: clamp(24px, 4vw, 80px);
   align-items: start;
+  box-sizing: border-box;
 }
 
 .sticky-heading-list__title-wrap {
   position: sticky;
   top: calc(var(--header-height, 88px) + 24px);
-  /* max-width: 420px; */
 }
 
 .sticky-heading-list__title {
@@ -53,14 +44,14 @@
   grid-template-columns: auto minmax(0, 1fr);
   gap: 32px;
   align-items: baseline;
-  padding: 24px 0;
+  padding-block: 24px;
   border-bottom: 1px solid var(--color-line);
 }
 
 .sticky-heading-list__index {
   font-family: var(--font-family-base);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   color: var(--color-text-secondary-light);
   white-space: nowrap;
   letter-spacing: 0.02em;
@@ -70,7 +61,7 @@
   margin: 0;
   font-family: var(--font-family-base);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--font-weight-medium);
   line-height: 1.45;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -78,10 +69,6 @@
 }
 
 @media (max-width: 900px) {
-  .sticky-heading-list {
-    padding: 56px 45px 72px;
-  }
-
   .sticky-heading-list__grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -89,19 +76,18 @@
 
   .sticky-heading-list__title-wrap {
     position: static;
-    max-width: none;
   }
 }
 
 @media (max-width: 640px) {
-  .sticky-heading-list {
-    padding: 56px 16px 72px;
+  .sticky-heading-list__grid {
+    gap: 24px;
   }
 
   .sticky-heading-list__row {
     grid-template-columns: 1fr;
     gap: 8px;
-    padding: 18px 0;
+    padding-block: 16px;
   }
 
   .sticky-heading-list__text {

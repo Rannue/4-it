@@ -1,58 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap');
 
+/* ─── Токены темы ─── */
+
 :root {
   /* Шрифты */
-  --font-family-base:
-    'Inter', 'Roboto Condensed', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-  --color-white: #ffffff;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Roboto Condensed', var(--font-sans);
+  --font-family-base: 'Inter', 'Roboto Condensed', var(--font-sans);
 
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Текст */
   --color-text-main: #01111e;
   --color-text-secondary: #5b5b66;
   --color-text-secondary-light: #7b7b89;
 
-  --color-line: #c5d0e8;
-
-  --color-btn-primary: #01111e;
-
-  --color-primary: #0091ec;
-
-  --gray-300: #d9d9d9;
-
+  /* Поверхности и линии */
+  --color-white: #ffffff;
   --color-bg: #ffffff;
   --color-surface: #f3f4f8;
+  --color-line: #c5d0e8;
+  --gray-300: #d9d9d9;
+
+  /* Акценты и кнопки */
+  --color-primary: #0091ec;
+  --color-btn-primary: #01111e;
+  --color-accent: var(--color-primary);
+  --color-accent-hover: #0078c8;
 }
 
-a {
-  font-weight: var(--font-weight-medium);
-  color: var(--color-accent);
-  text-decoration: inherit;
-}
+/* ─── База документа ─── */
 
-a:hover {
-  color: var(--color-accent-hover);
-  text-decoration: inherit;
+html {
+  color: var(--color-text-main);
+  background-color: var(--color-bg);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  font-family: 'Inter', var(--font-family-base);
+  font-family: var(--font-family-base);
   font-size: 14px;
-  font-weight: 300;
-  line-height: 130%;
-  margin: 0 auto;
+  font-weight: var(--font-weight-light);
+  line-height: 1.3;
 }
-
-/* section {
-  max-width: 1400px;
-  margin: 0px 42px;
-} */
 
 #root {
   min-height: 100vh;
 }
+
+/* ─── Типографика: сброс отступов ─── */
 
 p,
 h1,
@@ -65,55 +67,101 @@ h6 {
   padding: 0;
 }
 
-p,
-a {
-  font-family: 'Inter', var(--font-family-base);
+p {
+  font-family: var(--font-family-base);
   font-size: 14px;
-  font-weight: 300;
-  line-height: 130%;
+  font-weight: var(--font-weight-light);
+  line-height: 1.3;
+}
+
+/* ─── Ссылки (глобально) — шрифт наследуется от body ─── */
+
+a {
+  color: var(--color-accent);
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
 }
 
 h1 {
-  font-family: 'Roboto Condensed', var(--font-family-base);
-  /* 60px при ширине вьюпорта 1400px; плавное масштабирование, минимум для мобильных */
+  font-family: var(--font-heading);
   font-size: clamp(32px, calc(100vw * 60 / 1400), 60px);
-  font-style: normal;
-  font-weight: 500;
-  line-height: 120%;
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
   text-transform: uppercase;
 }
 
 h2 {
   color: var(--color-text-main);
-  font-family: 'Roboto Condensed', var(--font-family-base);
-  font-size: clamp(28px, calc(100vw * 56 / 1400), 56px);
-  font-style: normal;
-  font-weight: 500;
-  line-height: 110%;
+  font-family: var(--font-heading);
+  font-size: clamp(28px, calc(100vw * 52 / 1400), 52px);
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
   text-transform: uppercase;
 }
 
 h3 {
-  font-family: 'Inter', var(--font-family-base);
-  /* 24px при ~1400px вьюпорта; на узких не ниже 18px */
+  font-family: var(--font-family-base);
   font-size: clamp(18px, calc(100vw * 24 / 1400), 24px);
-  font-style: normal;
-  font-weight: 600;
-  line-height: 130%;
+  font-weight: var(--font-weight-semibold);
+  line-height: 140%;
 }
 
 h4 {
-  font-family: 'Inter', var(--font-family-base);
-  /* 20px при ~1400px вьюпорта; на узких не ниже 16px */
+  font-family: var(--font-family-base);
   font-size: clamp(16px, calc(100vw * 20 / 1400), 20px);
-  font-style: normal;
-  font-weight: 600;
-  line-height: 120%;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #01111e;
-    background-color: #ffffff;
+/* ─── Общие обёртки секций (используются на главной и внутренних страницах) ─── */
+
+.section-wrapper {
+  background-color: var(--color-white);
+  padding: 84px 42px;
+}
+
+/* Только вертикальные отступы секции (без боковых у обёртки) */
+.section-wrapper--py-only {
+  background-color: var(--color-white);
+  padding: 84px 0;
+}
+
+/* Только горизонтальные отступы (без вертикали у обёртки) */
+.section-wrapper--px-only {
+  background-color: var(--color-white);
+  padding: 0 42px;
+}
+
+/* Полоса на фоне --color-surface */
+.section-wrapper--surface {
+  background-color: var(--color-surface);
+  padding: 0 42px;
+}
+
+.section-wrapper__inner {
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+/* Узкие страницы с классом .section (кибербезопасность и др.) */
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .section-wrapper {
+    padding: 54px 16px;
+  }
+
+  .section-wrapper--px-only {
+    padding: 0 16px;
+  }
+
+  .section-wrapper--py-only {
+    padding: 54px 0;
   }
 }

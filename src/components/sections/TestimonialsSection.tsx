@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
-import '@/app/App.css';
 import './TestimonialsSection.css';
 import asbLogo from '@/assets/img/partners/asb-new 1.svg';
 

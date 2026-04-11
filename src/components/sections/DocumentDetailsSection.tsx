@@ -1,4 +1,3 @@
-import '@/app/App.css';
 import './DocumentDetailsSection.css';
 import licenseQr from '@/assets/img/QR.png';
 import Button from '@/shared/ui/Button';
