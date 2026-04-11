@@ -71,9 +71,7 @@ export default function DocumentDetailsSection() {
             </a>
           </p>
         </header>
-      </div>
 
-      <div className="document-details__content-inner">
         <div className="document-details__card">
           <div className="document-details__card-inner">
             <div className="document-details__table-wrapper">

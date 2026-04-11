@@ -1,114 +1,214 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { createPortal } from 'react-dom';
 import './CertificatesSection.css';
 
+/** Совпадает с max-width в CertificatesSection.css (колонка без горизонтальной анимации) */
+const MQ_STACK = '(max-width: 600px)';
+
 type CertificateItem = { src: string; alt: string };
+
+function clamp01(value: number): number {
+  return Math.min(Math.max(value, 0), 1);
+}
+
+function mapModulesToItems(modules: Record<string, string>): CertificateItem[] {
+  return Object.entries(modules)
+    .sort(([a], [b]) => a.localeCompare(b, 'ru'))
+    .map(([path, src]) => {
+      const file = path.split('/').pop() ?? path;
+      const name = file.replace(/\.(png|jpe?g|webp)$/i, '');
+      return { src, alt: `Сертификат: ${name}` };
+    });
+}
+
+function useCertificateItems(): CertificateItem[] {
+  return useMemo(() => {
+    const modules = import.meta.glob('../../assets/certificates/*.{png,jpg,jpeg,webp}', {
+      eager: true,
+      import: 'default',
+    }) as Record<string, string>;
+    return mapModulesToItems(modules);
+  }, []);
+}
+
+type StripRefs = {
+  section: RefObject<HTMLElement | null>;
+  sticky: RefObject<HTMLDivElement | null>;
+  track: RefObject<HTMLDivElement | null>;
+  trackInner: RefObject<HTMLDivElement | null>;
+};
+
+/**
+ * Горизонтальный сдвиг ленты, синхронный со скроллом (desktop).
+ * На узких экранах — сброс: колонка задаётся в CSS.
+ */
+function useScrollLinkedStrip(refs: StripRefs): void {
+  useEffect(() => {
+    const { section, sticky, track, trackInner } = refs;
+    const elSection = section.current;
+    const elSticky = sticky.current;
+    const elTrack = track.current;
+    if (!elSection || !elSticky || !elTrack) return;
+
+    const mq = window.matchMedia(MQ_STACK);
+    const isStack = () => mq.matches;
+
+    let rafId = 0;
+
+    const viewportWidth = () => trackInner.current?.clientWidth ?? elTrack.clientWidth;
+
+    const overflowWidth = () => Math.max(0, elTrack.scrollWidth - viewportWidth());
+
+    const clearStripStyles = () => {
+      elSection.style.height = '';
+      elTrack.style.transform = '';
+    };
+
+    const syncSectionHeight = () => {
+      if (isStack()) {
+        clearStripStyles();
+        return;
+      }
+      const scrollable = overflowWidth();
+      elSection.style.height = `${elSticky.offsetHeight + scrollable}px`;
+    };
+
+    const applyScrollTransform = () => {
+      if (isStack()) {
+        elTrack.style.transform = '';
+        return;
+      }
+
+      const scrollable = overflowWidth();
+      if (scrollable <= 0) {
+        elTrack.style.transform = '';
+        return;
+      }
+
+      const stickyTravel = elSection.offsetHeight - elSticky.offsetHeight;
+      if (stickyTravel <= 0) return;
+
+      const sectionTop = elSection.getBoundingClientRect().top;
+      const stickyTop = elSticky.getBoundingClientRect().top;
+      const offset = stickyTop - sectionTop;
+      const progress = clamp01(offset / stickyTravel);
+
+      elTrack.style.transform = `translateX(${-progress * scrollable}px)`;
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(applyScrollTransform);
+    };
+
+    const onBreakpointChange = () => {
+      syncSectionHeight();
+      applyScrollTransform();
+    };
+
+    syncSectionHeight();
+    mq.addEventListener('change', onBreakpointChange);
+
+    const ro = new ResizeObserver(syncSectionHeight);
+    ro.observe(elTrack);
+    ro.observe(elSticky);
+    trackInner.current && ro.observe(trackInner.current);
+
+    const onImgLoad = () => syncSectionHeight();
+    const imgCleanups: (() => void)[] = [];
+    elTrack.querySelectorAll('img').forEach(node => {
+      const img = node as HTMLImageElement;
+      if (img.complete) return;
+      img.addEventListener('load', onImgLoad);
+      imgCleanups.push(() => img.removeEventListener('load', onImgLoad));
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('load', syncSectionHeight);
+    applyScrollTransform();
+
+    return () => {
+      mq.removeEventListener('change', onBreakpointChange);
+      ro.disconnect();
+      imgCleanups.forEach(fn => fn());
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('load', syncSectionHeight);
+      cancelAnimationFrame(rafId);
+      clearStripStyles();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- RefObject и stripRefs стабильны между рендерами
+  }, []);
+}
+
+type PreviewModalProps = {
+  item: CertificateItem;
+  onClose: () => void;
+};
+
+function CertificatePreviewModal({ item, onClose }: PreviewModalProps) {
+  useEffect(() => {
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  return createPortal(
+    <div
+      className="certificates-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Просмотр сертификата"
+    >
+      <button
+        type="button"
+        className="certificates-modal__backdrop"
+        aria-label="Закрыть"
+        onClick={onClose}
+      />
+      <div className="certificates-modal__panel">
+        <button
+          type="button"
+          className="certificates-modal__close"
+          aria-label="Закрыть просмотр"
+          onClick={onClose}
+        >
+          ×
+        </button>
+        <img className="certificates-modal__img" src={item.src} alt={item.alt} />
+      </div>
+    </div>,
+    document.body,
+  );
+}
 
 function CertificatesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const trackInnerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+
+  const items = useCertificateItems();
   const [preview, setPreview] = useState<CertificateItem | null>(null);
+  const closePreview = useCallback(() => setPreview(null), []);
 
-  const items = useMemo(() => {
-    const modules = import.meta.glob('../../assets/certificates/*.{png,jpg,jpeg,webp}', {
-      eager: true,
-      import: 'default',
-    }) as Record<string, string>;
+  const stripRefs = useMemo(
+    () => ({
+      section: sectionRef,
+      sticky: stickyRef,
+      track: trackRef,
+      trackInner: trackInnerRef,
+    }),
+    [],
+  );
 
-    return Object.entries(modules)
-      .sort(([a], [b]) => a.localeCompare(b, 'ru'))
-      .map(([path, src]) => {
-        const file = path.split('/').pop() ?? path;
-        const name = file.replace(/\.(png|jpe?g|webp)$/i, '');
-        return { src, alt: `Сертификат: ${name}` };
-      });
-  }, []);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const sticky = stickyRef.current;
-    const track = trackRef.current;
-    const trackInner = trackInnerRef.current;
-    if (!section || !sticky || !track) return;
-
-    let rafId = 0;
-
-    const scrollableDistance = () => {
-      const viewport = trackInner?.clientWidth ?? track.clientWidth;
-      return Math.max(0, track.scrollWidth - viewport);
-    };
-
-    const updateHeight = () => {
-      const scrollable = scrollableDistance();
-      const stickyH = sticky.offsetHeight;
-      section.style.height = `${stickyH + scrollable}px`;
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        const scrollable = scrollableDistance();
-        if (scrollable <= 0) {
-          track.style.transform = '';
-          return;
-        }
-
-        const stickyH = sticky.offsetHeight;
-        const stickyTravel = section.offsetHeight - stickyH;
-        if (stickyTravel <= 0) return;
-
-        const sectionRect = section.getBoundingClientRect();
-        const stickyRect = sticky.getBoundingClientRect();
-        const offset = stickyRect.top - sectionRect.top;
-        const progress = Math.min(Math.max(offset / stickyTravel, 0), 1);
-
-        track.style.transform = `translateX(${-progress * scrollable}px)`;
-      });
-    };
-
-    updateHeight();
-    const ro = new ResizeObserver(updateHeight);
-    ro.observe(track);
-    ro.observe(sticky);
-    if (trackInner) ro.observe(trackInner);
-
-    const imgCleanups: (() => void)[] = [];
-    track.querySelectorAll('img').forEach(img => {
-      const el = img as HTMLImageElement;
-      const onLoad = () => updateHeight();
-      if (el.complete) return;
-      el.addEventListener('load', onLoad);
-      imgCleanups.push(() => el.removeEventListener('load', onLoad));
-    });
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('load', updateHeight);
-    onScroll();
-
-    return () => {
-      ro.disconnect();
-      imgCleanups.forEach(fn => fn());
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('load', updateHeight);
-      cancelAnimationFrame(rafId);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!preview) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setPreview(null);
-    };
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', onKey);
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = prevOverflow;
-    };
-  }, [preview]);
+  useScrollLinkedStrip(stripRefs);
 
   return (
     <section className="certificates" ref={sectionRef}>
@@ -140,38 +240,7 @@ function CertificatesSection() {
         </div>
       </div>
 
-      {preview &&
-        createPortal(
-          <div
-            className="certificates-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Просмотр сертификата"
-          >
-            <button
-              type="button"
-              className="certificates-modal__backdrop"
-              aria-label="Закрыть"
-              onClick={() => setPreview(null)}
-            />
-            <div className="certificates-modal__panel">
-              <button
-                type="button"
-                className="certificates-modal__close"
-                aria-label="Закрыть просмотр"
-                onClick={() => setPreview(null)}
-              >
-                ×
-              </button>
-              <img
-                className="certificates-modal__img"
-                src={preview.src}
-                alt={preview.alt}
-              />
-            </div>
-          </div>,
-          document.body,
-        )}
+      {preview && <CertificatePreviewModal item={preview} onClose={closePreview} />}
     </section>
   );
 }

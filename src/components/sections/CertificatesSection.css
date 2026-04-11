@@ -1,6 +1,16 @@
+/* ─── Секция: токены и базовая сетка ─── */
 .certificates {
+  --cert-inner-max: 1600px;
+  --cert-pad-inline: 42px;
+  --cert-pad-block: 84px;
+  --cert-gap: 16px;
+  --cert-slide-h: 360px;
+  --cert-header-pad-bottom: 42px;
+
   position: relative;
-  background-color: #f1f1f4;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--color-surface);
 }
 
 .certificates__sticky {
@@ -9,63 +19,63 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 90px 0;
+  padding: var(--cert-pad-block) 0;
 }
 
 .certificates-carousel__header {
-  max-width: 1600px;
-  padding: 0px 42px 42px;
-  margin: 0 auto;
+  box-sizing: border-box;
   display: flex;
   width: 100%;
-  justify-content: start;
+  max-width: var(--cert-inner-max);
+  margin-inline: auto;
+  padding: 0 var(--cert-pad-inline) var(--cert-header-pad-bottom);
+  justify-content: flex-start;
 }
 
 .certificates__track-wrapper {
-  /* border-top: 1px solid var(--color-line);
-  border-bottom: 1px solid var(--color-line); */
-  padding: 0 42px;
+  box-sizing: border-box;
+  padding: 0 var(--cert-pad-inline);
 }
 
 .certificates-carousel__inner {
+  box-sizing: border-box;
   width: 100%;
   min-width: 0;
-  max-width: 1600px;
-  margin: 0 auto;
-  /* border-left: 1px solid var(--color-line);
-  border-right: 1px solid var(--color-line); */
+  max-width: var(--cert-inner-max);
+  margin-inline: auto;
   overflow: hidden;
 }
 
 .certificates-carousel__track {
   display: flex;
-  gap: 16px;
+  gap: var(--cert-gap);
+  box-sizing: border-box;
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  box-sizing: border-box;
   will-change: transform;
 }
 
 .certificates-carousel__item {
   flex: 0 0 auto;
+  box-sizing: border-box;
   width: auto;
-  height: 360px;
-  background: #ffffff;
-  border: none;
-  padding: 0;
+  height: var(--cert-slide-h);
   margin: 0;
-  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: #ffffff;
   font: inherit;
   color: inherit;
   text-align: left;
+  cursor: pointer;
 }
 
 .certificates-carousel__img {
+  display: block;
   width: auto;
   height: 100%;
   object-fit: cover;
-  display: block;
   filter: grayscale(1);
   transition: filter 0.4s ease;
 }
@@ -81,6 +91,7 @@
   }
 }
 
+/* ─── Модальное окно ─── */
 .certificates-modal {
   position: fixed;
   inset: 0;
@@ -105,20 +116,22 @@
 .certificates-modal__panel {
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
   max-width: min(96vw, 1120px);
   max-height: min(90vh, 900px);
   margin: 0;
-  padding: 12px;
-  border-radius: 8px;
-  background: var(--color-white);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  line-height: 0;
 }
 
 .certificates-modal__close {
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 8px;
+  right: 8px;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -128,24 +141,92 @@
   margin: 0;
   padding: 0;
   border: none;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--color-text-main);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
 }
 
 .certificates-modal__close:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .certificates-modal__img {
   display: block;
-  width: auto;
   max-width: 100%;
+  max-height: min(90vh, 900px);
+  width: auto;
   height: auto;
-  max-height: min(82vh, 820px);
-  margin: 0 auto;
+  margin: 0;
   object-fit: contain;
+}
+
+/* ─── Планшет ─── */
+@media (max-width: 900px) {
+  .certificates {
+    --cert-pad-inline: 16px;
+    --cert-pad-block: 54px;
+    --cert-header-pad-bottom: 32px;
+  }
+}
+
+/* ─── Мобильная колонка (логика скролла отключается в JS при том же брейкпоинте) ─── */
+@media (max-width: 600px) {
+  .certificates {
+    --cert-header-pad-bottom: 24px;
+    --cert-stack-gap: 20px;
+    --cert-stack-pad-inline: 16px;
+
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .certificates__sticky {
+    position: static;
+    overflow: visible;
+    max-width: 100%;
+  }
+
+  .certificates__track-wrapper {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .certificates-carousel__inner {
+    max-width: none;
+    margin-inline: 0;
+    overflow: visible;
+  }
+
+  .certificates-carousel__track {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: var(--cert-stack-gap);
+    padding: 0 var(--cert-stack-pad-inline);
+    will-change: auto;
+  }
+
+  .certificates-carousel__item {
+    display: block;
+    align-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .certificates-carousel__img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+    filter: none;
+  }
+
+  .certificates-carousel__item:hover .certificates-carousel__img {
+    filter: none;
+  }
 }

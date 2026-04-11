@@ -1,12 +1,12 @@
-/* Секция: фон surface; отступы задаёт .section-wrapper (index.css) */
+/* Секция: тот же surface, что у Manufacturers и др.; отступы — .section-wrapper */
 .document-details {
+  box-sizing: border-box;
+  width: 100%;
   background-color: var(--color-surface);
 }
 
 .document-details__header {
   box-sizing: border-box;
-  max-width: 1600px;
-  margin-inline: auto;
   padding-bottom: 42px;
 }
 
@@ -18,8 +18,7 @@
 .document-details__description {
   max-width: 800px;
   margin: 0;
-  font-weight: 300;
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-light);
   line-height: 1.4;
   color: var(--color-text-secondary);
 }
@@ -32,12 +31,6 @@
 
 .document-details__link:hover {
   opacity: 0.85;
-}
-
-.document-details__content-inner {
-  box-sizing: border-box;
-  max-width: 1600px;
-  margin-inline: auto;
 }
 
 .document-details__card {
