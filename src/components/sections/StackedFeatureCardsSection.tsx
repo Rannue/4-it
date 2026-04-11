@@ -136,7 +136,7 @@ function StackedFeatureCardsSection({
                       <Button
                         href={card.ctaHref}
                         className="stacked-feature-cards__cta"
-                        color="#000000"
+                        color="#01111E"
                         textColor="#ffffff"
                         iconRight={<CtaArrowIcon />}
                       >

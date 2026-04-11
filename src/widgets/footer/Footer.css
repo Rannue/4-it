@@ -1,36 +1,47 @@
-/* Синяя подложка страницы, белая «карточка» с контентом, тёмная нижняя полоса */
+/* Футер: подложка --color-primary + texture.png */
 
 .footer {
-  --footer-bottom-bg: #0c2744;
-  --footer-panel-radius: 12px;
-  background: var(--color-primary);
-  padding: 42px 42px 0;
+  position: relative;
+  isolation: isolate;
   box-sizing: border-box;
+  overflow: hidden;
+  padding: 42px;
+  background-color: var(--color-primary);
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: url('../../assets/img/texture.png') center / cover no-repeat;
+  opacity: 0.7;
+  mix-blend-mode: luminosity;
 }
 
 .footer__wrap {
+  position: relative;
+  z-index: 1;
   max-width: 1600px;
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
 .footer__panel {
-  background: #ffffff;
-  border-radius: var(--footer-panel-radius);
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: #fff;
 }
 
-/* ───── Верх: логотип + меню | 4 колонки услуг ───── */
+/* ─── Верх: бренд + навигация | услуги ─── */
 
 .footer__top {
-  padding: 40px 42px 36px;
-  border-bottom: 1px solid var(--color-line);
+  padding: 42px;
 }
 
 .footer__top-inner {
   display: flex;
-  gap: 52px;
   justify-content: space-between;
+  gap: 52px;
 }
 
 .footer__brand-block {
@@ -45,9 +56,9 @@
 }
 
 .footer__logo {
+  display: block;
   height: 70px;
   width: auto;
-  display: block;
 }
 
 .footer__nav {
@@ -57,17 +68,15 @@
 }
 
 .footer__nav a {
-  color: var(--color-text-main);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  text-decoration-color: rgba(0, 145, 236, 0.35);
   font-size: 14px;
   font-weight: 400;
+  color: var(--color-text-main);
+  text-decoration: none;
 }
 
 .footer__nav a:hover {
   color: var(--color-primary);
+  text-decoration: underline;
   text-decoration-color: var(--color-primary);
 }
 
@@ -79,49 +88,88 @@
 }
 
 .footer__services-col {
-  max-width: 306px;
+  max-width: 300px;
 }
 
 .footer__heading {
+  margin: 0 0 8px;
   font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text-main);
-  margin: 0 0 12px;
+  font-weight: 500;
+}
+
+.footer__heading-link {
+  font-weight: 500;
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer__heading-link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary);
 }
 
 .footer__heading--muted {
-  color: var(--color-text-main);
+  margin-bottom: 0;
 }
 
 .footer__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-secondary);
 }
 
 .footer__list a {
-  color: var(--color-text-secondary);
+  line-height: 140%;
   text-decoration: none;
-  font-size: 13px;
-  line-height: 150%;
 }
 
 .footer__list a:hover {
-  color: var(--color-primary);
+  text-decoration: underline;
 }
 
-/* ───── Середина: контакты (внутри белой панели) ───── */
+/* ─── Разделители ─── */
+
+.footer__divider {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--color-line);
+}
+
+.footer__divider--panel-padded {
+  margin-inline: 42px;
+}
+
+/* Только в колонке (≤900px), между брендом и услугами */
+.footer__divider--tablet-only {
+  display: none;
+}
+
+/* ─── Контакты и правовой блок ─── */
 
 .footer__middle {
-  padding: 36px 42px 42px;
+  padding: 42px;
+}
+
+.footer__middle-inner {
+  display: grid;
+  align-items: stretch;
+  gap: 40px 48px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
 }
 
 .footer__contacts {
   display: flex;
-  gap: 52px;
+  gap: 42px;
+  min-width: 0;
 }
 
 .footer__contacts-col {
@@ -130,120 +178,134 @@
   gap: 8px;
 }
 
-/* .footer__contacts-col p,
+.footer__contacts-col p,
 .footer__contacts-col > a:not(.footer__link-external) {
-  color: var(--color-text-secondary);
-  font-size: 13px;
-  line-height: 160%;
   margin: 0;
+  font-size: 14px;
+  line-height: 140%;
   text-decoration: none;
-} */
+}
 
-/* .footer__contacts-col > a:not(.footer__link-external):hover {
+.footer__contacts-col a.footer__link-external {
   color: var(--color-primary);
-} */
-
-.footer__link-external {
-  color: var(--color-primary) !important;
-  text-decoration: underline !important;
+  text-decoration: underline;
   text-underline-offset: 3px;
-  font-size: 13px;
   width: fit-content;
 }
 
-.footer__link-external:hover {
+.footer__contacts-col a.footer__link-external:hover {
   opacity: 0.85;
 }
 
-/* ───── Нижняя полоса: тёмно-синий фон ───── */
-
-.footer__bottom {
-  background: var(--color-primary);
-  padding: 42px 0;
-}
-
-.footer__bottom-inner {
-  max-width: 1600px;
-  margin: 0 auto;
+.footer__legal {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 14px;
+  max-width: 420px;
+  min-height: 100%;
+  text-align: right;
 }
 
 .footer__copyright {
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 13px;
   margin: 0;
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }
 
 .footer__policies {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 28px;
+  flex-flow: row wrap;
   justify-content: flex-end;
+  gap: 8px 20px;
 }
 
 .footer__policies a {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 13px;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
 }
 
 .footer__policies a:hover {
-  color: #ffffff;
+  text-decoration: underline;
 }
 
-/* ───── Адаптив ───── */
+/* ─── Адаптив ─── */
 
-@media (max-width: 1100px) {
-  .footer__services {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 960px) {
+@media (max-width: 900px) {
   .footer {
-    padding: 24px 24px 0;
+    padding: 16px;
   }
 
-  .footer__top {
-    padding: 28px 24px;
-  }
-
-  .footer__top-inner {
-    grid-template-columns: 1fr;
+  .footer__brand-block {
     gap: 32px;
   }
 
+  .footer__divider--panel-padded {
+    margin-inline: 24px;
+  }
+
+  .footer__divider--tablet-only {
+    display: block;
+  }
+
+  .footer__top,
   .footer__middle {
-    padding: 28px 24px 32px;
+    padding: 32px;
+  }
+
+  .footer__top-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer__middle-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .footer__contacts {
-    grid-template-columns: 1fr;
+    flex-direction: row;
+    gap: 42px;
   }
 
-  .footer__bottom {
-    padding: 16px 24px 20px;
-  }
-
-  .footer__bottom-inner {
-    flex-direction: column;
+  .footer__legal {
     align-items: flex-start;
+    justify-content: flex-start;
+    gap: 32px;
+    max-width: none;
+    min-height: 0;
+    padding-top: 32px;
+    text-align: left;
+    border-top: 1px solid var(--color-line);
   }
 
   .footer__policies {
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
+  .footer__top,
+  .footer__middle {
+    padding: 24px;
+  }
+
   .footer__services {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer__contacts {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer__middle-inner {
+    gap: 24px;
   }
 }

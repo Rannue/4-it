@@ -1,55 +1,97 @@
-.feature-banner {
-  padding: 100px 0;
+.feature-banner__header {
+  box-sizing: border-box;
+  padding: 0 0 42px;
 }
 
-.feature-banner__inner {
+.feature-banner__header-inner {
+  box-sizing: border-box;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.feature-banner .info-grid__title-accent {
+  color: var(--color-primary);
+}
+
+.feature-banner__panel {
   display: grid;
-  gap: 24px;
-  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.feature-banner__content {
-  background-color: var(--color-primary);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 64px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  align-items: start;
+  justify-content: start;
+  gap: 32px;
+  min-width: 0;
   padding: 32px;
   border-radius: 8px;
+  background: var(--color-primary);
+  box-sizing: border-box;
 }
 
-.feature-banner__title {
-  color: #ffffff;
-}
-
-.feature-banner__description {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.feature-banner__media {
+/* Квадрат: сторона = ширина колонки (~¼ панели без gap); картинка cover внутри */
+.feature-banner__visual {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 8px;
+  align-self: start;
 }
 
 .feature-banner__image {
   position: absolute;
   inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  object-position: center;
 }
 
-@media (max-width: 960px) {
-  .feature-banner__inner {
+.feature-banner__content {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+}
+
+.feature-banner__text {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-banner__paragraph {
+  margin: 0;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 140%;
+}
+
+@media (max-width: 900px) {
+  .feature-banner__header {
+    padding: 0 0 32px;
+  }
+
+  .feature-banner__panel {
     grid-template-columns: 1fr;
   }
 
-  .feature-banner__media {
-    position: relative;
-    min-height: 280px;
+  .feature-banner__visual {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .feature-banner__header {
+    padding: 0 0 24px;
+  }
+
+  .feature-banner__panel {
+    padding: 24px;
   }
 }

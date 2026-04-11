@@ -12,7 +12,7 @@ function InfoGridSection({ title, description, columnsHtml, columns = 3 }: InfoG
   const showHeader = title !== undefined || Boolean(description);
 
   return (
-    <section className="info-grid">
+    <section className="info-grid section-wrapper-small">
       {showHeader ? (
         <header className="info-grid__header">
           <div className="info-grid__header-inner">

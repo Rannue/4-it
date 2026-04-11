@@ -5,7 +5,7 @@ import './styles/index.css';
 import App from './App.tsx';
 import ScrollToTop from '@/widgets/scroll-to-top/ScrollToTop';
 import CybersecurityPage from '@/pages/cybersecurity';
-import CybersecurityAuditPage from '@/pages/cybersecurity-audit.tsx';
+import CybersecurityAuditPage from '@/pages/cybersecurity/audit/Audit.tsx';
 import CybersecurityDesignSziPage from '@/pages/cybersecurity-design-szi.tsx';
 import CybersecurityCreateSziPage from '@/pages/cybersecurity-create-szi.tsx';
 import CybersecurityAttestationSziPage from '@/pages/cybersecurity-attestation-szi.tsx';
@@ -21,6 +21,8 @@ import TechnicalSupportPage from '@/pages/TechnicalSupport.tsx';
 import VirtualizationPage from '@/pages/cybersecurity/delivery/Virtualization.tsx';
 import SupplyOfServersAndSwitchesPage from '@/pages/cybersecurity/delivery/SupplyOfServersAndSwitches.tsx';
 import Bitrix24ImplementationPage from '@/pages/bitrix24/Implementation.tsx';
+import EDMSWithSignaturePage from '@/pages/EDMSWithSignature.tsx';
+import OnlineStorePage from '@/pages/websites/OnlineStore.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -31,6 +33,8 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/home" element={<App />} />
           <Route path="/technical-support" element={<TechnicalSupportPage />} />
           <Route path="/bitrix24/implementation" element={<Bitrix24ImplementationPage />} />
+          <Route path="/edms-signature" element={<EDMSWithSignaturePage />} />
+          <Route path="/websites/online-store" element={<OnlineStorePage />} />
           <Route path="/virtualization" element={<VirtualizationPage />} />
 
           <Route path="/cybersecurity" element={<CybersecurityPage />} />

@@ -19,6 +19,9 @@ type NavItemKey = 'Компания' | 'Услуги';
 /** Временно: выпадающее меню всегда видно. Поставьте `true` для отладки вёрстки. */
 const NAV_MENU_ALWAYS_VISIBLE = false;
 
+const HH_VACANCIES_URL =
+  'https://hh.ru/employer/1589500?hhtmFrom=vacancy&tab=DESCRIPTION';
+
 const MOBILE_NAV_QUERY = '(max-width: 999px)';
 
 function subscribeMobileNav(onChange: () => void) {
@@ -95,7 +98,9 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
           <a href="#about">О нас</a>
         </li>
         <li>
-          <a href="#vacancies">Вакансии</a>
+          <a href={HH_VACANCIES_URL} target="_blank" rel="noopener noreferrer">
+            Вакансии
+          </a>
         </li>
       </ul>
       <ul className="nav-menu__list">
@@ -154,7 +159,7 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
           <p className="nav-menu__group-title">Разработка сайтов</p>
           <ul className="nav-menu__sublist">
             <li>
-              <a href="#services-dev-shop">Интернет магазины</a>
+              <Link to="/websites/online-store">Разработка интернет-магазина</Link>
             </li>
             <li>
               <a href="#services-dev-b2b">B2B порталы</a>
@@ -168,9 +173,9 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
           <Link to="/technical-support" className="nav-menu__block-link">
             Техподдержка
           </Link>
-          <a href="#edo" className="nav-menu__block-link">
+          <Link to="/edms-signature" className="nav-menu__block-link">
             Электронный документооборот с ЭЦП
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -420,7 +425,13 @@ function Header() {
               <a href="mailto:info@4-it.by">info@4-it.by</a>
             </div>
             <hr className="mobile-menu__rule" />
-            <a href="#vacancies" className="nav-menu__cv-link" onClick={closeMobileMenu}>
+            <a
+              href={HH_VACANCIES_URL}
+              className="nav-menu__cv-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMobileMenu}
+            >
               <span className="nav-menu__cv-label">Отправить CV</span>
               <ArrowLongRightIcon
                 className="nav-menu__cv-arrow"
@@ -483,7 +494,12 @@ function Header() {
                 info@4-it.by
               </a>
 
-              <a href="#vacancies" className="nav-menu__cv-link">
+              <a
+                href={HH_VACANCIES_URL}
+                className="nav-menu__cv-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span className="nav-menu__cv-label">Отправить CV</span>
                 <ArrowLongRightIcon
                   className="nav-menu__cv-arrow"

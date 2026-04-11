@@ -88,7 +88,7 @@ function SupportPlansSection({ variant = 'section' }: SupportPlansSectionProps) 
                     <Button
                       type="button"
                       className="support-plans-card__btn"
-                      color="#000000"
+                      color="#01111E"
                       textColor="#ffffff"
                     >
                       Оставить заявку

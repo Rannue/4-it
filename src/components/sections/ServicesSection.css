@@ -1,12 +1,5 @@
-.services {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 28px;
-  padding: 60px 0;
-}
-
-/* Как у «Наши клиенты»: горизонтальные линии на всю ширину, колонка с вертикальными — по max-width */
-.services--list {
+/* Как на главной: линии на всю ширину, контент в колонке max-width */
+.services.services--list {
   display: block;
   padding: 84px 0;
   box-sizing: border-box;
@@ -48,13 +41,6 @@
   box-sizing: border-box;
 }
 
-.services__sidebar {
-  color: var(--color-text-main);
-  position: sticky;
-  top: 140px;
-  align-self: flex-start;
-}
-
 .services-card {
   padding: 32px 0px;
   border-bottom: 1px solid var(--color-line);
@@ -68,20 +54,6 @@
   outline: 2px solid var(--color-primary);
   outline-offset: 4px;
 }
-
-.services-card__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-/* Как у карточек services2 («Битрикс24» и т.п.): Inter, жирный заголовок, стрелка */
-/* .services-card__title {
-  margin: 0;
-  color: #000000;
-} */
 
 .services-card__title--accent {
   color: var(--color-primary);
@@ -173,16 +145,6 @@
   color: var(--color-primary);
 }
 
-.services-card__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: rgba(15, 23, 42, 0.55);
-  transition: color 0.2s ease;
-  pointer-events: none;
-}
-
 .services-card--clickable:hover .services-card__title,
 .services-card--clickable:hover .services-card__title--accent {
   color: var(--color-primary);
@@ -190,25 +152,6 @@
 
 .services-card--clickable:hover .services-card__text {
   color: var(--color-primary);
-}
-
-.services-card--clickable:hover .services-card__icon {
-  color: var(--color-primary);
-}
-
-.services-card__icon svg {
-  width: 28px;
-  height: 28px;
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-.services-card--clickable:hover .services-card__icon svg {
-  transform: rotate(45deg);
-}
-
-.services__content {
-  border-top: 1px solid var(--color-line);
 }
 
 @media (max-width: 1000px) {
@@ -254,26 +197,6 @@
   }
 }
 
-/* @media (max-width: 960px) {
-  .services {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .services__sidebar {
-    order: -1;
-    position: static;
-  }
-
-  .services-card__row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
-  }
-
-  .services-card--list .services-card__title {
-    max-width: none;
-  }
-} */
-
 @media (max-width: 600px) {
   .services__list-gutter {
     padding: 0 16px;
@@ -283,7 +206,7 @@
     padding: 0 0 24px;
   }
 
-  .services--list {
+  .services.services--list {
     padding: 60px 0;
   }
 

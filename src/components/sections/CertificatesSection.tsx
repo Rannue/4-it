@@ -1,11 +1,15 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import './CertificatesSection.css';
+
+type CertificateItem = { src: string; alt: string };
 
 function CertificatesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const trackInnerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const [preview, setPreview] = useState<CertificateItem | null>(null);
 
   const items = useMemo(() => {
     const modules = import.meta.glob('../../assets/certificates/*.{png,jpg,jpeg,webp}', {
@@ -92,6 +96,20 @@ function CertificatesSection() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!preview) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setPreview(null);
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [preview]);
+
   return (
     <section className="certificates" ref={sectionRef}>
       <div className="certificates__sticky" ref={stickyRef}>
@@ -107,14 +125,53 @@ function CertificatesSection() {
               aria-label="Лента документов"
             >
               {items.map(item => (
-                <article key={item.alt} className="certificates-carousel__item">
-                  <img className="certificates-carousel__img" src={item.src} alt={item.alt} />
-                </article>
+                <button
+                  key={item.alt}
+                  type="button"
+                  className="certificates-carousel__item"
+                  onClick={() => setPreview(item)}
+                  aria-label={`Просмотреть: ${item.alt}`}
+                >
+                  <img className="certificates-carousel__img" src={item.src} alt="" />
+                </button>
               ))}
             </div>
           </div>
         </div>
       </div>
+
+      {preview &&
+        createPortal(
+          <div
+            className="certificates-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Просмотр сертификата"
+          >
+            <button
+              type="button"
+              className="certificates-modal__backdrop"
+              aria-label="Закрыть"
+              onClick={() => setPreview(null)}
+            />
+            <div className="certificates-modal__panel">
+              <button
+                type="button"
+                className="certificates-modal__close"
+                aria-label="Закрыть просмотр"
+                onClick={() => setPreview(null)}
+              >
+                ×
+              </button>
+              <img
+                className="certificates-modal__img"
+                src={preview.src}
+                alt={preview.alt}
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
     </section>
   );
 }

@@ -2,6 +2,121 @@ import { Link } from 'react-router-dom';
 import logo4it from '@/assets/Логотип 4-IT.svg';
 import './Footer.css';
 
+const EXTERNAL_REL = 'noopener noreferrer' as const;
+
+const OFFICE_ADDRESS_LINE = 'г. Минск, Проспект Победителей 7А';
+const YANDEX_MAPS_URL = `https://yandex.by/maps/?text=${encodeURIComponent(`${OFFICE_ADDRESS_LINE}`)}`;
+
+const CONTACT = {
+  email: 'info@4-it.by',
+  phoneE164: '+375445554416',
+  phoneDisplay: '+375 (44) 555 44 16',
+} as const;
+
+const SOCIAL = {
+  linkedin: 'https://www.linkedin.com/company/4-itby/posts/?feedView=all',
+  instagram: 'https://www.instagram.com/4it.by?igsh=MWJpMnJmeGxzbGNrMw%3D%3D',
+} as const;
+
+const POLICY_LINKS = [
+  {
+    href: 'https://bitrix24public.com/4-it.bitrix24.by/docs/pub/e58ce3bc57713e6147f362eb4a6019b6/default/',
+    label: 'Политика по обработке cookies-файлов',
+  },
+  {
+    href: 'https://bitrix24public.com/4-it.bitrix24.by/docs/pub/5aaf272d7727d0c90e4102ddcb53fdd0/default/',
+    label: 'Политика по обработке персональных данных',
+  },
+  {
+    href: 'https://bitrix24public.com/4-it.bitrix24.by/docs/pub/8df71c145b326f890b6a23cf022543dc/default/',
+    label: 'Политика в области информационной безопасности',
+  },
+] as const;
+
+const MAIN_NAV = [
+  { kind: 'router' as const, to: '/', label: 'Главная' },
+  { kind: 'anchor' as const, href: '#about', label: 'Компания' },
+  { kind: 'anchor' as const, href: '#services', label: 'Услуги' },
+  { kind: 'anchor' as const, href: '#portfolio', label: 'Портфолио' },
+  { kind: 'anchor' as const, href: '#contacts', label: 'Контакты' },
+];
+
+type ServiceLink = { label: string } & ({ to: string } | { href: string });
+
+type ServiceColumn =
+  | { title: string; links: ServiceLink[] }
+  | { titleLink: { to: string; label: string }; links: [] };
+
+const SERVICE_COLUMNS: ServiceColumn[] = [
+  {
+    title: 'Битрикс24',
+    links: [
+      { label: 'Внедрение и настройка Битрикс24', href: '#' },
+      { label: 'Поддержка Битрикс24', href: '#' },
+    ],
+  },
+  {
+    title: 'Разработка сайтов',
+    links: [
+      { label: 'Корпоративные сайты', href: '#' },
+      { label: 'Интернет-магазины', href: '#' },
+      { label: 'B2B порталы', href: '#' },
+    ],
+  },
+  {
+    title: 'Кибербезопасность',
+    links: [
+      { label: 'Аудит инфраструктуры и информационной безопасности', to: '/cybersecurity/audit' },
+      { label: 'Аттестация системы защиты информации', to: '/cybersecurity/certification' },
+      { label: 'Поставка и внедрение СЗИ и оборудования', to: '/cybersecurity/delivery' },
+    ],
+  },
+  {
+    titleLink: { to: '/edms-signature', label: 'Электронный документооборот с ЭЦП' },
+    links: [],
+  },
+];
+
+function ServiceColumnBlock({ column }: { column: ServiceColumn }) {
+  const heading =
+    'titleLink' in column ? (
+      <h4 className="footer__heading">
+        <Link to={column.titleLink.to} className="footer__heading-link">
+          {column.titleLink.label}
+        </Link>
+      </h4>
+    ) : (
+      <h4 className="footer__heading">{column.title}</h4>
+    );
+
+  return (
+    <div className="footer__services-col">
+      {heading}
+      {column.links.length > 0 && (
+        <ul className="footer__list">
+          {column.links.map(item => (
+            <li key={item.label}>
+              {'to' in item ? (
+                <Link to={item.to}>{item.label}</Link>
+              ) : (
+                <a href={item.href}>{item.label}</a>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function ExternalTextLink({ href, children }: { href: string; children: string }) {
+  return (
+    <a href={href} target="_blank" rel={EXTERNAL_REL} className="footer__link-external">
+      {children} <span aria-hidden="true">↗</span>
+    </a>
+  );
+}
+
 function Footer() {
   return (
     <footer className="footer">
@@ -14,140 +129,72 @@ function Footer() {
                   <img src={logo4it} alt="4-IT" className="footer__logo" />
                 </Link>
                 <nav className="footer__nav" aria-label="Основное меню">
-                  <Link to="/">Главная</Link>
-                  <a href="#about">О компании</a>
-                  <a href="#services">Услуги</a>
-                  <a href="#solutions">Решения</a>
-                  <a href="#portfolio">Портфолио</a>
-                  <a href="#contacts">Контакты</a>
-                  <a href="#blog">Блог</a>
+                  {MAIN_NAV.map(item =>
+                    item.kind === 'router' ? (
+                      <Link key={item.label} to={item.to}>
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <a key={item.label} href={item.href}>
+                        {item.label}
+                      </a>
+                    ),
+                  )}
                 </nav>
               </div>
 
+              <div className="footer__divider footer__divider--tablet-only" aria-hidden />
+
               <div className="footer__services">
-                <div className="footer__services-col">
-                  <h4 className="footer__heading">Битрикс24</h4>
-                  <ul className="footer__list">
-                    <li>
-                      <a href="#">Внедрение и настройка Битрикс24</a>
-                    </li>
-                    <li>
-                      <a href="#">Доработка Битрикс24</a>
-                    </li>
-                    <li>
-                      <a href="#">Интеграция Битрикс24</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="footer__services-col">
-                  <h4 className="footer__heading">Разработка сайтов</h4>
-                  <ul className="footer__list">
-                    <li>
-                      <a href="#">Корпоративные и промо-сайты</a>
-                    </li>
-                    <li>
-                      <a href="#">Интернет-магазины и B2B-порталы</a>
-                    </li>
-                    <li>
-                      <a href="#">Интеграции и сопровождение</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="footer__services-col">
-                  <h4 className="footer__heading">Кибербезопасность</h4>
-                  <ul className="footer__list">
-                    <li>
-                      <Link to="/cybersecurity/audit">
-                        Аудит инфраструктуры и информационной безопасности
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/cybersecurity/certification">
-                        Аттестация системы защиты информации
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/cybersecurity/delivery">
-                        Поставка и внедрение СЗИ и оборудования
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="footer__services-col">
-                  <h4 className="footer__heading">Сервисы</h4>
-                  <ul className="footer__list">
-                    <li>
-                      <Link to="/technical-support">Техподдержка</Link>
-                    </li>
-                    <li>
-                      <Link to="/virtualization">Виртуализация</Link>
-                    </li>
-                    <li>
-                      <a href="#">Электронный документооборот с ЭЦП</a>
-                    </li>
-                  </ul>
-                </div>
+                {SERVICE_COLUMNS.map(col => (
+                  <ServiceColumnBlock
+                    key={'titleLink' in col ? col.titleLink.to : col.title}
+                    column={col}
+                  />
+                ))}
               </div>
             </div>
           </div>
+
+          <div className="footer__divider footer__divider--panel-padded" aria-hidden />
 
           <div className="footer__middle">
-            <div className="footer__contacts">
-              <div className="footer__contacts-col">
-                <h4 className="footer__heading footer__heading--muted">Посетить</h4>
-                <p>БЦ &quot;Royal Plaza&quot;, ст. м. Немига</p>
-                <p>
-                  г. Минск, Проспект Победителей 7А,
-                  <br />
-                  20 этаж, 17 офис
-                </p>
-                <p>пн-пт 9.00 – 19.00</p>
-                <a
-                  href={`https://yandex.by/maps/?text=${encodeURIComponent('г. Минск, Проспект Победителей 7А')}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="footer__link-external"
-                >
-                  Яндекс Карты <span aria-hidden="true">↗</span>
-                </a>
+            <div className="footer__middle-inner">
+              <div className="footer__contacts">
+                <div className="footer__contacts-col">
+                  <h4 className="footer__heading footer__heading--muted">Посетить</h4>
+                  <p>БЦ &quot;Royal Plaza&quot;, ст. м. Немига</p>
+                  <p>
+                    {OFFICE_ADDRESS_LINE},<br />
+                    20 этаж, 17 офис
+                  </p>
+                  <p>пн-пт с 9:00 до 18:00</p>
+                  <ExternalTextLink href={YANDEX_MAPS_URL}>Яндекс Карты</ExternalTextLink>
+                </div>
+                <div className="footer__contacts-col">
+                  <h4 className="footer__heading footer__heading--muted">Написать</h4>
+                  <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+                  <ExternalTextLink href={SOCIAL.linkedin}>LinkedIn</ExternalTextLink>
+                  <ExternalTextLink href={SOCIAL.instagram}>Instagram</ExternalTextLink>
+                </div>
+                <div className="footer__contacts-col">
+                  <h4 className="footer__heading footer__heading--muted">Позвонить</h4>
+                  <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>
+                </div>
               </div>
-              <div className="footer__contacts-col">
-                <h4 className="footer__heading footer__heading--muted">Написать</h4>
-                <a href="mailto:example@4-it.by">example@4-it.by</a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="footer__link-external"
-                >
-                  LinkedIn <span aria-hidden="true">↗</span>
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="footer__link-external"
-                >
-                  Instagram <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-              <div className="footer__contacts-col">
-                <h4 className="footer__heading footer__heading--muted">Позвонить</h4>
-                <a href="tel:+375200000000">+375 20 000 00 00</a>
+
+              <div className="footer__legal">
+                <nav className="footer__policies" aria-label="Правовая информация">
+                  {POLICY_LINKS.map(({ href, label }) => (
+                    <a key={href} href={href} target="_blank" rel={EXTERNAL_REL}>
+                      {label}
+                    </a>
+                  ))}
+                </nav>
+                <p className="footer__copyright">© {new Date().getFullYear()} ФорАйТи</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="footer__bottom">
-        <div className="footer__bottom-inner">
-          <p className="footer__copyright">© 2026 ФорАйТи</p>
-          <nav className="footer__policies" aria-label="Правовая информация">
-            <a href="#">Политика по обработке cookies-файлов</a>
-            <a href="#">Политика по обработке персональных данных</a>
-            <a href="#">Политика в области информационной безопасности</a>
-          </nav>
         </div>
       </div>
     </footer>

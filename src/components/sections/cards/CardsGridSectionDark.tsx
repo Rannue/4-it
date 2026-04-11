@@ -12,7 +12,7 @@ function CardsGridSectionDark({ title, cardsHtml }: HtmlCardsGridSectionProps) {
         <div className="section-wrapper__inner-dark">
           <section className="cards-grid-dark">
             <header className="cards-grid__header">
-              <h2 className="cards-grid__title">{title}</h2>
+              <h2 className="cards-grid__title-dark">{title}</h2>
             </header>
 
             <div className="cards-grid__grid">

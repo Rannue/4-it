@@ -33,8 +33,6 @@ export type ServiceItem = {
 type ServicesSectionProps = {
   sidebarTitle?: string;
   items: ServiceItem[];
-  /** «default» — колонка с заголовком слева; «list» — как на кибербезопасности: линии на всю ширину, контент в колонке */
-  variant?: 'default' | 'list';
 };
 
 function RowArrowIcon(props: SVGProps<SVGSVGElement>) {
@@ -76,13 +74,8 @@ function RowArrowIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-function ServicesSection({
-  sidebarTitle = 'Услуги',
-  items,
-  variant = 'default',
-}: ServicesSectionProps) {
+function ServicesSection({ sidebarTitle = 'Услуги', items }: ServicesSectionProps) {
   const navigate = useNavigate();
-  const isList = variant === 'list';
 
   const tagsBlock = (item: ServiceItem) =>
     item.tags && item.tags.length > 0 ? (
@@ -101,93 +94,49 @@ function ServicesSection({
     ) : null;
 
   return (
-    <section
-      className={
-        isList ? 'services services--list' : 'section-wrapper services'
-      }
-    >
-      {isList ? (
-        <>
-          <div className="services__list-gutter">
-            <div className="services__list-column services__list-column--header">
-              <h2 className="services__heading">{sidebarTitle}</h2>
-            </div>
-          </div>
-          <div className="services__list-stack">
-            {items.map((item) => {
-              const isClickable = Boolean(item.to);
-              const cardClass = `services-card services-card--list${isClickable ? ' services-card--clickable' : ''}`;
+    <section className="services services--list">
+      <div className="services__list-gutter">
+        <div className="services__list-column services__list-column--header">
+          <h2 className="services__heading">{sidebarTitle}</h2>
+        </div>
+      </div>
+      <div className="services__list-stack">
+        {items.map((item) => {
+          const isClickable = Boolean(item.to);
+          const cardClass = `services-card services-card--list${isClickable ? ' services-card--clickable' : ''}`;
 
-              return (
-                <div key={item.title} className="services__list-row-shell">
-                  <div className="services__list-gutter">
-                    <div className="services__list-column services__list-column--row">
-                      <article
-                        className={cardClass}
-                        role={isClickable ? 'link' : undefined}
-                        aria-label={item.ariaLabel}
-                        tabIndex={isClickable ? 0 : undefined}
-                        {...(item.to ? serviceCardLinkHandlers(item.to, navigate) : {})}
-                      >
-                        <div className="services-card__row">
-                          <h3 className="services-card__title">{item.title}</h3>
-                          <div className="services-card__body">
-                            {item.description && (
-                              <p className="services-card__text">{item.description}</p>
-                            )}
-                            {tagsBlock(item)}
-                          </div>
-                          {isClickable && (
-                            <span className="services-card__arrow" aria-hidden>
-                              <RowArrowIcon className="services-card__arrow-icon" />
-                            </span>
-                          )}
-                        </div>
-                      </article>
+          return (
+            <div key={item.title} className="services__list-row-shell">
+              <div className="services__list-gutter">
+                <div className="services__list-column services__list-column--row">
+                  <article
+                    className={cardClass}
+                    role={isClickable ? 'link' : undefined}
+                    aria-label={item.ariaLabel}
+                    tabIndex={isClickable ? 0 : undefined}
+                    {...(item.to ? serviceCardLinkHandlers(item.to, navigate) : {})}
+                  >
+                    <div className="services-card__row">
+                      <h3 className="services-card__title">{item.title}</h3>
+                      <div className="services-card__body">
+                        {item.description && (
+                          <p className="services-card__text">{item.description}</p>
+                        )}
+                        {tagsBlock(item)}
+                      </div>
+                      {isClickable && (
+                        <span className="services-card__arrow" aria-hidden>
+                          <RowArrowIcon className="services-card__arrow-icon" />
+                        </span>
+                      )}
                     </div>
-                  </div>
+                  </article>
                 </div>
-              );
-            })}
-          </div>
-        </>
-      ) : (
-        <>
-          <aside className="services__sidebar">
-            <h2 className="services__sidebar-title">{sidebarTitle}</h2>
-          </aside>
-          <div className="services__content">
-            {items.map((item) => {
-              const isClickable = Boolean(item.to);
-              const cardClass = `services-card${isClickable ? ' services-card--clickable' : ''}`;
-
-              return (
-                <article
-                  key={item.title}
-                  className={cardClass}
-                  role={isClickable ? 'link' : undefined}
-                  aria-label={item.ariaLabel}
-                  tabIndex={isClickable ? 0 : undefined}
-                  {...(item.to ? serviceCardLinkHandlers(item.to, navigate) : {})}
-                >
-                  <div className="services-card__header">
-                    <h3 className="services-card__title">{item.title}</h3>
-                    {isClickable && (
-                      <span className="services-card__icon" aria-hidden>
-                        <RowArrowIcon />
-                      </span>
-                    )}
-                  </div>
-                  {item.description && (
-                    <p className="services-card__text">{item.description}</p>
-                  )}
-                  {tagsBlock(item)}
-                </article>
-              );
-            })}
-          </div>
-        </>
-      )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }

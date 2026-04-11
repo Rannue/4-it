@@ -66,22 +66,6 @@ const CYBERSECURITY_SERVICES: ServiceItem[] = [
   },
 ];
 
-const CARDS_GRID_EMPTY_MEDIA = '<div class="cards-grid__media"></div>';
-
-function cardsGridOptimizationCard(illustrationSrc: string) {
-  return `
-  <div class="cards-grid__media">
-    <img src="${illustrationSrc}" alt="" aria-hidden="true" class="cards-grid__illustration" />
-  </div>
-  <h3>Оптимизация бизнес-процессов:</h3>
-  <p>
-    • все заявки обрабатываются вовремя;<br />
-    • экономия на скорости прохождения операций;<br />
-    • эффективные связи между подразделениями.
-  </p>
-`;
-}
-
 const INFO_GRID_EMPTY_GROUP = `
   <div class="info-grid__group"></div>
 `;
@@ -92,7 +76,7 @@ const CYBERSECURITY_CARDS_HTML = [
                 <img src="${buildingIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
               </div>
               <p>
-               <strong style="color: #111111;">Более 60% компаний</strong>, пострадавших от кибератак, закрываются в течение полугода после инцидента
+               <strong style="color: #01111E;">Более 60% компаний</strong>, пострадавших от кибератак, закрываются в течение полугода после инцидента
               </p>
             `,
   `
@@ -106,10 +90,30 @@ const CYBERSECURITY_CARDS_HTML = [
                 • совместная работа над проектами.
               </p>
             `,
-  CARDS_GRID_EMPTY_MEDIA,
-  CARDS_GRID_EMPTY_MEDIA,
-  cardsGridOptimizationCard(optimizationIllustration),
-  cardsGridOptimizationCard(riseIllustration),
+  '<div class="cards-grid__media cards-grid__media-empty"></div>',
+  '<div class="cards-grid__media cards-grid__media-empty"></div>',
+  `
+              <div class="cards-grid__media">
+                <img src="${optimizationIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
+              </div>
+              <h3>Оптимизация бизнес-процессов:</h3>
+              <p>
+                • все заявки обрабатываются вовремя;<br />
+                • экономия на скорости прохождения операций;<br />
+                • эффективные связи между подразделениями.
+              </p>
+            `,
+  `
+              <div class="cards-grid__media">
+                <img src="${riseIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
+              </div>
+              <h3>Оптимизация бизнес-процессов:</h3>
+              <p>
+                • все заявки обрабатываются вовремя;<br />
+                • экономия на скорости прохождения операций;<br />
+                • эффективные связи между подразделениями.
+              </p>
+            `,
 ];
 
 const CYBERSECURITY_INFO_COLUMNS_HTML = [
@@ -171,7 +175,7 @@ function CybersecurityPage() {
           description="Кибербезопасность — это комплекс мер, направленных на защиту информационных систем от несанкционированного доступа, утечек данных и кибератак. В современном мире, где информация является одним из ключевых активов, обеспечение её безопасности становится критически важным. Мы поможем вам защитить ваши данные, соблюдая требования законодательства Республики Беларусь и внедряя передовые технологии."
         />
 
-        <ServicesSection variant="list" items={CYBERSECURITY_SERVICES} />
+        <ServicesSection items={CYBERSECURITY_SERVICES} />
 
         <CardsGridSection title="Кибербезопасность в цифрах" cardsHtml={CYBERSECURITY_CARDS_HTML} />
 

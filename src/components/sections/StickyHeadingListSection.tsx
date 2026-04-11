@@ -10,8 +10,8 @@ type StickyHeadingListSectionProps = {
   /** Содержимое заголовка (например, часть текста + span с классом sticky-heading-list__title-accent) */
   title: ReactNode;
   items: readonly StickyHeadingListItem[];
-  /** Изображение под заголовком в левой колонке (например, 3D-иконка) */
-  illustration?: { src: string; alt: string };
+  /** Изображение под заголовком в левой колонке; можно не передавать */
+  illustration?: { src: string; alt?: string };
   id?: string;
   className?: string;
 };
@@ -40,12 +40,12 @@ function StickyHeadingListSection({
               <h2 id={id ? `${id}-heading` : undefined} className="sticky-heading-list__title">
                 {title}
               </h2>
-              {illustration ? (
+              {illustration?.src ? (
                 <div className="sticky-heading-list__illustration">
                   <img
                     className="sticky-heading-list__illustration-img"
                     src={illustration.src}
-                    alt={illustration.alt}
+                    alt={illustration.alt ?? ''}
                     loading="lazy"
                     decoding="async"
                   />

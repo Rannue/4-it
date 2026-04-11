@@ -5,6 +5,13 @@ import Input, { MultiSelect, Select, Textarea } from '@/shared/ui/Input';
 import PhoneInput from '@/shared/ui/PhoneInput';
 import './ContactRequestForm.css';
 
+/**
+ * Отправка через FormSubmit (работает и в dev, и после build — разницы нет).
+ * Обязательно: подтвердить форму по ссылке из письма FormSubmit на bogachenko.av@4-it.by.
+ */
+const CONTACT_FORM_RECIPIENT = 'bogachenko.av@4-it.by';
+const CONTACT_FORM_SUBMIT_URL = `https://formsubmit.co/ajax/${CONTACT_FORM_RECIPIENT}`;
+
 const DEFAULT_SERVICE_OPTIONS = [
   { value: '', label: 'Выберите одну или несколько услуг' },
   { value: 'bitrix24', label: 'Битрикс24' },
@@ -114,11 +121,111 @@ function ContactRequestForm({
   const [comment, setComment] = useState('');
   const [consent, setConsent] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const fieldId = (key: string) => `${baseId}-${key}`;
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitError(null);
+    setSubmitSuccess(false);
+
+    const phoneTrimmed = phone.trim();
+    const emailTrimmed = email.trim();
+    if (!phoneTrimmed && !emailTrimmed) {
+      setSubmitError('Укажите номер телефона или email — так мы сможем с вами связаться.');
+      return;
+    }
+
+    const budgetLabel =
+      (budgetOptions.find(o => o.value === budget)?.label ?? budget) || '—';
+    const serviceLabels =
+      services.length > 0
+        ? services
+            .filter(Boolean)
+            .map(v => serviceOptions.find(o => o.value === v)?.label ?? v)
+            .join(', ')
+        : '—';
+
+    const bodyLines = [
+      `Имя: ${name}`,
+      `Телефон: ${phoneTrimmed || '—'}`,
+      `Email: ${emailTrimmed || '—'}`,
+      `Компания: ${company.trim() || '—'}`,
+      `Услуги: ${serviceLabels}`,
+      `Бюджет: ${budgetLabel}`,
+      '',
+      'Комментарий:',
+      comment.trim() || '—',
+    ];
+    const messageText = bodyLines.join('\n');
+
+    const formData = new FormData();
+    /* AJAX без виджета reCAPTCHA — иначе FormSubmit часто отклоняет заявку «тихо» */
+    formData.append('_captcha', 'false');
+    formData.append('_subject', 'Новая заявка с сайта 4-it');
+    formData.append('name', name);
+    formData.append('phone', phoneTrimmed || '—');
+    formData.append('email', emailTrimmed || '—');
+    formData.append('company', company.trim() || '—');
+    formData.append('services', serviceLabels);
+    formData.append('budget', budgetLabel);
+    formData.append('message', messageText);
+    if (emailTrimmed) {
+      formData.append('_replyto', emailTrimmed);
+    }
+    formData.append('_template', 'table');
+
+    const file = fileInputRef.current?.files?.[0];
+    if (file) {
+      formData.append('attachment', file, file.name);
+    }
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(CONTACT_FORM_SUBMIT_URL, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+      const raw = await res.text();
+      let data: { success?: boolean; ok?: boolean; message?: string } | null = null;
+      try {
+        data = raw ? (JSON.parse(raw) as typeof data) : null;
+      } catch {
+        /* не JSON — не считаем успехом при сомнительном ответе */
+      }
+      const looksLikeJson = /^\s*[\[{]/.test(raw);
+      const failed =
+        !res.ok ||
+        data?.success === false ||
+        data?.ok === false ||
+        (data == null && raw.length > 0 && !looksLikeJson);
+      if (failed) {
+        throw new Error(
+          data?.message ??
+            (raw && raw.length < 400 ? raw : null) ??
+            'Не удалось отправить форму. Попробуйте позже.',
+        );
+      }
+      setSubmitSuccess(true);
+      setName('');
+      setPhone('');
+      setEmail('');
+      setCompany('');
+      setServices([]);
+      setBudget('');
+      setComment('');
+      setConsent(false);
+      setFileName(null);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Ошибка отправки. Попробуйте позже.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleAttachClick = () => {
@@ -162,7 +269,30 @@ function ContactRequestForm({
               </p>
             </div>
 
-            <form className="contact-request-form__form" onSubmit={handleSubmit}>
+            <form className="contact-request-form__form" onSubmit={handleSubmit} noValidate>
+              <input
+                type="text"
+                name="_honey"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="contact-request-form__honeypot"
+              />
+              {(submitError || submitSuccess) && (
+                <div
+                  className={
+                    submitSuccess
+                      ? 'contact-request-form__feedback contact-request-form__feedback--success'
+                      : 'contact-request-form__feedback contact-request-form__feedback--error'
+                  }
+                  role="status"
+                  aria-live="polite"
+                >
+                  {submitSuccess
+                    ? 'Спасибо! Заявка отправлена — мы свяжемся с вами.'
+                    : submitError}
+                </div>
+              )}
               <div className="contact-request-form__row contact-request-form__row--2">
                 <Input
                   id={fieldId('name')}
@@ -307,10 +437,11 @@ function ContactRequestForm({
                 <Button
                   type="submit"
                   className="contact-request-form__submit"
-                  color="#000000"
+                  color="#01111E"
                   textColor="#ffffff"
+                  disabled={isSubmitting}
                 >
-                  Отправить
+                  {isSubmitting ? 'Отправка…' : 'Отправить'}
                 </Button>
               </div>
             </form>

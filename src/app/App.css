@@ -16,6 +16,11 @@
   padding: 84px 42px;
 }
 
+.section-wrapper-small {
+  background-color: var(--color-white);
+  padding: 84px 0;
+}
+
 .section-wrapper-secondary {
   background-color: var(--color-white);
   padding: 0 42px;
@@ -103,23 +108,27 @@
   margin-bottom: 0.75rem;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   .section-wrapper {
-    padding: 0 24px;
+    padding: 54px 16px;
   }
 
   .section-wrapper-secondary {
     background-color: var(--color-white);
     padding: 0 16px;
   }
+
+  .section-wrapper-small {
+    padding: 54px 0;
+  }
 }
 
 @media (max-width: 600px) {
   .section-wrapper {
-    padding: 0 16px;
+    padding: 54px 16px;
   }
 
   .section-wrapper-secondary {
-    padding: 0 12px;
+    padding: 0 16px;
   }
 }

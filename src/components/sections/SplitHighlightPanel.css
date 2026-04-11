@@ -1,0 +1,115 @@
+.split-highlight-panel {
+  box-sizing: border-box;
+}
+
+.split-highlight-panel__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.split-highlight-panel__aside {
+  min-width: 0;
+  padding-top: 4px;
+}
+
+.split-highlight-panel__aside-title {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 140%;
+  text-transform: uppercase;
+  /* color: var(--color-primary); */
+}
+
+.split-highlight-panel__content {
+  min-width: 0;
+}
+
+.split-highlight-panel__content-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+  border-radius: 8px;
+  background: var(--color-primary);
+  box-sizing: border-box;
+}
+
+.split-highlight-panel__figure {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 32px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: var(--color-primary);
+}
+
+.split-highlight-panel__figure::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: url('../../assets/img/texture.png') center / cover no-repeat;
+  opacity: 0.55;
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+}
+
+.split-highlight-panel__figure-img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.split-highlight-panel__body {
+  color: var(--color-text-main);
+  font-family: var(--font-family-base);
+}
+
+.split-highlight-panel__body p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 140%;
+  color: var(--color-white);
+}
+
+.split-highlight-panel__body p + p {
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .split-highlight-panel__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .split-highlight-panel__aside {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .split-highlight-panel__figure {
+    padding: 18px 20px;
+    border-radius: 12px;
+  }
+
+  .split-highlight-panel__figure-img {
+    max-height: 180px;
+  }
+}

@@ -1,7 +1,7 @@
 import Header from '@/widgets/header/Header';
 import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import ServicesType2Section from '@/components/sections/ServicesType2Section';
+import ServicesSectionSecondary from '@/components/sections/ServicesSectionSecondary';
 import CardsGridSection from '@/components/sections/cards/CardsGridSection';
 import aimIllustration from '@/assets/img/illustrations/aim.svg';
 import complexIllustration from '@/assets/img/illustrations/complex.svg';
@@ -27,7 +27,7 @@ function CertificationOfInformationSecurityToolsPage() {
           title="Поставка и внедрение CЗИ и оборудования"
           description="Мы предлагаем комплексные решения для защиты информации: предотвращение утечек, мониторинг и анализ угроз. Используем надежные технологии от ведущих производителей, обеспечивая соответствие строгим требованиям безопасности."
         />
-        <ServicesType2Section
+        <ServicesSectionSecondary
           title="Что мы предлагаем?"
           description="Мы предоставляем широкий спектр решений для защиты вашей информационной системы:"
           items={[

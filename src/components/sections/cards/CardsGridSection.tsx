@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react';
 import './CardsGridSection.css';
 
 type HtmlCardsGridSectionProps = {
-  title: string;
+  title: ReactNode;
   cardsHtml: string[];
 };
 
