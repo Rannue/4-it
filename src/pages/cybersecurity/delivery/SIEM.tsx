@@ -1,15 +1,18 @@
+// components
 import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import KeyFeaturesGridSection from '@/components/sections/KeyFeaturesGridSection';
+import FeatureBanner from '@/components/sections/FeatureBanner';
+import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
+
+// assets
 import bitrixBoxImg from '@/assets/img/bitrix.png';
 import bitrixScreenImg from '@/assets/img/bitrix-screen.png';
-import FeatureBanner from '@/components/sections/FeatureBanner';
-import Footer from '@/widgets/footer/Footer';
 import lawIllustration from '@/assets/img/illustrations/law.png';
-import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
 import librasoftLogo from '@/assets/img/providers/librasoft.svg';
 import stakhanovetsLogo from '@/assets/img/providers/stakhanovec-logo.svg';

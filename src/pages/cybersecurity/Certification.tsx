@@ -1,15 +1,18 @@
+// components
 import Header from '@/widgets/header/Header';
 import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import HighlightGridSection from '@/components/sections/HighlightGridSection';
-import certificateIcon from '@/assets/icons/certificate.svg';
-import licenseIcon from '@/assets/icons/license.svg';
-import fingerprintIcon from '@/assets/icons/fingerprint.svg';
 import ScrollCardsSection from '@/components/sections/ScrollCardsSection';
 import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
+
+// assets
+import certificateIcon from '@/assets/icons/certificate.svg';
+import licenseIcon from '@/assets/icons/license.svg';
+import fingerprintIcon from '@/assets/icons/fingerprint.svg';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
 import analysisIllustration from '@/assets/img/illustrations/cybersecurity/analysis.svg';

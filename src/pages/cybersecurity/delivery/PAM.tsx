@@ -1,12 +1,15 @@
+// components
 import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import Footer from '@/widgets/footer/Footer';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
+
+// assets
 import lawIllustration from '@/assets/img/law_filled.svg';
 import kronLogo from '@/assets/img/providers/kron.svg';
 import indidLogo from '@/assets/img/providers/indid.png';

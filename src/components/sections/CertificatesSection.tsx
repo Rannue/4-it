@@ -1,5 +1,7 @@
+// react
 import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { createPortal } from 'react-dom';
+
 import './CertificatesSection.css';
 
 /** Совпадает с max-width в CertificatesSection.css (колонка без горизонтальной анимации) */

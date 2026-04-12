@@ -1,14 +1,17 @@
+// components
 import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import Footer from '@/widgets/footer/Footer';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
+import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
+
+// assets
 import lawIllustration from '@/assets/img/law_filled.svg';
 import sterraLogo from '@/assets/img/providers/Sterra.png';
-import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
 
 function LinearEncryptionPage() {
   return (

@@ -1,6 +1,10 @@
+// react
 import type { ReactNode } from 'react';
 import { useId } from 'react';
+
+// components
 import Button from '@/shared/ui/Button';
+
 import './StackedFeatureCardsSection.css';
 
 /**

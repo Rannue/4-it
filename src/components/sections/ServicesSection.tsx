@@ -1,5 +1,7 @@
+// react
 import { useId, type KeyboardEvent, type SVGProps } from 'react';
 import { Link, useNavigate, type NavigateFunction } from 'react-router-dom';
+
 import './ServicesSection.css';
 
 /** Клик и Enter/Space для «карточки-ссылки» (role="link" + tabIndex={0}). */

@@ -1,5 +1,9 @@
+// react
 import type { ReactNode } from 'react';
+
+// assets
 import fingerprintIcon from '@/assets/icons/fingerprint.svg';
+
 import './KeyFeaturesGridSection.css';
 
 export type KeyFeaturesGridTextCell = {

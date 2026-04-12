@@ -1,22 +1,25 @@
+// components
 import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import Footer from '@/widgets/footer/Footer';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
-import lawIllustration from '@/assets/img/law_filled.svg';
-import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
-import stakhanovetsLogo from '@/assets/img/providers/stakhanovec-logo.svg';
-import librasoftLogo from '@/assets/img/providers/librasoft.svg';
+
+// assets
 import copyIcon from '@/assets/icons/copy.svg';
 import rotateIcon from '@/assets/icons/rotate.svg';
 import settingsIcon from '@/assets/icons/settings.svg';
 import centerIcon from '@/assets/icons/center.svg';
 import folderIcon from '@/assets/icons/folder.svg';
 import сhartIcon from '@/assets/icons/chart.svg';
+import lawIllustration from '@/assets/img/law_filled.svg';
+import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
+import stakhanovetsLogo from '@/assets/img/providers/stakhanovec-logo.svg';
+import librasoftLogo from '@/assets/img/providers/librasoft.svg';
 
 function BackupPage() {
   return (

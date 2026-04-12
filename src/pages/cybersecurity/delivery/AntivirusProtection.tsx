@@ -1,21 +1,24 @@
+// components
 import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import Footer from '@/widgets/footer/Footer';
-import searchIcon from '@/assets/icons/search.svg';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
-import lawIllustration from '@/assets/img/law_filled.svg';
-import kiberprotectLogo from '@/assets/img/providers/kiberprotekt.svg';
-import vinchinLogo from '@/assets/img/providers/Vinchin.svg';
+
+// assets
+import searchIcon from '@/assets/icons/search.svg';
 import laptopIcon from '@/assets/icons/laptop.svg';
 import chartIcon from '@/assets/icons/chart.svg';
 import centerIcon from '@/assets/icons/center.svg';
 import fingerprintIcon from '@/assets/icons/fingerprint.svg';
 import folderIcon from '@/assets/icons/folder.svg';
+import lawIllustration from '@/assets/img/law_filled.svg';
+import kiberprotectLogo from '@/assets/img/providers/kiberprotekt.svg';
+import vinchinLogo from '@/assets/img/providers/Vinchin.svg';
 
 function AntivirusProtectionPage() {
   return (

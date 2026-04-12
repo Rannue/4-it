@@ -1,11 +1,14 @@
+// components
 import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
-import Footer from '@/widgets/footer/Footer';
 import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
+
+// assets
 import bvkLogo from '@/assets/img/providers/bvk.png';
 import delTechLogo from '@/assets/img/providers/dell_technologies.png';
 import fusionLogo from '@/assets/img/providers/fusion.png';

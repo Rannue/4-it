@@ -1,5 +1,9 @@
-import projectImage from '@/assets/img/project.png';
+// components
 import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
+
+// assets
+import projectImage from '@/assets/img/project.png';
+
 import './CasesSection.css';
 
 function CasesSection() {

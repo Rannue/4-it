@@ -1,5 +1,7 @@
+// react
 import type { ReactNode } from 'react';
 import { useId } from 'react';
+
 import './ProductTierComparisonSection.css';
 
 /** Одна строка: жирное начало + обычный текст */

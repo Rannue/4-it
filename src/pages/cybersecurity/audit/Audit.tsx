@@ -1,13 +1,19 @@
+// react
 import { useEffect, useRef, useState } from 'react';
+
+// components
 import Header from '@/widgets/header/Header';
 import Footer from '@/widgets/footer/Footer';
-import '../../Hero.css';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import ClientsSection from '@/components/grids/ClientsSection';
+
+// assets
 import bookIcon from '@/assets/icons/book.svg';
 import certificateIcon from '@/assets/icons/certificate.svg';
 import trendingUpIcon from '@/assets/icons/trending-up.svg';
+
+import '../../Hero.css';
 
 const AUDIT_GOAL_TEXT =
   'Цель аудита — комплексный анализ текущего состояния вашей информационной системы';

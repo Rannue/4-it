@@ -1,19 +1,23 @@
+// components
 import Header from '@/widgets/header/Header';
 import Footer from '@/widgets/footer/Footer';
-import './Hero.css';
-import bookIcon from '@/assets/icons/book.svg';
-import certificateIcon from '@/assets/icons/certificate.svg';
-import trendingUpIcon from '@/assets/icons/trending-up.svg';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import ServicesSection, { type ServiceItem } from '@/components/sections/ServicesSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import ClientsSection from '@/components/grids/ClientsSection';
+import CardsGridSection from '@/components/grids/CardsGridSection';
+
+// assets
+import bookIcon from '@/assets/icons/book.svg';
+import certificateIcon from '@/assets/icons/certificate.svg';
+import trendingUpIcon from '@/assets/icons/trending-up.svg';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
-import CardsGridSection from '@/components/grids/CardsGridSection';
 import buildingIllustration from '@/assets/img/illustrations/buildings.svg';
 import scannerIllustration from '@/assets/img/illustrations/scaning.svg';
+
+import './Hero.css';
 
 const CYBERSECURITY_SERVICES: ServiceItem[] = [
   {

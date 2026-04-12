@@ -1,13 +1,17 @@
-import './App.css';
+// components
 import Button from '@/shared/ui/Button';
 import Header from '@/widgets/header/Header';
 import ClientsSection from '@/components/grids/ClientsSection';
 import Footer from '@/widgets/footer/Footer';
-import ArrowRightIcon from '@/assets/icons/arrow-up-right.svg';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import AchievementsSection from '@/components/sections/AchievementsSection';
 import type { ServiceItem } from '@/components/sections/ServicesSection';
 import ServicesSection from '@/components/sections/ServicesSection';
+
+// assets
+import ArrowRightIcon from '@/assets/icons/arrow-up-right.svg';
+
+import './App.css';
 
 const SERVICES: ServiceItem[] = [
   {

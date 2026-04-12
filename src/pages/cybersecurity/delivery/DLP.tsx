@@ -1,16 +1,19 @@
+// components
 import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import Footer from '@/widgets/footer/Footer';
+import FeatureBanner from '@/components/sections/FeatureBanner';
+import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
+
+// assets
 import searchIcon from '@/assets/icons/search.svg';
 import databaseIcon from '@/assets/icons/Database.svg';
 import barrierIcon from '@/assets/icons/barrier-block.svg';
 import presentationIcon from '@/assets/icons/presentation.svg';
-import FeatureBanner from '@/components/sections/FeatureBanner';
-import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
 import lawIllustration from '@/assets/img/law_filled.svg';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
 import stakhanovetsLogo from '@/assets/img/providers/stakhanovec-logo.svg';

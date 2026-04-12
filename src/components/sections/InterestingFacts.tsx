@@ -1,8 +1,12 @@
+// react
 import type { CSSProperties, ReactNode } from 'react';
-import './InterestingFacts.css';
+
+// assets
 import certificationIllustration from '@/assets/img/illustrations/certification.svg';
 import scanningIllustration from '@/assets/img/illustrations/scaning.svg';
 import buildingsIllustration from '@/assets/img/illustrations/buildings.svg';
+
+import './InterestingFacts.css';
 
 export type InterestingFactItem = {
   /** URL импортированного ассета или строка пути */

@@ -1,10 +1,13 @@
+// components
 import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import SupportPlansSection from '@/components/sections/SupportPlansSection';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import Footer from '@/widgets/footer/Footer';
+
+// assets
 import communicationIcon from '@/assets/icons/Communication.svg';
 import checkIcon from '@/assets/icons/Check.svg';
 import deviceDesktopIcon from '@/assets/icons/device-desktop-code.svg';

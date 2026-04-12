@@ -1,7 +1,9 @@
+// react
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import './styles/index.css';
+
+// components
 import ScrollToTop from '@/widgets/scroll-to-top/ScrollToTop';
 import CybersecurityPage from '@/pages/cybersecurity';
 import CybersecurityAuditPage from '@/pages/cybersecurity/audit/Audit.tsx';
@@ -25,6 +27,8 @@ import SupplyOfServersAndSwitchesPage from '@/pages/cybersecurity/delivery/Suppl
 import Bitrix24ImplementationPage from '@/pages/bitrix24/Implementation.tsx';
 import EDMSWithSignaturePage from '@/pages/EDMSWithSignature.tsx';
 import OnlineStorePage from '@/pages/websites/OnlineStore.tsx';
+
+import './styles/index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

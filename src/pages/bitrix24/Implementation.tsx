@@ -1,19 +1,24 @@
+// components
 import Header from '@/widgets/header/Header';
+import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import Footer from '@/widgets/footer/Footer';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import CtaLinksListSection from '@/components/sections/CtaLinksListSection';
+import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
+import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
+
+// data
+import { BITRIX24_IMPLEMENTATION_TIERS } from '@/data/stackedFeatureCards/StackedCards';
+
+// assets
 import bitrixBoxImg from '@/assets/img/bitrix.png';
 import certificateIcon from '@/assets/icons/certificate.svg';
-import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
-import { BITRIX24_IMPLEMENTATION_TIERS } from '@/data/stackedFeatureCards/StackedCards';
 import timeIllustration from '@/assets/img/illustrations/time.svg';
 import groupIllustration from '@/assets/img/illustrations/group.svg';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
-import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
 
 function Bitrix24ImplementationPage() {
   return (

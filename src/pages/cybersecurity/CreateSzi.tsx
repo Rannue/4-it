@@ -1,3 +1,4 @@
+// components
 import Header from '@/widgets/header/Header';
 import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';

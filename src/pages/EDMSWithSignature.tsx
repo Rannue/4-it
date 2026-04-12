@@ -1,20 +1,24 @@
+// components
 import Header from '@/widgets/header/Header';
 import Footer from '@/widgets/footer/Footer';
-import './Hero.css';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import ClientsSection from '@/components/grids/ClientsSection';
 import InfoGridSection from '@/components/grids/InfoGridSection';
+import SplitHighlightPanel from '@/components/sections/SplitHighlightPanel';
+import CardsGridSection from '@/components/grids/CardsGridSection';
+import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
+import CertificatesSection from '@/components/sections/CertificatesSection';
+
+// assets
 import usersGroupIcon from '@/assets/icons/users-group.svg';
 import laptopIcon from '@/assets/icons/laptop.svg';
 import lawIllustrationImg from '@/assets/img/law.svg';
-import SplitHighlightPanel from '@/components/sections/SplitHighlightPanel';
-import CardsGridSection from '@/components/grids/CardsGridSection';
 import flashIllustration from '@/assets/img/illustrations/flash.svg';
 import moneyIllustration from '@/assets/img/illustrations/money.svg';
 import lawIllustration from '@/assets/img/illustrations/law.svg';
 import flexIllustration from '@/assets/img/illustrations/flex.svg';
-import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
-import CertificatesSection from '@/components/sections/CertificatesSection';
+
+import './Hero.css';
 
 const EDMS_CARDS_HTML = [
   `

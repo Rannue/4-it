@@ -1,4 +1,6 @@
+// react
 import { useEffect, useRef, useState } from 'react';
+
 import './ScrollCardsSection.css';
 
 type ScrollCardsSectionProps = {
