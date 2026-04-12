@@ -100,6 +100,25 @@ Omit groups that have no imports for the file — don't leave empty comment labe
 - **Atomic commits** — one logical change per commit; no "misc fixes"
 - **Branch prefixes**: `feat/`, `fix/`, `refactor/`, `chore/`
 
+## Data Organization
+
+Data is separated by usage pattern:
+
+**`src/constants/`** — Pure typed data (no JSX)
+
+- Type definitions and constant arrays used in logic
+- Example: `supportPlans.ts` — feature rows as typed arrays
+
+**`src/data/`** — JSX-heavy content (component trees as data)
+
+- Data containing JSX expressions rendered via `<>{data.map(...)}</>`
+- Examples: `stackedFeatureCards/`, `cyberCultureProductTiers.tsx`
+
+**Decision rule for page-level constants:**
+
+- If constant is used in **one page only** and is **page-specific content** → keep in page
+- If constant is **reusable across pages** or **large configuration** → extract to `src/data/`
+
 ## Commands — always via Make
 
 Never `cd` into a subfolder and run tools directly.
