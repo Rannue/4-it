@@ -26,7 +26,7 @@ React 19 SPA. Routing is modularized into route groups.
 
 - `/cybersecurity` → `src/pages/cybersecurity/index.tsx`
 - `/cybersecurity/audit` → `src/pages/cybersecurity/audit/Audit.tsx`
-- `/cybersecurity/design-szi` → `src/pages/cybersecurity/DesignSzi.tsx`
+- `/cybersecurity/design-szi` → `src/pages/cybersecurity/certification/DesignSzi.tsx`
 - `/cybersecurity/create-szi` → `src/pages/cybersecurity/CreateSzi.tsx`
 - `/cybersecurity/attestation-szi` → `src/pages/cybersecurity/AttestationSzi.tsx`
 - `/cybersecurity/infrastructure-effectiveness` → `src/pages/cybersecurity/InfrastructureEffectiveness.tsx`
