@@ -2,6 +2,7 @@
  * Тексты блока сравнения редакций Phishman на странице киберкультуры
  * (формулировки со скриншота; правки — здесь).
  */
+// components
 import type { ProductTierComparisonCard } from '@/components/sections/ProductTierComparisonSection';
 
 export const CYBER_CULTURE_PHISHMAN_TIERS: readonly ProductTierComparisonCard[] = [

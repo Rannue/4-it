@@ -1,9 +1,11 @@
+// react
 import type {
-  ReactNode,
   KeyboardEvent as ReactKeyboardEvent,
   MouseEvent as ReactMouseEvent,
+  ReactNode,
 } from 'react';
 import { useEffect, useId, useRef, useState } from 'react';
+
 import './PhoneInput.css';
 
 type PhoneCountryOption = {
