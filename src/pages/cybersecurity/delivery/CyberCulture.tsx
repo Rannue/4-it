@@ -4,7 +4,7 @@ import StickyHeadingListSection from '@/components/sections/StickyHeadingListSec
 import ClientsSection from '@/components/grids/ClientsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import Footer from '@/widgets/footer/Footer';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import { CYBER_CULTURE_PHISHMAN_STACKED } from '@/data/stackedFeatureCards/StackedCards';
 import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
 

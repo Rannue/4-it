@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import ContactRequestForm from '@/components/sections/ContactRequestForm';
-import logo4it from '@/assets/Логотип 4-IT.svg';
+import logo4it from '@/assets/logo-4it.svg';
 import './Footer.css';
 
 const EXTERNAL_REL = 'noopener noreferrer' as const;

@@ -5,7 +5,7 @@ import ClientsSection from '@/components/grids/ClientsSection';
 import Footer from '@/widgets/footer/Footer';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import CtaLinksListSection from '@/components/sections/CtaLinksListSection';
-import bitrixBoxImg from '@/assets/img/Битрикс.png';
+import bitrixBoxImg from '@/assets/img/bitrix.png';
 import certificateIcon from '@/assets/icons/certificate.svg';
 import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
 import { BITRIX24_IMPLEMENTATION_TIERS } from '@/data/stackedFeatureCards/StackedCards';

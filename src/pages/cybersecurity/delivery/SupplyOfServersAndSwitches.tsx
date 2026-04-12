@@ -4,8 +4,8 @@ import StickyHeadingListSection from '@/components/sections/StickyHeadingListSec
 import ClientsSection from '@/components/grids/ClientsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import Footer from '@/widgets/footer/Footer';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
-import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
+import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
+import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
 import bvkLogo from '@/assets/img/providers/bvk.png';
 import delTechLogo from '@/assets/img/providers/dell_technologies.png';
 import fusionLogo from '@/assets/img/providers/fusion.png';

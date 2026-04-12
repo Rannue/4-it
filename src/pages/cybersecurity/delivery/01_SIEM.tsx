@@ -1,18 +1,18 @@
 import Header from '@/widgets/header/Header';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import KeyFeaturesGridSection from '@/components/sections/KeyFeaturesGridSection';
-import bitrixBoxImg from '@/assets/img/Битрикс.png';
-import bitrixScreenImg from '@/assets/img/Битрикс-скрин.png';
+import bitrixBoxImg from '@/assets/img/bitrix.png';
+import bitrixScreenImg from '@/assets/img/bitrix-screen.png';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import Footer from '@/widgets/footer/Footer';
 import lawIllustration from '@/assets/img/illustrations/law.png';
-import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
+import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
 import librasoftLogo from '@/assets/img/providers/librasoft.svg';
-import stakhanovetsLogo from '@/assets/img/providers/Стахановец_Логотип_SVG_Полноцвет.svg';
+import stakhanovetsLogo from '@/assets/img/providers/stakhanovec-logo.svg';
 
 const SIEM_FEATURE_BANNER_DESCRIPTION =
   'Мы предлагаем внедрение современных SIEM-решений, которые соответствуют требованиям стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим регламентом Республики Беларусь «Информационные технологии. Средства защиты информации. Информационная безопасность» (ТР 2013/027/BY), утверждённых Приказом Оперативно-аналитического центра при Президенте Республики Беларусь от 12 марта 2020 г. № 77 (в редакции от 28.12.2022 № 207).';

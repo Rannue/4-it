@@ -54,13 +54,13 @@ React 19 SPA. All routing is defined in one place: `src/app/main.tsx`.
 - `src/pages/` — route-level page components
 - `src/components/sections/` — reusable full-width page sections (hero, cards, testimonials, etc.)
 - `src/components/grids/` — grid layout wrappers
-- `src/components/кибербезопасность/` — cybersecurity-specific sections (**Cyrillic name, pending rename**)
+- `src/components/cybersecurity/` — cybersecurity-specific sections (ManufacturersSection, DocumentDetailsSection)
 - `src/shared/ui/` — primitive UI components (Button, Input, PhoneInput)
 - `src/shared/icons/` — SVG icon components
 - `src/widgets/` — self-contained UI units with their own folder (Header, Footer, ScrollToTop)
 - `src/data/` — JSX-heavy data files (stackedFeatureCards)
 - `src/constants/` — typed static constants (supportPlans)
-- `src/assets/` — images, icons, certificates (**some Cyrillic subfolder names, pending rename**)
+- `src/assets/` — images, icons, certificates
 
 ## Quirks & gotchas
 

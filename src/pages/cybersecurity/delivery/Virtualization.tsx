@@ -4,8 +4,8 @@ import StickyHeadingListSection from '@/components/sections/StickyHeadingListSec
 import ClientsSection from '@/components/grids/ClientsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import Footer from '@/widgets/footer/Footer';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
-import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
+import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
+import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
 import bytisLogo from '@/assets/img/providers/bytis.png';
 import zstackLogo from '@/assets/img/providers/ZStack.svg';
 import proxmoxLogo from '@/assets/img/providers/Proxmox.svg';

@@ -7,7 +7,7 @@ import trendingUpIcon from '@/assets/icons/trending-up.svg';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import ServicesSection, { type ServiceItem } from '@/components/sections/ServicesSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';

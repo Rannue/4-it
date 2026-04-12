@@ -7,13 +7,13 @@ import certificateIcon from '@/assets/icons/certificate.svg';
 import licenseIcon from '@/assets/icons/license.svg';
 import fingerprintIcon from '@/assets/icons/fingerprint.svg';
 import ScrollCardsSection from '@/components/sections/ScrollCardsSection';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
-import analysisIllustration from '@/assets/img/illustrations/Кибербезопасность/analysis.svg';
-import settingsIllustration from '@/assets/img/illustrations/Кибербезопасность/settings.svg';
+import analysisIllustration from '@/assets/img/illustrations/cybersecurity/analysis.svg';
+import settingsIllustration from '@/assets/img/illustrations/cybersecurity/settings.svg';
 
 function CertificationOfInformationSecurityToolsPage() {
   return (

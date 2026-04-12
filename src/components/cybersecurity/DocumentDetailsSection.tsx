@@ -1,5 +1,5 @@
 import './DocumentDetailsSection.css';
-import licenseQr from '@/assets/img/Кибербезопасность/QR.png';
+import licenseQr from '@/assets/img/cybersecurity/QR.png';
 
 /** Должен совпадать с URL, закодированным в QR-изображении. */
 const LICENSE_VERIFICATION_URL = 'https://license.gov.by/onelicense/176623' as const;

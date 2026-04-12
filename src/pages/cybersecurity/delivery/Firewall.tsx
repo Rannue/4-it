@@ -1,16 +1,16 @@
 import Header from '@/widgets/header/Header';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import Footer from '@/widgets/footer/Footer';
 import FeatureBanner from '@/components/sections/FeatureBanner';
-import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
+import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
 import lawIllustration from '@/assets/img/law_filled.svg';
-import checkpointLogo from '@/assets/img/providers/Чекпоинт.svg';
+import checkpointLogo from '@/assets/img/providers/checkpoint.svg';
 import huaweiLogo from '@/assets/img/providers/Huawei.svg';
 import usergateLogo from '@/assets/img/providers/Usergate.png';
-import kodBezopasnostiLogo from '@/assets/img/providers/Код безопасности.svg';
+import kodBezopasnostiLogo from '@/assets/img/providers/kod-bezopasnosti.svg';
 import idecoLogo from '@/assets/img/providers/Ideco.png';
 import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
 

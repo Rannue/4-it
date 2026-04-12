@@ -8,8 +8,8 @@ import complexIllustration from '@/assets/img/illustrations/complex.svg';
 import integrationIllustration from '@/assets/img/illustrations/integration.svg';
 import reliableIllustration from '@/assets/img/illustrations/reliability.svg';
 import certificationIllustration from '@/assets/img/illustrations/certification.svg';
-import chatIllustration from '@/assets/img/illustrations/сhat.svg';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import chatIllustration from '@/assets/img/illustrations/chat.svg';
+import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 

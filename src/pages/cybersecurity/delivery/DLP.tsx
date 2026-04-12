@@ -1,7 +1,7 @@
 import Header from '@/widgets/header/Header';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import InfoGridSection from '@/components/grids/InfoGridSection';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import Footer from '@/widgets/footer/Footer';
@@ -10,10 +10,10 @@ import databaseIcon from '@/assets/icons/Database.svg';
 import barrierIcon from '@/assets/icons/barrier-block.svg';
 import presentationIcon from '@/assets/icons/presentation.svg';
 import FeatureBanner from '@/components/sections/FeatureBanner';
-import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
+import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
 import lawIllustration from '@/assets/img/law_filled.svg';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
-import stakhanovetsLogo from '@/assets/img/providers/Стахановец_Логотип_SVG_Полноцвет.svg';
+import stakhanovetsLogo from '@/assets/img/providers/stakhanovec-logo.svg';
 import librasoftLogo from '@/assets/img/providers/librasoft.svg';
 
 function DlpPage() {
