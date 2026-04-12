@@ -2,8 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 // components
-import Header from '@/widgets/header/Header';
-import Footer from '@/widgets/footer/Footer';
+import PageLayout from '@/components/layout/PageLayout';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import ClientsSection from '@/components/grids/ClientsSection';
@@ -90,25 +89,22 @@ function AnimatedAuditGoalText() {
 
 function AuditPage() {
   return (
-    <div className="app">
-      <Header />
+    <PageLayout>
+      <SecondaryHero
+        breadcrumbs={[
+          { label: 'Главная', to: '/' },
+          { label: 'Кибербезопасность', to: '/cybersecurity' },
+          { label: 'Аудит инфраструктуры и информационной безопасности' },
+        ]}
+        title="Аудит инфраструктуры и информационной безопасности"
+      />
 
-      <main className="app-main">
-        <SecondaryHero
-          breadcrumbs={[
-            { label: 'Главная', to: '/' },
-            { label: 'Кибербезопасность', to: '/cybersecurity' },
-            { label: 'Аудит инфраструктуры и информационной безопасности' },
-          ]}
-          title="Аудит инфраструктуры и информационной безопасности"
-        />
+      <AnimatedAuditGoalText />
 
-        <AnimatedAuditGoalText />
-
-        <InfoGridSection
-          title="Что вы получаете в рамках услуги"
-          columnsHtml={[
-            `
+      <InfoGridSection
+        title="Что вы получаете в рамках услуги"
+        columnsHtml={[
+          `
               <div class="info-grid__group">
                 <h4>Отчёт о структуре информационной системы</h4>
                 <p>
@@ -122,7 +118,7 @@ function AuditPage() {
                 class="info-grid__icon"
               />
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Спецификации для систем защиты информации</h4>
                 <p>
@@ -136,7 +132,7 @@ function AuditPage() {
                 class="info-grid__icon"
               />
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Рекомендации по улучшению</h4>
                 <p>
@@ -150,13 +146,11 @@ function AuditPage() {
                 class="info-grid__icon"
               />
             `,
-          ]}
-        />
+        ]}
+      />
 
-        <ClientsSection />
-      </main>
-      <Footer />
-    </div>
+      <ClientsSection />
+    </PageLayout>
   );
 }
 

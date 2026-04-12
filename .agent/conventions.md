@@ -11,11 +11,32 @@
 
 Components are organized by category:
 
-- **`layout/`** — Page-level layouts (e.g., `PageLayout` wrapping Header + Footer + main)
+- **`layout/`** — Page-level layouts (`PageLayout` wraps Header + Footer + main)
 - **`sections/`** — Full-width semantic sections (HeroBreadcrumbs, ServicesSection, TestimonialsSection)
 - **`grids/`** — Grid-based visual layouts (CardsGridSection, InfoGridSection, KeyFeaturesGridSection, ClientsSection)
 - **`domain/`** — Domain-specific business logic components (e.g., `cybersecurity/DocumentDetailsSection`)
 - **`routes/`** — Modular route definitions (`GeneralRoutes`, `CybersecurityRoutes`)
+
+### Page Structure (Standard Pattern)
+
+**All pages use `PageLayout`** from `@/components/layout/PageLayout`:
+
+```tsx
+// components
+import PageLayout from '@/components/layout/PageLayout';
+import SecondaryHero from '@/components/sections/SecondaryHero';
+
+export default function MyPage() {
+  return (
+    <PageLayout>
+      <SecondaryHero title="Page Title" />
+      {/* Page content sections */}
+    </PageLayout>
+  );
+}
+```
+
+**Do not manually import `<Header>` and `<Footer>`** — use `PageLayout` instead.
 
 ## Components
 

@@ -16,8 +16,6 @@ import riseIllustration from '@/assets/img/illustrations/rise.svg';
 import buildingIllustration from '@/assets/img/illustrations/buildings.svg';
 import scannerIllustration from '@/assets/img/illustrations/scaning.svg';
 
-import './Hero.css';
-
 const CYBERSECURITY_SERVICES: ServiceItem[] = [
   {
     title: 'Аудит инфраструктуры и информационной безопасности',

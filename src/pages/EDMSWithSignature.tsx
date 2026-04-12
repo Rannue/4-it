@@ -1,6 +1,5 @@
 // components
-import Header from '@/widgets/header/Header';
-import Footer from '@/widgets/footer/Footer';
+import PageLayout from '@/components/layout/PageLayout';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import ClientsSection from '@/components/grids/ClientsSection';
 import InfoGridSection from '@/components/grids/InfoGridSection';
@@ -70,27 +69,24 @@ const EDMS_CARDS_HTML = [
 
 function EDMSWithSignaturePage() {
   return (
-    <div className="app">
-      <Header />
-
-      <main className="app-main">
-        <SecondaryHero
-          breadcrumbs={[
-            { label: '4-it.by', href: '/' },
-            { label: 'Электронный документооборот с ЭЦП' },
-          ]}
-          title="Электронный документооборот с ЭЦП"
-          description="Мы предоставляем услугу внедрения электронного документооборота с использованием ЭЦП. Помогаем IT-компаниям перейти на юридически значимые цифровые документы, наладить безопасный обмен и подписание, а также обеспечить поддержку для стабильной работы."
-        />
-        <InfoGridSection
-          title={
-            <>
-              Что такое электронный документооборот и{' '}
-              <span className="info-grid__title-accent">ЭЦП?</span>
-            </>
-          }
-          columnsHtml={[
-            `
+    <PageLayout>
+      <SecondaryHero
+        breadcrumbs={[
+          { label: '4-it.by', href: '/' },
+          { label: 'Электронный документооборот с ЭЦП' },
+        ]}
+        title="Электронный документооборот с ЭЦП"
+        description="Мы предоставляем услугу внедрения электронного документооборота с использованием ЭЦП. Помогаем IT-компаниям перейти на юридически значимые цифровые документы, наладить безопасный обмен и подписание, а также обеспечить поддержку для стабильной работы."
+      />
+      <InfoGridSection
+        title={
+          <>
+            Что такое электронный документооборот и{' '}
+            <span className="info-grid__title-accent">ЭЦП?</span>
+          </>
+        }
+        columnsHtml={[
+          `
               <div class="info-grid__group">
                 <h4>Электронный документооборот</h4>
                 <p>
@@ -103,7 +99,7 @@ function EDMSWithSignaturePage() {
                 aria-hidden="true"
               />
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>ЭЦП (электронно-цифровая подпись)</h4>
                 <p>
@@ -116,7 +112,7 @@ function EDMSWithSignaturePage() {
                 aria-hidden="true"
               />
             `,
-            `
+          `
               <div class="info-grid__group-type2">
                 <p>
 Беларуси ЭЦП существует в двух основных формах:
@@ -125,57 +121,54 @@ function EDMSWithSignaturePage() {
 <br />• SIM-карта с записанным на ней ключом </span>              </p>
               </div>
             `,
-          ]}
-        />
-        <SplitHighlightPanel
-          asideTitle="Внедрение в соответствии с требованиями и стандартами"
-          illustration={{ src: lawIllustrationImg, alt: '' }}
-        >
-          <p>
-            Мы предлагаем внедрение современных SIEM-решений, которые соответствуют требованиям
-            стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с
-            техническим регламентом Республики Беларусь «Информационные технологии. Средства защиты
-            информации. Информационная безопасность» (ТР 2013/027/BY), утверждённых Приказом
-            Оперативно-аналитического центра при Президенте Республики Беларусь от 12 марта 2020 г.
-            № 77 (в редакции от 28.12.2022 № 207).
-          </p>
-          <p>
-            Чтобы ЭЦП была корректной, она должна быть выдана аккредитованным удостоверяющим
-            центром.
-          </p>
-        </SplitHighlightPanel>
+        ]}
+      />
+      <SplitHighlightPanel
+        asideTitle="Внедрение в соответствии с требованиями и стандартами"
+        illustration={{ src: lawIllustrationImg, alt: '' }}
+      >
+        <p>
+          Мы предлагаем внедрение современных SIEM-решений, которые соответствуют требованиям
+          стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим
+          регламентом Республики Беларусь «Информационные технологии. Средства защиты информации.
+          Информационная безопасность» (ТР 2013/027/BY), утверждённых Приказом
+          Оперативно-аналитического центра при Президенте Республики Беларусь от 12 марта 2020 г. №
+          77 (в редакции от 28.12.2022 № 207).
+        </p>
+        <p>
+          Чтобы ЭЦП была корректной, она должна быть выдана аккредитованным удостоверяющим центром.
+        </p>
+      </SplitHighlightPanel>
 
-        <CardsGridSection title={<>Преимущества внедрения</>} cardsHtml={EDMS_CARDS_HTML} />
+      <CardsGridSection title={<>Преимущества внедрения</>} cardsHtml={EDMS_CARDS_HTML} />
 
-        <StickyHeadingListSection
-          id="virtualization-benefits"
-          title={
-            <>
-              Этапы
-              <span className="sticky-heading-list__title-accent"> внедрения</span>
-            </>
-          }
-          items={[
-            { text: 'Получение сертификата ЭЦПиз аккредитованного удостоверяющего центра' },
-            {
-              text: 'Выбор носителя (USB-токен, SIM-ключ) и установка необходимых программных средств',
-            },
-            {
-              text: 'Настройка системы ЭДО: загрузка шаблонов, определение типов документов, маршрутов подписания',
-            },
-            {
-              text: 'Инструктаж сотрудников по работе с ЭДО и ЭЦП: как подписывать документы, как проверять подписи',
-            },
-            {
-              text: 'Тестовый обмен документами с контрагентами, проверка юридической силы, исправление возможных ошибок',
-            },
-          ]}
-        />
-        <CertificatesSection />
-        <ClientsSection />
-      </main>
-      <Footer />
-    </div>
+      <StickyHeadingListSection
+        id="virtualization-benefits"
+        title={
+          <>
+            Этапы
+            <span className="sticky-heading-list__title-accent"> внедрения</span>
+          </>
+        }
+        items={[
+          { text: 'Получение сертификата ЭЦПиз аккредитованного удостоверяющего центра' },
+          {
+            text: 'Выбор носителя (USB-токен, SIM-ключ) и установка необходимых программных средств',
+          },
+          {
+            text: 'Настройка системы ЭДО: загрузка шаблонов, определение типов документов, маршрутов подписания',
+          },
+          {
+            text: 'Инструктаж сотрудников по работе с ЭДО и ЭЦП: как подписывать документы, как проверять подписи',
+          },
+          {
+            text: 'Тестовый обмен документами с контрагентами, проверка юридической силы, исправление возможных ошибок',
+          },
+        ]}
+      />
+      <CertificatesSection />
+      <ClientsSection />
+    </PageLayout>
   );
 }
 
