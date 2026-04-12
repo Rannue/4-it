@@ -1,3 +1,8 @@
+---
+name: review
+description: Review the current working changes against project conventions and report issues.
+---
+
 # /review — Code Quality Audit
 
 Review the current working changes against project conventions and report issues.

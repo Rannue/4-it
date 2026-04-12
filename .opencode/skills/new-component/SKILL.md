@@ -1,3 +1,8 @@
+---
+name: new-component
+description: Create a new component following project conventions
+---
+
 # /new-component — Scaffold a New Component
 
 Create a new component following project conventions.

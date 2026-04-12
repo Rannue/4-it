@@ -1,3 +1,8 @@
+---
+name: sync-docs
+description: Update `.agent/` documentation to reflect recent code changes
+---
+
 # /sync-docs — Sync Agent Docs After Changes
 
 Keep `.agent/` documentation accurate after structural changes to the project.
