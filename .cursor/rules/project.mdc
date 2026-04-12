@@ -1,0 +1,40 @@
+---
+description: 4-it project conventions
+alwaysApply: true
+---
+
+# 4-it Project Rules
+
+Read `.agent/conventions.md` for the full convention set before writing any code.
+
+## Quick reference
+
+**Components**
+- Default export only — no named component exports
+- Plain function, no `FC` annotation: `export default function Foo({ bar }: FooProps)`
+- Props as `type`, not `interface`: `type FooProps = { bar: string }`
+- No explicit JSX return type
+
+**Files & Folders**
+- PascalCase component files (`Button.tsx`), kebab-case folders (`shared/ui`)
+- English names only — no Cyrillic
+- Colocate CSS: `Button.tsx` + `Button.css` in the same folder
+
+**TypeScript**
+- `strict: true` — never disable
+- `type` keyword, not `interface`
+- No `any` — use `unknown` + type guards
+
+**Imports**
+- Always `@/` alias — never relative `../../`
+
+**CSS**
+- BEM class names: `block__element--modifier`
+
+**Git**
+- Conventional commits: `feat:`, `fix:`, `refactor:`, `style:`, `docs:`, `chore:`
+- Atomic commits, branch prefixes: `feat/`, `fix/`, `refactor/`, `chore/`
+
+**Commands — always via Make**
+- `make dev` · `make build` · `make lint` · `make format` · `make check`
+- Never `cd` into a subfolder and run tools directly
