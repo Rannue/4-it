@@ -5,6 +5,7 @@
 ## Every session — read these first
 
 - `.agent/manifest.yml` — commands, entry point, framework versions
+- `.agent/architecture.md` — route map, component categories, gotchas
 - `.agent/conventions.md` — naming, git, code patterns, what not to do
 - `.agent/doc-philosophy.md` — what to document and what not to
 

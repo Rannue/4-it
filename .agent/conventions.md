@@ -44,14 +44,39 @@
 ## Imports
 
 - Always use the `@/` alias for src-relative imports — never `../../`
-  ```ts
-  // correct
-  import Button from '@/shared/ui/Button'
-
-  // wrong
-  import Button from '../../shared/ui/Button'
-  ```
 - Barrel `index.ts` only when a folder exports multiple symbols used externally
+
+### Import grouping
+
+Organize imports into groups with lowercase comment labels, separated by blank lines:
+
+1. **react** — `react`, `react-dom`, `react-router-dom`
+2. **components** — internal UI: `@/pages/*`, `@/components/*`, `@/widgets/*`, `@/shared/ui/*`, `@/shared/icons/*`
+3. **data** — internal data and constants: `@/data/*`, `@/constants/*`
+4. **assets** — images and static files: `@/assets/*`
+5. **local** — same-directory or parent imports: `./`, `../`
+6. CSS imports — always last, no comment label
+
+```tsx
+// react
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+// components
+import Header from '@/widgets/header/Header'
+import Button from '@/shared/ui/Button'
+
+// data
+import { SUPPORT_PLAN_FEATURE_ROWS } from '@/constants/supportPlans'
+
+// assets
+import logo from '@/assets/logo-4it.svg'
+
+// local
+import './HeroSection.css'
+```
+
+Omit groups that have no imports for the file — don't leave empty comment labels.
 
 ## Git
 
