@@ -4,8 +4,8 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 // components
 import CybersecurityPage from '@/pages/cybersecurity';
 import CybersecurityAuditPage from '@/pages/cybersecurity/audit/Audit.tsx';
-import CybersecurityDesignSziPage from '@/pages/cybersecurity/DesignSzi.tsx';
-import CybersecurityCreateSziPage from '@/pages/cybersecurity/CreateSzi.tsx';
+import CybersecurityDesignSziPage from '@/pages/cybersecurity/certification/DesignSzi';
+import CybersecurityCreateSziPage from '@/pages/cybersecurity/certification/CreateSzi.tsx';
 import CybersecurityAttestationSziPage from '@/pages/cybersecurity/AttestationSzi.tsx';
 import CybersecurityInfrastructureEffectivenessPage from '@/pages/cybersecurity/InfrastructureEffectiveness.tsx';
 import CybersecuritySiemPage from '@/pages/cybersecurity/delivery/SIEM.tsx';

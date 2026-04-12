@@ -111,7 +111,7 @@ h3 {
 
 h4 {
   font-family: var(--font-family-base);
-  font-size: clamp(16px, calc(100vw * 20 / 1400), 20px);
+  font-size: clamp(14px, calc(100vw * 18 / 1400), 18px);
   font-weight: var(--font-weight-semibold);
   line-height: 1.2;
 }

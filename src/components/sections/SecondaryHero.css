@@ -76,33 +76,6 @@
   mix-blend-mode: luminosity;
 }
 
-/* audit goal animated line */
-
-.audit-goal {
-  /* padding: 100px 0; */
-  background-color: var(--color-surface);
-  border-radius: 8px;
-  margin: 0 0 60px;
-}
-
-.audit-goal__text {
-  font-size: 34px;
-  font-weight: 500;
-  line-height: 140%;
-  color: #999999;
-  width: 94%;
-  padding: 32px;
-}
-
-.audit-goal__text span {
-  color: #999999;
-}
-
-.audit-goal__word {
-  display: inline-block;
-  margin-right: 0.3em;
-}
-
 .hero-secondary-grid__buttons-container {
   position: absolute;
   left: 32px;

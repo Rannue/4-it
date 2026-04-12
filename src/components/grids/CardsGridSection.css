@@ -69,6 +69,8 @@
   background-color: #033860;
   border-radius: 8px;
   padding: 42px 42px 52px;
+  margin: 0 auto;
+  max-width: 1600px;
 }
 
 .cards-grid__card-dark h3 {
@@ -84,8 +86,13 @@
   .cards-grid__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .cards-grid__card:has(> .cards-grid__media-empty) {
+  .cards-grid__card:has(> .cards-grid__media-empty),
+  .cards-grid__card:has(> .cards-grid__media--empty) {
     display: none;
+  }
+
+  .cards-grid-dark {
+    padding: 32px 32px 42px;
   }
 
   .cards-grid__header {
@@ -96,6 +103,10 @@
 @media (max-width: 600px) {
   .cards-grid__grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cards-grid-dark {
+    padding: 24px;
   }
 
   .cards-grid__header {

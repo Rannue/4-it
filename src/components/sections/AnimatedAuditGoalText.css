@@ -1,0 +1,70 @@
+/* Scroll-reveal goal line: optional left caption + animated main text */
+
+.animated-goal__grid {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.animated-goal__grid--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.animated-goal__aside {
+  padding-top: 0.35em;
+}
+
+.animated-goal__aside-label {
+  display: block;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.animated-goal__text {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+  color: #d3d4db;
+}
+
+.animated-goal__text span {
+  /* base for animated spans; per-letter color set inline */
+  color: inherit;
+}
+
+.animated-goal__word {
+  display: inline-block;
+  margin-right: 0.3em;
+}
+
+@media (max-width: 900px) {
+  .animated-goal__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .animated-goal__text {
+    font-size: 24px;
+  }
+
+  .animated-goal__aside {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .animated-goal__text {
+    font-size: 20px;
+  }
+
+  .animated-goal__aside-label {
+    font-size: 14px;
+  }
+}

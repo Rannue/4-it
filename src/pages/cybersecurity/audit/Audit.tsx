@@ -1,10 +1,8 @@
-// react
-import { useEffect, useRef, useState } from 'react';
-
 // components
 import PageLayout from '@/components/layout/PageLayout';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';
+import AnimatedAuditGoalText from '@/components/sections/AnimatedAuditGoalText.tsx';
 import ClientsSection from '@/components/grids/ClientsSection';
 
 // assets
@@ -16,76 +14,6 @@ import '../../Hero.css';
 
 const AUDIT_GOAL_TEXT =
   'Цель аудита — комплексный анализ текущего состояния вашей информационной системы';
-
-function AnimatedAuditGoalText() {
-  const ref = useRef<HTMLParagraphElement | null>(null);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const element = ref.current;
-      if (!element) return;
-
-      const rect = element.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-
-      // начинаем анимацию, когда верх блока входит снизу в экран,
-      // и завершаем, когда он поднимается ближе к верхней части
-      const start = viewportHeight * 0.9; // почти нижний край
-      const end = viewportHeight * 0.2; // верхняя зона чтения
-
-      const raw = (start - rect.top) / (start - end);
-      const clamped = Math.min(1, Math.max(0, raw));
-      setProgress(clamped);
-    };
-
-    handleScroll();
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
-
-  return (
-    <section className="section audit-goal">
-      <p ref={ref} className="audit-goal__text">
-        {(() => {
-          const words = AUDIT_GOAL_TEXT.split(' ');
-          const totalLetters = words.reduce((sum, word) => sum + word.length, 0);
-
-          return words.map((word, wordIdx) => {
-            const offset = words.slice(0, wordIdx).reduce((s, w) => s + w.length, 0);
-            return (
-              <span key={wordIdx} className="audit-goal__word">
-                {word.split('').map((char, charIdx) => {
-                  const letterIndex = offset + charIdx;
-                  const threshold = totalLetters > 1 ? letterIndex / (totalLetters - 1) : 1;
-                  const revealed = progress >= threshold;
-
-                  return (
-                    <span
-                      key={`${wordIdx}-${charIdx}`}
-                      style={{
-                        color: revealed ? '#01111E' : '#D3D4DB',
-                        transition: 'color 80ms linear',
-                      }}
-                    >
-                      {char}
-                    </span>
-                  );
-                })}
-              </span>
-            );
-          });
-        })()}
-      </p>
-    </section>
-  );
-}
 
 function AuditPage() {
   return (
@@ -99,7 +27,7 @@ function AuditPage() {
         title="Аудит инфраструктуры и информационной безопасности"
       />
 
-      <AnimatedAuditGoalText />
+      <AnimatedAuditGoalText text={AUDIT_GOAL_TEXT} />
 
       <InfoGridSection
         title="Что вы получаете в рамках услуги"
