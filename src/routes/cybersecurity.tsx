@@ -15,8 +15,8 @@ import FirewallPage from '@/pages/cybersecurity/delivery/Firewall.tsx';
 import AntivirusProtectionPage from '@/pages/cybersecurity/delivery/AntivirusProtection';
 import BackupPage from '@/pages/cybersecurity/delivery/Backup';
 import CybersecurityNetworkScreensPage from '@/pages/cybersecurity/delivery/LinearEncryption.tsx';
-import CertificationOfInformationSecurityToolsPage from '@/pages/cybersecurity/Certification.tsx';
-import CybersecurityDeliveryPage from '@/pages/cybersecurity/Delivery.tsx';
+import CertificationOfInformationSecurityToolsPage from '@/pages/cybersecurity/certification/Certification.tsx';
+import CybersecurityDeliveryPage from '@/pages/cybersecurity/delivery/Delivery.tsx';
 import CyberCulturePage from '@/pages/cybersecurity/delivery/CyberCulture.tsx';
 import SupplyOfServersAndSwitchesPage from '@/pages/cybersecurity/delivery/SupplyOfServersAndSwitches.tsx';
 
