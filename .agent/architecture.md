@@ -9,13 +9,13 @@ React 19 SPA. Routing is modularized into route groups.
   - `general.tsx` — GeneralRoutes component (non-cybersecurity services)
   - `cybersecurity.tsx` — CybersecurityRoutes component (all security pages)
   - `index.ts` — barrel export
-- `src/app/App.tsx` — exists but not routed; `/` and `/home` redirect to `/cybersecurity`
+- `src/app/App.tsx` — home page component for `/` and `/home`
 
 ## Routes
 
 ### General service pages (via GeneralRoutes)
 
-- `/` and `/home` → redirect to `/cybersecurity`
+- `/` and `/home` → `src/app/App.tsx` (home page)
 - `/technical-support` → `src/pages/TechnicalSupport.tsx`
 - `/bitrix24/implementation` → `src/pages/bitrix24/Implementation.tsx`
 - `/edms-signature` → `src/pages/EDMSWithSignature.tsx`

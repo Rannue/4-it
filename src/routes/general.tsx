@@ -1,5 +1,8 @@
 // react
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+
+// app
+import App from '@/app/App';
 
 // components
 import TechnicalSupportPage from '@/pages/TechnicalSupport.tsx';
@@ -11,8 +14,8 @@ import VirtualizationPage from '@/pages/cybersecurity/delivery/Virtualization.ts
 export function GeneralRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/cybersecurity" replace />} />
-      <Route path="/home" element={<Navigate to="/cybersecurity" replace />} />
+      <Route path="/" element={<App />} />
+      <Route path="/home" element={<App />} />
       <Route path="/technical-support" element={<TechnicalSupportPage />} />
       <Route path="/bitrix24/implementation" element={<Bitrix24ImplementationPage />} />
       <Route path="/edms-signature" element={<EDMSWithSignaturePage />} />
