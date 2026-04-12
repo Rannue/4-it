@@ -1,8 +1,3 @@
----
-name: new
-description: Execute change requests with full agentic workflow
----
-
 # /new — Agentic Change Request Execution
 
 Execute change requests with auto-discovery, planning, review, and documentation.
@@ -84,7 +79,7 @@ After completion:
 ```
 ## Summary
 
-**Changes:**
+**Changes**:
 - Created: `src/components/sections/PricingCard.tsx`
 - Created: `src/components/sections/PricingCard.css`
 - Modified: `src/pages/services.tsx` (added component import)

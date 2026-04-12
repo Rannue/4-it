@@ -38,10 +38,10 @@ Structure:
 
 ## Available skills
 
-| Skill            | When to use                                            |
-| ---------------- | ------------------------------------------------------ |
-| `/review`        | Before committing — audit code against conventions     |
-| `/new-component` | Scaffold a new component with correct structure        |
-| `/sync-docs`     | After structural changes — keep `.agent/` docs current |
+| Skill        | When to use                                              |
+| ------------ | -------------------------------------------------------- |
+| `/new`       | Execute change requests with auto-discovery and planning |
+| `/review`    | Audit code against conventions (auto-run by `/new`)      |
+| `/sync-docs` | Update `.agent/` docs (auto-run by `/new`)               |
 
 Skills are located in `.opencode/skills/`.
