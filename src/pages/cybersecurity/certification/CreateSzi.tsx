@@ -42,7 +42,7 @@ function CybersecurityCreateSziPage() {
       <InfoGridSection
         title={
           <>
-            Что включает в себя <span className="info-grid__title-accent">проектирование СЗИ?</span>
+            Что включает в себя <span className="info-grid__title-accent">создание СЗИ?</span>
           </>
         }
         columnsHtml={[

@@ -76,7 +76,9 @@ function InterestingFacts({ items, className }: InterestingFactsProps) {
         <section className="facts">
           <div
             className={
-              list.length === 3 ? 'facts__grid facts__grid--layout-3' : 'facts__grid facts__grid--auto'
+              list.length === 3
+                ? 'facts__grid facts__grid--layout-3'
+                : 'facts__grid facts__grid--auto'
             }
           >
             {list.map((item, index) => {
@@ -90,11 +92,7 @@ function InterestingFacts({ items, className }: InterestingFactsProps) {
                   <div
                     className={`facts-card__visual facts-card__visual--${variant === 'orange' ? 'orange' : 'image'}`}
                   >
-                    <img
-                      src={item.image}
-                      alt={item.imageAlt ?? ''}
-                      className="facts-card__image"
-                    />
+                    <img src={item.image} alt={item.imageAlt ?? ''} className="facts-card__image" />
                   </div>
                   <p className="facts-card__text">{item.description}</p>
                 </article>

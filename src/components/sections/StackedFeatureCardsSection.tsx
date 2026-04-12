@@ -46,19 +46,16 @@ export type StackedFeatureCardsSectionProps = {
   id?: string;
 };
 
-function isLabelValueFeature(f: StackedFeatureCardFeature): f is { label: ReactNode; value: ReactNode } {
+function isLabelValueFeature(
+  f: StackedFeatureCardFeature
+): f is { label: ReactNode; value: ReactNode } {
   return 'label' in f && 'value' in f;
 }
 
 function isTextSecondaryFeature(
-  f: StackedFeatureCardFeature,
+  f: StackedFeatureCardFeature
 ): f is { text: ReactNode; secondary: ReactNode } {
-  return (
-    'text' in f &&
-    'secondary' in f &&
-    f.secondary != null &&
-    f.secondary !== ''
-  );
+  return 'text' in f && 'secondary' in f && f.secondary != null && f.secondary !== '';
 }
 
 function isTwoLineFeature(f: StackedFeatureCardFeature): boolean {
@@ -179,7 +176,9 @@ function StackedFeatureCardsSection({
                         </div>
                         <div className="stacked-feature-cards__cta-row">
                           {card.priceNote != null && card.priceNote !== '' ? (
-                            <span className="stacked-feature-cards__price-note">{card.priceNote}</span>
+                            <span className="stacked-feature-cards__price-note">
+                              {card.priceNote}
+                            </span>
                           ) : null}
                           <Button
                             href={card.ctaHref}

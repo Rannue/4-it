@@ -129,84 +129,84 @@ function Footer() {
     <>
       <ContactRequestForm id="contacts" />
       <footer className="footer">
-      <div className="footer__wrap">
-        <div className="footer__panel">
-          <div className="footer__top">
-            <div className="footer__top-inner">
-              <div className="footer__brand-block">
-                <Link to="/" className="footer__brand">
-                  <img src={logo4it} alt="4-IT" className="footer__logo" />
-                </Link>
-                <nav className="footer__nav" aria-label="Основное меню">
-                  {MAIN_NAV.map(item =>
-                    item.kind === 'router' ? (
-                      <Link key={item.label} to={item.to}>
-                        {item.label}
-                      </Link>
-                    ) : (
-                      <a key={item.label} href={item.href}>
-                        {item.label}
-                      </a>
-                    ),
-                  )}
-                </nav>
-              </div>
+        <div className="footer__wrap">
+          <div className="footer__panel">
+            <div className="footer__top">
+              <div className="footer__top-inner">
+                <div className="footer__brand-block">
+                  <Link to="/" className="footer__brand">
+                    <img src={logo4it} alt="4-IT" className="footer__logo" />
+                  </Link>
+                  <nav className="footer__nav" aria-label="Основное меню">
+                    {MAIN_NAV.map(item =>
+                      item.kind === 'router' ? (
+                        <Link key={item.label} to={item.to}>
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <a key={item.label} href={item.href}>
+                          {item.label}
+                        </a>
+                      )
+                    )}
+                  </nav>
+                </div>
 
-              <div className="footer__divider footer__divider--tablet-only" aria-hidden />
+                <div className="footer__divider footer__divider--tablet-only" aria-hidden />
 
-              <div className="footer__services">
-                {SERVICE_COLUMNS.map(col => (
-                  <ServiceColumnBlock
-                    key={'titleLink' in col ? col.titleLink.to : col.title}
-                    column={col}
-                  />
-                ))}
+                <div className="footer__services">
+                  {SERVICE_COLUMNS.map(col => (
+                    <ServiceColumnBlock
+                      key={'titleLink' in col ? col.titleLink.to : col.title}
+                      column={col}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="footer__divider footer__divider--panel-padded" aria-hidden />
+            <div className="footer__divider footer__divider--panel-padded" aria-hidden />
 
-          <div className="footer__middle">
-            <div className="footer__middle-inner">
-              <div className="footer__contacts">
-                <div className="footer__contacts-col">
-                  <h4 className="footer__heading footer__heading--muted">Посетить</h4>
-                  <p>БЦ &quot;Royal Plaza&quot;, ст. м. Немига</p>
-                  <p>
-                    {OFFICE_ADDRESS_LINE},<br />
-                    20 этаж, 17 офис
-                  </p>
-                  <p>пн-пт с 9:00 до 18:00</p>
-                  <ExternalTextLink href={YANDEX_MAPS_URL}>Яндекс Карты</ExternalTextLink>
+            <div className="footer__middle">
+              <div className="footer__middle-inner">
+                <div className="footer__contacts">
+                  <div className="footer__contacts-col">
+                    <h4 className="footer__heading footer__heading--muted">Посетить</h4>
+                    <p>БЦ &quot;Royal Plaza&quot;, ст. м. Немига</p>
+                    <p>
+                      {OFFICE_ADDRESS_LINE},<br />
+                      20 этаж, 17 офис
+                    </p>
+                    <p>пн-пт с 9:00 до 18:00</p>
+                    <ExternalTextLink href={YANDEX_MAPS_URL}>Яндекс Карты</ExternalTextLink>
+                  </div>
+                  <div className="footer__contacts-col">
+                    <h4 className="footer__heading footer__heading--muted">Написать</h4>
+                    <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+                    <ExternalTextLink href={SOCIAL.linkedin}>LinkedIn</ExternalTextLink>
+                    <ExternalTextLink href={SOCIAL.instagram}>Instagram</ExternalTextLink>
+                  </div>
+                  <div className="footer__contacts-col">
+                    <h4 className="footer__heading footer__heading--muted">Позвонить</h4>
+                    <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>
+                  </div>
                 </div>
-                <div className="footer__contacts-col">
-                  <h4 className="footer__heading footer__heading--muted">Написать</h4>
-                  <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-                  <ExternalTextLink href={SOCIAL.linkedin}>LinkedIn</ExternalTextLink>
-                  <ExternalTextLink href={SOCIAL.instagram}>Instagram</ExternalTextLink>
-                </div>
-                <div className="footer__contacts-col">
-                  <h4 className="footer__heading footer__heading--muted">Позвонить</h4>
-                  <a href={`tel:${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>
-                </div>
-              </div>
 
-              <div className="footer__legal">
-                <nav className="footer__policies" aria-label="Правовая информация">
-                  {POLICY_LINKS.map(({ href, label }) => (
-                    <a key={href} href={href} target="_blank" rel={EXTERNAL_REL}>
-                      {label}
-                    </a>
-                  ))}
-                </nav>
-                <p className="footer__copyright">© {new Date().getFullYear()} ФорАйТи</p>
+                <div className="footer__legal">
+                  <nav className="footer__policies" aria-label="Правовая информация">
+                    {POLICY_LINKS.map(({ href, label }) => (
+                      <a key={href} href={href} target="_blank" rel={EXTERNAL_REL}>
+                        {label}
+                      </a>
+                    ))}
+                  </nav>
+                  <p className="footer__copyright">© {new Date().getFullYear()} ФорАйТи</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
     </>
   );
 }

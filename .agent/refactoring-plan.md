@@ -40,7 +40,7 @@ Each phase is self-contained. Run `make check` after every phase and commit befo
 | `SplitHighlightPanel`          | Reusable                       | Keep in `components/sections/` |
 | `StackedFeatureCardsSection`   | Reusable                       | Keep in `components/sections/` |
 | `ContactRequestForm`           | Page-specific (contact form)   | Move to `pages/sections/`      |
-| `ServicesSectionSecondary`     | Page-specific                  | Move to `pages/sections/`      |
+| `ServiceGridSection`             | Delivery / услуги в сетке      | `components/sections/`         |
 
 ### Execution Plan
 
@@ -61,7 +61,6 @@ mv src/components/sections/AchievementsSection.* src/pages/sections/
 mv src/components/sections/CasesSection.* src/pages/sections/
 mv src/components/section/CertificatesSection.* src/pages/sections/
 mv src/components/sections/ContactRequestForm.* src/pages/sections/
-mv src/components/sections/ServicesSectionSecondary.* src/pages/sections/
 ```
 
 **Step 1.3** — Update imports:

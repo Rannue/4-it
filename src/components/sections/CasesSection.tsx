@@ -8,11 +8,7 @@ import './CasesSection.css';
 
 function CasesSection() {
   return (
-    <section
-      id="cases"
-      className="cases section-wrapper"
-      aria-labelledby="cases-heading"
-    >
+    <section id="cases" className="cases section-wrapper" aria-labelledby="cases-heading">
       <div className="section-wrapper__inner">
         <div className="cases__grid">
           <header className="cases__intro">

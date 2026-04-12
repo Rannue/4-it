@@ -143,8 +143,7 @@ function ContactRequestForm({
       return;
     }
 
-    const budgetLabel =
-      (budgetOptions.find(o => o.value === budget)?.label ?? budget) || '—';
+    const budgetLabel = (budgetOptions.find(o => o.value === budget)?.label ?? budget) || '—';
     const serviceLabels =
       services.length > 0
         ? services
@@ -212,7 +211,7 @@ function ContactRequestForm({
         throw new Error(
           data?.message ??
             (raw && raw.length < 400 ? raw : null) ??
-            'Не удалось отправить форму. Попробуйте позже.',
+            'Не удалось отправить форму. Попробуйте позже.'
         );
       }
       setSubmitSuccess(true);
@@ -293,9 +292,7 @@ function ContactRequestForm({
                   role="status"
                   aria-live="polite"
                 >
-                  {submitSuccess
-                    ? 'Спасибо! Заявка отправлена — мы свяжемся с вами.'
-                    : submitError}
+                  {submitSuccess ? 'Спасибо! Заявка отправлена — мы свяжемся с вами.' : submitError}
                 </div>
               )}
               <div className="contact-request-form__row contact-request-form__row--2">
@@ -396,14 +393,8 @@ function ContactRequestForm({
                 />
                 <div className="contact-request-form__actions-main">
                   {fileName ? (
-                    <div
-                      className="contact-request-form__file-chip"
-                      aria-live="polite"
-                    >
-                      <span
-                        className="contact-request-form__file-chip-name"
-                        title={fileName}
-                      >
+                    <div className="contact-request-form__file-chip" aria-live="polite">
+                      <span className="contact-request-form__file-chip-name" title={fileName}>
                         {fileName}
                       </span>
                       <div className="contact-request-form__file-chip-actions">

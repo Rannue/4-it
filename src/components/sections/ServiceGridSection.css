@@ -1,0 +1,210 @@
+.service-grid-section__intro {
+  box-sizing: border-box;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-bottom: 42px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-grid-section__title {
+  margin: 0;
+  max-width: 1600px;
+}
+
+.service-grid-section__description {
+  margin: 0;
+  color: var(--color-text-secondary);
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+.service-grid-section__grid-wrapper {
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding: 0 42px;
+}
+
+.service-grid-section__grid {
+  max-width: 1600px;
+  border-left: 1px solid var(--color-line);
+  border-right: 1px solid var(--color-line);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.service-grid-section__card {
+  cursor: pointer;
+  padding: 32px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  background: #ffffff;
+}
+
+.service-grid-section__card:nth-child(2n) {
+  border-right: none;
+}
+
+.service-grid-section__card--span-full {
+  grid-column: 1 / -1;
+  border-right: none;
+}
+
+.service-grid-section__card--last-row {
+  border-bottom: none;
+}
+
+.service-grid-section__card--clickable {
+  cursor: pointer;
+}
+
+.service-grid-section__card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.service-grid-section__card-title {
+  transition: color 0.2s ease;
+}
+
+.service-grid-section__card-text {
+  color: var(--color-text-secondary-light);
+  line-height: 140%;
+  padding-right: 40px;
+  transition: color 0.2s ease;
+}
+
+.service-grid-section__card-icon {
+  color: rgba(15, 23, 42, 0.55);
+  flex: 0 0 auto;
+  transition: color 0.2s ease;
+}
+
+.service-grid-section__card-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+.service-grid-section__card--active .service-grid-section__card-title,
+.service-grid-section__card--active .service-grid-section__card-text,
+.service-grid-section__card--active .service-grid-section__card-icon {
+  color: var(--color-primary);
+}
+
+.service-grid-section__card:hover .service-grid-section__card-title,
+.service-grid-section__card:hover .service-grid-section__card-text,
+.service-grid-section__card:hover .service-grid-section__card-icon {
+  color: var(--color-primary);
+}
+
+.service-grid-section__card:hover .service-grid-section__card-icon svg {
+  transform: rotate(45deg);
+}
+
+.service-grid-section__card-support-bars {
+  margin-top: 32px;
+  width: 100%;
+}
+
+.service-grid-section__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.service-grid-section__card-tag {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #d9d9d9;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-main);
+  white-space: nowrap;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.service-grid-section__card-tag:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.service-grid-section__card-tag--active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+  .service-grid-section__intro {
+    padding-inline: 16px;
+    padding-bottom: 40px;
+  }
+
+  .service-grid-section__grid-wrapper {
+    padding-inline: 16px;
+  }
+}
+
+/* Адаптив: одна колонка — высота по тексту. Десктоп (≥961px): см. базовые стили сетки и карточки */
+@media (max-width: 1684px) {
+  .service-grid-section__intro {
+    padding: 0 42px 42px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .service-grid-section__grid {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .service-grid-section__card {
+    border-right: none;
+    min-height: 0;
+    justify-content: flex-start;
+  }
+
+  .service-grid-section__card--span-full {
+    grid-column: auto;
+  }
+
+  .service-grid-section__card--last-row:not(:last-child) {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .service-grid-section__card:last-child {
+    border-bottom: none;
+  }
+
+  .service-grid-section__intro {
+    padding: 0 16px 32px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-grid-section__card {
+    padding: 24px;
+  }
+
+  .service-grid-section__intro {
+    padding: 0 16px 24px;
+    margin: 0;
+  }
+}

@@ -25,8 +25,7 @@ type NavItemKey = 'Компания' | 'Услуги';
 /** Временно: выпадающее меню всегда видно. Поставьте `true` для отладки вёрстки. */
 const NAV_MENU_ALWAYS_VISIBLE = false;
 
-const HH_VACANCIES_URL =
-  'https://hh.ru/employer/1589500?hhtmFrom=vacancy&tab=DESCRIPTION';
+const HH_VACANCIES_URL = 'https://hh.ru/employer/1589500?hhtmFrom=vacancy&tab=DESCRIPTION';
 
 const MOBILE_NAV_QUERY = '(max-width: 999px)';
 
@@ -343,136 +342,124 @@ function Header() {
           <div className="mobile-menu__body">
             <div className="mobile-menu__body-inner">
               <div className="mobile-menu__nav">
-            <div className="mobile-menu__section">
-              <button
-                type="button"
-                className={[
-                  'mobile-menu__trigger',
-                  mobileExpanded === 'Услуги' ? 'mobile-menu__trigger--open' : '',
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-                aria-expanded={mobileExpanded === 'Услуги'}
-                onClick={() =>
-                  setMobileExpanded((k) => (k === 'Услуги' ? null : 'Услуги'))
-                }
-              >
-                Услуги
-                <NavChevron />
-              </button>
-              {mobileExpanded === 'Услуги' && (
-                <div className="mobile-menu__panel">
-                  <div
-                    className="mobile-menu__panel-inner"
-                    onClick={onMobilePanelLinkAreaClick}
+                <div className="mobile-menu__section">
+                  <button
+                    type="button"
+                    className={[
+                      'mobile-menu__trigger',
+                      mobileExpanded === 'Услуги' ? 'mobile-menu__trigger--open' : '',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                    aria-expanded={mobileExpanded === 'Услуги'}
+                    onClick={() => setMobileExpanded(k => (k === 'Услуги' ? null : 'Услуги'))}
                   >
-                    {NAV_CONTENT.Услуги}
-                  </div>
+                    Услуги
+                    <NavChevron />
+                  </button>
+                  {mobileExpanded === 'Услуги' && (
+                    <div className="mobile-menu__panel">
+                      <div
+                        className="mobile-menu__panel-inner"
+                        onClick={onMobilePanelLinkAreaClick}
+                      >
+                        {NAV_CONTENT.Услуги}
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <div className="mobile-menu__section">
-              <button
-                type="button"
-                className={[
-                  'mobile-menu__trigger',
-                  mobileExpanded === 'Компания' ? 'mobile-menu__trigger--open' : '',
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-                aria-expanded={mobileExpanded === 'Компания'}
-                onClick={() =>
-                  setMobileExpanded((k) => (k === 'Компания' ? null : 'Компания'))
-                }
-              >
-                Компания
-                <NavChevron />
-              </button>
-              {mobileExpanded === 'Компания' && (
-                <div className="mobile-menu__panel">
-                  <div
-                    className="mobile-menu__panel-inner"
-                    onClick={onMobilePanelLinkAreaClick}
+                <div className="mobile-menu__section">
+                  <button
+                    type="button"
+                    className={[
+                      'mobile-menu__trigger',
+                      mobileExpanded === 'Компания' ? 'mobile-menu__trigger--open' : '',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                    aria-expanded={mobileExpanded === 'Компания'}
+                    onClick={() => setMobileExpanded(k => (k === 'Компания' ? null : 'Компания'))}
                   >
-                    {NAV_CONTENT.Компания}
-                  </div>
+                    Компания
+                    <NavChevron />
+                  </button>
+                  {mobileExpanded === 'Компания' && (
+                    <div className="mobile-menu__panel">
+                      <div
+                        className="mobile-menu__panel-inner"
+                        onClick={onMobilePanelLinkAreaClick}
+                      >
+                        {NAV_CONTENT.Компания}
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <Link
-              to="/#cases"
-              className="mobile-menu__link-row"
-              onClick={closeMobileMenu}
-            >
-              Кейсы
-            </Link>
-            <a
-              href="#contacts"
-              className="mobile-menu__link-row"
-              onClick={closeMobileMenu}
-            >
-              Контакты
-            </a>
+                <Link to="/#cases" className="mobile-menu__link-row" onClick={closeMobileMenu}>
+                  Кейсы
+                </Link>
+                <a href="#contacts" className="mobile-menu__link-row" onClick={closeMobileMenu}>
+                  Контакты
+                </a>
               </div>
-          <div className="mobile-menu__footer">
-            <div className="mobile-menu__cta">
-              <Button className="btn--full" onClick={closeMobileMenu}>
-                Обратный звонок
-              </Button>
-            </div>
-            <div className="mobile-menu__contacts">
-              <a href="tel:+375445554416">+375 (44) 555 44 16</a>
-              <a href="mailto:info@4-it.by">info@4-it.by</a>
-            </div>
-            <hr className="mobile-menu__rule" />
-            <a
-              href={HH_VACANCIES_URL}
-              className="nav-menu__cv-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeMobileMenu}
-            >
-              <span className="nav-menu__cv-label">Отправить CV</span>
-              <ArrowLongRightIcon
-                className="nav-menu__cv-arrow"
-                width={20}
-                height={20}
-                aria-hidden
-              />
-            </a>
-            <div className="nav-menu__social">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-menu__social-link"
-                aria-label="Instagram"
-              >
-                <img
-                  src={instagramIcon}
-                  alt=""
-                  className="nav-menu__social-icon"
-                  width={28}
-                  height={28}
-                />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-menu__social-link"
-                aria-label="LinkedIn"
-              >
-                <img
-                  src={linkedinIcon}
-                  alt=""
-                  className="nav-menu__social-icon"
-                  width={28}
-                  height={28}
-                />
-              </a>
-            </div>
-          </div>
+              <div className="mobile-menu__footer">
+                <div className="mobile-menu__cta">
+                  <Button className="btn--full" onClick={closeMobileMenu}>
+                    Обратный звонок
+                  </Button>
+                </div>
+                <div className="mobile-menu__contacts">
+                  <a href="tel:+375445554416">+375 (44) 555 44 16</a>
+                  <a href="mailto:info@4-it.by">info@4-it.by</a>
+                </div>
+                <hr className="mobile-menu__rule" />
+                <a
+                  href={HH_VACANCIES_URL}
+                  className="nav-menu__cv-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMobileMenu}
+                >
+                  <span className="nav-menu__cv-label">Отправить CV</span>
+                  <ArrowLongRightIcon
+                    className="nav-menu__cv-arrow"
+                    width={20}
+                    height={20}
+                    aria-hidden
+                  />
+                </a>
+                <div className="nav-menu__social">
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-menu__social-link"
+                    aria-label="Instagram"
+                  >
+                    <img
+                      src={instagramIcon}
+                      alt=""
+                      className="nav-menu__social-icon"
+                      width={28}
+                      height={28}
+                    />
+                  </a>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-menu__social-link"
+                    aria-label="LinkedIn"
+                  >
+                    <img
+                      src={linkedinIcon}
+                      alt=""
+                      className="nav-menu__social-icon"
+                      width={28}
+                      height={28}
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

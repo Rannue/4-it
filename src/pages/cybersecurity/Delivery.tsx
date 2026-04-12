@@ -1,19 +1,19 @@
 // components
 import PageLayout from '@/components/layout/PageLayout';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import ServicesSectionSecondary from '@/components/sections/ServicesSectionSecondary';
-import CardsGridSection from '@/components/grids/CardsGridSection';
+import ServiceGridSection from '@/components/sections/ServiceGridSection';
 import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
+import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
 
 // assets
-import aimIllustration from '@/assets/img/illustrations/aim.svg';
-import complexIllustration from '@/assets/img/illustrations/complex.svg';
-import integrationIllustration from '@/assets/img/illustrations/integration.svg';
-import reliableIllustration from '@/assets/img/illustrations/reliability.svg';
-import certificationIllustration from '@/assets/img/illustrations/certification.svg';
-import chatIllustration from '@/assets/img/illustrations/chat.svg';
+import focusIllustration from '@/assets/img/illustrations/focus.svg';
+import taskDarkIllustration from '@/assets/img/illustrations/task-dark.svg';
+import codeDarkIllustration from '@/assets/img/illustrations/code-dark.svg';
+import certificateDarkIllustration from '@/assets/img/illustrations/certificate-dark.svg';
+import gridDarkIllustration from '@/assets/img/illustrations/grid-dark.svg';
+import chatDarkIllustration from '@/assets/img/illustrations/chat-dark.svg';
 
 function CertificationOfInformationSecurityToolsPage() {
   return (
@@ -22,12 +22,12 @@ function CertificationOfInformationSecurityToolsPage() {
         breadcrumbs={[
           { label: 'Главная', href: '/' },
           { label: 'Кибербезопасность', href: '/cybersecurity' },
-          { label: 'Поставка и внедрение CЗИ и оборудования' },
+          { label: 'Поставка и внедрение СЗИ и оборудования' },
         ]}
-        title="Поставка и внедрение CЗИ и оборудования"
+        title="Поставка и внедрение СЗИ и оборудования"
         description="Мы предлагаем комплексные решения для защиты информации: предотвращение утечек, мониторинг и анализ угроз. Используем надежные технологии от ведущих производителей, обеспечивая соответствие строгим требованиям безопасности."
       />
-      <ServicesSectionSecondary
+      <ServiceGridSection
         title="Что мы предлагаем?"
         description="Мы предоставляем широкий спектр решений для защиты вашей информационной системы:"
         items={[
@@ -93,21 +93,22 @@ function CertificationOfInformationSecurityToolsPage() {
           },
         ]}
       />
-      <CardsGridSection
+
+      <CardsGridSectionDark
         title="Преимущества наших решений"
         cardsHtml={[
           `
               <div class="cards-grid__media">
-                <img src="${aimIllustration}" alt="" aria-hidden="true" />
+                <img src="${focusIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
               </div>
               <h3>Фокус на защите информации</h3>
               <p>
-                Мы поставляем и внедряем только проверенные решения, соответствующие самым строгим требованиям информационной безопасности.
+                Мы оцениваем, насколько текущие меры защиты соответствуют требованиям и эффективно работают на практике.
               </p>
             `,
           `
               <div class="cards-grid__media">
-                <img src="${complexIllustration}" alt="" aria-hidden="true" />
+                <img src="${gridDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
               </div>
               <h3>Комплексный подход</h3>
               <p>
@@ -116,23 +117,16 @@ function CertificationOfInformationSecurityToolsPage() {
             `,
           `
               <div class="cards-grid__media">
-                <img src="${integrationIllustration}" alt="" aria-hidden="true" />
+                <img src="${codeDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
               </div>
               <h3>Интеграция</h3>
               <p>
-Мы гарантируем совместимость наших решений с существующей ИТ-инфраструктурой, что минимизирует затраты на внедрение.              </p>
+                Мы гарантируем совместимость наших решений с существующей ИТ-инфраструктурой, что минимизирует затраты на внедрение.
+              </p>
             `,
           `
-            <div class="cards-grid__media">
-            </div>
-          `,
-          `
-            <div class="cards-grid__media">
-            </div>
-          `,
-          `
               <div class="cards-grid__media">
-                <img src="${reliableIllustration}" alt="" aria-hidden="true" />
+                <img src="${certificateDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
               </div>
               <h3>Надежность</h3>
               <p>
@@ -141,22 +135,25 @@ function CertificationOfInformationSecurityToolsPage() {
             `,
           `
               <div class="cards-grid__media">
-                <img src="${certificationIllustration}" alt="" aria-hidden="true" />
+                <img src="${taskDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
               </div>
               <h3>Соответствие требованиям</h3>
               <p>
-Все наши решения соответствуют нормативным и законодательным стандартам, включая требования Республики Беларусь.              </p>
+                Все наши решения соответствуют нормативным и законодательным стандартам, включая требования Республики Беларусь.
+              </p>
             `,
           `
               <div class="cards-grid__media">
-                <img src="${chatIllustration}" alt="" aria-hidden="true" />
+                <img src="${chatDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
               </div>
               <h3>Поддержка на всех этапах</h3>
               <p>
-Мы предоставляем консультации, настройку и сопровождение внедренных решений, чтобы обеспечить их эффективную работу.              </p>
+                Мы предоставляем консультации, настройку и сопровождение внедренных решений, чтобы обеспечить их эффективную работу.
+              </p>
             `,
         ]}
       />
+
       <DocumentDetailsSection />
       <CertificatesSection />
       <ClientsSection />

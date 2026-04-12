@@ -50,19 +50,19 @@ function CertificationOfInformationSecurityToolsPage() {
             title: 'Аттестация СЗИ',
             description:
               'Проводим аттестацию, подтверждаем соответствие требованиям и обеспечиваем защиту.',
-            to: '/cybersecurity/delivery',
+            to: '/cybersecurity/certification/attestation-szi',
           },
           {
             title: 'Оценка эффективности защищенности инфраструктуры',
             description:
               'Тестируем информационную систему на уязвимости, выявляем слабые места и предлагаем решения.',
-            to: '/cybersecurity/delivery',
+            to: '/cybersecurity/certification/security-assessment',
           },
           {
             title: 'Пересмотр документов защиты информации',
             description:
               'Актуализируем документацию СЗИ в соответствии с законодательством и практиками.',
-            to: '/cybersecurity/delivery',
+            to: '/cybersecurity/certification/szi-documents-review',
           },
         ]}
       />

@@ -26,9 +26,7 @@ export default function ManufacturersSection({
         <section className="manufacturers">
           <header className="manufacturers__header">
             <h2 className="manufacturers__title">{title}</h2>
-            {description ? (
-              <div className="manufacturers__description">{description}</div>
-            ) : null}
+            {description ? <div className="manufacturers__description">{description}</div> : null}
           </header>
 
           <ul className="manufacturers__logos" role="list">

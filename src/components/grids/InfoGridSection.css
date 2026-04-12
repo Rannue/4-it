@@ -17,6 +17,7 @@
   max-width: 800px;
   margin-top: 8px;
   color: var(--color-text-secondary);
+  line-height: 1.4;
 }
 
 .info-grid__cols-wrapper {

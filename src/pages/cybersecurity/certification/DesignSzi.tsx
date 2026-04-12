@@ -156,7 +156,7 @@ function CybersecurityDesignSziPage() {
       />
 
       <InfoGridSection
-        title="Преимущества создания СЗИ с нами"
+        title="Преимущества проектирования СЗИ с нами"
         columnsHtml={[
           `
               <div class="info-grid__group">

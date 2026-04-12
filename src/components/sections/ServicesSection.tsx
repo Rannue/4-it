@@ -82,12 +82,12 @@ function ServicesSection({ sidebarTitle = 'Услуги', items }: ServicesSecti
   const tagsBlock = (item: ServiceItem) =>
     item.tags && item.tags.length > 0 ? (
       <div className="services-card__tags">
-        {item.tags.map((tag) => (
+        {item.tags.map(tag => (
           <Link
             key={tag.label}
             to={tag.to}
             className="services-tag"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             {tag.label}
           </Link>
@@ -103,7 +103,7 @@ function ServicesSection({ sidebarTitle = 'Услуги', items }: ServicesSecti
         </div>
       </div>
       <div className="services__list-stack">
-        {items.map((item) => {
+        {items.map(item => {
           const isClickable = Boolean(item.to);
           const cardClass = `services-card services-card--list${isClickable ? ' services-card--clickable' : ''}`;
 

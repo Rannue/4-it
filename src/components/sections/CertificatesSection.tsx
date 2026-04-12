@@ -188,7 +188,7 @@ function CertificatePreviewModal({ item, onClose }: PreviewModalProps) {
         <img className="certificates-modal__img" src={item.src} alt={item.alt} />
       </div>
     </div>,
-    document.body,
+    document.body
   );
 }
 
@@ -209,7 +209,7 @@ function CertificatesSection() {
       track: trackRef,
       trackInner: trackInnerRef,
     }),
-    [],
+    []
   );
 
   useScrollLinkedStrip(stripRefs);

@@ -52,7 +52,7 @@
 
 .cards-grid__card h3 {
   font-size: 18px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-weight: 500;
   color: var(--color-text-main);
 }

@@ -95,7 +95,7 @@ function ClientsSection() {
   const columns = useGridColumnCount();
   const placeholders = useMemo(
     () => trailingPlaceholderCount(clients.length, columns),
-    [clients.length, columns],
+    [clients.length, columns]
   );
 
   return (

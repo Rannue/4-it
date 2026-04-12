@@ -146,7 +146,6 @@ function Bitrix24ImplementationPage() {
           `
             <div class="cards-grid__media">
             </div>
-           
           `,
           `
           <div class="cards-grid__media">

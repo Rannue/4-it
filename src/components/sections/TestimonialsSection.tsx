@@ -171,11 +171,7 @@ function TestimonialsSection() {
                           </div>
                         </div>
                         <span className="testimonials-card__divider" aria-hidden="true" />
-                        <img
-                          src={asbLogo}
-                          alt="АСБ Лизинг"
-                          className="testimonials-card__logo"
-                        />
+                        <img src={asbLogo} alt="АСБ Лизинг" className="testimonials-card__logo" />
                         <a href={item.originalHref} className="testimonials-card__link">
                           Смотреть оригинал
                           <CardLinkArrow />

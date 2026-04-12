@@ -25,12 +25,13 @@ React 19 SPA. Routing is modularized into route groups.
 ### Cybersecurity — core (via CybersecurityRoutes)
 
 - `/cybersecurity` → `src/pages/cybersecurity/index.tsx`
-- `/cybersecurity/audit` → `src/pages/cybersecurity/audit/Audit.tsx`
+- `/cybersecurity/audit` → `src/pages/cybersecurity/Audit.tsx`
 - `/cybersecurity/design-szi` → `src/pages/cybersecurity/certification/DesignSzi.tsx`
-- `/cybersecurity/create-szi` → `src/pages/cybersecurity/CreateSzi.tsx`
-- `/cybersecurity/attestation-szi` → `src/pages/cybersecurity/AttestationSzi.tsx`
-- `/cybersecurity/infrastructure-effectiveness` → `src/pages/cybersecurity/InfrastructureEffectiveness.tsx`
-- `/cybersecurity/certification` → `src/pages/cybersecurity/certification/Certification.tsx`
+- `/cybersecurity/create-szi` → `src/pages/cybersecurity/certification/CreateSzi.tsx`
+- `/cybersecurity/attestation-szi` and `/cybersecurity/certification/attestation-szi` → `src/pages/cybersecurity/certification/CertificationSecondary.tsx`
+- `/cybersecurity/infrastructure-effectiveness` and `/cybersecurity/certification/security-assessment` → `src/pages/cybersecurity/certification/SecurityAssessment.tsx`
+- `/cybersecurity/certification/szi-documents-review` → `src/pages/cybersecurity/certification/SZIDocumentsReview.tsx`
+- `/cybersecurity/certification` → `src/pages/cybersecurity/Certification.tsx`
 - `/cybersecurity/delivery` → `src/pages/cybersecurity/delivery/Delivery.tsx`
 
 ### Cybersecurity — delivery products (via CybersecurityRoutes)

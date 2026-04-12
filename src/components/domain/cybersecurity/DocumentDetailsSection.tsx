@@ -15,8 +15,7 @@ const DESCRIPTION_LEAD =
 
 const LINK_TEXT = 'По ссылке можно ознакомиться с актуальной информацией о лицензии.';
 
-const QR_LINK_LABEL =
-  'Открыть сведения о лицензии в ГИС ЕРЛ (тот же адрес, что в QR-коде)';
+const QR_LINK_LABEL = 'Открыть сведения о лицензии в ГИС ЕРЛ (тот же адрес, что в QR-коде)';
 
 const QR_IMG_ALT = 'QR-код: переход к сведениям о лицензии в государственной системе ЕРЛ';
 
@@ -78,7 +77,7 @@ export default function DocumentDetailsSection() {
           <div className="document-details__card-inner">
             <div className="document-details__table-wrapper">
               <dl className="document-details__table">
-                {LICENSE_ENTRIES.map((entry) => (
+                {LICENSE_ENTRIES.map(entry => (
                   <div key={entry.label} className="document-details__row">
                     <dt className="document-details__cell document-details__cell--label">
                       {entry.label}

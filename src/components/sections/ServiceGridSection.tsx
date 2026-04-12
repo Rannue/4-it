@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
 import SupportPlansSection from '@/components/sections/SupportPlansSection';
 
-import './ServicesSectionSecondary.css';
+import './ServiceGridSection.css';
 
-export type ServicesSectionSecondaryProps = {
+export type ServiceGridSectionProps = {
   title: string;
   description?: string;
   items: Array<{
@@ -26,21 +26,19 @@ export type ServicesSectionSecondaryProps = {
 
 const GRID_COLS_DESKTOP = 2;
 
-function ServicesSectionSecondary({ title, description, items }: ServicesSectionSecondaryProps) {
+function ServiceGridSection({ title, description, items }: ServiceGridSectionProps) {
   const navigate = useNavigate();
   const totalRows = Math.ceil(items.length / GRID_COLS_DESKTOP);
 
   return (
-    <section className="services-section-secondary">
-      <div className="section-wrapper">
-        <div className="section-wrapper__inner">
-          <h2 className="services-section-secondary__title">{title}</h2>
-          {description && <p className="services-section-secondary__description">{description}</p>}
-        </div>
-      </div>
+    <section className="service-grid-section section-wrapper--py-only">
+      <header className="service-grid-section__intro">
+        <h2 className="service-grid-section__title">{title}</h2>
+        {description && <p className="service-grid-section__description">{description}</p>}
+      </header>
 
-      <div className="services-section-secondary__grid-wrapper">
-        <div className="services-section-secondary__grid">
+      <div className="service-grid-section__grid-wrapper">
+        <div className="service-grid-section__grid">
           {items.map((item, index) => {
             const clickable = Boolean(item.to);
             const row = Math.floor(index / GRID_COLS_DESKTOP);
@@ -51,11 +49,11 @@ function ServicesSectionSecondary({ title, description, items }: ServicesSection
               <article
                 key={item.title}
                 className={[
-                  'services-section-secondary-card',
-                  item.isActive ? 'services-section-secondary-card--active' : null,
-                  clickable ? 'services-section-secondary-card--clickable' : null,
-                  isLastRow ? 'services-section-secondary-card--last-row' : null,
-                  spanFullRow ? 'services-section-secondary-card--span-full' : null,
+                  'service-grid-section__card',
+                  item.isActive ? 'service-grid-section__card--active' : null,
+                  clickable ? 'service-grid-section__card--clickable' : null,
+                  isLastRow ? 'service-grid-section__card--last-row' : null,
+                  spanFullRow ? 'service-grid-section__card--span-full' : null,
                 ]
                   .filter(Boolean)
                   .join(' ')}
@@ -69,29 +67,29 @@ function ServicesSectionSecondary({ title, description, items }: ServicesSection
                 role={clickable ? 'button' : undefined}
                 tabIndex={clickable ? 0 : undefined}
               >
-                <div className="services-section-secondary-card__body">
-                  <div className="services-section-secondary-card__head">
-                    <h3 className="services-section-secondary-card__title">{item.title}</h3>
-                    <span className="services-section-secondary-card__icon" aria-hidden="true">
+                <div className="service-grid-section__card-body">
+                  <div className="service-grid-section__card-head">
+                    <h3 className="service-grid-section__card-title">{item.title}</h3>
+                    <span className="service-grid-section__card-icon" aria-hidden="true">
                       <ArrowLongRightIcon />
                     </span>
                   </div>
 
-                  <p className="services-section-secondary-card__text">{item.description}</p>
+                  <p className="service-grid-section__card-text">{item.description}</p>
                 </div>
 
                 {item.supportFeatureBars ? (
-                  <div className="services-section-secondary-card__support-bars">
+                  <div className="service-grid-section__card-support-bars">
                     <SupportPlansSection variant="start-preview" />
                   </div>
                 ) : (
                   item.tags &&
                   item.tags.length > 0 && (
-                    <div className="services-section-secondary-card__tags">
+                    <div className="service-grid-section__card-tags">
                       {item.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className={`services-section-secondary-card__tag${tag.isActive ? ' services-section-secondary-card__tag--active' : ''}`}
+                          className={`service-grid-section__card-tag${tag.isActive ? ' service-grid-section__card-tag--active' : ''}`}
                         >
                           {tag.label}
                         </span>
@@ -108,4 +106,4 @@ function ServicesSectionSecondary({ title, description, items }: ServicesSection
   );
 }
 
-export default ServicesSectionSecondary;
+export default ServiceGridSection;

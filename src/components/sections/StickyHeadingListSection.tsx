@@ -32,7 +32,8 @@ function StickyHeadingListSection({
   className,
 }: StickyHeadingListSectionProps) {
   const headingId = id ? `${id}-heading` : undefined;
-  const descriptionId = id && description != null && description !== '' ? `${id}-description` : undefined;
+  const descriptionId =
+    id && description != null && description !== '' ? `${id}-description` : undefined;
   const rootClass = [ROOT_CLASS, className].filter(Boolean).join(' ');
   const showDescription = description != null && description !== '';
 

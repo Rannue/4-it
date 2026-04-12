@@ -43,7 +43,9 @@ function ProductTierComparisonSection({
   return (
     <section
       id={id}
-      className={['product-tier-comparison section-wrapper--py-only', className].filter(Boolean).join(' ')}
+      className={['product-tier-comparison section-wrapper--py-only', className]
+        .filter(Boolean)
+        .join(' ')}
       aria-labelledby={heading ? headingId : undefined}
     >
       <div className="product-tier-comparison__inner">

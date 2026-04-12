@@ -33,14 +33,14 @@ const CYBERSECURITY_SERVICES: ServiceItem[] = [
     tags: [
       { label: 'Проектирование СЗИ', to: '/cybersecurity/design-szi' },
       { label: 'Создание СЗИ', to: '/cybersecurity/create-szi' },
-      { label: 'Аттестация СЗИ', to: '/cybersecurity/attestation-szi' },
+      { label: 'Аттестация СЗИ', to: '/cybersecurity/certification/attestation-szi' },
       {
         label: 'Оценка эффективности защищённости инфраструктуры',
-        to: '/cybersecurity/infrastructure-effectiveness',
+        to: '/cybersecurity/certification/security-assessment',
       },
       {
         label: 'Пересмотр документов защиты информации',
-        to: '/cybersecurity/certification',
+        to: '/cybersecurity/certification/szi-documents-review',
       },
     ],
   },
