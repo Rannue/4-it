@@ -7,10 +7,20 @@
 - All names in English — no Cyrillic folder or file names
 - Colocate CSS with component: `Button.tsx` + `Button.css` in the same folder
 
+### Component Taxonomy
+
+Components are organized by category:
+
+- **`layout/`** — Page-level layouts (e.g., `PageLayout` wrapping Header + Footer + main)
+- **`sections/`** — Full-width semantic sections (HeroBreadcrumbs, ServicesSection, TestimonialsSection)
+- **`grids/`** — Grid-based visual layouts (CardsGridSection, InfoGridSection, KeyFeaturesGridSection, ClientsSection)
+- **`domain/`** — Domain-specific business logic components (e.g., `cybersecurity/DocumentDetailsSection`)
+
 ## Components
 
 - **Default export only** — no named component exports
 - **No `FC` type annotation** — plain function with typed params:
+
   ```tsx
   // correct
   export default function Button({ children, onClick }: ButtonProps) { ... }
@@ -18,14 +28,19 @@
   // wrong
   const Button: FC<ButtonProps> = ({ children }) => { ... }
   ```
+
 - **Props via `type`, not `interface`**:
+
   ```ts
   // correct
-  type ButtonProps = { children: ReactNode; onClick?: () => void }
+  type ButtonProps = { children: ReactNode; onClick?: () => void };
 
   // wrong
-  interface ButtonProps { children: ReactNode }
+  interface ButtonProps {
+    children: ReactNode;
+  }
   ```
+
 - No explicit JSX return type — rely on inference
 
 ## CSS / Styling
@@ -59,21 +74,21 @@ Organize imports into groups with lowercase comment labels, separated by blank l
 
 ```tsx
 // react
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // components
-import Header from '@/widgets/header/Header'
-import Button from '@/shared/ui/Button'
+import Header from '@/widgets/header/Header';
+import Button from '@/shared/ui/Button';
 
 // data
-import { SUPPORT_PLAN_FEATURE_ROWS } from '@/constants/supportPlans'
+import { SUPPORT_PLAN_FEATURE_ROWS } from '@/constants/supportPlans';
 
 // assets
-import logo from '@/assets/logo-4it.svg'
+import logo from '@/assets/logo-4it.svg';
 
 // local
-import './HeroSection.css'
+import './HeroSection.css';
 ```
 
 Omit groups that have no imports for the file — don't leave empty comment labels.

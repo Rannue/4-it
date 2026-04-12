@@ -52,13 +52,14 @@ React 19 SPA. All routing is defined in one place: `src/app/main.tsx`.
 
 - `src/app/` — entry point, global styles, home page
 - `src/pages/` — route-level page components
-- `src/components/sections/` — reusable full-width page sections (hero, cards, testimonials, etc.)
-- `src/components/grids/` — grid layout wrappers
-- `src/components/cybersecurity/` — cybersecurity-specific sections (ManufacturersSection, DocumentDetailsSection)
+- `src/components/layout/` — page-level layouts (PageLayout wrapper with Header/Footer)
+- `src/components/sections/` — full-width semantic sections (HeroBreadcrumbs, ServicesSection, TestimonialsSection, etc.)
+- `src/components/grids/` — grid-based layout wrappers (CardsGridSection, InfoGridSection, KeyFeaturesGridSection, ClientsSection)
+- `src/components/domain/cybersecurity/` — cybersecurity domain-specific sections (DocumentDetailsSection, ManufacturersSection)
 - `src/shared/ui/` — primitive UI components (Button, Input, PhoneInput)
 - `src/shared/icons/` — SVG icon components
 - `src/widgets/` — self-contained UI units with their own folder (Header, Footer, ScrollToTop)
-- `src/data/` — JSX-heavy data files (stackedFeatureCards)
+- `src/data/` — JSX-heavy data files (stackedFeatureCards, cyberCultureProductTiers)
 - `src/constants/` — typed static constants (supportPlans)
 - `src/assets/` — images, icons, certificates
 
@@ -69,9 +70,3 @@ React 19 SPA. All routing is defined in one place: `src/app/main.tsx`.
 - **Unrouted page files** — these exist but are not wired into any route:
   - `src/pages/cybersecurity/Audit.tsx` — superseded by `src/pages/cybersecurity/audit/Audit.tsx`
   - `src/pages/cybersecurity/certification/CreationOfAnInformationSecuritySystem.tsx`
-
-- **Inconsistent szi page location** — some cybersecurity subpages are flat in `src/pages/cybersecurity-*.tsx`, others are nested under `src/pages/cybersecurity/`. Confusing when adding new pages.
-
-- **Data file in pages folder** — `src/pages/cybersecurity/delivery/cyberCultureProductTiers.tsx` is a data/constants file, not a page. Should live in `src/data/`.
-
-- **`01_SIEM.tsx` filename** — numeric prefix breaks naming convention. Rename to `SIEM.tsx` when touching the file.

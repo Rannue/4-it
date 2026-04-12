@@ -5,7 +5,7 @@ import SecondaryHero from '@/components/sections/SecondaryHero';
 import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
-import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
 
 // data

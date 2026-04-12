@@ -4,7 +4,7 @@ import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import ServicesSectionSecondary from '@/components/sections/ServicesSectionSecondary';
 import CardsGridSection from '@/components/grids/CardsGridSection';
-import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 

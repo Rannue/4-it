@@ -2,11 +2,11 @@
 import Header from '@/widgets/header/Header';
 import Footer from '@/widgets/footer/Footer';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import FeatureBanner from '@/components/sections/FeatureBanner';
-import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
+import ManufacturersSection from '@/components/domain/cybersecurity/ManufacturersSection';
 import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
 
 // assets

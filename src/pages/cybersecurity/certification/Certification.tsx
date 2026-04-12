@@ -5,7 +5,7 @@ import SecondaryHero from '@/components/sections/SecondaryHero';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import HighlightGridSection from '@/components/sections/HighlightGridSection';
 import ScrollCardsSection from '@/components/sections/ScrollCardsSection';
-import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
 

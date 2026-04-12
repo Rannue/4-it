@@ -5,8 +5,8 @@ import SecondaryHero from '@/components/sections/SecondaryHero';
 import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
-import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
-import ManufacturersSection from '@/components/cybersecurity/ManufacturersSection';
+import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
+import ManufacturersSection from '@/components/domain/cybersecurity/ManufacturersSection';
 
 // assets
 import bytisLogo from '@/assets/img/providers/bytis.png';

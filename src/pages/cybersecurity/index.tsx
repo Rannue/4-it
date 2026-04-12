@@ -1,10 +1,9 @@
 // components
-import Header from '@/widgets/header/Header';
-import Footer from '@/widgets/footer/Footer';
+import PageLayout from '@/components/layout/PageLayout';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import ServicesSection, { type ServiceItem } from '@/components/sections/ServicesSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import DocumentDetailsSection from '@/components/cybersecurity/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import CardsGridSection from '@/components/grids/CardsGridSection';
 
@@ -179,30 +178,25 @@ const CYBERSECURITY_INFO_COLUMNS_HTML = [
 
 function CybersecurityPage() {
   return (
-    <div className="app">
-      <Header />
+    <PageLayout>
+      <SecondaryHero
+        breadcrumbs={[{ label: 'Главная', href: '/' }, { label: 'Кибербезопасность' }]}
+        title="Кибербезопасность"
+        description="Кибербезопасность — это комплекс мер, направленных на защиту информационных систем от несанкционированного доступа, утечек данных и кибератак. В современном мире, где информация является одним из ключевых активов, обеспечение её безопасности становится критически важным. Мы поможем вам защитить ваши данные, соблюдая требования законодательства Республики Беларусь и внедряя передовые технологии."
+      />
 
-      <main className="app-main">
-        <SecondaryHero
-          breadcrumbs={[{ label: 'Главная', href: '/' }, { label: 'Кибербезопасность' }]}
-          title="Кибербезопасность"
-          description="Кибербезопасность — это комплекс мер, направленных на защиту информационных систем от несанкционированного доступа, утечек данных и кибератак. В современном мире, где информация является одним из ключевых активов, обеспечение её безопасности становится критически важным. Мы поможем вам защитить ваши данные, соблюдая требования законодательства Республики Беларусь и внедряя передовые технологии."
-        />
+      <ServicesSection items={CYBERSECURITY_SERVICES} />
 
-        <ServicesSection items={CYBERSECURITY_SERVICES} />
+      <CardsGridSection title="Кибербезопасность в цифрах" cardsHtml={CYBERSECURITY_CARDS_HTML} />
 
-        <CardsGridSection title="Кибербезопасность в цифрах" cardsHtml={CYBERSECURITY_CARDS_HTML} />
+      <InfoGridSection
+        title="Что вы получаете в рамках услуги"
+        columnsHtml={CYBERSECURITY_INFO_COLUMNS_HTML}
+      />
 
-        <InfoGridSection
-          title="Что вы получаете в рамках услуги"
-          columnsHtml={CYBERSECURITY_INFO_COLUMNS_HTML}
-        />
-
-        <DocumentDetailsSection />
-        <ClientsSection />
-      </main>
-      <Footer />
-    </div>
+      <DocumentDetailsSection />
+      <ClientsSection />
+    </PageLayout>
   );
 }
 
