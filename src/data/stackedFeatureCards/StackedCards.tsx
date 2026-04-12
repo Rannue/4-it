@@ -9,12 +9,17 @@
  * У карточки: `priceNote`, `featuresLabel` (перебивает подпись колонки).
  * Для страницы киберкультуры без подписи над плитками — `CYBER_CULTURE_PHISHMAN_STACKED`. Иначе подпись — `PHISHMAN_ADVANTAGES_LABEL`.
  */
+// react
 import type { ReactNode } from 'react';
+
+// components
 import type { StackedFeatureCard } from '@/components/sections/StackedFeatureCardsSection';
+
+// assets
 import certificateIcon from '@/assets/icons/certificate.svg';
-import timeIllustration from '@/assets/img/illustrations/time.svg';
 import groupIllustration from '@/assets/img/illustrations/group.svg';
 import leafIcon from '@/assets/icons/leaf.svg';
+import timeIllustration from '@/assets/img/illustrations/time.svg';
 
 /** Тарифы / комплектации — страница внедрения Битрикс24 */
 export const BITRIX24_IMPLEMENTATION_TIERS: readonly StackedFeatureCard[] = [

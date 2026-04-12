@@ -1,4 +1,6 @@
+// react
 import type { ReactNode } from 'react';
+
 import './SplitHighlightPanel.css';
 
 export type SplitHighlightPanelProps = {

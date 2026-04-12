@@ -1,5 +1,7 @@
+// react
 import type { ChangeEvent, ComponentPropsWithoutRef, ReactNode } from 'react';
 import { useEffect, useId, useRef, useState } from 'react';
+
 import './Input.css';
 
 type InputProps = {
@@ -158,7 +160,13 @@ function Select({
   return (
     <div className={['ui-input', className].filter(Boolean).join(' ')}>
       {name != null && name !== '' && (
-        <input type="hidden" name={name} value={currentValue} required={required} disabled={disabled} />
+        <input
+          type="hidden"
+          name={name}
+          value={currentValue}
+          required={required}
+          disabled={disabled}
+        />
       )}
       <label className="ui-input__label" htmlFor={id}>
         {label}

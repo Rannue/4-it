@@ -1,6 +1,10 @@
+// react
 import { useNavigate } from 'react-router-dom';
+
+// components
 import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
 import SupportPlansSection from '@/components/sections/SupportPlansSection';
+
 import './ServicesSectionSecondary.css';
 
 export type ServicesSectionSecondaryProps = {

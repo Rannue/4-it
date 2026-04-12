@@ -1,3 +1,4 @@
+// CSS
 import './CardsGridSection.css';
 
 type HtmlCardsGridSectionProps = {

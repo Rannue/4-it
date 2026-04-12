@@ -1,4 +1,6 @@
+// react
 import { memo, useId, type ReactNode } from 'react';
+
 import './InfoGridSection.css';
 
 export type InfoGridColumnCount = 2 | 3;

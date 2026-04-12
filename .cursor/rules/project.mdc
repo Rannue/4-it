@@ -1,0 +1,18 @@
+---
+description: 4-it — Agent Entry Point (AGENTS.md)
+alwaysApply: true
+---
+
+# 4-it — Agent Entry Point
+
+## CRITICAL: Read AGENTS.md First
+
+**You must read `AGENTS.md` and follow its instructions before proceeding with any task.**
+
+`AGENTS.md` is the single source of truth for agent behavior. It contains:
+- The mandatory session initialization protocol
+- Links to `.agent/` documentation (architecture, conventions, manifests)
+- Critical rules that must be followed
+- Available skills and when to use them
+
+Do not proceed until you have read `AGENTS.md` and initialized the session properly.

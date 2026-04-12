@@ -1,8 +1,12 @@
+// react
 import type { ChangeEvent, FormEvent } from 'react';
 import { useId, useRef, useState } from 'react';
+
+// components
 import Button from '@/shared/ui/Button';
 import Input, { MultiSelect, Select, Textarea } from '@/shared/ui/Input';
 import PhoneInput from '@/shared/ui/PhoneInput';
+
 import './ContactRequestForm.css';
 
 /**

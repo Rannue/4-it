@@ -1,17 +1,18 @@
-import Header from '@/widgets/header/Header';
-import Footer from '@/widgets/footer/Footer';
-import './Hero.css';
-import bookIcon from '@/assets/icons/book.svg';
-import certificateIcon from '@/assets/icons/certificate.svg';
-import trendingUpIcon from '@/assets/icons/trending-up.svg';
+// components
+import PageLayout from '@/components/layout/PageLayout';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import ServicesSection, { type ServiceItem } from '@/components/sections/ServicesSection';
 import SecondaryHero from '@/components/sections/SecondaryHero';
-import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import ClientsSection from '@/components/grids/ClientsSection';
+import CardsGridSection from '@/components/grids/CardsGridSection';
+
+// assets
+import bookIcon from '@/assets/icons/book.svg';
+import certificateIcon from '@/assets/icons/certificate.svg';
+import trendingUpIcon from '@/assets/icons/trending-up.svg';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
-import CardsGridSection from '@/components/grids/CardsGridSection';
 import buildingIllustration from '@/assets/img/illustrations/buildings.svg';
 import scannerIllustration from '@/assets/img/illustrations/scaning.svg';
 
@@ -175,30 +176,25 @@ const CYBERSECURITY_INFO_COLUMNS_HTML = [
 
 function CybersecurityPage() {
   return (
-    <div className="app">
-      <Header />
+    <PageLayout>
+      <SecondaryHero
+        breadcrumbs={[{ label: 'Главная', href: '/' }, { label: 'Кибербезопасность' }]}
+        title="Кибербезопасность"
+        description="Кибербезопасность — это комплекс мер, направленных на защиту информационных систем от несанкционированного доступа, утечек данных и кибератак. В современном мире, где информация является одним из ключевых активов, обеспечение её безопасности становится критически важным. Мы поможем вам защитить ваши данные, соблюдая требования законодательства Республики Беларусь и внедряя передовые технологии."
+      />
 
-      <main className="app-main">
-        <SecondaryHero
-          breadcrumbs={[{ label: 'Главная', href: '/' }, { label: 'Кибербезопасность' }]}
-          title="Кибербезопасность"
-          description="Кибербезопасность — это комплекс мер, направленных на защиту информационных систем от несанкционированного доступа, утечек данных и кибератак. В современном мире, где информация является одним из ключевых активов, обеспечение её безопасности становится критически важным. Мы поможем вам защитить ваши данные, соблюдая требования законодательства Республики Беларусь и внедряя передовые технологии."
-        />
+      <ServicesSection items={CYBERSECURITY_SERVICES} />
 
-        <ServicesSection items={CYBERSECURITY_SERVICES} />
+      <CardsGridSection title="Кибербезопасность в цифрах" cardsHtml={CYBERSECURITY_CARDS_HTML} />
 
-        <CardsGridSection title="Кибербезопасность в цифрах" cardsHtml={CYBERSECURITY_CARDS_HTML} />
+      <InfoGridSection
+        title="Что вы получаете в рамках услуги"
+        columnsHtml={CYBERSECURITY_INFO_COLUMNS_HTML}
+      />
 
-        <InfoGridSection
-          title="Что вы получаете в рамках услуги"
-          columnsHtml={CYBERSECURITY_INFO_COLUMNS_HTML}
-        />
-
-        <DocumentDetailsSection />
-        <ClientsSection />
-      </main>
-      <Footer />
-    </div>
+      <DocumentDetailsSection />
+      <ClientsSection />
+    </PageLayout>
   );
 }
 

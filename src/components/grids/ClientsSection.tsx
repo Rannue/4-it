@@ -1,4 +1,6 @@
+// react
 import { useEffect, useMemo, useState } from 'react';
+
 import './ClientsSection.css';
 
 /** Порядок важен: сначала более узкий viewport (синхронно с ClientsSection.css). */

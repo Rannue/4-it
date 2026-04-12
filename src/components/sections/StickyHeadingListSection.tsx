@@ -1,4 +1,6 @@
+// react
 import type { ReactNode } from 'react';
+
 import './StickyHeadingListSection.css';
 
 export type StickyHeadingListItem = {

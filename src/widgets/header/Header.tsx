@@ -1,4 +1,4 @@
-import './Header.css';
+// react
 import {
   useCallback,
   useEffect,
@@ -8,11 +8,17 @@ import {
   type ReactNode,
 } from 'react';
 import { Link } from 'react-router-dom';
-import logo4it from '@/assets/Логотип 4-IT.svg';
-import instagramIcon from '@/assets/icons/instagram.svg';
-import linkedinIcon from '@/assets/icons/lin.svg';
+
+// components
 import Button from '@/shared/ui/Button';
 import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
+
+// assets
+import logo4it from '@/assets/logo-4it.svg';
+import instagramIcon from '@/assets/icons/instagram.svg';
+import linkedinIcon from '@/assets/icons/lin.svg';
+
+import './Header.css';
 
 type NavItemKey = 'Компания' | 'Услуги';
 

@@ -1,8 +1,14 @@
-import './SecondaryHero.css';
-import texture from '@/assets/img/texture.png';
+// components
 import Button from '@/shared/ui/Button';
 import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
+
+// assets
+import texture from '@/assets/img/texture.png';
+
+// local
 import HeroBreadcrumbs, { type BreadcrumbItem } from './HeroBreadcrumbs';
+
+import './SecondaryHero.css';
 
 export type { BreadcrumbItem };
 

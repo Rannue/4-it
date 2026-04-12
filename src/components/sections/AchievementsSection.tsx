@@ -1,4 +1,6 @@
+// react
 import type { ReactNode } from 'react';
+
 import './AchievementsSection.css';
 
 const ACHIEVEMENTS: Array<{ title: ReactNode; description: string }> = [

@@ -1,4 +1,6 @@
-import type { CSSProperties, ReactNode, MouseEvent } from 'react';
+// react
+import type { CSSProperties, MouseEvent, ReactNode } from 'react';
+
 import './Button.css';
 
 type ButtonProps = {
@@ -60,7 +62,9 @@ function Button({
         }
       : undefined;
 
-  const classNames = ['btn', className, disabled ? 'btn--disabled' : null].filter(Boolean).join(' ');
+  const classNames = ['btn', className, disabled ? 'btn--disabled' : null]
+    .filter(Boolean)
+    .join(' ');
 
   const inner = (
     <>
@@ -78,8 +82,7 @@ function Button({
         </span>
       );
     }
-    const resolvedRel =
-      rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined);
+    const resolvedRel = rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined);
     return (
       <a
         href={href}

@@ -1,39 +1,41 @@
-import Header from '@/widgets/header/Header';
+// components
+import PageLayout from '@/components/layout/PageLayout';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import Footer from '@/widgets/footer/Footer';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import CtaLinksListSection from '@/components/sections/CtaLinksListSection';
-import bitrixBoxImg from '@/assets/img/Битрикс.png';
-import certificateIcon from '@/assets/icons/certificate.svg';
 import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
+import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
+
+// data
 import { BITRIX24_IMPLEMENTATION_TIERS } from '@/data/stackedFeatureCards/StackedCards';
+
+// assets
+import bitrixBoxImg from '@/assets/img/bitrix.png';
+import certificateIcon from '@/assets/icons/certificate.svg';
 import timeIllustration from '@/assets/img/illustrations/time.svg';
 import groupIllustration from '@/assets/img/illustrations/group.svg';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
-import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
 
 function Bitrix24ImplementationPage() {
   return (
-    <div className="app">
-      <Header />
-      <main className="app-main">
-        <SecondaryHero
-          breadcrumbs={[
-            { label: 'Главная', href: '/' },
-            { label: 'Внедрение и настройка Битрикс24' },
-          ]}
-          title="Внедрение и настройка Битрикс24"
-          description="Битрикс24 оцифровывает маркетинг и продажи, автоматизирует процессы компании и организовывает работу. Это набор полезных инструментов для бизнеса: CRM, корпоративный портал, контакт-центр, конструктор сайтов, управление задачами и проектами в одной системе."
-        />
-        <InfoGridSection
-          columnsHtml={[
-            `
+    <PageLayout>
+      <SecondaryHero
+        breadcrumbs={[
+          { label: 'Главная', href: '/' },
+          { label: 'Внедрение и настройка Битрикс24' },
+        ]}
+        title="Внедрение и настройка Битрикс24"
+        description="Битрикс24 оцифровывает маркетинг и продажи, автоматизирует процессы компании и организовывает работу. Это набор полезных инструментов для бизнеса: CRM, корпоративный портал, контакт-центр, конструктор сайтов, управление задачами и проектами в одной системе."
+      />
+      <InfoGridSection
+        columnsHtml={[
+          `
               <h2>Возможности<br /><span style="color: var(--color-primary);">Битрикс24</span></h2>
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Настройка CRM и автоматизация продаж</h4>
                 <p>
@@ -53,7 +55,7 @@ function Bitrix24ImplementationPage() {
                 class="info-grid__icon"
               />
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Организация задач и проектов</h4>
                 <p>
@@ -73,7 +75,7 @@ function Bitrix24ImplementationPage() {
                 class="info-grid__icon"
               />
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Интеграции с внешними системами</h4>
                 <p>
@@ -94,7 +96,7 @@ function Bitrix24ImplementationPage() {
                 class="info-grid__icon"
               />
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Обучение и поддержка</h4>
                 <p>
@@ -107,19 +109,19 @@ function Bitrix24ImplementationPage() {
                 class="info-grid__icon"
               />
             `,
-            `
+          `
            <img
                 src="${bitrixBoxImg}"
                 alt="1С-Битрикс24"
                 class="info-grid__icon info-grid__icon--bitrix-product"
               />
         `,
-          ]}
-        />
-        <CardsGridSectionDark
-          title="Преимущества внедрения Битрикс24"
-          cardsHtml={[
-            `
+        ]}
+      />
+      <CardsGridSectionDark
+        title="Преимущества внедрения Битрикс24"
+        cardsHtml={[
+          `
               <div class="cards-grid__media">
                 <img src="${timeIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
               </div>
@@ -130,7 +132,7 @@ function Bitrix24ImplementationPage() {
                 • значительное ускорение бизнес-процессов.
               </p>
             `,
-            `
+          `
               <div class="cards-grid__media">
                   <img src="${groupIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
               </div>
@@ -141,17 +143,17 @@ function Bitrix24ImplementationPage() {
                 • совместная работа над проектами.
               </p>
             `,
-            `
+          `
             <div class="cards-grid__media">
             </div>
            
           `,
-            `
+          `
           <div class="cards-grid__media">
           </div>
          
         `,
-            `
+          `
           <div class="cards-grid__media">
               <img src="${optimizationIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
           </div>
@@ -162,7 +164,7 @@ function Bitrix24ImplementationPage() {
             • эффективные связи между подразделениями.
           </p>
         `,
-            `
+          `
           <div class="cards-grid__media">
               <img src="${riseIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
           </div>
@@ -173,37 +175,37 @@ function Bitrix24ImplementationPage() {
             • эффективные связи между подразделениями.
           </p>
         `,
-          ]}
-        />
-        <CtaLinksListSection
-          items={[
-            { label: 'Попробовать Битрикс24', href: 'https://www.bitrix24.ru/' },
-            { label: 'Узнать цены', href: 'https://www.bitrix24.ru/prices/' },
-          ]}
-          footer={
-            <>
-              Не уверены, какое решение выбрать?{' '}
-              <a href="/#contacts" className="cta-links-list__footer-link">
-                Оставьте заявку
-              </a>{' '}
-              на консультацию, и мы подберём оптимальное решение под задачи вашего бизнеса.
-            </>
-          }
-        />
-        <StackedFeatureCardsSection
-          id="bitrix24-implementation-tiers"
-          heading={
-            <>
-              Варианты разработки{' '}
-              <span className="stacked-feature-cards__heading-accent">корпоративного сайта</span>
-            </>
-          }
-          cards={BITRIX24_IMPLEMENTATION_TIERS}
-        />
-        <InfoGridSection
-          title="Этапы работы"
-          columnsHtml={[
-            `
+        ]}
+      />
+      <CtaLinksListSection
+        items={[
+          { label: 'Попробовать Битрикс24', href: 'https://www.bitrix24.ru/' },
+          { label: 'Узнать цены', href: 'https://www.bitrix24.ru/prices/' },
+        ]}
+        footer={
+          <>
+            Не уверены, какое решение выбрать?{' '}
+            <a href="/#contacts" className="cta-links-list__footer-link">
+              Оставьте заявку
+            </a>{' '}
+            на консультацию, и мы подберём оптимальное решение под задачи вашего бизнеса.
+          </>
+        }
+      />
+      <StackedFeatureCardsSection
+        id="bitrix24-implementation-tiers"
+        heading={
+          <>
+            Варианты разработки{' '}
+            <span className="stacked-feature-cards__heading-accent">корпоративного сайта</span>
+          </>
+        }
+        cards={BITRIX24_IMPLEMENTATION_TIERS}
+      />
+      <InfoGridSection
+        title="Этапы работы"
+        columnsHtml={[
+          `
               <div class="info-grid__group">
                 <h4>Предпроектное исследование</h4>
                 <p>
@@ -219,7 +221,7 @@ function Bitrix24ImplementationPage() {
                 <span class="scroll-card__dot"></span>
               </div>
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Подготовка проекта</h4>
                 <p>
@@ -235,7 +237,7 @@ function Bitrix24ImplementationPage() {
                 <span class="scroll-card__dot"></span>
               </div>
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Концептуальное проектирование</h4>
                 <p>
@@ -251,7 +253,7 @@ function Bitrix24ImplementationPage() {
                 <span class="scroll-card__dot"></span>
               </div>
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Реализация проекта</h4>
                 <p>
@@ -266,7 +268,7 @@ function Bitrix24ImplementationPage() {
                 <span class="scroll-card__dot"></span>
               </div>
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Обучение и поддержка</h4>
                 <p>
@@ -282,7 +284,7 @@ function Bitrix24ImplementationPage() {
                 <span class="scroll-card__dot"></span>
               </div>
             `,
-            `
+          `
               <div class="info-grid__group">
                 <h4>Эксплуатация и поддержка</h4>
                 <p>
@@ -298,13 +300,11 @@ function Bitrix24ImplementationPage() {
                 <span class="scroll-card__dot scroll-card__dot--active"></span>
               </div>
             `,
-          ]}
-        />
-        <CertificatesSection />
-        <ClientsSection />
-      </main>
-      <Footer />
-    </div>
+        ]}
+      />
+      <CertificatesSection />
+      <ClientsSection />
+    </PageLayout>
   );
 }
 
