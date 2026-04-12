@@ -7,68 +7,13 @@ import InfoGridSection from '@/components/grids/InfoGridSection';
 import CtaLinksListSection from '@/components/sections/CtaLinksListSection';
 import bitrixBoxImg from '@/assets/img/Битрикс.png';
 import certificateIcon from '@/assets/icons/certificate.svg';
-import StackedFeatureCardsSection, {
-  type StackedFeatureCard,
-} from '@/components/sections/StackedFeatureCardsSection';
+import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
+import { BITRIX24_IMPLEMENTATION_TIERS } from '@/data/stackedFeatureCards/StackedCards';
 import timeIllustration from '@/assets/img/illustrations/time.svg';
 import groupIllustration from '@/assets/img/illustrations/group.svg';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
 import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
-
-const BITRIX24_IMPLEMENTATION_TIERS: readonly StackedFeatureCard[] = [
-  {
-    title: 'Начальное внедрение',
-    description:
-      'Подходит для компаний, которые только начинают работать с CRM и хотят быстро запустить основные функции.',
-    ctaLabel: 'Оставить заявку',
-    ctaHref: '/#contacts',
-    features: [
-      { text: 'развертывание и настройка портала' },
-      { text: 'добавление сотрудников (до 10 сотрудников)' },
-      { text: 'создание структуры компании' },
-      { text: 'начальное внедрение и настройка crm инструментов' },
-    ],
-  },
-  {
-    title: 'Стандартное внедрение',
-    description:
-      'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
-    ctaLabel: 'Оставить заявку',
-    ctaHref: '/#contacts',
-    features: [
-      { text: 'сбор и анализ требований' },
-      { text: 'подготовка проектной документации' },
-      {
-        text: (
-          <>
-            настройка статусов и карточек <strong>Лидов</strong> и стадий <strong>Сделок</strong>
-          </>
-        ),
-      },
-      { text: 'настройка ролей и прав доступов пользователей' },
-      { text: 'подключение почтового домена' },
-      { text: 'построение воронок продаж' },
-      { text: 'обучение сотрудников' },
-    ],
-  },
-  {
-    title: 'Корпоративное внедрение',
-    titleAccent: true,
-    description:
-      'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
-    ctaLabel: 'Оставить заявку',
-    ctaHref: '/#contacts',
-    features: [
-      { text: 'сбор и анализ требований' },
-      { text: 'настройка и подключение телефонии' },
-      { text: 'интеграция с мессенджерами' },
-      { text: 'создание и настройка бизнес-процессов' },
-      { text: 'загрузка клиентской базы и товаров' },
-      { text: 'обучение сотрудников' },
-    ],
-  },
-];
 
 function Bitrix24ImplementationPage() {
   return (
@@ -247,6 +192,12 @@ function Bitrix24ImplementationPage() {
         />
         <StackedFeatureCardsSection
           id="bitrix24-implementation-tiers"
+          heading={
+            <>
+              Варианты разработки{' '}
+              <span className="stacked-feature-cards__heading-accent">корпоративного сайта</span>
+            </>
+          }
           cards={BITRIX24_IMPLEMENTATION_TIERS}
         />
         <InfoGridSection

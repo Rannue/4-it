@@ -59,12 +59,13 @@ function CertificationOfInformationSecurityToolsPage() {
               title: 'Средства линейного шифрования',
               description:
                 'Решения для сквозного шифрования, предотвращающие перехват и несанкционированный доступ в корпоративных и телеком-сетях.',
-              to: '/cybersecurity/network-screens',
+              to: '/cybersecurity/linear-encryption',
             },
             {
               title: 'Антивирусная защита',
               description:
                 'Современные средства обнаружения и устранения вредоносных программ, обеспечивающие защиту от вирусов, троянов и других угроз.',
+              to: '/cybersecurity/antivirus',
             },
             {
               title: 'Поставка серверов и коммутаторов',
@@ -76,6 +77,7 @@ function CertificationOfInformationSecurityToolsPage() {
               title: 'Резервное копирование',
               description:
                 'Решения для резервного копирования и восстановления данных при сбоях, атаках и утрате — основа информационной безопасности.',
+              to: '/cybersecurity/backup',
             },
             {
               title: 'Виртуализация',
@@ -107,7 +109,7 @@ function CertificationOfInformationSecurityToolsPage() {
               <div class="cards-grid__media">
                 <img src="${complexIllustration}" alt="" aria-hidden="true" />
               </div>
-              <h3>Комплексный подход</h3>
+              <h3>Комплексный подход</h3>
               <p>
                 Мы предлагаем комбинацию программного обеспечения и оборудования, что позволяет построить целостную систему защиты информации.
               </p>

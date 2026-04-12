@@ -198,7 +198,7 @@ function ContactRequestForm({
       } catch {
         /* не JSON — не считаем успехом при сомнительном ответе */
       }
-      const looksLikeJson = /^\s*[\[{]/.test(raw);
+      const looksLikeJson = /^\s*(?:\[|\{)/.test(raw);
       const failed =
         !res.ok ||
         data?.success === false ||

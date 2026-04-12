@@ -22,7 +22,6 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: minmax(40px, 1fr) minmax(40px, 1.8fr) 64px;
-  gap: 1px;
   width: 100%;
   height: calc(100vh - 144px);
   margin-bottom: 42px;

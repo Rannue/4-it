@@ -8,7 +8,8 @@ export type ManufacturerLogo = {
 
 export type ManufacturersSectionProps = {
   title: ReactNode;
-  description?: string;
+  /** Строка или JSX (переносы строк — через br или список) */
+  description?: ReactNode;
   logos: readonly ManufacturerLogo[];
 };
 
@@ -23,7 +24,9 @@ export default function ManufacturersSection({
         <section className="manufacturers">
           <header className="manufacturers__header">
             <h2 className="manufacturers__title">{title}</h2>
-            {description ? <p className="manufacturers__description">{description}</p> : null}
+            {description ? (
+              <div className="manufacturers__description">{description}</div>
+            ) : null}
           </header>
 
           <ul className="manufacturers__logos" role="list">

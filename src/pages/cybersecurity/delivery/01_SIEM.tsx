@@ -99,10 +99,14 @@ function SiemPage() {
           ]}
         />
         <FeatureBanner
-          title="Внедрение в соответствии с требованиями и стандартами"
+          complianceHeadline={{
+            line1: 'Внедрение в соответствии',
+            line2: 'с требованиями и стандартами',
+          }}
           description={SIEM_FEATURE_BANNER_DESCRIPTION}
           descriptionSecondary={SIEM_FEATURE_BANNER_DESCRIPTION_SECONDARY}
-          image={lawIllustration}
+          complianceVisual={lawIllustration}
+          imageAlt=""
         />
         <ManufacturersSection
           title={

@@ -4,7 +4,6 @@ import SupportPlansSection from '@/components/sections/SupportPlansSection';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import ContactRequestForm from '@/components/sections/ContactRequestForm';
 import Footer from '@/widgets/footer/Footer';
 import communicationIcon from '@/assets/icons/Communication.svg';
 import checkIcon from '@/assets/icons/Check.svg';
@@ -119,7 +118,6 @@ function TechnicalSupportBitrix24Page() {
         <SupportPlansSection />
         <CertificatesSection />
         <ClientsSection />
-        <ContactRequestForm id="technical-support-contact" />
       </main>
       <Footer />
     </div>

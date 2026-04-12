@@ -13,8 +13,10 @@ import CybersecurityInfrastructureEffectivenessPage from '@/pages/cybersecurity-
 import CybersecuritySiemPage from '@/pages/cybersecurity/delivery/01_SIEM.tsx';
 import CybersecurityDlpPage from '@/pages/cybersecurity/delivery/DLP.tsx';
 import CybersecurityPamPage from '@/pages/cybersecurity/delivery/PAM.tsx';
-import CybersecurityFirewallPage from '@/pages/cybersecurity-firewall.tsx';
-import CybersecurityNetworkScreensPage from '@/pages/cybersecurity-network-screens.tsx';
+import FirewallPage from '@/pages/cybersecurity/delivery/Firewall.tsx';
+import AntivirusProtectionPage from '@/pages/cybersecurity/delivery/AntivirusProtection';
+import BackupPage from '@/pages/cybersecurity/delivery/Backup';
+import CybersecurityNetworkScreensPage from '@/pages/cybersecurity/delivery/LinearEncryption.tsx';
 import CertificationOfInformationSecurityToolsPage from '@/pages/cybersecurity/Certification.tsx';
 import CybersecurityDeliveryPage from '@/pages/cybersecurity/Delivery.tsx';
 import TechnicalSupportPage from '@/pages/TechnicalSupport.tsx';
@@ -53,15 +55,22 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/cybersecurity/siem" element={<CybersecuritySiemPage />} />
           <Route path="/cybersecurity/dlp" element={<CybersecurityDlpPage />} />
           <Route path="/cybersecurity/pam" element={<CybersecurityPamPage />} />
-          <Route path="/cybersecurity/firewall" element={<CybersecurityFirewallPage />} />
+          <Route path="/cybersecurity/firewall" element={<FirewallPage />} />
+          <Route path="/cybersecurity/antivirus" element={<AntivirusProtectionPage />} />
+          <Route path="/cybersecurity/backup" element={<BackupPage />} />
           <Route
             path="/cybersecurity/network-screens"
+            element={<CybersecurityNetworkScreensPage />}
+          />
+          <Route
+            path="/cybersecurity/linear-encryption"
             element={<CybersecurityNetworkScreensPage />}
           />
           <Route
             path="/cybersecurity/certification"
             element={<CertificationOfInformationSecurityToolsPage />}
           />
+          <Route path="/delivery" element={<Navigate to="/cybersecurity/delivery" replace />} />
           <Route path="/cybersecurity/delivery" element={<CybersecurityDeliveryPage />} />
           <Route
             path="/cybersecurity/delivery/cyber-culture"

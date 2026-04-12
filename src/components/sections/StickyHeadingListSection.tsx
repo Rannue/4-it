@@ -7,6 +7,8 @@ export type StickyHeadingListItem = {
 
 export type StickyHeadingListSectionProps = {
   title: ReactNode;
+  /** Текст под заголовком в левой колонке (та же «липкая» область, что и заголовок) */
+  description?: ReactNode;
   items: readonly StickyHeadingListItem[];
   illustration?: { src: string; alt?: string };
   id?: string;
@@ -21,19 +23,23 @@ function padIndex(n: number) {
 
 function StickyHeadingListSection({
   title,
+  description,
   items,
   illustration,
   id,
   className,
 }: StickyHeadingListSectionProps) {
   const headingId = id ? `${id}-heading` : undefined;
+  const descriptionId = id && description != null && description !== '' ? `${id}-description` : undefined;
   const rootClass = [ROOT_CLASS, className].filter(Boolean).join(' ');
+  const showDescription = description != null && description !== '';
 
   return (
     <section
       id={id}
       className={rootClass}
       aria-labelledby={headingId}
+      aria-describedby={descriptionId}
     >
       <div className="section-wrapper">
         <div className="section-wrapper__inner">
@@ -42,6 +48,11 @@ function StickyHeadingListSection({
               <h2 id={headingId} className="sticky-heading-list__title">
                 {title}
               </h2>
+              {showDescription ? (
+                <div id={descriptionId} className="sticky-heading-list__description">
+                  {description}
+                </div>
+              ) : null}
               {illustration?.src ? (
                 <div className="sticky-heading-list__illustration">
                   <img

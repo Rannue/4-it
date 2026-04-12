@@ -112,7 +112,9 @@ function useScrollLinkedStrip(refs: StripRefs): void {
     const ro = new ResizeObserver(syncSectionHeight);
     ro.observe(elTrack);
     ro.observe(elSticky);
-    trackInner.current && ro.observe(trackInner.current);
+    if (trackInner.current) {
+      ro.observe(trackInner.current);
+    }
 
     const onImgLoad = () => syncSectionHeight();
     const imgCleanups: (() => void)[] = [];

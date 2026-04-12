@@ -1,47 +1,51 @@
 import type { ReactNode } from 'react';
 import './FeatureBanner.css';
 
+export type FeatureBannerComplianceHeadline = {
+  line1: string;
+  line2: string;
+};
+
 export type FeatureBannerProps = {
-  title?: ReactNode;
+  complianceHeadline: FeatureBannerComplianceHeadline;
   description: ReactNode;
-  /** Дополнительный блок текста под основным описанием */
   descriptionSecondary?: ReactNode;
-  image: string;
+  complianceVisual: string;
   imageAlt?: string;
 };
 
 function FeatureBanner({
-  title,
+  complianceHeadline,
   description,
   descriptionSecondary,
-  image,
+  complianceVisual,
   imageAlt = '',
 }: FeatureBannerProps) {
-  const showTitle =
-    title != null &&
-    title !== '' &&
-    !(typeof title === 'string' && title.trim() === '');
-
   return (
     <div className="section-wrapper">
       <div className="section-wrapper__inner">
-        <section className="feature-banner">
-          {showTitle ? (
-            <header className="feature-banner__header">
-              <div className="feature-banner__header-inner">
-                <h2 className="info-grid__title">{title}</h2>
-              </div>
-            </header>
-          ) : null}
-          <div className="feature-banner__panel">
-            <div className="feature-banner__visual">
-              <img className="feature-banner__image" src={image} alt={imageAlt} />
+        <section className="feature-banner feature-banner--compliance">
+          <div className="feature-banner__compliance-panel">
+            <div className="feature-banner__compliance-visual">
+              <img
+                className="feature-banner__compliance-image"
+                src={complianceVisual}
+                alt={imageAlt}
+              />
             </div>
-            <div className="feature-banner__content">
-              <div className="feature-banner__text">
-                <div className="feature-banner__paragraph">{description}</div>
+            <div className="feature-banner__compliance-copy">
+              <h2 className="feature-banner__compliance-headline">
+                <span className="feature-banner__compliance-headline-line">
+                  {complianceHeadline.line1}
+                </span>
+                <span className="feature-banner__compliance-headline-line feature-banner__compliance-headline-line--accent">
+                  {complianceHeadline.line2}
+                </span>
+              </h2>
+              <div className="feature-banner__compliance-text">
+                <div className="feature-banner__compliance-paragraph">{description}</div>
                 {descriptionSecondary != null && descriptionSecondary !== '' ? (
-                  <div className="feature-banner__paragraph">{descriptionSecondary}</div>
+                  <div className="feature-banner__compliance-paragraph">{descriptionSecondary}</div>
                 ) : null}
               </div>
             </div>

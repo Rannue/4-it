@@ -6,7 +6,7 @@ import type {
 import { useEffect, useId, useRef, useState } from 'react';
 import './PhoneInput.css';
 
-export type PhoneCountryOption = {
+type PhoneCountryOption = {
   dial: string;
   /** Подпись в списке (страна / зона) */
   hint: string;
@@ -29,7 +29,7 @@ function getPreset(dial: string, countries: readonly PhoneCountryOption[]): Phon
 }
 
 /** Разбор значения вида +375291234567 в код и национальные цифры */
-export function parseInternationalPhone(
+function parseInternationalPhone(
   value: string,
   countries: readonly PhoneCountryOption[] = DEFAULT_COUNTRIES
 ): { dial: string; digits: string } {
@@ -46,7 +46,7 @@ export function parseInternationalPhone(
   return { dial: d0, digits: digitsOnly.slice(0, getPreset(d0, countries).maxDigits) };
 }
 
-export function formatNationalDigits(digits: string, groups: readonly number[]): string {
+function formatNationalDigits(digits: string, groups: readonly number[]): string {
   if (!digits) return '';
   const chunks: string[] = [];
   let pos = 0;
@@ -287,4 +287,3 @@ function PhoneInput({
 }
 
 export default PhoneInput;
-export { DEFAULT_COUNTRIES };

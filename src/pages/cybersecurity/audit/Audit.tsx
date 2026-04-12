@@ -51,29 +51,31 @@ function AnimatedAuditGoalText() {
         {(() => {
           const words = AUDIT_GOAL_TEXT.split(' ');
           const totalLetters = words.reduce((sum, word) => sum + word.length, 0);
-          let letterIndex = 0;
 
-          return words.map((word, wordIdx) => (
-            <span key={wordIdx} className="audit-goal__word">
-              {word.split('').map((char, charIdx) => {
-                const threshold = totalLetters > 1 ? letterIndex / (totalLetters - 1) : 1;
-                const revealed = progress >= threshold;
-                letterIndex += 1;
+          return words.map((word, wordIdx) => {
+            const offset = words.slice(0, wordIdx).reduce((s, w) => s + w.length, 0);
+            return (
+              <span key={wordIdx} className="audit-goal__word">
+                {word.split('').map((char, charIdx) => {
+                  const letterIndex = offset + charIdx;
+                  const threshold = totalLetters > 1 ? letterIndex / (totalLetters - 1) : 1;
+                  const revealed = progress >= threshold;
 
-                return (
-                  <span
-                    key={`${wordIdx}-${charIdx}`}
-                    style={{
-                      color: revealed ? '#01111E' : '#D3D4DB',
-                      transition: 'color 80ms linear',
-                    }}
-                  >
-                    {char}
-                  </span>
-                );
-              })}
-            </span>
-          ));
+                  return (
+                    <span
+                      key={`${wordIdx}-${charIdx}`}
+                      style={{
+                        color: revealed ? '#01111E' : '#D3D4DB',
+                        transition: 'color 80ms linear',
+                      }}
+                    >
+                      {char}
+                    </span>
+                  );
+                })}
+              </span>
+            );
+          });
         })()}
       </p>
     </section>

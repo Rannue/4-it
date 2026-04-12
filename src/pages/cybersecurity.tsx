@@ -56,6 +56,12 @@ const CYBERSECURITY_SERVICES: ServiceItem[] = [
       },
       { label: 'DLP (Data Loss Prevention)', to: '/cybersecurity/dlp' },
       { label: 'Firewall', to: '/cybersecurity/firewall' },
+      { label: 'Антивирусная защита', to: '/cybersecurity/antivirus' },
+      { label: 'Резервное копирование', to: '/cybersecurity/backup' },
+      {
+        label: 'Средства линейного шифрования',
+        to: '/cybersecurity/linear-encryption',
+      },
       { label: 'Сетевые экраны', to: '/cybersecurity/network-screens' },
       { label: 'Виртуализация', to: '/virtualization' },
       {

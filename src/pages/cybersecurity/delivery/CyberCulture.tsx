@@ -5,6 +5,8 @@ import ClientsSection from '@/components/grids/ClientsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import Footer from '@/widgets/footer/Footer';
 import DocumentDetailsSection from '@/components/кибербезопасность/DocumentDetailsSection';
+import { CYBER_CULTURE_PHISHMAN_STACKED } from '@/data/stackedFeatureCards/StackedCards';
+import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
 
 function CyberCulturePage() {
   return (
@@ -42,6 +44,16 @@ function CyberCulturePage() {
             { text: 'поддержка внутренних политик и регламентов по защите информации' },
             { text: 'измеримый рост знаний и снижение доли инцидентов «человеческого фактора»' },
           ]}
+        />
+        <StackedFeatureCardsSection
+          id="cyber-culture-phishman-line"
+          heading={
+            <>
+              ПРОДУКТОВАЯ ЛИНЕЙКА{' '}
+              <span className="stacked-feature-cards__heading-accent">PHISHMAN</span>
+            </>
+          }
+          {...CYBER_CULTURE_PHISHMAN_STACKED}
         />
         <DocumentDetailsSection />
         <CertificatesSection />

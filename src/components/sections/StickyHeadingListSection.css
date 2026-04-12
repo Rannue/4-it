@@ -20,6 +20,13 @@
   color: var(--color-primary);
 }
 
+.sticky-heading-list__description {
+  margin-top: 16px;
+  margin-right: 24px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
 .sticky-heading-list__illustration {
   margin-top: clamp(20px, 3vw, 32px);
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ContactRequestForm from '@/components/sections/ContactRequestForm';
 import logo4it from '@/assets/Логотип 4-IT.svg';
 import './Footer.css';
 
@@ -119,7 +120,9 @@ function ExternalTextLink({ href, children }: { href: string; children: string }
 
 function Footer() {
   return (
-    <footer className="footer">
+    <>
+      <ContactRequestForm id="contacts" />
+      <footer className="footer">
       <div className="footer__wrap">
         <div className="footer__panel">
           <div className="footer__top">
@@ -198,6 +201,7 @@ function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
 

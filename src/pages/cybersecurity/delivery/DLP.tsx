@@ -11,7 +11,7 @@ import barrierIcon from '@/assets/icons/barrier-block.svg';
 import presentationIcon from '@/assets/icons/presentation.svg';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import ManufacturersSection from '@/components/кибербезопасность/ManufacturersSection';
-import lawIllustration from '@/assets/img/illustrations/law.png';
+import lawIllustration from '@/assets/img/law_filled.svg';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
 import stakhanovetsLogo from '@/assets/img/providers/Стахановец_Логотип_SVG_Полноцвет.svg';
 import librasoftLogo from '@/assets/img/providers/librasoft.svg';
@@ -25,7 +25,7 @@ function DlpPage() {
           breadcrumbs={[
             { label: 'Главная', href: '/' },
             { label: 'Кибербезопасность', href: '/cybersecurity' },
-            { label: 'Поставка и внедрение CЗИ и оборудования', href: '/delivery' },
+            { label: 'Поставка и внедрение СЗИ и оборудования', href: '/cybersecurity/delivery' },
             { label: 'DLP (Data Loss Prevention)' },
           ]}
           title="DLP — защита от утечек конфиденциальных данных"
@@ -58,9 +58,14 @@ function DlpPage() {
           ]}
         />
         <FeatureBanner
-          title="Соблюдение стандартов"
+          complianceHeadline={{
+            line1: 'Внедрение в соответствии',
+            line2: 'с требованиями и стандартами',
+          }}
           description="Мы предлагаем внедрение современных DLP-решений, соответствующих требованиям стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим регламентом Республики Беларусь «Информационные технологии. Средства защиты информации. Информационная безопасность» (ТР 2013/027/BY), утверждённых Приказом Оперативно-аналитического центра при Президенте Республики Беларусь от 12 марта 2020 г. № 77 (в редакции от 28.12.2022 № 207)."
-          image={lawIllustration}
+          descriptionSecondary="Корректно настроенные политики DLP и журналы событий упрощают подтверждение соответствия внутренним регламентам и требованиям регуляторов."
+          complianceVisual={lawIllustration}
+          imageAlt=""
         />
         <ManufacturersSection
           title="Производители и их решения"

@@ -40,8 +40,12 @@
   overflow-wrap: break-word;
 }
 
-.hero-breadcrumbs__item:not(.hero-breadcrumbs__item--current) .hero-breadcrumbs__link:hover {
+/* Перебиваем глобальные a:hover (accent), оставляем белый и только подчёркивание */
+.hero-breadcrumbs__item:not(.hero-breadcrumbs__item--current) a.hero-breadcrumbs__link:hover,
+.hero-breadcrumbs__item:not(.hero-breadcrumbs__item--current) a.hero-breadcrumbs__link:focus-visible {
+  color: var(--color-white);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .hero-breadcrumbs__item--current .hero-breadcrumbs__link,

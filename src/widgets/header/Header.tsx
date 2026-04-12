@@ -204,27 +204,21 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    if (!isMobileNav && mobileMenuOpen) {
-      closeMobileMenu();
-    }
-  }, [isMobileNav, mobileMenuOpen, closeMobileMenu]);
-
-  useEffect(() => {
-    if (!mobileMenuOpen) return;
+    if (!isMobileNav || !mobileMenuOpen) return;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [mobileMenuOpen]);
+  }, [isMobileNav, mobileMenuOpen]);
 
   useEffect(() => {
-    if (!mobileMenuOpen) return;
+    if (!isMobileNav || !mobileMenuOpen) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeMobileMenu();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [mobileMenuOpen, closeMobileMenu]);
+  }, [isMobileNav, mobileMenuOpen, closeMobileMenu]);
 
   const onMobilePanelLinkAreaClick = (e: MouseEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).closest('a')) closeMobileMenu();
