@@ -1,38 +1,41 @@
 # Architecture — 4-it
 
-React 19 SPA. All routing is defined in one place: `src/app/main.tsx`.
+React 19 SPA. Routing is modularized into route groups.
 
 ## Entry & home
 
-- `src/app/main.tsx` — app root: React + BrowserRouter + all route definitions
-- `src/app/App.tsx` — home page component, rendered at `/` and `/home`
-- `src/App.tsx` — **empty orphan, do not import from it**
+- `src/app/main.tsx` — app root: React + BrowserRouter + imports route modules
+- `src/routes/` — modular route definitions:
+  - `general.tsx` — GeneralRoutes component (non-cybersecurity services)
+  - `cybersecurity.tsx` — CybersecurityRoutes component (all security pages)
+  - `index.ts` — barrel export
+- `src/app/App.tsx` — exists but not routed; `/` and `/home` redirect to `/cybersecurity`
 
 ## Routes
 
-### General service pages
+### General service pages (via GeneralRoutes)
 
-- `/` and `/home` → `src/app/App.tsx`
+- `/` and `/home` → redirect to `/cybersecurity`
 - `/technical-support` → `src/pages/TechnicalSupport.tsx`
 - `/bitrix24/implementation` → `src/pages/bitrix24/Implementation.tsx`
 - `/edms-signature` → `src/pages/EDMSWithSignature.tsx`
 - `/websites/online-store` → `src/pages/websites/OnlineStore.tsx`
 - `/virtualization` → `src/pages/cybersecurity/delivery/Virtualization.tsx`
 
-### Cybersecurity — core
+### Cybersecurity — core (via CybersecurityRoutes)
 
-- `/cybersecurity` → `src/pages/cybersecurity.tsx`
+- `/cybersecurity` → `src/pages/cybersecurity/index.tsx`
 - `/cybersecurity/audit` → `src/pages/cybersecurity/audit/Audit.tsx`
-- `/cybersecurity/design-szi` → `src/pages/cybersecurity-design-szi.tsx`
-- `/cybersecurity/create-szi` → `src/pages/cybersecurity-create-szi.tsx`
-- `/cybersecurity/attestation-szi` → `src/pages/cybersecurity-attestation-szi.tsx`
-- `/cybersecurity/infrastructure-effectiveness` → `src/pages/cybersecurity-infrastructure-effectiveness.tsx`
-- `/cybersecurity/certification` → `src/pages/cybersecurity/Certification.tsx`
-- `/cybersecurity/delivery` → `src/pages/cybersecurity/Delivery.tsx`
+- `/cybersecurity/design-szi` → `src/pages/cybersecurity/DesignSzi.tsx`
+- `/cybersecurity/create-szi` → `src/pages/cybersecurity/CreateSzi.tsx`
+- `/cybersecurity/attestation-szi` → `src/pages/cybersecurity/AttestationSzi.tsx`
+- `/cybersecurity/infrastructure-effectiveness` → `src/pages/cybersecurity/InfrastructureEffectiveness.tsx`
+- `/cybersecurity/certification` → `src/pages/cybersecurity/certification/Certification.tsx`
+- `/cybersecurity/delivery` → `src/pages/cybersecurity/delivery/Delivery.tsx`
 
-### Cybersecurity — delivery products
+### Cybersecurity — delivery products (via CybersecurityRoutes)
 
-- `/cybersecurity/siem` → `src/pages/cybersecurity/delivery/01_SIEM.tsx`
+- `/cybersecurity/siem` → `src/pages/cybersecurity/delivery/SIEM.tsx`
 - `/cybersecurity/dlp` → `src/pages/cybersecurity/delivery/DLP.tsx`
 - `/cybersecurity/pam` → `src/pages/cybersecurity/delivery/PAM.tsx`
 - `/cybersecurity/firewall` → `src/pages/cybersecurity/delivery/Firewall.tsx`
@@ -50,11 +53,12 @@ React 19 SPA. All routing is defined in one place: `src/app/main.tsx`.
 
 ## Source folders
 
-- `src/app/` — entry point, global styles, home page
-- `src/pages/` — route-level page components
+- `src/app/` — entry point, global styles (home page component exists but not routed)
+- `src/routes/` — modular route definitions (GeneralRoutes, CybersecurityRoutes)
+- `src/pages/` — route-level page components organized by domain
 - `src/components/layout/` — page-level layouts (PageLayout wrapper with Header/Footer)
 - `src/components/sections/` — full-width semantic sections (HeroBreadcrumbs, ServicesSection, TestimonialsSection, etc.)
-- `src/components/grids/` — grid-based layout wrappers (CardsGridSection, InfoGridSection, KeyFeaturesGridSection, ClientsSection)
+- `src/components/grids/` — grid-based layout wrappers (CardsGridSection, InfoGridSection, HighlightGridSection, ClientsSection)
 - `src/components/domain/cybersecurity/` — cybersecurity domain-specific sections (DocumentDetailsSection, ManufacturersSection)
 - `src/shared/ui/` — primitive UI components (Button, Input, PhoneInput)
 - `src/shared/icons/` — SVG icon components
@@ -63,10 +67,14 @@ React 19 SPA. All routing is defined in one place: `src/app/main.tsx`.
 - `src/constants/` — typed static constants (supportPlans)
 - `src/assets/` — images, icons, certificates
 
-## Quirks & gotchas
+## Layout pattern
 
-- **`src/App.tsx` is empty** — the real home component is `src/app/App.tsx`. The root-level file is an orphan from an earlier structure. Do not import from it.
+Use `PageLayout` from `src/components/layout/PageLayout.tsx` to wrap page content:
 
-- **Unrouted page files** — these exist but are not wired into any route:
-  - `src/pages/cybersecurity/Audit.tsx` — superseded by `src/pages/cybersecurity/audit/Audit.tsx`
-  - `src/pages/cybersecurity/certification/CreationOfAnInformationSecuritySystem.tsx`
+```tsx
+import PageLayout from '@/components/layout/PageLayout';
+
+export default function MyPage() {
+  return <PageLayout>{/* page content */}</PageLayout>;
+}
+```

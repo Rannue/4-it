@@ -15,6 +15,7 @@ Components are organized by category:
 - **`sections/`** — Full-width semantic sections (HeroBreadcrumbs, ServicesSection, TestimonialsSection)
 - **`grids/`** — Grid-based visual layouts (CardsGridSection, InfoGridSection, KeyFeaturesGridSection, ClientsSection)
 - **`domain/`** — Domain-specific business logic components (e.g., `cybersecurity/DocumentDetailsSection`)
+- **`routes/`** — Modular route definitions (`GeneralRoutes`, `CybersecurityRoutes`)
 
 ## Components
 

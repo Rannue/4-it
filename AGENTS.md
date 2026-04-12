@@ -15,7 +15,6 @@ React 19 + TypeScript + Vite marketing website. No backend.
 
 ```
 Entry:     src/app/main.tsx   (routing + React root)
-~25 routes: cybersecurity, Bitrix24, EDMS, websites service pages
 Structure:
   src/
   ├── app/          entry, global styles
@@ -24,6 +23,7 @@ Structure:
   ├── constants/    typed data constants
   ├── data/         JSX-heavy data (stackedFeatureCards)
   ├── pages/        route-level page components
+  ├── routes/       modular route definitions
   ├── shared/       reusable UI (buttons, icons)
   └── widgets/      header, footer, scroll-to-top
 ```
@@ -38,10 +38,10 @@ Structure:
 
 ## Available skills
 
-| Skill | When to use |
-|---|---|
-| `/review` | Before committing — audit code against conventions |
-| `/new-component` | Scaffold a new component with correct structure |
-| `/sync-docs` | After structural changes — keep `.agent/` docs current |
+| Skill            | When to use                                            |
+| ---------------- | ------------------------------------------------------ |
+| `/review`        | Before committing — audit code against conventions     |
+| `/new-component` | Scaffold a new component with correct structure        |
+| `/sync-docs`     | After structural changes — keep `.agent/` docs current |
 
 Skills are located in `.opencode/skills/`.
