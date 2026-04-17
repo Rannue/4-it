@@ -4,7 +4,7 @@
 }
 
 .product-tier-comparison__inner {
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin: 0 auto;
   padding: 0 42px 42px;
 }

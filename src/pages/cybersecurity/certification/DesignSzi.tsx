@@ -15,7 +15,7 @@ import certificateDarkIllustration from '@/assets/img/illustrations/certificate-
 import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import AnimatedAuditGoalText from '@/components/sections/AnimatedAuditGoalText.tsx';
+import AnimatedAuditGoalText from '@/components/sections/AnimatedAuditGoalText';
 
 const DESIGN_SZI_GOAL_ASIDE = 'Цель проектирования СЗИ';
 
@@ -55,7 +55,7 @@ const DESIGN_SZI_WHAT_INCLUDES_COLUMNS_HTML = [
               />
             `,
   `
-              <div class="info-grid__group-type2">
+              <div class="info-grid__group info-grid__group--lg">
                 <h4>Разработку технического задания на создание СЗИ</h4>
                 <p>
                   Подготовка документа, который определяет требования к системе защиты информации.

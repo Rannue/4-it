@@ -99,27 +99,6 @@ type PhoneInputProps = {
   autoComplete?: string;
 };
 
-function CheckIcon() {
-  return (
-    <svg
-      className="phone-input__check"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M20 6L9 17l-5-5"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function CaretIcon() {
   return (
     <svg
@@ -217,7 +196,12 @@ function PhoneInput({
       )}
       <label className="phone-input__label" htmlFor={id}>
         {label}
-        {required ? <span className="phone-input__required">*</span> : null}
+        {required ? (
+          <>
+            {' '}
+            <span className="phone-input__required">*</span>
+          </>
+        ) : null}
       </label>
       <div
         ref={wrapRef}
@@ -273,9 +257,6 @@ function PhoneInput({
                     <span className="phone-input__option-main">
                       <span className="phone-input__option-code">{c.dial}</span>
                       <span className="phone-input__option-hint">{c.hint}</span>
-                    </span>
-                    <span className="phone-input__option-indicator" aria-hidden>
-                      {active ? <CheckIcon /> : null}
                     </span>
                   </button>
                 </li>

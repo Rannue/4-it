@@ -5,7 +5,7 @@ import InfoGridSection from '@/components/grids/InfoGridSection';
 import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import AnimatedAuditGoalText from '@/components/sections/AnimatedAuditGoalText.tsx';
+import AnimatedAuditGoalText from '@/components/sections/AnimatedAuditGoalText';
 import searchIcon from '@/assets/icons/search.svg';
 import folderIcon from '@/assets/icons/folder.svg';
 import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
@@ -71,7 +71,7 @@ function SecondaryCertificationPage() {
               />
             `,
           `
-              <div class="info-grid__group-type2">
+              <div class="info-grid__group info-grid__group--lg">
                 <h4>Получение аттестата соответствия</h4>
                 <p>
                   Мы обеспечиваем официальное подтверждение соответствия вашей системы защиты информации установленным требованиям. После успешного прохождения всех этапов аттестации вы получаете аттестат соответствия, который подтверждает, что ваша СЗИ соответствует нормам законодательства и готова к эксплуатации.

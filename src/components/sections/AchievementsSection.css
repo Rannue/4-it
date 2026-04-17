@@ -4,7 +4,7 @@
 }
 
 .achievements-section__inner {
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin: 0 auto;
 }
 
@@ -40,6 +40,8 @@
 .achievements__accent {
   color: var(--color-primary);
   margin-right: 4px;
+  line-height: 120%;
+  font-variant-numeric: tabular-nums;
 }
 
 .achievements__text {
@@ -48,11 +50,16 @@
   line-height: 1.5;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .achievements__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
+    padding: 0 16px;
+  }
+
+  .achievements-section {
+    padding: 0;
   }
 }
 
@@ -60,6 +67,6 @@
   .achievements__grid {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 24px;
+    gap: 16px;
   }
 }

@@ -5,7 +5,7 @@
 
 .info-grid__header-inner {
   box-sizing: border-box;
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin: 0 auto;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .info-grid__cols {
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -73,6 +73,26 @@
   gap: 16px;
 }
 
+/** Те же отступы, что у type2, без растягивания колонки сетки на 2 ячейки */
+.info-grid__group--lg {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Колонка-родитель блока с длинным текстом (type2) — на 2 дорожки сетки */
+.info-grid__col:has(.info-grid__group-type2) {
+  grid-column: span 2;
+}
+
+.info-grid__cols--3 .info-grid__col:has(.info-grid__group-type2) {
+  border-right: none;
+}
+
+.info-grid__cols--2 .info-grid__col:has(.info-grid__group-type2) {
+  border-right: none;
+}
+
 .info-grid__cols--3 .info-grid__col:nth-child(-n + 3) {
   border-top: none;
 }
@@ -104,7 +124,7 @@
   display: block;
   width: auto;
   height: auto;
-  max-width: min(2px, 92%);
+  max-width: min(300px, 92%);
   max-height: 300px;
   margin-top: 0;
   margin-left: auto;
@@ -115,6 +135,14 @@
 @media (max-width: 900px) {
   .info-grid__header {
     padding: 0 16px 32px;
+  }
+
+  .info-grid__col:has(.info-grid__group-type2) {
+    grid-column: span 1;
+  }
+
+  .info-grid__col:has(.info-grid__icon--bitrix-product) {
+    display: none;
   }
 
   .info-grid__cols-wrapper {
@@ -138,6 +166,15 @@
   .info-grid__col:not(.info-grid__col--placeholder):not(
       :has(~ .info-grid__col:not(.info-grid__col--placeholder))
     ) {
+    border-bottom: none;
+  }
+
+  /*
+   * Колонка с .info-grid__icon--bitrix-product скрыта через display:none, но остаётся в DOM.
+   * Предыдущая ячейка всё ещё «видит» соседа снизу и сохраняет border-bottom, тогда как
+   * .info-grid__cols-wrapper уже даёт нижнюю линию секции — получается двойная черта.
+   */
+  .info-grid__col:has(+ .info-grid__col:has(.info-grid__icon--bitrix-product)) {
     border-bottom: none;
   }
 }

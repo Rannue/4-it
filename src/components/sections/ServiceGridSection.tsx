@@ -1,5 +1,6 @@
 // react
 import { useNavigate } from 'react-router-dom';
+import type { ReactNode } from 'react';
 
 // components
 import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
@@ -11,7 +12,7 @@ export type ServiceGridSectionProps = {
   title: string;
   description?: string;
   items: Array<{
-    title: string;
+    title: ReactNode;
     description: string;
     to?: string;
     isActive?: boolean;
@@ -47,7 +48,7 @@ function ServiceGridSection({ title, description, items }: ServiceGridSectionPro
               items.length % GRID_COLS_DESKTOP === 1 && index === items.length - 1;
             return (
               <article
-                key={item.title}
+                key={item.to ?? index}
                 className={[
                   'service-grid-section__card',
                   item.isActive ? 'service-grid-section__card--active' : null,

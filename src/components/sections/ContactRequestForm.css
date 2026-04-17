@@ -1,16 +1,20 @@
 .contact-request-form {
-  padding: 100px 0 42px;
+  /* padding: 84px 42зч 42px; */
+  scroll-margin-top: calc(var(--header-height, 88px) + 16px);
+}
+
+.section-wrapper__contact-request-form {
+  padding: 84px 42px 42px;
 }
 
 .contact-request-form__panel {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.6fr);
-  /* gap: clamp(28px, 4vw, 56px); */
   align-items: start;
-  padding: 48px;
+  padding: 32px;
+  gap: 32px;
   border-radius: 8px;
   background: var(--color-surface);
-  /* box-sizing: border-box; */
 }
 
 .contact-request-form__intro {
@@ -28,7 +32,8 @@
   margin: 0;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.4;
+  margin-right: 16px;
   color: var(--color-text-secondary);
 }
 
@@ -81,27 +86,12 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.contact-request-form__consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.contact-request-form__checkbox {
-  margin: 2px 0 0;
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  accent-color: var(--color-text-main);
-  cursor: pointer;
-}
-
-.contact-request-form__consent-label {
+.contact-request-form__consent-notice {
+  margin: 0;
   font-size: 12px;
-  line-height: 1.45;
-  font-weight: 400;
-  color: var(--color-text-secondary);
-  cursor: pointer;
+  line-height: 1.44;
+  font-weight: 300;
+  color: var(--color-text-secondary-light);
 }
 
 .contact-request-form__link {
@@ -115,14 +105,17 @@
 }
 
 .contact-request-form__actions {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
   gap: 12px;
 }
 
+.contact-request-form__actions--submit-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .contact-request-form__actions-main {
-  flex: 1;
   min-width: 0;
   display: flex;
 }
@@ -224,10 +217,11 @@
 }
 
 .contact-request-form__submit.btn {
-  flex-shrink: 0;
-  min-width: 140px;
+  width: 100%;
+  min-width: 0;
   height: 44px;
   border-radius: 6px;
+  justify-content: center;
 }
 
 @media (max-width: 900px) {
@@ -250,18 +244,6 @@
   }
 
   .contact-request-form__actions {
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: stretch;
-  }
-
-  .contact-request-form__actions-main {
-    width: 100%;
-  }
-
-  .contact-request-form__attach.btn,
-  .contact-request-form__submit.btn {
-    width: 100%;
-    min-width: 0;
+    grid-template-columns: 1fr;
   }
 }

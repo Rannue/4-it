@@ -1,5 +1,6 @@
 /**
- * Данные для `StackedFeatureCardsSection`: тарифы Битрикс24 и линейка Phishman.
+ * Данные для `StackedFeatureCardsSection`: линейка Phishman (киберкультура).
+ * Тарифы Битрикс24 — в `src/pages/bitrix24/Implementation.tsx`.
  * Импортируйте: `@/data/stackedFeatureCards` или `@/data/stackedFeatureCards/StackedCards`.
  *
  * Серая карточка преимущества (одна или две строки):
@@ -16,70 +17,8 @@ import type { ReactNode } from 'react';
 import type { StackedFeatureCard } from '@/components/sections/StackedFeatureCardsSection';
 
 // assets
-import certificateIcon from '@/assets/icons/certificate.svg';
-import groupIllustration from '@/assets/img/illustrations/group.svg';
-import leafIcon from '@/assets/icons/leaf.svg';
-import timeIllustration from '@/assets/img/illustrations/time.svg';
-
-/** Тарифы / комплектации — страница внедрения Битрикс24 */
-export const BITRIX24_IMPLEMENTATION_TIERS: readonly StackedFeatureCard[] = [
-  {
-    icon: <img src={certificateIcon} alt="" aria-hidden />,
-    title: 'Начальное внедрение',
-    description:
-      'Подходит для компаний, которые только начинают работать с CRM и хотят быстро запустить основные функции.',
-    ctaLabel: 'Оставить заявку',
-    ctaHref: '/#contacts',
-    features: [
-      { text: 'развертывание и настройка портала' },
-      { text: 'добавление сотрудников (до 10 сотрудников)' },
-      { text: 'создание структуры компании' },
-      { text: 'начальное внедрение и настройка crm инструментов' },
-    ],
-  },
-  {
-    icon: <img src={timeIllustration} alt="" aria-hidden />,
-    title: 'Стандартное внедрение',
-    description:
-      'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
-    ctaLabel: 'Оставить заявку',
-    ctaHref: '/#contacts',
-    features: [
-      { text: 'сбор и анализ требований' },
-      { text: 'подготовка проектной документации' },
-      { text: 'Предоплата:', secondary: '3 месяца' },
-      {
-        text: (
-          <>
-            настройка статусов и карточек <strong>Лидов</strong> и стадий <strong>Сделок</strong>
-          </>
-        ),
-      },
-      { text: 'настройка ролей и прав доступов пользователей' },
-      { text: 'подключение почтового домена' },
-      { text: 'построение воронок продаж' },
-      { text: 'обучение сотрудников' },
-    ],
-  },
-  {
-    icon: <img src={groupIllustration} alt="" aria-hidden />,
-    title: 'Корпоративное внедрение',
-    titleAccent: true,
-    description:
-      'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
-    ctaLabel: 'Оставить заявку',
-    ctaHref: '/#contacts',
-    features: [
-      { text: 'Предоплата:', secondary: '3 месяца' },
-      { text: 'сбор и анализ требований' },
-      { text: 'настройка и подключение телефонии' },
-      { text: 'интеграция с мессенджерами' },
-      { text: 'создание и настройка бизнес-процессов' },
-      { text: 'загрузка клиентской базы и товаров' },
-      { text: 'обучение сотрудников' },
-    ],
-  },
-];
+import oneFillIcon from '@/assets/icons/1-filled.svg';
+import twoFillIcon from '@/assets/icons/2-filled.svg';
 
 /**
  * Подпись над колонкой серых плиток на странице с `PHISHMAN_PRODUCT_LINE`.
@@ -92,67 +31,50 @@ export const PHISHMAN_ADVANTAGES_LABEL: ReactNode | null | undefined = 'ПРЕИ
 /** Линейка Phishman (карточки + пункты справа; подпись колонки — `PHISHMAN_ADVANTAGES_LABEL`) */
 export const PHISHMAN_PRODUCT_LINE: readonly StackedFeatureCard[] = [
   {
-    icon: <img src={leafIcon} alt="" aria-hidden />,
+    icon: <img src={oneFillIcon} alt="" aria-hidden />,
     title: 'PHISHMAN BASE',
     description: 'Редакция с базовым функционалом',
     ctaLabel: 'Оставить заявку',
-    ctaHref: '/#contacts',
+    ctaHref: '#contacts',
     features: [
       {
-        text: (
-          <>
-            <span className="stacked-feature-cards__feature-em">Комплексный подход </span>
-            <span className="stacked-feature-cards__feature-muted">
-              к противодействию социальной инженерии и фишингу без необходимости глубокой
-              технической подготовки – минимальные затраты на запуск.
-            </span>
-          </>
-        ),
+        text: 'Быстрый старт:',
+        secondary: 'Готовые сценарии, шаблоны и гибкие настройки позволяют начать работу сразу',
       },
-      { text: 'создание структуры компании' },
-      { text: 'начальное внедрение и настройка crm инструментов' },
+      {
+        text: 'Комплексный подход к противодействию социальной инженерии и фишингу без необходимости глубокой технической подготовки – минимальные затраты на запуск',
+      },
+      {
+        text: 'Простое использование:',
+        secondary: 'Решение под ключ с минимальными трудозатратами на внедрение и сопровождение',
+      },
     ],
   },
   {
-    icon: <img src={leafIcon} alt="" aria-hidden />,
-    title: 'Стандартное внедрение',
-    description:
-      'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
+    icon: <img src={twoFillIcon} alt="" aria-hidden />,
+    title: 'PHISHMAN ENTERPRISE',
+    description: 'Редакция с продвинутым функционалом',
     ctaLabel: 'Оставить заявку',
-    ctaHref: '/#contacts',
+    ctaHref: '#contacts',
     features: [
-      { text: 'сбор и анализ требований' },
-      { text: 'подготовка проектной документации' },
-      { text: 'Предоплата:', secondary: '3 месяца' },
       {
-        text: (
-          <>
-            настройка статусов и карточек <strong>Лидов</strong> и стадий <strong>Сделок</strong>
-          </>
-        ),
+        text: 'Быстрый старт:',
+        secondary: 'Готовые сценарии, шаблоны и гибкие настройки позволяют начать работу сразу',
       },
-      { text: 'настройка ролей и прав доступов пользователей' },
-      { text: 'подключение почтового домена' },
-      { text: 'построение воронок продаж' },
-      { text: 'обучение сотрудников' },
-    ],
-  },
-  {
-    icon: <img src={groupIllustration} alt="" aria-hidden />,
-    title: 'Корпоративное внедрение',
-    titleAccent: true,
-    description:
-      'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
-    ctaLabel: 'Оставить заявку',
-    ctaHref: '/#contacts',
-    features: [
-      { text: 'Предоплата:', secondary: '3 месяца' },
-      { text: 'сбор и анализ требований' },
-      { text: 'настройка и подключение телефонии' },
-      { text: 'интеграция с мессенджерами' },
-      { text: 'создание и настройка бизнес-процессов' },
-      { text: 'загрузка клиентской базы и товаров' },
-      { text: 'обучение сотрудников' },
+      {
+        text: 'Кастомизация содержимого курсов:',
+        secondary:
+          'Контент возможно изменить и дополнить под принятые в компании локальные нормативные акты, внутренние регламенты и процессы',
+      },
+      {
+        text: 'Уникальная методология повышения киберкультуры:',
+        secondary: 'Готовые сценарии, шаблоны и гибкие настройки позволяют начать работу сразу',
+      },
+      {
+        text: 'Менеджмент системы:',
+        secondary:
+          'Возможность делегировать весь спектр работы с системой экспертам Phishman с учетом поставленных компанией целей',
+      },
     ],
   },
 ];

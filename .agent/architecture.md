@@ -16,11 +16,13 @@ React 19 SPA. Routing is modularized into route groups.
 ### General service pages (via GeneralRoutes)
 
 - `/` and `/home` → `src/app/App.tsx` (home page)
-- `/technical-support` → `src/pages/TechnicalSupport.tsx`
+- `/technical-support` → `src/pages/bitrix24/TechnicalSupport.tsx`
 - `/bitrix24/implementation` → `src/pages/bitrix24/Implementation.tsx`
 - `/edms-signature` → `src/pages/EDMSWithSignature.tsx`
 - `/websites/online-store` → `src/pages/websites/OnlineStore.tsx`
 - `/virtualization` → `src/pages/cybersecurity/delivery/Virtualization.tsx`
+- `/contacts` → `src/pages/Contacts.tsx` (карта и карточка офиса; шапка блока — `PageHeadingBar`)
+- `/certificates` → `src/pages/CertificatesDocuments.tsx` (сертификаты, PDF-политики, реквизиты; якоря `#certificates`, `#policies`, `#requisites`)
 
 ### Cybersecurity — core (via CybersecurityRoutes)
 
@@ -31,7 +33,7 @@ React 19 SPA. Routing is modularized into route groups.
 - `/cybersecurity/attestation-szi` and `/cybersecurity/certification/attestation-szi` → `src/pages/cybersecurity/certification/CertificationSecondary.tsx`
 - `/cybersecurity/infrastructure-effectiveness` and `/cybersecurity/certification/security-assessment` → `src/pages/cybersecurity/certification/SecurityAssessment.tsx`
 - `/cybersecurity/certification/szi-documents-review` → `src/pages/cybersecurity/certification/SZIDocumentsReview.tsx`
-- `/cybersecurity/certification` → `src/pages/cybersecurity/Certification.tsx`
+- `/cybersecurity/certification` → `src/pages/cybersecurity/certification/index.tsx`
 - `/cybersecurity/delivery` → `src/pages/cybersecurity/delivery/Delivery.tsx`
 
 ### Cybersecurity — delivery products (via CybersecurityRoutes)
@@ -42,7 +44,7 @@ React 19 SPA. Routing is modularized into route groups.
 - `/cybersecurity/firewall` → `src/pages/cybersecurity/delivery/Firewall.tsx`
 - `/cybersecurity/antivirus` → `src/pages/cybersecurity/delivery/AntivirusProtection.tsx`
 - `/cybersecurity/backup` → `src/pages/cybersecurity/delivery/Backup.tsx`
-- `/cybersecurity/network-screens` → `src/pages/cybersecurity/delivery/LinearEncryption.tsx`
+- `/cybersecurity/network-screens` → redirect to `/cybersecurity/firewall`
 - `/cybersecurity/linear-encryption` → same file as above (alias route)
 - `/cybersecurity/delivery/cyber-culture` → `src/pages/cybersecurity/delivery/CyberCulture.tsx`
 - `/cybersecurity/servers-and-switches` → `src/pages/cybersecurity/delivery/SupplyOfServersAndSwitches.tsx`
@@ -54,12 +56,12 @@ React 19 SPA. Routing is modularized into route groups.
 
 ## Source folders
 
-- `src/app/` — entry point, global styles (home page component exists but not routed)
+- `src/app/` — entry (`main.tsx`), global styles, and `App.tsx` (home for `/` and `/home`)
 - `src/routes/` — modular route definitions (GeneralRoutes, CybersecurityRoutes)
 - `src/pages/` — route-level page components organized by domain
 - `src/components/layout/` — page-level layouts (PageLayout wrapper with Header/Footer)
 - `src/components/sections/` — full-width semantic sections (HeroBreadcrumbs, ServicesSection, TestimonialsSection, etc.)
-- `src/components/grids/` — grid-based layout wrappers (CardsGridSection, InfoGridSection, HighlightGridSection, ClientsSection)
+- `src/components/grids/` — grid-based layout wrappers (CardsGridSection, InfoGridSection, ClientsSection)
 - `src/components/domain/cybersecurity/` — cybersecurity domain-specific sections (DocumentDetailsSection, ManufacturersSection)
 - `src/shared/ui/` — primitive UI components (Button, Input, PhoneInput)
 - `src/shared/icons/` — SVG icon components

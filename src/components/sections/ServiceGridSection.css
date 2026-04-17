@@ -1,6 +1,6 @@
 .service-grid-section__intro {
   box-sizing: border-box;
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin-inline: auto;
   padding-bottom: 42px;
   display: flex;
@@ -10,13 +10,14 @@
 
 .service-grid-section__title {
   margin: 0;
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
 }
 
 .service-grid-section__description {
   margin: 0;
   color: var(--color-text-secondary);
   max-width: 800px;
+  line-height: 140%;
   box-sizing: border-box;
 }
 
@@ -27,7 +28,7 @@
 }
 
 .service-grid-section__grid {
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   border-left: 1px solid var(--color-line);
   border-right: 1px solid var(--color-line);
   margin: 0 auto;
@@ -39,7 +40,7 @@
 .service-grid-section__card {
   cursor: pointer;
   padding: 32px;
-  min-height: 120px;
+  min-height: 88px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

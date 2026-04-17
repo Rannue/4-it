@@ -62,7 +62,7 @@
 }
 
 .support-plans__title {
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin: 0;
   padding-bottom: 42px;
 }
@@ -76,7 +76,7 @@
 
 .support-plans__cards {
   display: grid;
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin: 0 auto;
   gap: 20px;
   grid-template-columns: repeat(3, minmax(0, 1fr));

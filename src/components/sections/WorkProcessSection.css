@@ -1,0 +1,122 @@
+.work-process {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 84px 0 96px;
+  background-color: var(--color-bg);
+}
+
+.work-process__inner {
+  box-sizing: border-box;
+  max-width: 1684px;
+  margin-inline: auto;
+  padding: 0 42px;
+}
+
+.work-process__header {
+  margin-bottom: 42px;
+}
+
+.work-process__title {
+  margin: 0 0 8px;
+  color: var(--color-text-main);
+  text-transform: none;
+}
+
+.work-process__title-accent {
+  color: var(--color-primary);
+}
+
+.work-process__lead {
+  margin: 0;
+  max-width: 800px;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-light);
+}
+
+.work-process__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.work-process-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 42px;
+  border-radius: 8px;
+  background-color: #033860;
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.work-process-card__copy {
+  flex-shrink: 0;
+}
+
+.work-process-card__title {
+  margin: 0 0 12px;
+}
+
+.work-process-card__text {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 15px;
+  font-weight: var(--font-weight-light);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.work-process-card__figure {
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  margin: 0;
+  line-height: 0;
+}
+
+.work-process-card__diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  margin-top: 42px;
+}
+
+@media (max-width: 900px) {
+  .work-process {
+    padding: 56px 0 72px;
+  }
+
+  .work-process__inner {
+    padding: 0 16px;
+  }
+
+  .work-process__header {
+    margin-bottom: 32px;
+  }
+
+  .work-process__grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .work-process__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .work-process-card {
+    gap: 42px;
+    padding: 32px;
+  }
+
+  .work-process-card__diagram {
+    margin-top: 0;
+  }
+}

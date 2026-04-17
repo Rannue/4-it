@@ -90,10 +90,10 @@ function SupportPlansSection({ variant = 'section' }: SupportPlansSectionProps) 
                   <div className="support-plans-card__footer">
                     <SupportPlanPriceFooter amount={card.price} />
                     <Button
-                      type="button"
                       className="support-plans-card__btn"
                       color="#01111E"
                       textColor="#ffffff"
+                      href="#contacts"
                     >
                       Оставить заявку
                     </Button>

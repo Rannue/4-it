@@ -1,7 +1,7 @@
 /* Scroll-reveal goal line: optional left caption + animated main text */
 
 .animated-goal__grid {
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);

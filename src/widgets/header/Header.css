@@ -5,10 +5,20 @@
   right: 0;
   z-index: 10;
   background: var(--color-white);
-  padding: 32px 42px;
+  padding: 0;
+}
+
+.app-header__bar {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  max-width: 1684px;
+  min-width: 0;
+  margin-inline: auto;
+  padding: 32px 42px;
 }
 
 .app-header--scrolled {
@@ -79,10 +89,24 @@
   color: var(--color-primary);
 }
 
+.app-header__nav-item--active,
+.app-header__nav-item--active:hover {
+  color: var(--color-primary);
+}
+
 .app-header__nav-chevron {
   display: block;
   flex-shrink: 0;
+  width: 22px;
+  height: 22px;
   transition: transform 0.2s ease;
+}
+
+@media (min-width: 1000px) {
+  .app-header__nav .app-header__nav-chevron {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 .app-header__nav-item--open .app-header__nav-chevron {
@@ -100,12 +124,17 @@
 }
 
 .nav-menu__inner {
-  max-width: 1400px;
+  max-width: var(--layout-content-max-width);
   margin: 0 auto;
   padding: 32px 42px 42px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 48px;
+}
+
+.nav-menu__left {
+  min-width: 0;
 }
 
 .nav-menu__title {
@@ -120,8 +149,17 @@
 }
 
 .nav-menu__columns--services {
-  gap: 72px;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 72px;
+  row-gap: 52px;
+  align-content: start;
+  justify-content: start;
+}
+
+.nav-menu__columns--services > .nav-menu__group {
+  min-width: 0;
+  max-width: 340px;
 }
 
 .nav-menu__columns--company {
@@ -147,6 +185,10 @@
 
 .nav-menu__group {
   margin: 0;
+}
+
+.nav-menu__col > .nav-menu__group + .nav-menu__group {
+  margin-top: 20px;
 }
 
 .nav-menu__group-title {
@@ -186,20 +228,7 @@ a.nav-menu__group-title--link:hover {
 }
 
 .nav-menu__sublist a:hover {
-  /* color: var(--color-primary); */
-  text-decoration: underline;
-}
-
-.nav-menu__standalone {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.nav-menu__block-link {
-  font-size: 14px;
-  font-weight: 500;
+  color: var(--color-text-secondary);
   text-decoration: underline;
 }
 
@@ -296,7 +325,8 @@ a.nav-menu__group-title--link:hover {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 16px;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--color-line);
 }
 
 .nav-menu__social-link {
@@ -358,7 +388,6 @@ a.nav-menu__group-title--link:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
 /* Одна прокрутка: навигация + футер в потоке; футер внизу экрана при коротком меню и уезжает вниз при длинном — без перекрытия пунктов */
@@ -375,7 +404,7 @@ a.nav-menu__group-title--link:hover {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding: 8px 24px 0;
+  padding: 16px;
 }
 
 .mobile-menu__nav {
@@ -385,28 +414,25 @@ a.nav-menu__group-title--link:hover {
 .mobile-menu__footer {
   flex-shrink: 0;
   margin-top: auto;
-  padding-top: 20px;
-  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-  border-top: 1px solid var(--color-line);
+  padding-top: 52px;
+  /* border-top: 1px solid var(--color-line); */
   background: var(--color-white);
-}
-
-.mobile-menu__section {
-  border-bottom: 1px solid var(--color-line);
 }
 
 .mobile-menu__trigger {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  padding: 18px 0;
+  padding: 16px 0;
   background: none;
   border: none;
   font: inherit;
   font-size: 16px;
   font-weight: 400;
+  font-family: 'Roboto Condensed', var(--font-family-base);
+  font-weight: 500;
+  font-size: 22px;
   cursor: pointer;
   color: var(--color-text-main);
   text-align: left;
@@ -421,9 +447,10 @@ a.nav-menu__group-title--link:hover {
 }
 
 .mobile-menu__panel {
-  background: #f0f2f5;
-  margin: 0 -24px 12px;
-  padding: 20px 24px 24px;
+  background: var(--color-surface);
+  padding: 24px;
+  margin-bottom: 16px;
+  border-radius: 8px;
 }
 
 .mobile-menu__panel-inner .nav-menu__columns {
@@ -432,8 +459,14 @@ a.nav-menu__group-title--link:hover {
 }
 
 .mobile-menu__panel-inner .nav-menu__columns--services {
-  gap: 24px;
+  grid-template-columns: 1fr;
+  column-gap: 0;
+  row-gap: 24px;
   align-items: stretch;
+}
+
+.mobile-menu__panel-inner .nav-menu__columns--services > .nav-menu__group {
+  max-width: none;
 }
 
 .mobile-menu__panel-inner .nav-menu__columns--company {
@@ -446,17 +479,14 @@ a.nav-menu__group-title--link:hover {
   width: 100%;
 }
 
-.mobile-menu__panel-inner .nav-menu__standalone {
-  gap: 16px;
-}
-
 .mobile-menu__link-row {
   display: block;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--color-line);
+  padding: 16px 0;
   color: var(--color-text-main);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: 'Roboto Condensed', var(--font-family-base);
 }
 
 .mobile-menu__link-row:hover {
@@ -469,7 +499,7 @@ a.nav-menu__group-title--link:hover {
 }
 
 .mobile-menu__cta .btn {
-  border-radius: 8px;
+  border-radius: 4px;
   min-height: 44px;
 }
 
@@ -489,7 +519,7 @@ a.nav-menu__group-title--link:hover {
 .mobile-menu__footer .mobile-menu__rule {
   border: none;
   border-top: 1px solid var(--color-line);
-  margin: 20px 0 0;
+  margin: 16px 0 0;
 }
 
 .mobile-menu__footer .nav-menu__cv-link {
@@ -509,10 +539,6 @@ a.nav-menu__group-title--link:hover {
   и --header-height соответствовал компактной высоте.
 */
 @media (max-width: 1000px) {
-  .app-header {
-    padding: 24px 16px;
-  }
-
   .app-header .app-header__nav-wrapper,
   .app-header .app-right-part {
     display: none;
@@ -534,16 +560,14 @@ a.nav-menu__group-title--link:hover {
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 999) {
   .app-header__mobile-tools {
     display: none !important;
   }
 }
 
-/* @media (max-width: 640px) {
-
-  .app-header:not(.app-header--mobile-nav) .app-header__nav {
-    gap: 1rem;
-    font-size: 0.85rem;
+@media (max-width: 900px) {
+  .app-header__bar {
+    padding: 24px 16px;
   }
-} */
+}

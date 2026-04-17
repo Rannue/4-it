@@ -1,6 +1,10 @@
+// react
+import type { ReactNode } from 'react';
+
 // components
-import Button from '@/shared/ui/Button';
 import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
+import Button from '@/shared/ui/Button';
+import InteractiveTexture from '@/shared/ui/InteractiveTexture';
 
 // assets
 import texture from '@/assets/img/texture.png';
@@ -15,7 +19,9 @@ export type { BreadcrumbItem };
 type SecondaryHeroProps = {
   breadcrumbs: BreadcrumbItem[];
   title: string;
-  description?: string;
+  description?: ReactNode;
+  /** Второй абзац под основным описанием (необязательно). */
+  descriptionSecondary?: ReactNode;
 };
 
 function RequestCtaButton() {
@@ -24,6 +30,7 @@ function RequestCtaButton() {
       className="btn--full"
       color="#ffffff"
       textColor="#01111E"
+      href="#contacts"
       iconRight={<ArrowLongRightIcon />}
     >
       Оставить заявку
@@ -35,11 +42,17 @@ function HeroMainColumn({
   breadcrumbs,
   title,
   description,
+  descriptionSecondary,
 }: {
   breadcrumbs: BreadcrumbItem[];
   title: string;
-  description?: string;
+  description?: ReactNode;
+  descriptionSecondary?: ReactNode;
 }) {
+  const hasDescription = description != null && description !== '';
+  const hasDescriptionSecondary =
+    descriptionSecondary != null && descriptionSecondary !== '';
+
   return (
     <div className="hero-secondary-grid__cell hero-secondary-grid__cell--main">
       <div className="hero-secondary__content">
@@ -48,7 +61,14 @@ function HeroMainColumn({
           <h1 className="hero-secondary__title">{title}</h1>
         </div>
         <div className="hero-secondary__description-cta">
-          {description && <p className="hero-secondary__description">{description}</p>}
+          {hasDescription ? (
+            <p className="hero-secondary__description">{description}</p>
+          ) : null}
+          {hasDescriptionSecondary ? (
+            <p className="hero-secondary__description hero-secondary__description--secondary">
+              {descriptionSecondary}
+            </p>
+          ) : null}
           <div className="hero-secondary__cta-mobile">
             <RequestCtaButton />
           </div>
@@ -61,7 +81,9 @@ function HeroMainColumn({
 function HeroAsideColumn() {
   return (
     <div className="hero-secondary-grid__cell hero-secondary-grid__cell--aside">
-      <img src={texture} alt="" className="hero-secondary__texture" aria-hidden />
+      <InteractiveTexture>
+        <img src={texture} alt="" className="hero-secondary__texture" aria-hidden />
+      </InteractiveTexture>
       <div className="hero-secondary-grid__buttons-container">
         <RequestCtaButton />
       </div>
@@ -90,10 +112,12 @@ function HeroGrid({
   breadcrumbs,
   title,
   description,
+  descriptionSecondary,
 }: {
   breadcrumbs: BreadcrumbItem[];
   title: string;
-  description?: string;
+  description?: ReactNode;
+  descriptionSecondary?: ReactNode;
 }) {
   return (
     <div className="hero-secondary-grid">
@@ -102,7 +126,12 @@ function HeroGrid({
       <HeroGridSlot slot="r1c3" />
       <HeroGridSlot slot="r1c4" />
       <HeroGridSlot slot="r2c1" />
-      <HeroMainColumn breadcrumbs={breadcrumbs} title={title} description={description} />
+      <HeroMainColumn
+        breadcrumbs={breadcrumbs}
+        title={title}
+        description={description}
+        descriptionSecondary={descriptionSecondary}
+      />
       <HeroAsideColumn />
       <HeroGridSlot slot="r2c4" />
       <HeroGridSlot slot="r3c1" band />
@@ -113,12 +142,22 @@ function HeroGrid({
   );
 }
 
-function SecondaryHero({ breadcrumbs, title, description }: SecondaryHeroProps) {
+function SecondaryHero({
+  breadcrumbs,
+  title,
+  description,
+  descriptionSecondary,
+}: SecondaryHeroProps) {
   return (
     <div className="section-wrapper--px-only">
       <div className="section-wrapper__inner">
         <section id="home" className="hero-secondary">
-          <HeroGrid breadcrumbs={breadcrumbs} title={title} description={description} />
+          <HeroGrid
+            breadcrumbs={breadcrumbs}
+            title={title}
+            description={description}
+            descriptionSecondary={descriptionSecondary}
+          />
         </section>
       </div>
     </div>

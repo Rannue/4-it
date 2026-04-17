@@ -19,15 +19,25 @@
 }
 
 .hero-grid {
+  --hero-grid-radius: 8px;
+  /*
+    Нижняя полоса (пустая ячейка + текстура): на широком экране ~6vh,
+    при сужении окна дополнительно «растёт вверх» (больше высоты ряда).
+  */
+  --hero-grid-bottom-row: min(22vh, calc(6vh + max(0px, 1000px - 100vw) * 0.072));
+
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: minmax(40px, 1fr) minmax(40px, 1.8fr) 64px;
+  grid-template-rows: minmax(40px, 1fr) minmax(40px, 1.8fr) 74px;
   width: 100%;
-  height: calc(100vh - 144px);
+  /* Высота «экрана» героя: 100vh минус шапка и отступы (значение под макет, не только --header-height) */
+  height: calc(100vh - 146px);
   margin-bottom: 42px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: var(--hero-grid-radius);
   background-color: var(--color-primary);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .hero-grid__cell {
@@ -35,9 +45,22 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  box-sizing: border-box;
+  min-width: 0;
   padding: 32px;
   border: 0.5px solid rgba(255, 255, 255, 0.3);
   color: var(--color-white);
+}
+
+/* Чтобы текст и кнопка не вылезали за колонку grid / не ломали перенос */
+.hero-grid__cell > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Нижняя полоса с CTA — по-прежнему к нижнему краю строки */
+.hero-grid > .hero-grid__cell:nth-child(4) {
+  justify-content: flex-end;
 }
 
 .hero-grid__cell--texture {
@@ -45,13 +68,39 @@
   overflow: hidden;
 }
 
-.hero-grid__cell--texture::before {
-  content: '';
+/* Лид героя: размер строки и межстрочный интервал плавно растут с шириной экрана */
+.hero-grid__lead {
+  margin: 0;
+  max-width: 42em;
+  font-weight: var(--font-weight-light);
+  font-size: clamp(12px, calc(100vw * 14 / 1400), 14px);
+  line-height: 1.38;
+  overflow-wrap: break-word;
+}
+
+/*
+  Один радиус с блоком: линии сетки идут по дуге, без «двойного» контура в углах.
+  Порядок в App.tsx: 1 — TL, 2 — TR, 5 — BL, 6 — BR.
+*/
+.hero-grid > .hero-grid__cell:nth-child(1) {
+  border-top-left-radius: var(--hero-grid-radius);
+}
+
+.hero-grid > .hero-grid__cell:nth-child(2) {
+  border-top-right-radius: var(--hero-grid-radius);
+}
+
+.hero-grid > .hero-grid__cell:nth-child(5) {
+  border-bottom-left-radius: var(--hero-grid-radius);
+}
+
+.hero-grid > .hero-grid__cell:nth-child(6) {
+  border-bottom-right-radius: var(--hero-grid-radius);
+}
+
+.hero-grid__texture-layer {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  opacity: 0.8;
-  mix-blend-mode: luminosity;
   background: url('../assets/img/texture.png') center / cover no-repeat;
 }
 
@@ -72,4 +121,115 @@
 
 .hero-grid__button-container .btn:hover:not(.btn--disabled) .btn__icon {
   transform: rotate(45deg);
+}
+
+/*
+  Узкий экран: одна колонка «заголовок → лид → CTA», без угловых текстур.
+  Высота по контенту (без fr и без min-height на весь экран), чтобы не было «пустоты» под текстом.
+*/
+@media (max-width: 1000px) {
+  .hero-grid {
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-rows: auto;
+    grid-template-areas:
+      'heading'
+      'lead'
+      'cta';
+    height: calc(100vh - 108px);
+    min-height: 0;
+    max-height: none;
+    align-content: end;
+  }
+
+  /*
+    Пустое пространство сверху (align-content: end) — заливаем текстурой,
+    к низу блока героя градиентом уводим в сплошной --color-primary.
+  */
+  .hero-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: url('../assets/img/texture.png') center top / cover no-repeat;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      rgba(0, 0, 0, 0.75) 28%,
+      rgba(0, 0, 0, 0.25) 48%,
+      transparent 58%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      rgba(0, 0, 0, 0.75) 28%,
+      rgba(0, 0, 0, 0.25) 48%,
+      transparent 58%
+    );
+  }
+
+  .hero-grid > .hero-grid__cell:nth-child(1),
+  .hero-grid > .hero-grid__cell:nth-child(5),
+  .hero-grid > .hero-grid__cell:nth-child(6) {
+    display: none;
+  }
+
+  .hero-grid > .hero-grid__cell:nth-child(2) {
+    grid-area: lead;
+  }
+
+  .hero-grid > .hero-grid__cell:nth-child(3) {
+    grid-area: heading;
+  }
+
+  .hero-grid > .hero-grid__cell:nth-child(4) {
+    grid-area: cta;
+  }
+
+  .hero-grid > .hero-grid__cell:nth-child(2),
+  .hero-grid > .hero-grid__cell:nth-child(3),
+  .hero-grid > .hero-grid__cell:nth-child(4) {
+    position: relative;
+    z-index: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 0;
+  }
+
+  .hero-grid > .hero-grid__cell:nth-child(3),
+  .hero-grid > .hero-grid__cell:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .hero-grid > .hero-grid__cell:nth-child(1),
+  .hero-grid > .hero-grid__cell:nth-child(2),
+  .hero-grid > .hero-grid__cell:nth-child(3),
+  .hero-grid > .hero-grid__cell:nth-child(4),
+  .hero-grid > .hero-grid__cell:nth-child(5),
+  .hero-grid > .hero-grid__cell:nth-child(6) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .hero-grid__lead {
+    max-width: none;
+    font-size: clamp(0.875rem, 0.4rem + 1.6vw, 1rem);
+    line-height: 1.45;
+  }
+
+  .hero-grid h1 {
+    font-size: clamp(1.6rem, 2.8vw + 0.85rem, 7rem);
+    line-height: 140%;
+  }
+
+  .hero-grid__button-container {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }

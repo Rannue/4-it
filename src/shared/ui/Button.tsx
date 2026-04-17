@@ -21,6 +21,7 @@ type ButtonProps = {
   href?: string;
   target?: string;
   rel?: string;
+  'aria-describedby'?: string;
 };
 
 type ButtonInlineStyle = CSSProperties & {
@@ -43,6 +44,7 @@ function Button({
   href,
   target,
   rel,
+  'aria-describedby': ariaDescribedBy,
 }: ButtonProps) {
   const setPointerVars = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     const el = e.currentTarget;
@@ -77,22 +79,24 @@ function Button({
   if (href != null && href !== '') {
     if (disabled) {
       return (
-        <span className={classNames} style={style} aria-disabled>
+        <span className={classNames} style={style} aria-disabled aria-describedby={ariaDescribedBy}>
           {inner}
         </span>
       );
     }
     const resolvedRel = rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined);
+
     return (
       <a
         href={href}
         className={classNames}
-        onClick={onClick}
+        onClick={() => onClick?.()}
         onMouseMove={setPointerVars}
         onMouseEnter={setPointerVars}
         style={style}
         target={target}
         rel={resolvedRel}
+        aria-describedby={ariaDescribedBy}
       >
         {inner}
       </a>
@@ -108,6 +112,7 @@ function Button({
       onMouseEnter={setPointerVars}
       style={style}
       disabled={disabled}
+      aria-describedby={ariaDescribedBy}
     >
       {inner}
     </button>

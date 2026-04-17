@@ -2,24 +2,24 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 // components
-import CybersecurityPage from '@/pages';
+import CybersecurityPage from '@/pages/cybersecurity';
 import CybersecurityAuditPage from '@/pages/cybersecurity/Audit';
 import CybersecurityDesignSziPage from '@/pages/cybersecurity/certification/DesignSzi';
 import CybersecurityCreateSziPage from '@/pages/cybersecurity/certification/CreateSzi';
-import SecondaryCertificationPage from '@/pages/cybersecurity/certification/CertificationSecondary.tsx';
-import SecurityAssessmentPage from '@/pages/cybersecurity/certification/SecurityAssessment.tsx';
-import SZIDocumentsReviewPage from '@/pages/cybersecurity/certification/SZIDocumentsReview.tsx';
-import CybersecuritySiemPage from '@/pages/cybersecurity/delivery/SIEM.tsx';
-import CybersecurityDlpPage from '@/pages/cybersecurity/delivery/DLP.tsx';
-import CybersecurityPamPage from '@/pages/cybersecurity/delivery/PAM.tsx';
-import FirewallPage from '@/pages/cybersecurity/delivery/Firewall.tsx';
+import SecondaryCertificationPage from '@/pages/cybersecurity/certification/CertificationSecondary';
+import SecurityAssessmentPage from '@/pages/cybersecurity/certification/SecurityAssessment';
+import SZIDocumentsReviewPage from '@/pages/cybersecurity/certification/SZIDocumentsReview';
+import CybersecuritySiemPage from '@/pages/cybersecurity/delivery/SIEM';
+import CybersecurityDlpPage from '@/pages/cybersecurity/delivery/DLP';
+import CybersecurityPamPage from '@/pages/cybersecurity/delivery/PAM';
+import FirewallPage from '@/pages/cybersecurity/delivery/Firewall';
 import AntivirusProtectionPage from '@/pages/cybersecurity/delivery/AntivirusProtection';
 import BackupPage from '@/pages/cybersecurity/delivery/Backup';
-import CybersecurityNetworkScreensPage from '@/pages/cybersecurity/delivery/LinearEncryption.tsx';
-import CertificationOfInformationSecurityToolsPage from '@/pages/cybersecurity/Certification';
+import CybersecurityNetworkScreensPage from '@/pages/cybersecurity/delivery/LinearEncryption';
+import CertificationOfInformationSecurityToolsPage from '@/pages/cybersecurity/certification';
 import CybersecurityDeliveryPage from '@/pages/cybersecurity/Delivery';
-import CyberCulturePage from '@/pages/cybersecurity/delivery/CyberCulture.tsx';
-import SupplyOfServersAndSwitchesPage from '@/pages/cybersecurity/delivery/SupplyOfServersAndSwitches.tsx';
+import CyberCulturePage from '@/pages/cybersecurity/delivery/CyberCulture';
+import SupplyOfServersAndSwitchesPage from '@/pages/cybersecurity/delivery/SupplyOfServersAndSwitches';
 
 export function CybersecurityRoutes() {
   return (
@@ -51,7 +51,10 @@ export function CybersecurityRoutes() {
       <Route path="/cybersecurity/firewall" element={<FirewallPage />} />
       <Route path="/cybersecurity/antivirus" element={<AntivirusProtectionPage />} />
       <Route path="/cybersecurity/backup" element={<BackupPage />} />
-      <Route path="/cybersecurity/network-screens" element={<CybersecurityNetworkScreensPage />} />
+      <Route
+        path="/cybersecurity/network-screens"
+        element={<Navigate to="/cybersecurity/firewall" replace />}
+      />
       <Route
         path="/cybersecurity/linear-encryption"
         element={<CybersecurityNetworkScreensPage />}

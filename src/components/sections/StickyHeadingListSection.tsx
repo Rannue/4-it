@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import './StickyHeadingListSection.css';
 
 export type StickyHeadingListItem = {
-  text: string;
+  text: ReactNode;
 };
 
 export type StickyHeadingListSectionProps = {

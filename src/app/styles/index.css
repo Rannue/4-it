@@ -23,13 +23,28 @@
   --color-bg: #ffffff;
   --color-surface: #f3f4f8;
   --color-line: #c5d0e8;
-  --gray-300: #d9d9d9;
+  --gray-300: #d5d6dd;
+  --gray-500: #adaeb9;
+
+  /** Макс. ширина основного контента (шапка, секции, подвал, модалки превью). */
+  --layout-content-max-width: 1600px;
 
   /* Акценты и кнопки */
   --color-primary: #0091ec;
   --color-btn-primary: #01111e;
   --color-accent: var(--color-primary);
   --color-accent-hover: #0078c8;
+
+  /* Выпадающие списки (select, multiselect, телефон): общая панель и пункты */
+  --ui-dropdown-radius: 4px;
+  --ui-dropdown-padding: 8px 10px;
+  --ui-dropdown-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  --ui-dropdown-border: 1px solid rgba(15, 23, 42, 0.08);
+  --ui-dropdown-item-radius: 4px;
+  --ui-dropdown-item-pad-y: 10px;
+  --ui-dropdown-item-pad-x: 16px;
+  --ui-dropdown-item-hover-bg: rgba(0, 145, 236, 0.12);
+  --ui-dropdown-item-hover-fg: var(--color-primary);
 }
 
 /* ─── База документа ─── */
@@ -96,7 +111,7 @@ h1 {
 h2 {
   color: var(--color-text-main);
   font-family: var(--font-heading);
-  font-size: clamp(28px, calc(100vw * 52 / 1400), 52px);
+  font-size: clamp(26px, calc(100vw * 52 / 1400), 52px);
   font-weight: var(--font-weight-medium);
   line-height: 120%;
   text-transform: uppercase;
@@ -104,14 +119,14 @@ h2 {
 
 h3 {
   font-family: var(--font-family-base);
-  font-size: clamp(18px, calc(100vw * 24 / 1400), 24px);
+  font-size: clamp(20px, calc(100vw * 24 / 1400), 24px);
   font-weight: var(--font-weight-semibold);
   line-height: 140%;
 }
 
 h4 {
   font-family: var(--font-family-base);
-  font-size: clamp(px, calc(100vw * 18 / 1400), 18px);
+  font-size: clamp(16px, calc(100vw * 18 / 1400), 18px);
   font-weight: var(--font-weight-semibold);
   line-height: 1.2;
 }
@@ -135,8 +150,8 @@ h4 {
 }
 
 .section-wrapper__inner {
-  max-width: 1600px;
   margin-inline: auto;
+  max-width: 1600px;
 }
 
 /* Узкие страницы с классом .section (кибербезопасность и др.) */

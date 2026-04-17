@@ -38,7 +38,13 @@ function CertificationOfInformationSecurityToolsPage() {
             to: '/cybersecurity/siem',
           },
           {
-            title: 'DLP (Data Loss Prevention)',
+            title: (
+              <>
+                DLP
+                <br />
+                (Data Loss Prevention)
+              </>
+            ),
             description:
               'Технологии для предотвращения утечек конфиденциальной информации и защиты данных от несанкционированного доступа.',
             to: '/cybersecurity/dlp',

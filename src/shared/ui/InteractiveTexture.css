@@ -1,0 +1,56 @@
+.interactive-texture {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  /* Удерживает luminosity внутри overflow; иначе край может «просвечивать» за скругление. */
+  isolation: isolate;
+}
+
+.interactive-texture__parallax {
+  position: absolute;
+  inset: 0;
+  --itx: 0px;
+  --ity: 0px;
+  transform: translate3d(var(--itx), var(--ity), 0);
+}
+
+/* Запас по краям только при параллаксе (главная). */
+.interactive-texture--parallax .interactive-texture__parallax {
+  top: -20%;
+  left: -20%;
+  right: -20%;
+  bottom: -20%;
+  will-change: transform;
+}
+
+.interactive-texture--static .interactive-texture__parallax {
+  transform: none;
+  will-change: auto;
+}
+
+/* Как раньше на герое: текстура даёт яркость поверх фирменного фона. */
+.interactive-texture__parallax > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  mix-blend-mode: luminosity;
+}
+
+.interactive-texture--parallax[data-reduced-motion='true'] .interactive-texture__parallax {
+  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: none;
+  will-change: auto;
+}
+
+/* Кастомный «шарик» на главной: скрываем системный курсор только над текстурами с параллаксом. */
+@media (hover: hover) and (pointer: fine) {
+  .interactive-texture--parallax:not([data-reduced-motion='true']) {
+    cursor: none;
+  }
+}

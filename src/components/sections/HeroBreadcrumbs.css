@@ -53,3 +53,28 @@
 .hero-breadcrumbs__item--current .hero-breadcrumbs__text {
   opacity: 0.4;
 }
+
+/* Светлый фон (страницы с белым хедером блока) */
+.hero-breadcrumbs--on-canvas .hero-breadcrumbs__sep {
+  color: var(--color-text-secondary-light);
+}
+
+.hero-breadcrumbs--on-canvas .hero-breadcrumbs__link,
+.hero-breadcrumbs--on-canvas .hero-breadcrumbs__text {
+  color: var(--color-text-secondary);
+}
+
+.hero-breadcrumbs--on-canvas
+  .hero-breadcrumbs__item:not(.hero-breadcrumbs__item--current)
+  a.hero-breadcrumbs__link:hover,
+.hero-breadcrumbs--on-canvas
+  .hero-breadcrumbs__item:not(.hero-breadcrumbs__item--current)
+  a.hero-breadcrumbs__link:focus-visible {
+  color: var(--color-primary);
+}
+
+.hero-breadcrumbs--on-canvas .hero-breadcrumbs__item--current .hero-breadcrumbs__link,
+.hero-breadcrumbs--on-canvas .hero-breadcrumbs__item--current .hero-breadcrumbs__text {
+  color: var(--color-text-main);
+  opacity: 1;
+}

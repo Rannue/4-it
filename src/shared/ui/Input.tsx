@@ -2,6 +2,9 @@
 import type { ChangeEvent, ComponentPropsWithoutRef, ReactNode } from 'react';
 import { useEffect, useId, useRef, useState } from 'react';
 
+import chevronDownUrl from '@/assets/icons/chevron-down.svg';
+import closeUrl from '@/assets/icons/close.svg';
+
 import './Input.css';
 
 type InputProps = {
@@ -18,7 +21,12 @@ function Input({ label, id, className, controlClassName, required, ...rest }: In
     <div className={['ui-input', className].filter(Boolean).join(' ')}>
       <label className="ui-input__label" htmlFor={id}>
         {label}
-        {required ? <span className="ui-input__required">*</span> : null}
+        {required ? (
+          <>
+            {' '}
+            <span className="ui-input__required">*</span>
+          </>
+        ) : null}
       </label>
       <input
         id={id}
@@ -42,7 +50,12 @@ function Textarea({ label, id, className, controlClassName, required, ...rest }:
     <div className={['ui-input', className].filter(Boolean).join(' ')}>
       <label className="ui-input__label" htmlFor={id}>
         {label}
-        {required ? <span className="ui-input__required">*</span> : null}
+        {required ? (
+          <>
+            {' '}
+            <span className="ui-input__required">*</span>
+          </>
+        ) : null}
       </label>
       <textarea
         id={id}
@@ -66,45 +79,9 @@ type SelectProps = {
 
 function SelectCaret() {
   return (
-    <svg
-      className="ui-select__caret"
-      width="12"
-      height="8"
-      viewBox="0 0 12 8"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden
-    >
-      <path
-        d="M1 1.5L6 6.5L11 1.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function SelectCheck() {
-  return (
-    <svg
-      className="ui-select__check"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden
-    >
-      <path
-        d="M20 6L9 17l-5-5"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <span className="ui-select__caret" aria-hidden>
+      <img src={chevronDownUrl} alt="" className="ui-select__caret-img" width={14} height={14} />
+    </span>
   );
 }
 
@@ -170,7 +147,12 @@ function Select({
       )}
       <label className="ui-input__label" htmlFor={id}>
         {label}
-        {required ? <span className="ui-input__required">*</span> : null}
+        {required ? (
+          <>
+            {' '}
+            <span className="ui-input__required">*</span>
+          </>
+        ) : null}
       </label>
       <div
         ref={wrapRef}
@@ -230,9 +212,6 @@ function Select({
                     }}
                   >
                     <span className="ui-select__option-label">{opt.label}</span>
-                    <span className="ui-select__option-indicator" aria-hidden>
-                      {active ? <SelectCheck /> : null}
-                    </span>
                   </button>
                 </li>
               );
@@ -317,7 +296,12 @@ function MultiSelect({
       )}
       <label className="ui-input__label" htmlFor={id}>
         {label}
-        {required ? <span className="ui-input__required">*</span> : null}
+        {required ? (
+          <>
+            {' '}
+            <span className="ui-input__required">*</span>
+          </>
+        ) : null}
       </label>
       <div
         ref={wrapRef}
@@ -365,7 +349,7 @@ function MultiSelect({
                       remove(v);
                     }}
                   >
-                    ×
+                    <img src={closeUrl} alt="" width={12} height={12} className="ui-multi-select__chip-remove-img" />
                   </button>
                 </span>
               ))
@@ -401,9 +385,6 @@ function MultiSelect({
                     }}
                   >
                     <span className="ui-multi-select__option-label">{opt.label}</span>
-                    <span className="ui-multi-select__option-indicator" aria-hidden>
-                      {selected ? <SelectCheck /> : null}
-                    </span>
                   </button>
                 </li>
               );

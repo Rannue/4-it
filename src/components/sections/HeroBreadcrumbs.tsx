@@ -11,18 +11,25 @@ export type BreadcrumbItem = {
   href?: string;
 };
 
+export type HeroBreadcrumbsTone = 'onAccent' | 'onCanvas';
+
 type HeroBreadcrumbsProps = {
   items: BreadcrumbItem[];
+  /** `onAccent` — тёмный/цветной фон (hero). `onCanvas` — светлая страница. */
+  tone?: HeroBreadcrumbsTone;
 };
 
 /**
  * Хлебные крошки для вторичного hero: перенос сегментов как у тегов (flex-wrap).
  */
-function HeroBreadcrumbs({ items }: HeroBreadcrumbsProps) {
+function HeroBreadcrumbs({ items, tone = 'onAccent' }: HeroBreadcrumbsProps) {
   if (items.length === 0) return null;
 
+  const rootClass =
+    tone === 'onCanvas' ? 'hero-breadcrumbs hero-breadcrumbs--on-canvas' : 'hero-breadcrumbs';
+
   return (
-    <nav className="hero-breadcrumbs" aria-label="Хлебные крошки">
+    <nav className={rootClass} aria-label="Хлебные крошки">
       <ol className="hero-breadcrumbs__list">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;

@@ -113,7 +113,7 @@ function EDMSWithSignaturePage() {
               />
             `,
           `
-              <div class="info-grid__group-type2">
+              <div class="info-grid__group info-grid__group--lg">
                 <p>
 Беларуси ЭЦП существует в двух основных формах:
 <span style="color: var(--color-primary);">

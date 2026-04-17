@@ -32,7 +32,6 @@ Each phase is self-contained. Run `make check` after every phase and commit befo
 | `TestimonialsSection`          | Reusable                       | Keep in `components/sections/` |
 | `ServicesSection`              | Reusable                       | Keep in `components/sections/` |
 | `ScrollCardsSection`           | Reusable                       | Keep in `components/sections/` |
-| `HighlightGridSection`         | Reusable                       | Keep in `components/sections/` |
 | `StickyHeadingListSection`     | Reusable                       | Keep in `components/sections/` |
 | `ProductTierComparisonSection` | Reusable                       | Keep in `components/sections/` |
 | `SupportPlansSection`          | Reusable                       | Keep in `components/sections/` |

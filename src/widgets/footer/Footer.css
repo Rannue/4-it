@@ -23,7 +23,7 @@
 .footer__wrap {
   position: relative;
   z-index: 1;
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin-inline: auto;
 }
 

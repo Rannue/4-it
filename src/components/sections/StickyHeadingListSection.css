@@ -75,6 +75,10 @@
   color: var(--color-text-main);
 }
 
+.sticky-heading-list__text-accent {
+  color: var(--color-primary);
+}
+
 @media (max-width: 900px) {
   .sticky-heading-list__grid {
     grid-template-columns: 1fr;

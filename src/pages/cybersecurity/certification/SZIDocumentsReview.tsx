@@ -9,7 +9,7 @@ import searchDarkIllustration from '@/assets/img/illustrations/search-dark.svg';
 import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import AnimatedAuditGoalText from '@/components/sections/AnimatedAuditGoalText.tsx';
+import AnimatedAuditGoalText from '@/components/sections/AnimatedAuditGoalText';
 import taskDarkIllustration from '@/assets/img/illustrations/task-dark.svg';
 import checkIcon from '@/assets/icons/check.svg';
 import folderIcon from '@/assets/icons/folder.svg';

@@ -78,6 +78,26 @@ a.btn:hover {
   display: block;
 }
 
+/* Стрелка справа (после подписи): поворот при наведении */
+.btn__label + .btn__icon {
+  transition: transform 0.2s ease;
+  transform-origin: 50% 50%;
+}
+
+.btn:hover:not(.btn--disabled) .btn__label + .btn__icon {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn__label + .btn__icon {
+    transition: none;
+  }
+
+  .btn:hover:not(.btn--disabled) .btn__label + .btn__icon {
+    transform: none;
+  }
+}
+
 .btn--primary:hover:not(.btn--disabled) {
   transform: translateY(-1px);
   box-shadow: 0 20px 45px rgba(37, 99, 235, 0.55);

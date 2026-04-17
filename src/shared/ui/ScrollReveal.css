@@ -1,0 +1,39 @@
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/**
+ * Секции с полноширинным серым / surface-фоном — без выезда (только статика).
+ * Селекторы — прямой потомок обёртки ScrollReveal (корень секции).
+ */
+.scroll-reveal:has(> section.certificates),
+.scroll-reveal:has(> section.cases),
+.scroll-reveal:has(> section.document-details),
+.scroll-reveal:has(> div.manufacturers-section),
+.scroll-reveal:has(> section.contact-request-form),
+.scroll-reveal:has(> div.interesting-facts__wrap),
+.scroll-reveal:has(> section.support-plans) {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: none;
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}

@@ -7,17 +7,28 @@ import Button from '@/shared/ui/Button';
 import Input, { MultiSelect, Select, Textarea } from '@/shared/ui/Input';
 import PhoneInput from '@/shared/ui/PhoneInput';
 
+// data
+import { PERSONAL_DATA_POLICY_DOC_HREF } from '@/constants/legalDocs';
+
 import './ContactRequestForm.css';
 
 /**
  * Отправка через FormSubmit (работает и в dev, и после build — разницы нет).
- * Обязательно: подтвердить форму по ссылке из письма FormSubmit на bogachenko.av@4-it.by.
+ * Обязательно: подтвердить форму по ссылке из письма FormSubmit на data@4-it.by.
  */
-const CONTACT_FORM_RECIPIENT = 'bogachenko.av@4-it.by';
+const CONTACT_FORM_RECIPIENT = 'data@4-it.by';
+/** JSON-ответ без перезагрузки; вложения к письму с этим endpoint часто не доходят (ограничение FormSubmit). */
 const CONTACT_FORM_SUBMIT_URL = `https://formsubmit.co/ajax/${CONTACT_FORM_RECIPIENT}`;
+/** Обычная отправка — нужна для корректной доставки вложений (см. FormSubmit docs, File uploads). */
+const CONTACT_FORM_CLASSIC_URL = `https://formsubmit.co/${CONTACT_FORM_RECIPIENT}`;
+
+/** Временно: кнопка «Прикрепить файл» и вложения. `true` — вернуть UI и multipart. */
+const SHOW_CONTACT_FORM_ATTACHMENT = false;
+
+const EXTERNAL_DOC_REL = 'noopener noreferrer' as const;
 
 const DEFAULT_SERVICE_OPTIONS = [
-  { value: '', label: 'Выберите одну или несколько услуг' },
+  { value: '', label: '' },
   { value: 'bitrix24', label: 'Битрикс24' },
   { value: 'support', label: 'Техническая поддержка' },
   { value: 'cybersecurity', label: 'Кибербезопасность' },
@@ -123,7 +134,6 @@ function ContactRequestForm({
   const [services, setServices] = useState<string[]>([]);
   const [budget, setBudget] = useState('');
   const [comment, setComment] = useState('');
-  const [consent, setConsent] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -186,33 +196,49 @@ function ContactRequestForm({
       formData.append('attachment', file, file.name);
     }
 
+    const useClassicSubmit = Boolean(file);
+    const submitUrl = useClassicSubmit ? CONTACT_FORM_CLASSIC_URL : CONTACT_FORM_SUBMIT_URL;
+
     setIsSubmitting(true);
     try {
-      const res = await fetch(CONTACT_FORM_SUBMIT_URL, {
+      const res = await fetch(submitUrl, {
         method: 'POST',
         body: formData,
-        headers: { Accept: 'application/json' },
+        ...(useClassicSubmit
+          ? {}
+          : {
+              headers: { Accept: 'application/json' },
+            }),
       });
       const raw = await res.text();
-      type SubmitJson = { success?: boolean; ok?: boolean; message?: string };
-      let data: SubmitJson | null = null;
-      try {
-        data = raw ? (JSON.parse(raw) as SubmitJson) : null;
-      } catch {
-        /* не JSON — не считаем успехом при сомнительном ответе */
-      }
-      const looksLikeJson = /^\s*(?:\[|\{)/.test(raw);
-      const failed =
-        !res.ok ||
-        data?.success === false ||
-        data?.ok === false ||
-        (data == null && raw.length > 0 && !looksLikeJson);
-      if (failed) {
-        throw new Error(
-          data?.message ??
-            (raw && raw.length < 400 ? raw : null) ??
-            'Не удалось отправить форму. Попробуйте позже.'
-        );
+
+      if (useClassicSubmit) {
+        if (!res.ok) {
+          throw new Error(
+            raw && raw.length < 400 ? raw : 'Не удалось отправить форму. Попробуйте позже.'
+          );
+        }
+      } else {
+        type SubmitJson = { success?: boolean; ok?: boolean; message?: string };
+        let data: SubmitJson | null = null;
+        try {
+          data = raw ? (JSON.parse(raw) as SubmitJson) : null;
+        } catch {
+          /* не JSON — не считаем успехом при сомнительном ответе */
+        }
+        const looksLikeJson = /^\s*(?:\[|\{)/.test(raw);
+        const failed =
+          !res.ok ||
+          data?.success === false ||
+          data?.ok === false ||
+          (data == null && raw.length > 0 && !looksLikeJson);
+        if (failed) {
+          throw new Error(
+            data?.message ??
+              (raw && raw.length < 400 ? raw : null) ??
+              'Не удалось отправить форму. Попробуйте позже.'
+          );
+        }
       }
       setSubmitSuccess(true);
       setName('');
@@ -222,7 +248,6 @@ function ContactRequestForm({
       setServices([]);
       setBudget('');
       setComment('');
-      setConsent(false);
       setFileName(null);
       if (fileInputRef.current) fileInputRef.current.value = '';
     } catch (err) {
@@ -258,7 +283,7 @@ function ContactRequestForm({
       className={['contact-request-form', className].filter(Boolean).join(' ')}
       aria-labelledby={`${id}-heading`}
     >
-      <div className="section-wrapper">
+      <div className="section-wrapper__contact-request-form">
         <div className="section-wrapper__inner">
           <div className="contact-request-form__panel">
             <div className="contact-request-form__intro">
@@ -266,14 +291,17 @@ function ContactRequestForm({
                 Начнем работать?
               </h2>
               <p className="contact-request-form__lead">
-                У вас есть вопрос, идея или проект, с которым нужна помощь? Свяжитесь с нами!{' '}
-                <strong>
-                  Для обратной связи укажите номер телефона или адрес электронной почты
-                </strong>
+                У вас есть вопрос, идея или проект, с которым нужна помощь? Свяжитесь с нами! <br />{' '}
+                <br /> Для обратной связи укажите номер телефона или адрес электронной почты
               </p>
             </div>
 
-            <form className="contact-request-form__form" onSubmit={handleSubmit} noValidate>
+            <form
+              className="contact-request-form__form"
+              onSubmit={handleSubmit}
+              noValidate
+              encType="multipart/form-data"
+            >
               <input
                 type="text"
                 name="_honey"
@@ -363,26 +391,21 @@ function ContactRequestForm({
                 onChange={e => setComment(e.target.value)}
               />
 
-              <div className="contact-request-form__consent">
-                <input
-                  id={fieldId('consent')}
-                  className="contact-request-form__checkbox"
-                  name="consent"
-                  type="checkbox"
-                  checked={consent}
-                  onChange={e => setConsent(e.target.checked)}
-                  required
-                />
-                <label className="contact-request-form__consent-label" htmlFor={fieldId('consent')}>
-                  Принимаю условия{' '}
-                  <a href="#" className="contact-request-form__link">
-                    пользовательского соглашения
-                  </a>{' '}
-                  и даю согласие на обработку персональных данных.
-                </label>
-              </div>
+              <p className="contact-request-form__consent-notice" id={fieldId('consent-notice')}>
+                Нажимая кнопку «Отправить заявку», я принимаю условия пользовательского соглашения и даю
+                согласие на обработку моих персональных данных на условиях и для целей, определённых в{' '}
+                <a
+                  href={PERSONAL_DATA_POLICY_DOC_HREF}
+                  className="contact-request-form__link"
+                  target="_blank"
+                  rel={EXTERNAL_DOC_REL}
+                >
+                  Согласии на обработку персональных данных
+                </a>
+                . <span aria-hidden="true">*</span>
+              </p>
 
-              <div className="contact-request-form__actions">
+              {SHOW_CONTACT_FORM_ATTACHMENT ? (
                 <input
                   ref={fileInputRef}
                   className="contact-request-form__file-input"
@@ -391,53 +414,65 @@ function ContactRequestForm({
                   tabIndex={-1}
                   onChange={handleFileChange}
                 />
-                <div className="contact-request-form__actions-main">
-                  {fileName ? (
-                    <div className="contact-request-form__file-chip" aria-live="polite">
-                      <span className="contact-request-form__file-chip-name" title={fileName}>
-                        {fileName}
-                      </span>
-                      <div className="contact-request-form__file-chip-actions">
-                        <button
-                          type="button"
-                          className="contact-request-form__file-icon-btn"
-                          aria-label="Заменить файл"
-                          onClick={handleReplaceFile}
-                        >
-                          <ReplaceFileIcon />
-                        </button>
-                        <button
-                          type="button"
-                          className="contact-request-form__file-icon-btn contact-request-form__file-icon-btn--remove"
-                          aria-label="Удалить файл"
-                          onClick={clearFile}
-                        >
-                          <span aria-hidden>×</span>
-                        </button>
+              ) : null}
+              <div
+                className={[
+                  'contact-request-form__actions',
+                  !SHOW_CONTACT_FORM_ATTACHMENT ? 'contact-request-form__actions--submit-only' : null,
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+              >
+                {SHOW_CONTACT_FORM_ATTACHMENT ? (
+                  <div className="contact-request-form__actions-main">
+                    {fileName ? (
+                      <div className="contact-request-form__file-chip" aria-live="polite">
+                        <span className="contact-request-form__file-chip-name" title={fileName}>
+                          {fileName}
+                        </span>
+                        <div className="contact-request-form__file-chip-actions">
+                          <button
+                            type="button"
+                            className="contact-request-form__file-icon-btn"
+                            aria-label="Заменить файл"
+                            onClick={handleReplaceFile}
+                          >
+                            <ReplaceFileIcon />
+                          </button>
+                          <button
+                            type="button"
+                            className="contact-request-form__file-icon-btn contact-request-form__file-icon-btn--remove"
+                            aria-label="Удалить файл"
+                            onClick={clearFile}
+                          >
+                            <span aria-hidden>×</span>
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <Button
-                      type="button"
-                      className="contact-request-form__attach contact-request-form__attach--block"
-                      color="#ffffff"
-                      textColor="var(--color-text-main)"
-                      borderColor="var(--gray-300)"
-                      iconLeft={<PaperclipIcon />}
-                      onClick={handleAttachClick}
-                    >
-                      Прикрепить файл
-                    </Button>
-                  )}
-                </div>
+                    ) : (
+                      <Button
+                        type="button"
+                        className="contact-request-form__attach contact-request-form__attach--block"
+                        color="#ffffff"
+                        textColor="var(--color-text-main)"
+                        borderColor="var(--gray-300)"
+                        iconLeft={<PaperclipIcon />}
+                        onClick={handleAttachClick}
+                      >
+                        Прикрепить файл
+                      </Button>
+                    )}
+                  </div>
+                ) : null}
                 <Button
                   type="submit"
                   className="contact-request-form__submit"
                   color="#01111E"
                   textColor="#ffffff"
                   disabled={isSubmitting}
+                  aria-describedby={fieldId('consent-notice')}
                 >
-                  {isSubmitting ? 'Отправка…' : 'Отправить'}
+                  {isSubmitting ? 'Отправка…' : 'Отправить заявку'}
                 </Button>
               </div>
             </form>

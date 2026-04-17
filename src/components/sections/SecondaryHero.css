@@ -15,7 +15,7 @@
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  overflow-x: clip;
+  overflow: hidden;
 }
 
 .hero-secondary-grid__cell {
@@ -72,8 +72,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0.8;
-  mix-blend-mode: luminosity;
 }
 
 .hero-secondary-grid__buttons-container {
@@ -101,11 +99,16 @@
 }
 
 .hero-secondary__description {
+  margin: 0;
   font-size: 18px;
   line-height: 140%;
   font-weight: 300;
   overflow-wrap: break-word;
   word-break: break-word;
+}
+
+.hero-secondary__description--secondary {
+  margin-top: 16px;
 }
 
 .hero-secondary__cta-mobile {
@@ -188,6 +191,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+
+  .hero-secondary__description--secondary {
+    margin-top: 0;
   }
 
   .hero-secondary-grid .hero-secondary__cta-mobile {

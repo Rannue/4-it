@@ -5,13 +5,13 @@
 
 .clients__header-inner {
   box-sizing: border-box;
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin-inline: auto;
   padding-inline: clamp(16px, 4vw, 42px);
 }
 
 .clients__header {
-  padding-bottom: clamp(28px, 5vw, 42px);
+  padding-bottom: 42px;
 }
 
 .clients__title {
@@ -27,14 +27,14 @@
 
 /* ─── Сетка логотипов (швы через gap + фон линии) ─── */
 .clients__grid-wrapper {
-  padding-inline: clamp(16px, 4vw, 42px);
+  padding: 0 42px;
   border-block: 1px solid var(--color-line);
 }
 
 .clients__grid {
   box-sizing: border-box;
   display: grid;
-  max-width: 1600px;
+  max-width: var(--layout-content-max-width);
   margin-inline: auto;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
@@ -69,19 +69,39 @@
   max-height: clamp(40px, 9vw, 56px);
 }
 
+/* На очень широком экране убираем боковой padding обёртки — сетка уже ограничена max-width и центрируется. */
+@media (min-width: 1601px) {
+  .clients__grid-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 @media (max-width: 1200px) {
   .clients__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .clients__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .clients__grid-wrapper {
+    padding: 0 16px;
+  }
+
+  /* .section-wrapper__inner {
+    padding: 0 16px;
+  } */
+
   .clients__cell {
     min-height: clamp(88px, 22vw, 120px);
+  }
+
+  .clients__header {
+    padding-bottom: 32px;
   }
 
   .clients__logo-image {
@@ -98,6 +118,18 @@
   .clients__logo-image {
     max-width: min(148px, 88%);
     max-height: clamp(28px, 8.5vw, 42px);
+  }
+
+  .clients__grid-wrapper {
+    padding: 0 16px;
+  }
+
+  .section-wrapper__inner {
+    padding: 0 16px;
+  }
+
+  .clients__header {
+    padding-bottom: 24px;
   }
 
   .clients__logo-image--tuned {

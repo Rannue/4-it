@@ -7,7 +7,10 @@ import {
   type MouseEvent,
   type ReactNode,
 } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+// constants
+import { SOCIAL_LINKS } from '@/constants/socialLinks';
 
 // components
 import Button from '@/shared/ui/Button';
@@ -24,6 +27,9 @@ type NavItemKey = 'Компания' | 'Услуги';
 
 /** Временно: выпадающее меню всегда видно. Поставьте `true` для отладки вёрстки. */
 const NAV_MENU_ALWAYS_VISIBLE = false;
+
+/** Временно: пункты «Отзывы» и «Блог» в блоке «Компания». Поставьте `true`, когда разделы будут готовы. */
+const SHOW_COMPANY_REVIEWS_AND_BLOG = false;
 
 const HH_VACANCIES_URL = 'https://hh.ru/employer/1589500?hhtmFrom=vacancy&tab=DESCRIPTION';
 
@@ -77,17 +83,15 @@ function NavChevron() {
   return (
     <svg
       className="app-header__nav-chevron"
-      width={12}
-      height={12}
-      viewBox="0 0 12 12"
+      viewBox="0 0 22 22"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden
     >
       <path
-        d="M2.5 4.25L6 7.75L9.5 4.25"
+        d="M4.583 7.792L11 14.208L17.417 7.792"
         stroke="currentColor"
-        strokeWidth="1.2"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -112,82 +116,78 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
         <li>
           <a href="#clients">Клиенты</a>
         </li>
-        <li>
-          <a href="#reviews">Отзывы</a>
-        </li>
+        {SHOW_COMPANY_REVIEWS_AND_BLOG ? (
+          <li>
+            <a href="#reviews">Отзывы</a>
+          </li>
+        ) : null}
       </ul>
       <ul className="nav-menu__list">
         <li>
-          <a href="#certificates">Сертификаты и документы</a>
+          <Link to="/certificates">Сертификаты и документы</Link>
         </li>
-        <li>
-          <a href="#blog">Блог</a>
-        </li>
+        {SHOW_COMPANY_REVIEWS_AND_BLOG ? (
+          <li>
+            <a href="#blog">Блог</a>
+          </li>
+        ) : null}
       </ul>
     </div>
   ),
   Услуги: (
     <div className="nav-menu__columns nav-menu__columns--services">
-      <div className="nav-menu__col">
-        <div className="nav-menu__group">
-          <p className="nav-menu__group-title">Битрикс24</p>
-          <ul className="nav-menu__sublist">
-            <li>
-              <Link to="/bitrix24/implementation">Внедрение и настройка Битрикс24</Link>
-            </li>
-            <li>
-              <Link to="/technical-support">Поддержка Битрикс24</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="nav-menu__group">
-          <Link to="/cybersecurity" className="nav-menu__group-title nav-menu__group-title--link">
-            Кибербезопасность
-          </Link>
-          <ul className="nav-menu__sublist">
-            <li>
-              <Link to="/cybersecurity/audit">
-                Аудит инфраструктуры и информационной безопасности
-              </Link>
-            </li>
-            <li>
-              <Link to="/cybersecurity/certification">Аттестация системы защиты информации</Link>
-            </li>
-            <li>
-              <Link to="/cybersecurity/delivery">Поставка и внедрение СЗИ и оборудования</Link>
-            </li>
-          </ul>
-        </div>
+      <div className="nav-menu__group">
+        <p className="nav-menu__group-title">Битрикс24</p>
+        <ul className="nav-menu__sublist">
+          <li>
+            <Link to="/bitrix24/implementation">Внедрение и настройка Битрикс24</Link>
+          </li>
+          <li>
+            <Link to="/technical-support">Поддержка Битрикс24</Link>
+          </li>
+        </ul>
       </div>
-      <div className="nav-menu__col">
-        <div className="nav-menu__group">
-          <p className="nav-menu__group-title">Разработка сайтов</p>
-          <ul className="nav-menu__sublist">
-            <li>
-              <Link to="/websites/online-store">Разработка интернет-магазина</Link>
-            </li>
-            <li>
-              <a href="#services-dev-b2b">B2B порталы</a>
-            </li>
-            <li>
-              <Link to="/cybersecurity/delivery">Поставка и внедрение СЗИ и оборудования</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="nav-menu__standalone">
-          <Link to="/technical-support" className="nav-menu__block-link">
-            Техподдержка
-          </Link>
-          <Link to="/edms-signature" className="nav-menu__block-link">
-            Электронный документооборот с ЭЦП
-          </Link>
-        </div>
+      <div className="nav-menu__group">
+        <p className="nav-menu__group-title">Разработка сайтов</p>
+        <ul className="nav-menu__sublist">
+          <li>
+            <Link to="/websites/online-store">Разработка интернет-магазина</Link>
+          </li>
+          <li>
+            <a href="#services-dev-b2b">B2B порталы</a>
+          </li>
+          <li>
+            <Link to="/#home">Корпоративные сайты</Link>
+          </li>
+        </ul>
+      </div>
+      <div className="nav-menu__group">
+        <Link to="/cybersecurity" className="nav-menu__group-title nav-menu__group-title--link">
+          Кибербезопасность
+        </Link>
+        <ul className="nav-menu__sublist">
+          <li>
+            <Link to="/cybersecurity/audit">Аудит инфраструктуры и информационной безопасности</Link>
+          </li>
+          <li>
+            <Link to="/cybersecurity/certification">Аттестация системы защиты информации</Link>
+          </li>
+          <li>
+            <Link to="/cybersecurity/delivery">Поставка и внедрение СЗИ и оборудования</Link>
+          </li>
+        </ul>
+      </div>
+      <div className="nav-menu__group">
+        <Link to="/edms-signature" className="nav-menu__group-title nav-menu__group-title--link">
+          Электронный документооборот с ЭЦП
+        </Link>
       </div>
     </div>
   ),
 };
 
 function Header() {
+  const location = useLocation();
   const isMobileNav = useIsMobileNav();
   const [activeMenu, setActiveMenu] = useState<NavItemKey | null>(
     NAV_MENU_ALWAYS_VISIBLE ? 'Услуги' : null
@@ -197,6 +197,8 @@ function Header() {
   const [mobileExpanded, setMobileExpanded] = useState<NavItemKey | null>(null);
 
   const panelKey: NavItemKey | null = activeMenu ?? (NAV_MENU_ALWAYS_VISIBLE ? 'Услуги' : null);
+
+  const contactsNavActive = location.pathname === '/contacts';
 
   const closeMobileMenu = useCallback(() => {
     setMobileMenuOpen(false);
@@ -259,76 +261,83 @@ function Header() {
         if (!NAV_MENU_ALWAYS_VISIBLE && !isMobileNav) setActiveMenu(null);
       }}
     >
-      <div className="app-left-part">
-        <div className="app-header__logo">
-          <Link to="/" onClick={closeMobileMenu}>
-            <img src={logo4it} alt="4-IT" />
-          </Link>
-        </div>
-        <div className="app-header__nav-wrapper">
-          <nav className="app-header__nav">
-            <Link to="/" className="app-header__nav-item" onMouseEnter={() => setActiveMenu(null)}>
-              Главная
+      <div className="app-header__bar">
+        <div className="app-left-part">
+          <div className="app-header__logo">
+            <Link to="/" onClick={closeMobileMenu}>
+              <img src={logo4it} alt="4-IT" />
             </Link>
-            <button
-              type="button"
-              className={[
-                'app-header__nav-item',
-                activeMenu === 'Услуги' ? 'app-header__nav-item--open' : '',
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              onMouseEnter={() => setActiveMenu('Услуги')}
-            >
-              Услуги
-              <NavChevron />
-            </button>
-            <button
-              type="button"
-              className={[
-                'app-header__nav-item',
-                'app-header__nav-item--company',
-                activeMenu === 'Компания' ? 'app-header__nav-item--open' : '',
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              onMouseEnter={() => setActiveMenu('Компания')}
-            >
-              Компания
-              <NavChevron />
-            </button>
-            <Link
-              to="/#cases"
-              className="app-header__nav-item"
-              onMouseEnter={() => setActiveMenu(null)}
-            >
-              Кейсы
-            </Link>
-            <a
-              href="#contacts"
-              className="app-header__nav-item"
-              onMouseEnter={() => setActiveMenu(null)}
-            >
-              Контакты
-            </a>
-          </nav>
+          </div>
+          <div className="app-header__nav-wrapper">
+            <nav className="app-header__nav">
+              <Link to="/" className="app-header__nav-item" onMouseEnter={() => setActiveMenu(null)}>
+                Главная
+              </Link>
+              <button
+                type="button"
+                className={[
+                  'app-header__nav-item',
+                  activeMenu === 'Услуги' ? 'app-header__nav-item--open' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                onMouseEnter={() => setActiveMenu('Услуги')}
+              >
+                Услуги
+                <NavChevron />
+              </button>
+              <button
+                type="button"
+                className={[
+                  'app-header__nav-item',
+                  'app-header__nav-item--company',
+                  activeMenu === 'Компания' ? 'app-header__nav-item--open' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                onMouseEnter={() => setActiveMenu('Компания')}
+              >
+                Компания
+                <NavChevron />
+              </button>
+              <Link
+                to="/#cases"
+                className="app-header__nav-item"
+                onMouseEnter={() => setActiveMenu(null)}
+              >
+                Кейсы
+              </Link>
+              <Link
+                to="/contacts"
+                className={[
+                  'app-header__nav-item',
+                  contactsNavActive ? 'app-header__nav-item--active' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                onMouseEnter={() => setActiveMenu(null)}
+              >
+                Контакты
+              </Link>
+            </nav>
+          </div>
         </div>
-      </div>
-      <div className="app-header__mobile-tools">
-        <button
-          type="button"
-          className="app-header__menu-toggle"
-          aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-nav-dialog"
-          onClick={() => (mobileMenuOpen ? closeMobileMenu() : openMobileMenu())}
-        >
-          {mobileMenuOpen ? <MenuCloseIcon /> : <MenuBurgerIcon />}
-        </button>
-      </div>
-      <div className="app-right-part">
-        <p>+375 (44) 555 44 16</p>
-        <Button>Оставить заявку</Button>
+        <div className="app-header__mobile-tools">
+          <button
+            type="button"
+            className="app-header__menu-toggle"
+            aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-dialog"
+            onClick={() => (mobileMenuOpen ? closeMobileMenu() : openMobileMenu())}
+          >
+            {mobileMenuOpen ? <MenuCloseIcon /> : <MenuBurgerIcon />}
+          </button>
+        </div>
+        <div className="app-right-part">
+          <p>+375 (44) 555 44 16</p>
+          <Button href="#contacts">Оставить заявку</Button>
+        </div>
       </div>
 
       {mobileMenuOpen && isMobileNav && (
@@ -397,14 +406,14 @@ function Header() {
                 <Link to="/#cases" className="mobile-menu__link-row" onClick={closeMobileMenu}>
                   Кейсы
                 </Link>
-                <a href="#contacts" className="mobile-menu__link-row" onClick={closeMobileMenu}>
+                <Link to="/contacts" className="mobile-menu__link-row" onClick={closeMobileMenu}>
                   Контакты
-                </a>
+                </Link>
               </div>
               <div className="mobile-menu__footer">
                 <div className="mobile-menu__cta">
-                  <Button className="btn--full" onClick={closeMobileMenu}>
-                    Обратный звонок
+                  <Button href="#contacts" onClick={closeMobileMenu}>
+                    Оставить заявку
                   </Button>
                 </div>
                 <div className="mobile-menu__contacts">
@@ -429,7 +438,7 @@ function Header() {
                 </a>
                 <div className="nav-menu__social">
                   <a
-                    href="https://instagram.com"
+                    href={SOCIAL_LINKS.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="nav-menu__social-link"
@@ -444,7 +453,7 @@ function Header() {
                     />
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href={SOCIAL_LINKS.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="nav-menu__social-link"
@@ -498,7 +507,7 @@ function Header() {
 
               <div className="nav-menu__social">
                 <a
-                  href="https://instagram.com"
+                  href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nav-menu__social-link"
@@ -513,7 +522,7 @@ function Header() {
                   />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href={SOCIAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nav-menu__social-link"

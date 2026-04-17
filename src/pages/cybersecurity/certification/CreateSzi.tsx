@@ -5,7 +5,7 @@ import InfoGridSection from '@/components/grids/InfoGridSection';
 import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import AnimatedAuditGoalText from '@/components/sections/AnimatedAuditGoalText.tsx';
+import AnimatedAuditGoalText from '@/components/sections/AnimatedAuditGoalText';
 import settingsIcon from '@/assets/icons/settings.svg';
 import searchIcon from '@/assets/icons/search.svg';
 import chartIcon from '@/assets/icons/chart.svg';

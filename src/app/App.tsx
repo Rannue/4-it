@@ -1,10 +1,14 @@
 // components
 import Button from '@/shared/ui/Button';
+import ScrollReveal from '@/shared/ui/ScrollReveal';
+import InteractiveTexture from '@/shared/ui/InteractiveTexture';
 import Header from '@/widgets/header/Header';
+import HomeCustomCursor from '@/widgets/home-custom-cursor/HomeCustomCursor';
 import ClientsSection from '@/components/grids/ClientsSection';
 import Footer from '@/widgets/footer/Footer';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import AchievementsSection from '@/components/sections/AchievementsSection';
+import WorkProcessSection from '@/components/sections/WorkProcessSection';
 import type { ServiceItem } from '@/components/sections/ServicesSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 
@@ -59,6 +63,7 @@ const SERVICES: ServiceItem[] = [
 function App() {
   return (
     <div className="app">
+      <HomeCustomCursor />
       <Header />
 
       <main className="app-main">
@@ -66,12 +71,16 @@ function App() {
           <div className="section-wrapper__inner">
             <section id="home" className="hero">
               <div className="hero-grid">
-                <div className="hero-grid__cell hero-grid__cell--texture" aria-hidden="true" />
+                <div className="hero-grid__cell hero-grid__cell--texture" aria-hidden="true">
+                  <InteractiveTexture parallax>
+                    <div className="hero-grid__texture-layer" />
+                  </InteractiveTexture>
+                </div>
                 <div className="hero-grid__cell">
-                  <p>
-                    Мы специализируемся на разработке сайтов, Интернет-магазинов, B2B-порталах,
-                    online-сервисах, промо-сайтах, внедрении CRM, а также интеграциях и настройке
-                    обмена данными с различными системами.
+                  <p className="hero-grid__lead">
+                    Специализируемся на кибербезопасности и внедрении CRM на базе Bitrix24, а также
+                    разрабатываем сайты, интернет-магазины и B2B-порталы, выполняем интеграции и
+                    настраиваем обмен данными между системами.
                   </p>
                 </div>
                 <div className="hero-grid__cell">
@@ -81,21 +90,16 @@ function App() {
                       Битрикс24
                     </span>
                     <br /> Кибербезопасность <br />
-                    Комплексные IT УСлуги
+                    Комплексные IT Услуги
                   </h1>
                 </div>
                 <div className="hero-grid__cell">
                   <div className="hero-grid__button-container">
+                    {/* Temporarily hidden: callback CTA */}
                     <Button
                       color="var(--color-white)"
                       textColor="#01111E"
-                      iconRight={<img src={ArrowRightIcon} alt="" />}
-                    >
-                      Заказать звонок
-                    </Button>
-                    <Button
-                      color="var(--color-white)"
-                      textColor="#01111E"
+                      href="#contacts"
                       iconRight={<img src={ArrowRightIcon} alt="" />}
                     >
                       Оставить заявку
@@ -103,18 +107,35 @@ function App() {
                   </div>
                 </div>
                 <div className="hero-grid__cell"></div>
-                <div className="hero-grid__cell hero-grid__cell--texture" aria-hidden="true" />
+                <div className="hero-grid__cell hero-grid__cell--texture" aria-hidden="true">
+                  <InteractiveTexture parallax>
+                    <div className="hero-grid__texture-layer" />
+                  </InteractiveTexture>
+                </div>
               </div>
             </section>
           </div>
         </div>
 
-        <AchievementsSection />
+        <ScrollReveal>
+          <AchievementsSection />
+        </ScrollReveal>
 
-        <ServicesSection items={SERVICES} />
+        <ScrollReveal>
+          <ServicesSection items={SERVICES} />
+        </ScrollReveal>
 
-        <ClientsSection />
-        <CertificatesSection />
+        <ScrollReveal>
+          <WorkProcessSection />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <ClientsSection />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <CertificatesSection />
+        </ScrollReveal>
       </main>
       <Footer />
     </div>

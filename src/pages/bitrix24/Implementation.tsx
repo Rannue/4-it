@@ -5,19 +5,81 @@ import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
 import InfoGridSection from '@/components/grids/InfoGridSection';
 import CtaLinksListSection from '@/components/sections/CtaLinksListSection';
-import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
+import StackedFeatureCardsSection, {
+  type StackedFeatureCard,
+} from '@/components/sections/StackedFeatureCardsSection';
 import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
-
-// data
-import { BITRIX24_IMPLEMENTATION_TIERS } from '@/data/stackedFeatureCards/StackedCards';
 
 // assets
 import bitrixBoxImg from '@/assets/img/bitrix.png';
-import certificateIcon from '@/assets/icons/certificate.svg';
 import timeIllustration from '@/assets/img/illustrations/time.svg';
 import groupIllustration from '@/assets/img/illustrations/group.svg';
 import optimizationIllustration from '@/assets/img/illustrations/optimization.svg';
 import riseIllustration from '@/assets/img/illustrations/rise.svg';
+import settingsIcon from '@/assets/icons/settings.svg';
+import laptopIcon from '@/assets/icons/laptop.svg';
+import integrationIcon from '@/assets/icons/integration.svg';
+import chatIcon from '@/assets/icons/chat.svg';
+import puzzleIcon from '@/assets/icons/pazzle-filled.svg';
+import settingsFilledIcon from '@/assets/icons/settings-filled.svg';
+import gridFilledIcon from '@/assets/icons/grid-filled.svg';
+
+const BITRIX24_IMPLEMENTATION_TIERS: readonly StackedFeatureCard[] = [
+  {
+    icon: <img src={puzzleIcon} alt="" aria-hidden />,
+    title: 'Начальное внедрение',
+    description:
+      'Подходит для компаний, которые только начинают работать с CRM и хотят быстро запустить основные функции.',
+    ctaLabel: 'Оставить заявку',
+    ctaHref: '#contacts',
+    features: [
+      { text: 'Развертывание и настройка портала' },
+      { text: 'Добавление сотрудников (до 10 сотрудников)' },
+      { text: 'Создание структуры компании' },
+      { text: 'Начальное внедрение и настройка crm инструментов' },
+    ],
+  },
+  {
+    icon: <img src={settingsFilledIcon} alt="" aria-hidden />,
+    title: 'Стандартное внедрение',
+    description:
+      'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
+    ctaLabel: 'Оставить заявку',
+    ctaHref: '#contacts',
+    features: [
+      { text: 'Cбор и анализ требований' },
+      { text: 'Подготовка проектной документации' },
+      {
+        text: (
+          <>
+            Настройка статусов и карточек <strong>Лидов</strong> и стадий <strong>Сделок</strong>
+          </>
+        ),
+      },
+      { text: 'Настройка ролей и прав доступов пользователей' },
+      { text: 'Подключение почтового домена' },
+      { text: 'Построение воронок продаж' },
+      { text: 'Обучение сотрудников' },
+    ],
+  },
+  {
+    icon: <img src={gridFilledIcon} alt="" aria-hidden />,
+    title: 'Корпоративное внедрение',
+    titleAccent: true,
+    description:
+      'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
+    ctaLabel: 'Оставить заявку',
+    ctaHref: '#contacts',
+    features: [
+      { text: 'Cбор и анализ требований' },
+      { text: 'Настройка и подключение телефонии' },
+      { text: 'Интеграция с мессенджерами' },
+      { text: 'Создание и настройка бизнес-процессов' },
+      { text: 'Загрузка клиентской базы и товаров' },
+      { text: 'Обучение сотрудников' },
+    ],
+  },
+];
 
 function Bitrix24ImplementationPage() {
   return (
@@ -50,7 +112,7 @@ function Bitrix24ImplementationPage() {
                 </p>
               </div>
               <img
-                src="${certificateIcon}"
+                src="${settingsIcon}"
                 alt="Иконка спецификаций"
                 class="info-grid__icon"
               />
@@ -70,7 +132,7 @@ function Bitrix24ImplementationPage() {
                 </p>
               </div>
               <img
-                src="${certificateIcon}"
+                src="${laptopIcon}"
                 alt="Иконка спецификаций"
                 class="info-grid__icon"
               />
@@ -91,7 +153,7 @@ function Bitrix24ImplementationPage() {
                 </p>
               </div>
               <img
-                src="${certificateIcon}"
+                src="${integrationIcon}"
                 alt="Иконка спецификаций"
                 class="info-grid__icon"
               />
@@ -104,13 +166,13 @@ function Bitrix24ImplementationPage() {
                 </p>
               </div>
               <img
-                src="${certificateIcon}"
+                src="${chatIcon}"
                 alt="Иконка спецификаций"
                 class="info-grid__icon"
               />
             `,
           `
-           <img
+           <img class="info-grid__icon info-grid__icon--bitrix-product"
                 src="${bitrixBoxImg}"
                 alt="1С-Битрикс24"
                 class="info-grid__icon info-grid__icon--bitrix-product"
@@ -144,13 +206,12 @@ function Bitrix24ImplementationPage() {
               </p>
             `,
           `
-            <div class="cards-grid__media">
+            <div class="cards-grid__media cards-grid__media--empty">
             </div>
           `,
           `
-          <div class="cards-grid__media">
+          <div class="cards-grid__media cards-grid__media--empty">
           </div>
-         
         `,
           `
           <div class="cards-grid__media">
@@ -167,11 +228,11 @@ function Bitrix24ImplementationPage() {
           <div class="cards-grid__media">
               <img src="${riseIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
           </div>
-          <h3>Оптимизация бизнес-процессов:</h3>
+          <h3>Повышение эффективности:</h3>
           <p>
-            • все заявки обрабатываются вовремя;<br />
-            • экономия на скорости прохождения операций;<br />
-            • эффективные связи между подразделениями.
+            • повышение качества обслуживания клиентов;<br />
+            • рост конкурентоспособности на рынке;<br />
+            • повышение имиджа компании.
           </p>
         `,
         ]}
@@ -184,7 +245,7 @@ function Bitrix24ImplementationPage() {
         footer={
           <>
             Не уверены, какое решение выбрать?{' '}
-            <a href="/#contacts" className="cta-links-list__footer-link">
+            <a href="#contacts" className="cta-links-list__footer-link">
               Оставьте заявку
             </a>{' '}
             на консультацию, и мы подберём оптимальное решение под задачи вашего бизнеса.
@@ -193,12 +254,13 @@ function Bitrix24ImplementationPage() {
       />
       <StackedFeatureCardsSection
         id="bitrix24-implementation-tiers"
-        heading={
-          <>
-            Варианты разработки{' '}
-            <span className="stacked-feature-cards__heading-accent">корпоративного сайта</span>
-          </>
-        }
+        advantagesLabel={null}
+        // heading={
+        //   <>
+        //     Варианты разработки{' '}
+        //     <span className="stacked-feature-cards__heading-accent">корпоративного сайта</span>
+        //   </>
+        // }
         cards={BITRIX24_IMPLEMENTATION_TIERS}
       />
       <InfoGridSection
@@ -269,10 +331,10 @@ function Bitrix24ImplementationPage() {
             `,
           `
               <div class="info-grid__group">
-                <h4>Обучение и поддержка</h4>
+                <h4>Заключительная подготовка</h4>
                 <p>
-                  После внедрения мы проводим обучение сотрудников и предоставляем документацию по работе с системой. Также возможна техническая поддержка и сопровождение, чтобы ваши процессы оставались оптимизированными и эффективными.
-                </p>
+Обучение пользователей, финальная настройка. Подготовка системы и запуск в эксплуатацию.
+ </p>
               </div>
               <div class="scroll-card__dots">
                 <span class="scroll-card__dot scroll-card__dot--active"></span>
