@@ -7,7 +7,7 @@ import bookIcon from '@/assets/icons/book.svg';
 import chartIcon from '@/assets/icons/chart.svg';
 import folderIcon from '@/assets/icons/folder.svg';
 import certificateIcon from '@/assets/icons/certificate.svg';
-import fileSettingsIcon from '@/assets/icons/file-settings.svg';
+import fileSettingsIcon from '@/assets/icons/File-settings.svg';
 import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
 import docDarkIllustration from '@/assets/img/illustrations/doc-dark.svg';
 import searchDarkIllustration from '@/assets/img/illustrations/search-dark.svg';
