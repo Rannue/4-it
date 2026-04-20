@@ -20,7 +20,10 @@ function serviceCardLinkHandlers(to: string, navigate: NavigateFunction) {
 
 export type ServiceTag = {
   label: string;
+  /** Маршрут; при `disabled: true` не используется, но оставьте заглушку для обратной совместимости */
   to: string;
+  /** Временно недоступный пункт: без ссылки, неактивный вид */
+  disabled?: boolean;
 };
 
 export type ServiceItem = {
@@ -82,16 +85,22 @@ function ServicesSection({ sidebarTitle = 'Услуги', items }: ServicesSecti
   const tagsBlock = (item: ServiceItem) =>
     item.tags && item.tags.length > 0 ? (
       <div className="services-card__tags">
-        {item.tags.map(tag => (
-          <Link
-            key={tag.label}
-            to={tag.to}
-            className="services-tag"
-            onClick={e => e.stopPropagation()}
-          >
-            {tag.label}
-          </Link>
-        ))}
+        {item.tags.map(tag =>
+          tag.disabled ? (
+            <span key={tag.label} className="services-tag services-tag--disabled" aria-disabled={true}>
+              {tag.label}
+            </span>
+          ) : (
+            <Link
+              key={tag.label}
+              to={tag.to}
+              className="services-tag"
+              onClick={e => e.stopPropagation()}
+            >
+              {tag.label}
+            </Link>
+          )
+        )}
       </div>
     ) : null;
 

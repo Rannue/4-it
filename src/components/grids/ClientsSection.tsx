@@ -90,7 +90,14 @@ function usePartnerClients(): ClientLogo[] {
   }, []);
 }
 
-function ClientsSection() {
+type ClientsSectionProps = {
+  /** Блок с заголовком «Наши клиенты» и подписью (главная). На странице `/clients` — `false`. */
+  showHeading?: boolean;
+  /** Якорь для ссылок вида `/#clients` (только главная, один на страницу). */
+  anchorId?: string;
+};
+
+function ClientsSection({ showHeading = true, anchorId }: ClientsSectionProps) {
   const clients = usePartnerClients();
   const columns = useGridColumnCount();
   const placeholders = useMemo(
@@ -98,19 +105,25 @@ function ClientsSection() {
     [clients.length, columns]
   );
 
+  const sectionClass = cx('clients', !showHeading && 'clients--embedded');
+
   return (
-    <section className="clients" aria-labelledby="clients-heading">
-      <div className="section-wrapper__inner clients__header-inner">
-        <header className="clients__header">
-          <h2 id="clients-heading" className="clients__title">
-            Наши клиенты
-          </h2>
-          <p className="clients__subtitle">
-            Представители международного бизнеса, государственного сектора и белорусских компаний,
-            лидеры своих отраслей.
-          </p>
-        </header>
-      </div>
+    <section
+      className={sectionClass}
+      {...(anchorId ? { id: anchorId } : {})}
+      {...(showHeading
+        ? { 'aria-labelledby': 'clients-heading' }
+        : { 'aria-label': 'Логотипы клиентов' })}
+    >
+      {showHeading ? (
+        <div className="clients__header-inner">
+          <header className="clients__header">
+            <h2 id="clients-heading" className="clients__title">
+              Наши клиенты
+            </h2>
+          </header>
+        </div>
+      ) : null}
 
       <div className="clients__grid-wrapper">
         <div className="clients__grid">

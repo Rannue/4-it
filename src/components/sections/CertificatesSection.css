@@ -62,11 +62,6 @@
     transform 0.2s ease;
 }
 
-/* .certificates-card:hover {
-  border-color: rgba(0, 145, 236, 0.28);
-  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
-} */
-
 .certificates-card:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;

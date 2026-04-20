@@ -1,6 +1,8 @@
 // react
 import { memo, useId, type ReactNode } from 'react';
 
+import '@/components/sections/scroll-card-dots.css';
+
 import './InfoGridSection.css';
 
 export type InfoGridColumnCount = 2 | 3;

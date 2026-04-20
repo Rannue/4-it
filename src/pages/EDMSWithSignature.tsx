@@ -3,18 +3,18 @@ import PageLayout from '@/components/layout/PageLayout';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import ClientsSection from '@/components/grids/ClientsSection';
 import InfoGridSection from '@/components/grids/InfoGridSection';
-import SplitHighlightPanel from '@/components/sections/SplitHighlightPanel';
 import CardsGridSection from '@/components/grids/CardsGridSection';
 import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
+import FeatureBanner from '@/components/sections/FeatureBanner';
 
 // assets
 import usersGroupIcon from '@/assets/icons/users-group.svg';
 import laptopIcon from '@/assets/icons/laptop.svg';
-import lawIllustrationImg from '@/assets/img/law.svg';
+import lawFilledIllustration from '@/assets/img/law.svg';
+import lawIllustration from '@/assets/img/illustrations/law.svg';
 import flashIllustration from '@/assets/img/illustrations/flash.svg';
 import moneyIllustration from '@/assets/img/illustrations/money.svg';
-import lawIllustration from '@/assets/img/illustrations/law.svg';
 import flexIllustration from '@/assets/img/illustrations/flex.svg';
 
 import './Hero.css';
@@ -73,10 +73,10 @@ function EDMSWithSignaturePage() {
       <SecondaryHero
         breadcrumbs={[
           { label: '4-it.by', href: '/' },
-          { label: 'Электронный документооборот с ЭЦП' },
+          { label: 'Внедрение электронного документооборота с ЭЦП' },
         ]}
-        title="Электронный документооборот с ЭЦП"
-        description="Мы предоставляем услугу внедрения электронного документооборота с использованием ЭЦП. Помогаем IT-компаниям перейти на юридически значимые цифровые документы, наладить безопасный обмен и подписание, а также обеспечить поддержку для стабильной работы."
+        title="Внедрение электронного документооборота с ЭЦП"
+        description="Мы предоставляем услугу внедрения электронного документооборота с использованием электронной цифровой подписи (ЭЦП). Помогаем вашим IT-компаниям перейти на юридически значимые цифровые документы, организовать безопасный обмен, обеспечить подписание документов ЭЦП, настроить процессы и поддержку для стабильной работы."
       />
       <InfoGridSection
         title={
@@ -123,22 +123,16 @@ function EDMSWithSignaturePage() {
             `,
         ]}
       />
-      <SplitHighlightPanel
-        asideTitle="Внедрение в соответствии с требованиями и стандартами"
-        illustration={{ src: lawIllustrationImg, alt: '' }}
-      >
-        <p>
-          Мы предлагаем внедрение современных SIEM-решений, которые соответствуют требованиям
-          стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим
-          регламентом Республики Беларусь «Информационные технологии. Средства защиты информации.
-          Информационная безопасность» (ТР 2013/027/BY), утверждённых Приказом
-          Оперативно-аналитического центра при Президенте Республики Беларусь от 12 марта 2020 г. №
-          77 (в редакции от 28.12.2022 № 207).
-        </p>
-        <p>
-          Чтобы ЭЦП была корректной, она должна быть выдана аккредитованным удостоверяющим центром.
-        </p>
-      </SplitHighlightPanel>
+      <FeatureBanner
+        complianceHeadline={{
+          line1: 'Законодательство и',
+          line2: 'юридическая сила',
+        }}
+        description="Закон «Об электронном документе и электронной цифровой подписи» (Беларусь) признаёт документы, подписанные ЭЦП, равнозначными документам на бумаге с подписью."
+        descriptionSecondary="Чтобы ЭЦП была корректной, она должна быть выдана аккредитованным удостоверяющим центром."
+        complianceVisual={lawFilledIllustration}
+        imageAlt=""
+      />
 
       <CardsGridSection title={<>Преимущества внедрения</>} cardsHtml={EDMS_CARDS_HTML} />
 

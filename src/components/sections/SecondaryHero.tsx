@@ -50,8 +50,7 @@ function HeroMainColumn({
   descriptionSecondary?: ReactNode;
 }) {
   const hasDescription = description != null && description !== '';
-  const hasDescriptionSecondary =
-    descriptionSecondary != null && descriptionSecondary !== '';
+  const hasDescriptionSecondary = descriptionSecondary != null && descriptionSecondary !== '';
 
   return (
     <div className="hero-secondary-grid__cell hero-secondary-grid__cell--main">
@@ -61,9 +60,7 @@ function HeroMainColumn({
           <h1 className="hero-secondary__title">{title}</h1>
         </div>
         <div className="hero-secondary__description-cta">
-          {hasDescription ? (
-            <p className="hero-secondary__description">{description}</p>
-          ) : null}
+          {hasDescription ? <p className="hero-secondary__description">{description}</p> : null}
           {hasDescriptionSecondary ? (
             <p className="hero-secondary__description hero-secondary__description--secondary">
               {descriptionSecondary}

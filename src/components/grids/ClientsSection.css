@@ -3,15 +3,18 @@
   padding-block: clamp(56px, 10vw, 100px);
 }
 
+.clients--embedded {
+  padding-top: 0;
+}
+
 .clients__header-inner {
   box-sizing: border-box;
-  max-width: var(--layout-content-max-width);
   margin-inline: auto;
-  padding-inline: clamp(16px, 4vw, 42px);
+  max-width: 1684px;
 }
 
 .clients__header {
-  padding-bottom: 42px;
+  padding: 0 42px 42px;
 }
 
 .clients__title {
@@ -88,13 +91,17 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .clients__grid-wrapper {
+  .clients__header-inner {
     padding: 0 16px;
   }
 
-  /* .section-wrapper__inner {
+  .clients__header {
+    padding: 0;
+  }
+
+  .clients__grid-wrapper {
     padding: 0 16px;
-  } */
+  }
 
   .clients__cell {
     min-height: clamp(88px, 22vw, 120px);

@@ -1,0 +1,19 @@
+.clients-page__intro-section {
+  padding-top: 0;
+  padding-bottom: clamp(24px, 4vw, 40px);
+}
+
+.clients-page__intro {
+  margin: 0 auto;
+  max-width: 800px;
+  font-size: clamp(14px, 1.6vw, 16px);
+  font-weight: var(--font-weight-light);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 900px) {
+  .clients-page__intro-section {
+    padding-bottom: 20px;
+  }
+}

@@ -1,12 +1,16 @@
+// react
+import type { ReactNode } from 'react';
+
 // CSS
 import './CardsGridSection.css';
 
 type HtmlCardsGridSectionProps = {
   title: string;
+  description?: ReactNode;
   cardsHtml: string[];
 };
 
-function CardsGridSectionDark({ title, cardsHtml }: HtmlCardsGridSectionProps) {
+function CardsGridSectionDark({ title, description, cardsHtml }: HtmlCardsGridSectionProps) {
   return (
     <div className="section-wrapper">
       <div className="section-wrapper-dark">
@@ -14,6 +18,9 @@ function CardsGridSectionDark({ title, cardsHtml }: HtmlCardsGridSectionProps) {
           <section className="cards-grid-dark">
             <header className="cards-grid__header">
               <h2 className="cards-grid__title-dark">{title}</h2>
+              {description != null && description !== '' ? (
+                <p className="cards-grid__description-dark">{description}</p>
+              ) : null}
             </header>
 
             <div className="cards-grid__grid">

@@ -34,12 +34,7 @@ function CertificateTileButton({ card, onOpen }: CertificateTileButtonProps) {
       onClick={() => onOpen(card)}
       aria-label={`Открыть: ${card.title}${card.subtitle ? `. ${card.subtitle}` : ''}`}
     >
-      <img
-        src={card.imageSrc}
-        alt=""
-        className="cert-doc-page__mosaic-img"
-        loading="lazy"
-      />
+      <img src={card.imageSrc} alt="" className="cert-doc-page__mosaic-img" loading="lazy" />
     </button>
   );
 }
@@ -53,7 +48,16 @@ function PdfDocIcon() {
   return (
     <svg className="cert-doc-page__pdf-icon" width={36} height={36} viewBox="0 0 36 36" aria-hidden>
       <rect x={6} y={4} width={24} height={28} rx={3} fill="var(--color-primary)" opacity={0.12} />
-      <rect x={6} y={4} width={24} height={28} rx={3} fill="none" stroke="var(--color-primary)" strokeWidth={1.5} />
+      <rect
+        x={6}
+        y={4}
+        width={24}
+        height={28}
+        rx={3}
+        fill="none"
+        stroke="var(--color-primary)"
+        strokeWidth={1.5}
+      />
       <path
         d="M12 14h12M12 18h10M12 22h8"
         stroke="var(--color-primary)"
@@ -91,10 +95,7 @@ export default function CertificatesDocuments() {
   }, []);
 
   const navClass = (key: 'certificates' | 'policies') =>
-    [
-      'cert-doc-page__nav-link',
-      activeSection === key ? 'cert-doc-page__nav-link--active' : '',
-    ]
+    ['cert-doc-page__nav-link', activeSection === key ? 'cert-doc-page__nav-link--active' : '']
       .filter(Boolean)
       .join(' ');
 
@@ -128,9 +129,6 @@ export default function CertificatesDocuments() {
               className="cert-doc-page__section"
               aria-labelledby="cert-doc-gallery-title"
             >
-              <h2 id="cert-doc-gallery-title" className="cert-doc-page__section-title">
-                Сертификаты
-              </h2>
               <ul className="cert-doc-page__mosaic" aria-label="Галерея сертификатов">
                 {CERTIFICATE_DOCUMENT_PAGE_ROWS.map((row, rowIndex) => {
                   const templateColumns =

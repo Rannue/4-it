@@ -8,7 +8,7 @@
   padding: 0;
   max-width: 100%;
   min-width: 0;
-  font-family: 'Inter', var(--font-family-base);
+  font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 300;
   display: flex;
@@ -59,7 +59,10 @@
   color: var(--color-text-secondary-light);
 }
 
-.hero-breadcrumbs--on-canvas .hero-breadcrumbs__link,
+.hero-breadcrumbs--on-canvas .hero-breadcrumbs__link {
+  color: var(--color-primary);
+}
+
 .hero-breadcrumbs--on-canvas .hero-breadcrumbs__text {
   color: var(--color-text-secondary);
 }
@@ -70,7 +73,7 @@
 .hero-breadcrumbs--on-canvas
   .hero-breadcrumbs__item:not(.hero-breadcrumbs__item--current)
   a.hero-breadcrumbs__link:focus-visible {
-  color: var(--color-primary);
+  color: var(--color-accent-hover);
 }
 
 .hero-breadcrumbs--on-canvas .hero-breadcrumbs__item--current .hero-breadcrumbs__link,

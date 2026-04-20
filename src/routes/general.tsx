@@ -11,6 +11,7 @@ import EDMSWithSignaturePage from '@/pages/EDMSWithSignature';
 import OnlineStorePage from '@/pages/websites/OnlineStore';
 import VirtualizationPage from '@/pages/cybersecurity/delivery/Virtualization';
 import ContactsPage from '@/pages/Contacts';
+import ClientsPage from '@/pages/Clients';
 import CertificatesDocumentsPage from '@/pages/CertificatesDocuments';
 
 export function GeneralRoutes() {
@@ -20,6 +21,7 @@ export function GeneralRoutes() {
       <Route path="/home" element={<App />} />
       <Route path="/certificates" element={<CertificatesDocumentsPage />} />
       <Route path="/contacts" element={<ContactsPage />} />
+      <Route path="/clients" element={<ClientsPage />} />
       <Route path="/technical-support" element={<TechnicalSupportPage />} />
       <Route path="/bitrix24/implementation" element={<Bitrix24ImplementationPage />} />
       <Route path="/edms-signature" element={<EDMSWithSignaturePage />} />

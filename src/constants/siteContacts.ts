@@ -6,8 +6,7 @@ export const SITE_COMPANY = {
 } as const;
 
 /** Юридический адрес (регистрация), как в карточке лицензии на сайте. */
-export const SITE_LEGAL_ADDRESS =
-  '220074, г. Минск, ул. Харьковская, д. 75, комн. 7' as const;
+export const SITE_LEGAL_ADDRESS = '220074, г. Минск, ул. Харьковская, д. 75, комн. 7' as const;
 
 export const SITE_EMAIL = 'info@4-it.by' as const;
 

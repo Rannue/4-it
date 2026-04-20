@@ -9,7 +9,9 @@
   box-sizing: border-box;
   background: var(--color-primary);
   color: #ffffff;
-  transition: opacity 0.45s ease, visibility 0.45s ease;
+  transition:
+    opacity 0.45s ease,
+    visibility 0.45s ease;
 }
 
 .site-loading--exiting {

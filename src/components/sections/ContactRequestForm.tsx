@@ -392,8 +392,9 @@ function ContactRequestForm({
               />
 
               <p className="contact-request-form__consent-notice" id={fieldId('consent-notice')}>
-                Нажимая кнопку «Отправить заявку», я принимаю условия пользовательского соглашения и даю
-                согласие на обработку моих персональных данных на условиях и для целей, определённых в{' '}
+                Нажимая кнопку «Отправить заявку», я принимаю условия пользовательского соглашения и
+                даю согласие на обработку моих персональных данных на условиях и для целей,
+                определённых в{' '}
                 <a
                   href={PERSONAL_DATA_POLICY_DOC_HREF}
                   className="contact-request-form__link"
@@ -418,7 +419,9 @@ function ContactRequestForm({
               <div
                 className={[
                   'contact-request-form__actions',
-                  !SHOW_CONTACT_FORM_ATTACHMENT ? 'contact-request-form__actions--submit-only' : null,
+                  !SHOW_CONTACT_FORM_ATTACHMENT
+                    ? 'contact-request-form__actions--submit-only'
+                    : null,
                 ]
                   .filter(Boolean)
                   .join(' ')}

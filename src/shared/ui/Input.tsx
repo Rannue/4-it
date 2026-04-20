@@ -349,7 +349,13 @@ function MultiSelect({
                       remove(v);
                     }}
                   >
-                    <img src={closeUrl} alt="" width={12} height={12} className="ui-multi-select__chip-remove-img" />
+                    <img
+                      src={closeUrl}
+                      alt=""
+                      width={12}
+                      height={12}
+                      className="ui-multi-select__chip-remove-img"
+                    />
                   </button>
                 </span>
               ))

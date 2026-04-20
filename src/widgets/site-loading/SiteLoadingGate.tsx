@@ -65,12 +65,12 @@ function SiteLoadingOverlay({ onDone }: { onDone: () => void }) {
 
     queueMicrotask(() => {
       if (document.readyState === 'interactive') {
-        setProgress((p) => Math.max(p, 42));
+        setProgress(p => Math.max(p, 42));
       }
     });
 
     const onDOMContentLoaded = () => {
-      setProgress((p) => Math.max(p, 36));
+      setProgress(p => Math.max(p, 36));
     };
 
     if (document.readyState === 'loading') {
@@ -85,7 +85,7 @@ function SiteLoadingOverlay({ onDone }: { onDone: () => void }) {
       if (loadCompletedRef.current) return;
       const elapsed = now - start;
       const asymptotic = CAP_BEFORE_LOAD * (1 - Math.exp(-elapsed / ASYMPTOTE_TAU_MS));
-      setProgress((p) => Math.max(p, Math.min(asymptotic, CAP_BEFORE_LOAD)));
+      setProgress(p => Math.max(p, Math.min(asymptotic, CAP_BEFORE_LOAD)));
       rafRef.current = requestAnimationFrame(tick);
     };
 
@@ -116,10 +116,7 @@ function SiteLoadingOverlay({ onDone }: { onDone: () => void }) {
           {Math.round(p)}%
         </span>
         <div className="site-loading__track">
-          <div
-            className="site-loading__fill"
-            style={{ ['--site-loading-p' as string]: `${p}%` }}
-          />
+          <div className="site-loading__fill" style={{ ['--site-loading-p' as string]: `${p}%` }} />
         </div>
       </div>
     </div>

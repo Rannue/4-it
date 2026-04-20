@@ -46,9 +46,10 @@ const SERVICES: ServiceItem[] = [
     description:
       'Создаём современные и функциональные сайты для вашего бизнеса. Подберём готовое решение или разработаем проект с нуля, учитывая ваши задачи и требования. Настроим интеграции, обеспечим удобное управление и адаптивный дизайн.',
     tags: [
-      { label: 'Корпоративные сайты', to: '/#home' },
+      /* Временно без разделов: снимите `disabled`, когда маршруты будут готовы */
+      { label: 'Корпоративные сайты', to: '/#home', disabled: true },
       { label: 'Интернет-магазины', to: '/websites/online-store' },
-      { label: 'B2B порталы', to: '/#services-dev-b2b' },
+      { label: 'B2B порталы', to: '/#services-dev-b2b', disabled: true },
     ],
   },
   {
@@ -130,7 +131,7 @@ function App() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <ClientsSection />
+          <ClientsSection anchorId="clients" />
         </ScrollReveal>
 
         <ScrollReveal>

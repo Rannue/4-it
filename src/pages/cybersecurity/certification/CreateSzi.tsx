@@ -74,7 +74,7 @@ function CybersecurityCreateSziPage() {
           INFO_GRID_EMPTY_GROUP,
           INFO_GRID_EMPTY_GROUP,
           `
-          <div class="info-grid__group-type2">
+          <div class="info-grid__group-type">
             <h4>Корректировка структурной и логической схем ИС</h4>
             <p>
              При необходимости мы вносим изменения в схемы, разработанные на этапе проектирования, чтобы обеспечить максимальную эффективность системы защиты.

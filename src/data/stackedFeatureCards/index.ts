@@ -3,3 +3,5 @@ export {
   PHISHMAN_ADVANTAGES_LABEL,
   PHISHMAN_PRODUCT_LINE,
 } from './StackedCards';
+
+export { ONLINE_STORE_STACKED, ONLINE_STORE_STACKED_CARDS } from './onlineStoreStacked';

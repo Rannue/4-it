@@ -1,5 +1,12 @@
 // react
-import { useCallback, useEffect, useLayoutEffect, useRef, type MouseEvent, type ReactNode } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  type MouseEvent,
+  type ReactNode,
+} from 'react';
 
 import { usePrefersReducedMotion } from '@/shared/hooks/usePrefersReducedMotion';
 

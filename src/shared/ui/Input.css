@@ -317,14 +317,6 @@ textarea.ui-input__control {
   object-fit: contain;
 }
 
-/* .ui-multi-select__chip-remove:hover {
-  background: rgba(15, 23, 42, 0.06);
-} */
-
-/* .ui-multi-select__chip-remove:hover .ui-multi-select__chip-remove-img {
-  opacity: 1;
-} */
-
 .ui-multi-select .ui-select__caret {
   flex-shrink: 0;
   align-self: center;

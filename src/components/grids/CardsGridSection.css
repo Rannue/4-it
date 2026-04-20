@@ -10,6 +10,16 @@
   color: #ffffff;
 }
 
+.cards-grid__description-dark {
+  max-width: 800px;
+  margin: 8px 0 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
 .cards-grid__title-accent {
   color: var(--color-primary);
 }

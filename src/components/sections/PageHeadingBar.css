@@ -1,22 +1,10 @@
 .page-heading-bar.section-wrapper {
-  padding: 48px 42px 40px;
+  padding: 84px 42px;
   background: var(--color-white);
 }
 
 .page-heading-bar .hero-breadcrumbs {
   margin-bottom: 12px;
-}
-
-.page-heading-bar__title {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: clamp(1.75rem, 3.2vw + 1rem, 3rem);
-  line-height: 1.12;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--color-text-main);
-  overflow-wrap: break-word;
 }
 
 @media (max-width: 900px) {

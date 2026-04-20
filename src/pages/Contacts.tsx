@@ -37,17 +37,16 @@ export default function Contacts() {
       <section className="section-wrapper section-wrapper--px-only contacts-page__map-section">
         <div className="section-wrapper__inner">
           <div className="contacts-page__map-shell">
-            <iframe
-              title="Карта: офис 4-IT"
-              className="contacts-page__map-frame"
-              src={YANDEX_MAP_WIDGET_SRC}
-              loading="lazy"
-            />
+            <div className="contacts-page__map-viewport">
+              <iframe
+                title="Карта: офис 4-IT"
+                className="contacts-page__map-frame"
+                src={YANDEX_MAP_WIDGET_SRC}
+                loading="lazy"
+              />
+            </div>
             <aside className="contacts-page__card" aria-label="Контакты офиса">
               <p className="contacts-page__legal-name">{SITE_COMPANY.legalName}</p>
-              <p className="contacts-page__unp">
-                УНП <span className="contacts-page__unp-value">{SITE_COMPANY.unp}</span>
-              </p>
 
               <h2 className="contacts-page__label">Адрес</h2>
               <p className="contacts-page__text">
@@ -58,14 +57,10 @@ export default function Contacts() {
               <p className="contacts-page__hours">{SITE_OFFICE.hours}</p>
 
               <h2 className="contacts-page__label">Телефон</h2>
-              <p className="contacts-page__text">
-                <a href={`tel:${SITE_PHONE.e164}`}>{SITE_PHONE.display}</a>
-              </p>
+              <p className="contacts-page__text">{SITE_PHONE.display}</p>
 
               <h2 className="contacts-page__label">Почта</h2>
-              <p className="contacts-page__text">
-                <a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
-              </p>
+              <p className="contacts-page__text">{SITE_EMAIL}</p>
 
               <h2 className="contacts-page__label">Мессенджеры и соц. сети</h2>
               <div className="contacts-page__socials">

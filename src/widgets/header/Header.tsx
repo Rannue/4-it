@@ -31,6 +31,12 @@ const NAV_MENU_ALWAYS_VISIBLE = false;
 /** Временно: пункты «Отзывы» и «Блог» в блоке «Компания». Поставьте `true`, когда разделы будут готовы. */
 const SHOW_COMPANY_REVIEWS_AND_BLOG = false;
 
+/** Временно: пункт «О нас» в блоке «Компания». Поставьте `true`, чтобы снова показать. */
+const SHOW_COMPANY_ABOUT_LINK = false;
+
+/** Временно: верхний пункт «Кейсы» (якорь на главной). Поставьте `true`, чтобы снова показать. */
+const SHOW_CASES_NAV_LINK = false;
+
 const HH_VACANCIES_URL = 'https://hh.ru/employer/1589500?hhtmFrom=vacancy&tab=DESCRIPTION';
 
 const MOBILE_NAV_QUERY = '(max-width: 999px)';
@@ -103,9 +109,11 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
   Компания: (
     <div className="nav-menu__columns nav-menu__columns--company">
       <ul className="nav-menu__list">
-        <li>
-          <a href="#about">О нас</a>
-        </li>
+        {SHOW_COMPANY_ABOUT_LINK ? (
+          <li>
+            <a href="#about">О нас</a>
+          </li>
+        ) : null}
         <li>
           <a href={HH_VACANCIES_URL} target="_blank" rel="noopener noreferrer">
             Вакансии
@@ -114,7 +122,7 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
       </ul>
       <ul className="nav-menu__list">
         <li>
-          <a href="#clients">Клиенты</a>
+          <Link to="/clients">Клиенты</Link>
         </li>
         {SHOW_COMPANY_REVIEWS_AND_BLOG ? (
           <li>
@@ -154,10 +162,14 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
             <Link to="/websites/online-store">Разработка интернет-магазина</Link>
           </li>
           <li>
-            <a href="#services-dev-b2b">B2B порталы</a>
+            <span className="nav-menu__sublist-item--disabled" aria-disabled="true">
+              B2B порталы
+            </span>
           </li>
           <li>
-            <Link to="/#home">Корпоративные сайты</Link>
+            <span className="nav-menu__sublist-item--disabled" aria-disabled="true">
+              Корпоративные сайты
+            </span>
           </li>
         </ul>
       </div>
@@ -167,7 +179,9 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
         </Link>
         <ul className="nav-menu__sublist">
           <li>
-            <Link to="/cybersecurity/audit">Аудит инфраструктуры и информационной безопасности</Link>
+            <Link to="/cybersecurity/audit">
+              Аудит инфраструктуры и информационной безопасности
+            </Link>
           </li>
           <li>
             <Link to="/cybersecurity/certification">Аттестация системы защиты информации</Link>
@@ -270,7 +284,11 @@ function Header() {
           </div>
           <div className="app-header__nav-wrapper">
             <nav className="app-header__nav">
-              <Link to="/" className="app-header__nav-item" onMouseEnter={() => setActiveMenu(null)}>
+              <Link
+                to="/"
+                className="app-header__nav-item"
+                onMouseEnter={() => setActiveMenu(null)}
+              >
                 Главная
               </Link>
               <button
@@ -300,13 +318,15 @@ function Header() {
                 Компания
                 <NavChevron />
               </button>
-              <Link
-                to="/#cases"
-                className="app-header__nav-item"
-                onMouseEnter={() => setActiveMenu(null)}
-              >
-                Кейсы
-              </Link>
+              {SHOW_CASES_NAV_LINK ? (
+                <Link
+                  to="/#cases"
+                  className="app-header__nav-item"
+                  onMouseEnter={() => setActiveMenu(null)}
+                >
+                  Кейсы
+                </Link>
+              ) : null}
               <Link
                 to="/contacts"
                 className={[
@@ -403,8 +423,13 @@ function Header() {
                     </div>
                   )}
                 </div>
-                <Link to="/#cases" className="mobile-menu__link-row" onClick={closeMobileMenu}>
-                  Кейсы
+                {SHOW_CASES_NAV_LINK ? (
+                  <Link to="/#cases" className="mobile-menu__link-row" onClick={closeMobileMenu}>
+                    Кейсы
+                  </Link>
+                ) : null}
+                <Link to="/clients" className="mobile-menu__link-row" onClick={closeMobileMenu}>
+                  Клиенты
                 </Link>
                 <Link to="/contacts" className="mobile-menu__link-row" onClick={closeMobileMenu}>
                   Контакты
@@ -420,7 +445,6 @@ function Header() {
                   <a href="tel:+375445554416">+375 (44) 555 44 16</a>
                   <a href="mailto:info@4-it.by">info@4-it.by</a>
                 </div>
-                <hr className="mobile-menu__rule" />
                 <a
                   href={HH_VACANCIES_URL}
                   className="nav-menu__cv-link"

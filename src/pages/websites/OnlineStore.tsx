@@ -3,69 +3,22 @@ import PageLayout from '@/components/layout/PageLayout';
 import SecondaryHero from '@/components/sections/SecondaryHero';
 import ClientsSection from '@/components/grids/ClientsSection';
 import InfoGridSection from '@/components/grids/InfoGridSection';
-import SplitHighlightPanel from '@/components/sections/SplitHighlightPanel';
-import CardsGridSection from '@/components/grids/CardsGridSection';
-import StickyHeadingListSection from '@/components/sections/StickyHeadingListSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
+import StackedFeatureCardsSection from '@/components/sections/StackedFeatureCardsSection';
+import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
+
+// data
+import { ONLINE_STORE_STACKED } from '@/data/stackedFeatureCards';
 
 // assets
-import usersGroupIcon from '@/assets/icons/users-group.svg';
-import laptopIcon from '@/assets/icons/laptop.svg';
-import lawIllustrationImg from '@/assets/img/law.svg';
-import flashIllustration from '@/assets/img/illustrations/flash.svg';
-import moneyIllustration from '@/assets/img/illustrations/money.svg';
-import lawIllustration from '@/assets/img/illustrations/law.svg';
-import flexIllustration from '@/assets/img/illustrations/flex.svg';
+import taskDarkIllustration from '@/assets/img/illustrations/task-dark.svg';
+import bagDarkIllustration from '@/assets/img/illustrations/bag-dark.svg';
+import settingsDarkIllustration from '@/assets/img/illustrations/settings-dark.svg';
+import bag2DarkIllustration from '@/assets/img/illustrations/bag2-dark.svg';
+import discountDarkIllustration from '@/assets/img/illustrations/discount-dark.svg';
+import penDarkIllustration from '@/assets/img/illustrations/pen-dark.svg';
 
 import '../Hero.css';
-
-const EDMS_CARDS_HTML = [
-  `
-                <div class="cards-grid__media">
-                  <img src="${flashIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
-                </div>
-                <div class="cards-grid__group">
-                <h4>Скорость и эффективность</h4>
-                <p>
-                   Документы подписываются и передаются онлайн. Нет задержек из-за пересылок.
-                  </p>
-                </div>
-              `,
-  `
-                <div class="cards-grid__media">
-                    <img src="${moneyIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
-                </div>
-                <div class="cards-grid__group">
-                <h4>Снижение затрат</h4>
-                <p>
-                   Меньше бумаги, печати, курьеров и хранения бумажных архивов.
-                  </p>
-                </div>
-              `,
-  '<div class="cards-grid__media cards-grid__media-empty"></div>',
-  '<div class="cards-grid__media cards-grid__media-empty"></div>',
-  `
-                <div class="cards-grid__media">
-                  <img src="${lawIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
-                </div>
-                <div class="cards-grid__group">
-                <h4>Юридическая защита</h4>
-                <p>
-                  Документы, подписанные ЭЦП, признаются законными в режиме электронного оборота.
-                  </p>
-                </div>
-              `,
-  `
-                <div class="cards-grid__media">
-                  <img src="${flexIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
-                </div>
-                <div class="cards-grid__group">
-                <h4>Гибкость</h4>
-                <p>
-Возможность подписывать с разных устройств, используя разные носители ЭЦП (USB-токен, SIM-ключ).                  </p>
-                </div>
-              `,
-];
 
 function OnlineStorePage() {
   return (
@@ -88,95 +41,181 @@ function OnlineStorePage() {
         }
       />
 
-      <InfoGridSection
-        title={
+      <StackedFeatureCardsSection
+        id="online-store-capabilities"
+        heading={
           <>
-            Что такое электронный документооборот и{' '}
-            <span className="info-grid__title-accent">ЭЦП?</span>
+            Варианты разработки{' '}
+            <span className="stacked-feature-cards__heading-accent">интернет-магазина</span>
           </>
         }
+        {...ONLINE_STORE_STACKED}
+      />
+
+      <InfoGridSection
+        title="Возможности интеграции"
+        description="Интернет-магазины на 1С-Битрикс легко интегрируются с корпоративными системами компании, что позволяет автоматизировать ключевые бизнес-процессы и обеспечить актуальность данных на сайте. Мы интегрируем:"
         columnsHtml={[
           `
               <div class="info-grid__group">
-                <h4>Электронный документооборот</h4>
+                <h4>1С</h4>
                 <p>
-Это обмен документами в цифровом формате по интернету, без печати и курьеров, но с соблюдением юридических требований.                </p>
+                  Синхронизация каталога товаров, цен, остатков на складе и заказов
+                </p>
               </div>
-              <img
-                src="${laptopIcon}"
-                alt=""
-                class="info-grid__icon"
-                aria-hidden="true"
-              />
+              <div class="scroll-card__dots">
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                <span class="scroll-card__dot"></span>
+                <span class="scroll-card__dot"></span>
+                <span class="scroll-card__dot"></span>
+                <span class="scroll-card__dot"></span>
+                <span class="scroll-card__dot"></span>
+              </div>
             `,
           `
               <div class="info-grid__group">
-                <h4>ЭЦП (электронно-цифровая подпись)</h4>
+                <h4>CRM-системы</h4>
                 <p>
-Аналог собственноручной подписи в цифровом виде. Для каждой подписи требуется уникальный ключ от удостоверяющего центра.                </p>
+                  передача заявок и заказов, управление клиентской базой
+                </p>
               </div>
-              <img
-                src="${usersGroupIcon}"
-                alt=""
-                class="info-grid__icon"
-                aria-hidden="true"
-              />
+              <div class="scroll-card__dots">
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                  <span class="scroll-card__dot"></span>
+                  <span class="scroll-card__dot"></span>
+                  <span class="scroll-card__dot"></span>
+                <span class="scroll-card__dot"></span>
+              </div>
             `,
           `
-              <div class="info-grid__group info-grid__group--lg">
+              <div class="info-grid__group">
+                <h4>Платёжные системы</h4>
                 <p>
-Беларуси ЭЦП существует в двух основных формах:
-<span style="color: var(--color-primary);">
-<br /><br />• USB-токен
-<br />• SIM-карта с записанным на ней ключом </span>              </p>
+                  приём онлайн-платежей различными способами
+                </p>
+              </div>
+              <div class="scroll-card__dots">
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                <span class="scroll-card__dot"></span>
+                <span class="scroll-card__dot"></span>
+                <span class="scroll-card__dot"></span>
               </div>
             `,
+          `
+              <div class="info-grid__group">
+                <h4>Службы доставки</h4>
+                <p>
+                  автоматический расчёт стоимости и отслеживание отправлений
+                </p>
+              </div>
+              <div class="scroll-card__dots">
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                <span class="scroll-card__dot scroll-card__dot--active"></span>
+                <span class="scroll-card__dot"></span>
+                <span class="scroll-card__dot"></span>
+              </div>
+            `,
+          `
+            <div class="info-grid__group">
+              <h4>Маркетплейсы</h4>
+              <p>
+                выгрузка товаров и управление заказами из единого интерфейса
+              </p>
+            </div>
+            <div class="scroll-card__dots">
+              <span class="scroll-card__dot scroll-card__dot--active"></span>
+              <span class="scroll-card__dot scroll-card__dot--active"></span>
+              <span class="scroll-card__dot scroll-card__dot--active"></span>
+              <span class="scroll-card__dot scroll-card__dot--active"></span>
+              <span class="scroll-card__dot scroll-card__dot--active"></span>
+              <span class="scroll-card__dot"></span>
+            </div>
+          `,
+          `
+          <div class="info-grid__group">
+            <h4>Аналитические сервисы</h4>
+            <p>
+              автоматический расчёт стоимости и отслеживание отправлений
+            </p>
+          </div>
+          <div class="scroll-card__dots">
+            <span class="scroll-card__dot scroll-card__dot--active"></span>
+            <span class="scroll-card__dot scroll-card__dot--active"></span>
+            <span class="scroll-card__dot scroll-card__dot--active"></span>
+            <span class="scroll-card__dot scroll-card__dot--active"></span>
+            <span class="scroll-card__dot scroll-card__dot--active"></span>
+            <span class="scroll-card__dot scroll-card__dot--active"></span>
+          </div>
+        `,
         ]}
       />
 
-      <SplitHighlightPanel
-        asideTitle="Внедрение в соответствии с требованиями и стандартами"
-        illustration={{ src: lawIllustrationImg, alt: '' }}
-      >
-        <p>
-          Мы предлагаем внедрение современных SIEM-решений, которые соответствуют требованиям
-          стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим
-          регламентом Республики Беларусь «Информационные технологии. Средства защиты информации.
-          Информационная безопасность» (ТР 2013/027/BY), утверждённых Приказом
-          Оперативно-аналитического центра при Президенте Республики Беларусь от 12 марта 2020 г. №
-          77 (в редакции от 28.12.2022 № 207).
-        </p>
-        <p>
-          Чтобы ЭЦП была корректной, она должна быть выдана аккредитованным удостоверяющим центром.
-        </p>
-      </SplitHighlightPanel>
+      <CardsGridSectionDark
+        title="Управление интернет-магазином"
+        description="Система управления 1С-Битрикс предоставляет удобный интерфейс для администрирования сайта и не требует специальных технических навыков. Администратор может оперативно обновлять информацию на сайте, управлять каталогом и контролировать обработку заказов."
+        cardsHtml={[
+          `
+              <div class="cards-grid__media">
+                <img src="${bagDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
+              </div>
+              <p>
+                добавление, редактирование и массовая загрузка товаров
+              </p>
+            `,
+          `
+              <div class="cards-grid__media">
+                <img src="${taskDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
+              </div>
+              <p>
+                управление структурой каталога, категориями и характеристиками продукции
+              </p>
+            `,
+          `
+            <div class="cards-grid__media cards-grid__media--empty">
+            </div>
+          `,
+          `
+          <div class="cards-grid__media cards-grid__media--empty">
+          </div>
+        `,
+          `
+              <div class="cards-grid__media">
+                <img src="${settingsDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
+              </div>
+              <p>
+обработка заказов, изменение статусов и контроль выполнения              
+</p>
+            `,
+          `
+            <div class="cards-grid__media">
+              <img src="${bag2DarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
+            </div>
 
-      <CardsGridSection title={<>Преимущества внедрения</>} cardsHtml={EDMS_CARDS_HTML} />
+            <p>
+управление клиентской базой и историей заказов</p>
+          `,
+          `
+      <div class="cards-grid__media">
+        <img src="${discountDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
+      </div>
 
-      <StickyHeadingListSection
-        id="virtualization-benefits"
-        title={
-          <>
-            Этапы
-            <span className="sticky-heading-list__title-accent"> внедрения</span>
-          </>
-        }
-        items={[
-          { text: 'Получение сертификата ЭЦПиз аккредитованного удостоверяющего центра' },
-          {
-            text: 'Выбор носителя (USB-токен, SIM-ключ) и установка необходимых программных средств',
-          },
-          {
-            text: 'Настройка системы ЭДО: загрузка шаблонов, определение типов документов, маршрутов подписания',
-          },
-          {
-            text: 'Инструктаж сотрудников по работе с ЭДО и ЭЦП: как подписывать документы, как проверять подписи',
-          },
-          {
-            text: 'Тестовый обмен документами с контрагентами, проверка юридической силы, исправление возможных ошибок',
-          },
+      <p>настройка скидок, акций, программ лояльности и специальных предложений</p>
+    `,
+          `
+    <div class="cards-grid__media">
+      <img src="${penDarkIllustration}" alt="" aria-hidden="true" class="cards-grid__illustration" />
+    </div>
+
+    <p>управление контентом сайта: страницы, новости, баннеры и другие материалы</p>
+  `,
         ]}
       />
+
       <CertificatesSection />
       <ClientsSection />
     </PageLayout>

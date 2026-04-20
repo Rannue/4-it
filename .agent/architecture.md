@@ -22,6 +22,7 @@ React 19 SPA. Routing is modularized into route groups.
 - `/websites/online-store` → `src/pages/websites/OnlineStore.tsx`
 - `/virtualization` → `src/pages/cybersecurity/delivery/Virtualization.tsx`
 - `/contacts` → `src/pages/Contacts.tsx` (карта и карточка офиса; шапка блока — `PageHeadingBar`)
+- `/clients` → `src/pages/Clients.tsx` (логотипы партнёров; `ClientsSection` с `showHeading={false}`, вводный текст — `clientsSectionCopy`)
 - `/certificates` → `src/pages/CertificatesDocuments.tsx` (сертификаты, PDF-политики, реквизиты; якоря `#certificates`, `#policies`, `#requisites`)
 
 ### Cybersecurity — core (via CybersecurityRoutes)

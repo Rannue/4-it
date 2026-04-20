@@ -23,7 +23,11 @@ function getFinePointerServerSnapshot() {
 }
 
 function useFinePointer(): boolean {
-  return useSyncExternalStore(subscribeFinePointer, getFinePointerSnapshot, getFinePointerServerSnapshot);
+  return useSyncExternalStore(
+    subscribeFinePointer,
+    getFinePointerSnapshot,
+    getFinePointerServerSnapshot
+  );
 }
 
 const LERP_LEAD = 0.42;
@@ -144,8 +148,14 @@ export default function HomeCustomCursor() {
 
   return createPortal(
     <div ref={rootRef} className="home-custom-cursor-root" aria-hidden>
-      <div ref={t2Ref} className="home-custom-cursor__dot home-custom-cursor__trail home-custom-cursor__trail--2" />
-      <div ref={t1Ref} className="home-custom-cursor__dot home-custom-cursor__trail home-custom-cursor__trail--1" />
+      <div
+        ref={t2Ref}
+        className="home-custom-cursor__dot home-custom-cursor__trail home-custom-cursor__trail--2"
+      />
+      <div
+        ref={t1Ref}
+        className="home-custom-cursor__dot home-custom-cursor__trail home-custom-cursor__trail--1"
+      />
       <div ref={leadRef} className="home-custom-cursor__dot home-custom-cursor__lead" />
     </div>,
     document.body

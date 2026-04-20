@@ -3,9 +3,7 @@ import { useCallback, useState } from 'react';
 
 import { CERTIFICATE_CARDS, type CertificateCardEntry } from '@/constants/certificateCards';
 
-import CertificatePreviewModal, {
-  type CertificatePreviewItem,
-} from './CertificatePreviewModal';
+import CertificatePreviewModal, { type CertificatePreviewItem } from './CertificatePreviewModal';
 
 import bitrix24CardMark from '@/assets/img/Кибербезопасность/Bitrix24-logo.svg';
 import oneCCompanyMark from '@/assets/img/Кибербезопасность/1с-лого.svg';
