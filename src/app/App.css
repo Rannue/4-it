@@ -10,12 +10,53 @@
   padding-top: var(--header-height, 88px);
 }
 
+/* Полная ширина экрана: без боковых отступов section-wrapper — синий блок до краёв */
+.home-hero__shell {
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .hero {
   box-sizing: border-box;
 }
 
+/* Боковые «ячейки» тянутся на свободную ширину; сетка героя в центре не шире 1600px */
+.home-hero__frame {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  /* margin-bottom: 42px; */
+}
+
+.home-hero__rail {
+  flex: 1 1 0;
+  box-sizing: border-box;
+  min-width: 0;
+  background-color: var(--color-primary);
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.home-hero__rail:first-of-type {
+  border-right: none;
+}
+
+.home-hero__rail:last-of-type {
+  border-left: none;
+}
+
+.home-hero__core {
+  flex: 0 1 auto;
+  box-sizing: border-box;
+  width: min(100%, var(--layout-content-max-width));
+  max-width: var(--layout-content-max-width);
+  min-width: 0;
+}
+
 .hero-grid {
-  --hero-grid-radius: 8px;
+  --hero-grid-radius: 0;
   --hero-grid-bottom-row: min(22vh, calc(6vh + max(0px, 1000px - 100vw) * 0.072));
 
   display: grid;
@@ -24,7 +65,6 @@
   width: 100%;
   /* Высота «экрана» героя: 100vh минус шапка и отступы (значение под макет, не только --header-height) */
   height: calc(100vh - 146px);
-  margin-bottom: 42px;
   overflow: hidden;
   border-radius: var(--hero-grid-radius);
   background-color: var(--color-primary);
@@ -125,6 +165,19 @@
   Высота по контенту (без fr и без min-height на весь экран), чтобы не было «пустоты» под текстом.
 */
 @media (max-width: 1000px) {
+  .home-hero__frame {
+    display: block;
+  }
+
+  .home-hero__rail {
+    display: none;
+  }
+
+  .home-hero__core {
+    width: 100%;
+    max-width: none;
+  }
+
   .hero-grid {
     position: relative;
     grid-template-columns: 1fr;

@@ -71,52 +71,56 @@ function App() {
       <Header />
 
       <main className="app-main">
-        <div className="section-wrapper--px-only">
-          <div className="section-wrapper__inner">
-            <section id="home" className="hero">
-              <div className="hero-grid">
-                <div className="hero-grid__cell hero-grid__cell--texture" aria-hidden="true">
-                  <InteractiveTexture parallax>
-                    <div className="hero-grid__texture-layer" />
-                  </InteractiveTexture>
-                </div>
-                <div className="hero-grid__cell">
-                  <p className="hero-grid__lead">
-                    Специализируемся на кибербезопасности и внедрении CRM на базе Bitrix24, а также
-                    разрабатываем сайты, интернет-магазины и B2B-порталы, выполняем интеграции и
-                    настраиваем обмен данными между системами.
-                  </p>
-                </div>
-                <div className="hero-grid__cell">
-                  <h1>
-                    Внедрение{' '}
-                    <span className="hero-grid__bitrix-mark">Битрикс24</span>
-                    <br /> Кибербезопасность <br />
-                    Комплексные IT Услуги
-                  </h1>
-                </div>
-                <div className="hero-grid__cell">
-                  <div className="hero-grid__button-container">
-                    {/* Temporarily hidden: callback CTA */}
-                    <Button
-                      color="var(--color-white)"
-                      textColor="#01111E"
-                      href="#contacts"
-                      iconRight={<img src={ArrowRightIcon} alt="" />}
-                    >
-                      Оставить заявку
-                    </Button>
+        <div className="home-hero__shell">
+          <section id="home" className="hero">
+            <div className="home-hero__frame">
+              <div className="home-hero__rail" aria-hidden="true" />
+              <div className="home-hero__core">
+                <div className="hero-grid">
+                  <div className="hero-grid__cell hero-grid__cell--texture" aria-hidden="true">
+                    <InteractiveTexture parallax>
+                      <div className="hero-grid__texture-layer" />
+                    </InteractiveTexture>
+                  </div>
+                  <div className="hero-grid__cell">
+                    <p className="hero-grid__lead">
+                      Специализируемся на кибербезопасности и внедрении CRM на базе Bitrix24, а также
+                      разрабатываем сайты, интернет-магазины и B2B-порталы, выполняем интеграции и
+                      настраиваем обмен данными между системами.
+                    </p>
+                  </div>
+                  <div className="hero-grid__cell">
+                    <h1>
+                      Внедрение{' '}
+                      <span className="hero-grid__bitrix-mark">Битрикс24</span>
+                      <br /> Кибербезопасность <br />
+                      Комплексные IT Услуги
+                    </h1>
+                  </div>
+                  <div className="hero-grid__cell">
+                    <div className="hero-grid__button-container">
+                      {/* Temporarily hidden: callback CTA */}
+                      <Button
+                        color="var(--color-white)"
+                        textColor="#01111E"
+                        href="#contacts"
+                        iconRight={<img src={ArrowRightIcon} alt="" />}
+                      >
+                        Оставить заявку
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="hero-grid__cell"></div>
+                  <div className="hero-grid__cell hero-grid__cell--texture" aria-hidden="true">
+                    <InteractiveTexture parallax>
+                      <div className="hero-grid__texture-layer" />
+                    </InteractiveTexture>
                   </div>
                 </div>
-                <div className="hero-grid__cell"></div>
-                <div className="hero-grid__cell hero-grid__cell--texture" aria-hidden="true">
-                  <InteractiveTexture parallax>
-                    <div className="hero-grid__texture-layer" />
-                  </InteractiveTexture>
-                </div>
               </div>
-            </section>
-          </div>
+              <div className="home-hero__rail" aria-hidden="true" />
+            </div>
+          </section>
         </div>
 
         <ScrollReveal>

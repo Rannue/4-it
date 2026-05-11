@@ -88,7 +88,7 @@ function HeroAsideColumn() {
   );
 }
 
-/** Пустая ячейка сетки; слот совпадает с модификатором в SecondaryHero.css (--r1c1 … --r3c4). */
+/** Пустая ячейка сетки; слот — модификатор в SecondaryHero.css (r1c2, r1c3, r3c2, r3c3). */
 function HeroGridSlot({ slot, band }: { slot: string; band?: boolean }) {
   return (
     <div
@@ -104,7 +104,7 @@ function HeroGridSlot({ slot, band }: { slot: string; band?: boolean }) {
   );
 }
 
-/** Порядок детей задаёт auto-placement на широком экране (4×3); ниже 1200px — правила в CSS. */
+/** Порядок детей: 2×3 на широком экране; ниже 900px — правила в CSS. */
 function HeroGrid({
   breadcrumbs,
   title,
@@ -118,11 +118,8 @@ function HeroGrid({
 }) {
   return (
     <div className="hero-secondary-grid">
-      <HeroGridSlot slot="r1c1" />
       <HeroGridSlot slot="r1c2" />
       <HeroGridSlot slot="r1c3" />
-      <HeroGridSlot slot="r1c4" />
-      <HeroGridSlot slot="r2c1" />
       <HeroMainColumn
         breadcrumbs={breadcrumbs}
         title={title}
@@ -130,11 +127,8 @@ function HeroGrid({
         descriptionSecondary={descriptionSecondary}
       />
       <HeroAsideColumn />
-      <HeroGridSlot slot="r2c4" />
-      <HeroGridSlot slot="r3c1" band />
       <HeroGridSlot slot="r3c2" band />
       <HeroGridSlot slot="r3c3" band />
-      <HeroGridSlot slot="r3c4" band />
     </div>
   );
 }
@@ -146,17 +140,19 @@ function SecondaryHero({
   descriptionSecondary,
 }: SecondaryHeroProps) {
   return (
-    <div className="section-wrapper--px-only">
-      <div className="section-wrapper__inner">
-        <section id="home" className="hero-secondary">
-          <HeroGrid
-            breadcrumbs={breadcrumbs}
-            title={title}
-            description={description}
-            descriptionSecondary={descriptionSecondary}
-          />
-        </section>
-      </div>
+    <div className="hero-secondary__shell">
+      <section id="home" className="hero-secondary">
+        <div className="hero-secondary__cols-wrapper">
+          <div className="hero-secondary__cols">
+            <HeroGrid
+              breadcrumbs={breadcrumbs}
+              title={title}
+              description={description}
+              descriptionSecondary={descriptionSecondary}
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

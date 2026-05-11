@@ -1,4 +1,4 @@
-/* Футер: подложка --color-primary + texture.png */
+/* Футер: подложка --color-primary */
 
 .footer {
   position: relative;
@@ -7,17 +7,6 @@
   overflow: hidden;
   padding: 42px;
   background-color: var(--color-primary);
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: url('../../assets/img/texture.png') center / cover no-repeat;
-  opacity: 0.7;
-  mix-blend-mode: luminosity;
 }
 
 .footer__wrap {
