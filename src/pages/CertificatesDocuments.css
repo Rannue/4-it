@@ -61,7 +61,7 @@
 .cert-doc-page__section-title {
   margin: 0 0 20px;
   font-family: var(--font-heading);
-  font-size: clamp(18px, 1.2vw + 14px, 22px);
+  font-size: clamp(18px, 1.2vw + 16px, 22px);
   font-weight: 500;
   color: var(--color-text-main);
 }
@@ -194,7 +194,7 @@
 }
 
 .cert-doc-page__download-meta {
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-light);
   color: var(--color-text-secondary);
 }
@@ -220,7 +220,7 @@
 
   .cert-doc-page__nav-link {
     padding: 10px 14px;
-    font-size: 14px;
+    font-size: var(--font-size-base);
   }
 
   .cert-doc-page__mosaic-row {

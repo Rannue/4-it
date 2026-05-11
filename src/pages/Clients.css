@@ -6,7 +6,7 @@
 .clients-page__intro {
   margin: 0 auto;
   max-width: 800px;
-  font-size: clamp(14px, 1.6vw, 16px);
+  font-size: clamp(16px, 1.6vw, 18px);
   font-weight: var(--font-weight-light);
   line-height: 1.5;
   color: var(--color-text-secondary);

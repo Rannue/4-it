@@ -71,14 +71,14 @@
 
 .contacts-page__text {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-text-main);
 }
 
 .contacts-page__hours {
   margin: 8px 0 0;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-text-main);
 }
@@ -91,7 +91,7 @@
 }
 
 .contacts-page__ext-link {
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-primary);
   text-decoration: none;

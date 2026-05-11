@@ -137,7 +137,7 @@
   border-radius: 50%;
   background: var(--color-text-secondary-light);
   color: var(--color-white);
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -151,7 +151,7 @@
 
 .testimonials-card__name {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 600;
   line-height: 1.25;
   color: var(--color-text-main);
@@ -159,7 +159,7 @@
 
 .testimonials-card__role {
   margin: 2px 0 0;
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   font-weight: 400;
   line-height: 1.25;
   color: var(--color-text-secondary);
@@ -185,7 +185,7 @@ a.testimonials-card__link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-primary);
   text-decoration: none;

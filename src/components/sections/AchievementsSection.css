@@ -45,7 +45,7 @@
 }
 
 .achievements__text {
-  font-size: 14px;
+  font-size: var(--font-size-base);
   color: #6b7280;
   line-height: 1.5;
 }

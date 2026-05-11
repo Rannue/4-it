@@ -65,6 +65,6 @@
   }
 
   .animated-goal__aside-label {
-    font-size: 14px;
+    font-size: var(--font-size-base);
   }
 }

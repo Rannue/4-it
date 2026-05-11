@@ -57,7 +57,7 @@
 }
 
 .footer__nav a {
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-text-main);
   text-decoration: none;
@@ -82,7 +82,7 @@
 
 .footer__heading {
   margin: 0 0 8px;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 500;
 }
 
@@ -171,13 +171,13 @@
 
 .footer__contacts-col p {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   line-height: 140%;
 }
 
 .footer__contacts-col > a:not(.footer__link-external) {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   line-height: 140%;
   text-decoration: none;
   color: var(--color-text-secondary);
@@ -223,7 +223,7 @@
 }
 
 .footer__policies a {
-  font-size: 14px;
+  font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   text-decoration: none;
 }

@@ -57,7 +57,7 @@
 
 .sticky-heading-list__index {
   font-family: var(--font-family-base);
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   color: var(--color-text-secondary-light);
   white-space: nowrap;
@@ -67,7 +67,7 @@
 .sticky-heading-list__text {
   margin: 0;
   font-family: var(--font-family-base);
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   line-height: 1.45;
   letter-spacing: 0.04em;

@@ -127,7 +127,7 @@
 
 /* Со значком — подпись мельче, акцент на логотипе (как в макете) */
 .certificates-card__brand-name--bitrix-with-mark {
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   color: var(--color-primary);
 }
@@ -148,7 +148,7 @@
 }
 
 .certificates-card__brand-name--1c-secondary {
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   line-height: 1.25;
   color: var(--color-text-main);
@@ -163,7 +163,7 @@
 }
 
 .certificates-card__brand-name--erl-secondary {
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   line-height: 1.2;
   letter-spacing: 0.02em;
@@ -193,7 +193,7 @@
   margin: 0;
   text-align: start;
   font-family: var(--font-family-base);
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-light);
   line-height: 1.45;
   color: var(--color-text-secondary);

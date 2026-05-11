@@ -250,7 +250,7 @@
   }
 
   .hero-secondary__description {
-    font-size: 14px;
+    font-size: var(--font-size-base);
   }
 }
 
@@ -311,7 +311,7 @@
   }
 
   .hero-secondary__description {
-    font-size: 13px;
+    font-size: var(--font-size-sm);
     line-height: 1.45;
   }
 }

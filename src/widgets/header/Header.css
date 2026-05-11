@@ -193,7 +193,7 @@
 
 .nav-menu__group-title {
   margin: 0 0 12px;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 500;
   color: var(--color-text-main);
   text-decoration: underline;
@@ -221,7 +221,7 @@ a.nav-menu__group-title--link:hover {
 }
 
 .nav-menu__sublist a {
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-text-secondary);
   text-decoration: none;
@@ -234,7 +234,7 @@ a.nav-menu__group-title--link:hover {
 
 .nav-menu__sublist .nav-menu__sublist-item--disabled {
   display: inline-block;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-text-secondary-light);
   opacity: 0.55;

@@ -59,7 +59,7 @@
 
 .product-tier-comparison__subtitle {
   margin: 0 0 16px;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   line-height: 1.45;
   color: var(--color-text-secondary);
@@ -94,7 +94,7 @@
 
 .product-tier-comparison__feature-text {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-light);
   line-height: 1.5;
   color: var(--color-text-main);

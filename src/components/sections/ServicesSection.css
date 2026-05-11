@@ -130,7 +130,7 @@
   border: 1px solid var(--gray-300);
   padding: 6px 12px;
   font-family: 'Inter', var(--font-family-base);
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   line-height: 140%;
   color: var(--color-text-main);
   background-color: var(--color-white);

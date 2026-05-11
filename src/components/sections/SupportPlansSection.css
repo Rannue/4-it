@@ -18,7 +18,7 @@
 }
 
 .support-hours-bars__price-period {
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   color: #57a774;
 }
@@ -38,7 +38,7 @@
   border-radius: 4px;
   padding: 16px;
   font-family: var(--font-family-base);
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   color: var(--color-text-main);
   box-sizing: border-box;
