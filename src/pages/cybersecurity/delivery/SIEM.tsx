@@ -4,17 +4,19 @@ import SecondaryHero from '@/components/sections/SecondaryHero';
 import DocumentDetailsSection from '@/components/domain/cybersecurity/DocumentDetailsSection';
 import CertificatesSection from '@/components/sections/CertificatesSection';
 import ClientsSection from '@/components/grids/ClientsSection';
-import KeyFeaturesGridSection from '@/components/grids/KeyFeaturesGridSection';
 import FeatureBanner from '@/components/sections/FeatureBanner';
 import ManufacturersSection from '@/components/domain/cybersecurity/ManufacturersSection';
+import InfoGridSection from '@/components/grids/InfoGridSection';
 
 // assets
-import bitrixBoxImg from '@/assets/img/bitrix.png';
-import bitrixScreenImg from '@/assets/img/bitrix-screen.png';
 import lawIllustration from '@/assets/img/illustrations/law.png';
 import infowatchLogo from '@/assets/img/providers/Infowatch.svg';
 import librasoftLogo from '@/assets/img/providers/librasoft.svg';
 import stakhanovetsLogo from '@/assets/img/providers/stakhanovec-logo.svg';
+import folderIcon from '@/assets/icons/folder.svg';
+import exclamationIcon from '@/assets/icons/exclamation.svg';
+import deviceIcon from '@/assets/icons/laptop.svg';
+import chartIcon from '@/assets/icons/chart.svg';
 
 const SIEM_FEATURE_BANNER_DESCRIPTION =
   'Мы предлагаем внедрение современных SIEM-решений, которые соответствуют требованиям стандартов, указанных в Перечне государственных стандартов, взаимосвязанных с техническим регламентом Республики Беларусь «Информационные технологии. Средства защиты информации. Информационная безопасность» (ТР 2013/027/BY), утверждённых Приказом Оперативно-аналитического центра при Президенте Республики Беларусь от 12 марта 2020 г. № 77 (в редакции от 28.12.2022 № 207).';
@@ -35,66 +37,30 @@ function SiemPage() {
         title="SIEM (Security Information and Event Management)"
         description="SIEM (Security Information and Event Management) — это система управления событиями и информацией безопасности, которая обеспечивает мониторинг, анализ и оперативное реагирование на угрозы в реальном времени. SIEM объединяет данные из различных источников, таких как сетевые устройства, серверы и приложения, чтобы выявить подозрительную активность и предотвратить кибератаки."
       />
-      <KeyFeaturesGridSection
-        title={
-          <>
-            Ключевые возможности <span className="key-features-grid__title-accent">Битрикс24</span>
-          </>
-        }
-        cells={[
-          { kind: 'image', src: bitrixBoxImg, alt: '1С-Битрикс24, корпоративный портал' },
-          {
-            kind: 'text',
-            title: 'Настройка CRM и автоматизация продаж',
-            intro: 'Мы настраиваем CRM-модуль Битрикс24 под специфику вашего бизнеса:',
-            bullets: [
-              'настройка воронки продаж и этапов сделок',
-              'автоматизация повторяющихся задач',
-              'интеграция с телефонией, мессенджерами и email',
-              'отчётность по продажам и KPI',
-            ],
-            footnote:
-              'Это позволяет контролировать все этапы продаж и сокращать время обработки заявок.',
-          },
-          {
-            kind: 'text',
-            title: 'Организация задач и проектов',
-            intro: 'Мы настраиваем систему управления задачами и проектами:',
-            bullets: [
-              'распределение задач между сотрудниками',
-              'контроль сроков и статусов выполнения',
-              'автоматическое уведомление и отчёты по прогрессу',
-              'настройка шаблонов проектов и бизнес-процессов',
-            ],
-            footnote:
-              'Таким образом компания получает прозрачный контроль за всеми проектами и задачами.',
-          },
-          {
-            kind: 'text',
-            title: 'Интеграции с внешними системами',
-            intro: 'Битрикс24 можно интегрировать с любыми корпоративными системами:',
-            bullets: [
-              '1С — синхронизация клиентов, заказов и остатков',
-              'ERP и складские системы',
-              'интернет-магазины и маркетплейсы',
-              'сторонние CRM, телефония и мессенджеры',
-              'аналитические и маркетинговые сервисы',
-            ],
-            footnote:
-              'Интеграции позволяют автоматизировать обмен данными и сокращают ручной труд сотрудников.',
-          },
-          {
-            kind: 'text',
-            title: 'Обучение и поддержка',
-            intro:
-              'После внедрения мы проводим обучение сотрудников и предоставляем документацию по работе с системой. Также возможна техническая поддержка и сопровождение, чтобы ваши процессы оставались оптимизированными и эффективными.',
-          },
-          {
-            kind: 'image',
-            src: bitrixScreenImg,
-            alt: 'Интерфейс CRM Битрикс24, сделки',
-            layout: 'screen-corner',
-          },
+      <InfoGridSection
+        title="Что такое SIEM?"
+        description="SIEM (Security Information and Event Management) — это технология, которая позволяет"
+        columnsHtml={[
+          `<div class="info-grid__group">
+              <p><strong style="color: var(--color-text-main);">Собирать данные</strong> из различных источников, таких как сетевые устройства, серверы, приложения и системы безопасности</p>
+              <img class="info-grid__icon" src="${deviceIcon}" alt="" aria-hidden="true" />
+            </div>`,
+          `<div class="info-grid__group">
+              <p><strong style="color: var(--color-text-main);">Анализировать события</strong> в реальном времени для выявления подозрительной активности</p>
+              <img class="info-grid__icon" src="${chartIcon}" alt="" aria-hidden="true" />
+            </div>`,
+          `<div class="info-grid__group info-grid__group--empty">
+            </div>`,
+          `<div class="info-grid__group">
+              <p><strong style="color: var(--color-text-main);">Оперативно реагировать</strong> на угрозы, минимизируя возможный ущерб</p>
+              <img class="info-grid__icon" src="${exclamationIcon}" alt="" aria-hidden="true" />
+            </div>`,
+          `<div class="info-grid__group info-grid__group--empty">
+            </div>`,
+          `<div class="info-grid__group">
+              <p><strong style="color: var(--color-text-main);">Генерировать отчеты</strong> для анализа инцидентов и улучшения стратегии безопасности</p>
+              <img class="info-grid__icon" src="${folderIcon}" alt="" aria-hidden="true" />
+            </div>`,
         ]}
       />
       <FeatureBanner

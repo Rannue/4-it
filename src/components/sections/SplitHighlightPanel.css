@@ -82,7 +82,7 @@
 .split-highlight-panel__body p {
   margin: 0;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 140%;
   color: var(--color-white);
 }

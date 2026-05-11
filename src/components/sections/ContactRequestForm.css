@@ -85,7 +85,7 @@
   margin: 0;
   font-size: 12px;
   line-height: 1.44;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-secondary-light);
 }
 
@@ -204,7 +204,7 @@
 .contact-request-form__file-icon-btn--remove {
   font-size: 22px;
   line-height: 1;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .contact-request-form__file-action-icon {

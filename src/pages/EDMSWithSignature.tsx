@@ -11,7 +11,7 @@ import FeatureBanner from '@/components/sections/FeatureBanner';
 // assets
 import usersGroupIcon from '@/assets/icons/users-group.svg';
 import laptopIcon from '@/assets/icons/laptop.svg';
-import lawFilledIllustration from '@/assets/img/law.svg';
+import lawFilledIllustration from '@/assets/img/law_filled.svg';
 import lawIllustration from '@/assets/img/illustrations/law.svg';
 import flashIllustration from '@/assets/img/illustrations/flash.svg';
 import moneyIllustration from '@/assets/img/illustrations/money.svg';

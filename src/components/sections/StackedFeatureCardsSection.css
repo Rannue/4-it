@@ -82,7 +82,7 @@
 .stacked-feature-cards__card-idx {
   display: block;
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 140%;
   color: var(--color-text-secondary-light);
   white-space: nowrap;
@@ -122,7 +122,7 @@
 .stacked-feature-cards__description {
   margin: 0;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 140%;
   color: var(--color-text-secondary);
   max-width: 48ch;
@@ -168,7 +168,7 @@
 .stacked-feature-cards__features-heading {
   margin: 0;
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 400;
   text-transform: uppercase;
   color: var(--color-text-secondary-light);
 }

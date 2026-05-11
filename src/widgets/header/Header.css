@@ -222,7 +222,7 @@ a.nav-menu__group-title--link:hover {
 
 .nav-menu__sublist a {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-secondary);
   text-decoration: none;
 }
@@ -235,7 +235,7 @@ a.nav-menu__group-title--link:hover {
 .nav-menu__sublist .nav-menu__sublist-item--disabled {
   display: inline-block;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-secondary-light);
   opacity: 0.55;
   cursor: not-allowed;
@@ -518,7 +518,7 @@ a.nav-menu__group-title--link:hover {
   color: var(--color-text-main);
   text-decoration: none;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .mobile-menu__footer .nav-menu__cv-link {

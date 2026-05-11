@@ -60,7 +60,7 @@
 .contacts-page__label {
   margin: 0 0 8px;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
   text-transform: none;
   color: var(--color-text-secondary-light);
 }
@@ -92,7 +92,7 @@
 
 .contacts-page__ext-link {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-primary);
   text-decoration: none;
 }
