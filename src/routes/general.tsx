@@ -4,6 +4,9 @@ import { Route, Routes } from 'react-router-dom';
 // app
 import App from '@/app/App';
 
+// constants
+import { routePaths } from '@/constants/routePaths';
+
 // components
 import TechnicalSupportPage from '@/pages/bitrix24/TechnicalSupport';
 import Bitrix24ImplementationPage from '@/pages/bitrix24/Implementation';
@@ -15,18 +18,19 @@ import ClientsPage from '@/pages/Clients';
 import CertificatesDocumentsPage from '@/pages/CertificatesDocuments';
 
 export function GeneralRoutes() {
+  const p = routePaths;
   return (
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/home" element={<App />} />
-      <Route path="/certificates" element={<CertificatesDocumentsPage />} />
-      <Route path="/contacts" element={<ContactsPage />} />
-      <Route path="/clients" element={<ClientsPage />} />
-      <Route path="/technical-support" element={<TechnicalSupportPage />} />
-      <Route path="/bitrix24/implementation" element={<Bitrix24ImplementationPage />} />
-      <Route path="/edms-signature" element={<EDMSWithSignaturePage />} />
-      <Route path="/websites/online-store" element={<OnlineStorePage />} />
-      <Route path="/virtualization" element={<VirtualizationPage />} />
+      <Route path={p.home} element={<App />} />
+      <Route path={p.homeLegacy} element={<App />} />
+      <Route path={p.certificates} element={<CertificatesDocumentsPage />} />
+      <Route path={p.contacts} element={<ContactsPage />} />
+      <Route path={p.clients} element={<ClientsPage />} />
+      <Route path={p.technicalSupport} element={<TechnicalSupportPage />} />
+      <Route path={p.bitrix24Implementation} element={<Bitrix24ImplementationPage />} />
+      <Route path={p.edmsSignature} element={<EDMSWithSignaturePage />} />
+      <Route path={p.websitesOnlineStore} element={<OnlineStorePage />} />
+      <Route path={p.virtualization} element={<VirtualizationPage />} />
     </Routes>
   );
 }

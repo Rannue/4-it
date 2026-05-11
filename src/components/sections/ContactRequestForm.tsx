@@ -22,6 +22,12 @@ const CONTACT_FORM_SUBMIT_URL = `https://formsubmit.co/ajax/${CONTACT_FORM_RECIP
 /** Обычная отправка — нужна для корректной доставки вложений (см. FormSubmit docs, File uploads). */
 const CONTACT_FORM_CLASSIC_URL = `https://formsubmit.co/${CONTACT_FORM_RECIPIENT}`;
 
+const CONTACT_FORM_SUBJECT = 'Новая заявка с сайта 4-it';
+const CONTACT_FORM_NEED_PHONE_OR_EMAIL =
+  'Укажите номер телефона или email — так мы сможем с вами связаться.';
+const CONTACT_FORM_GENERIC_ERROR = 'Не удалось отправить форму. Попробуйте позже.';
+const CONTACT_FORM_CATCH_ERROR = 'Ошибка отправки. Попробуйте позже.';
+
 /** Временно: кнопка «Прикрепить файл» и вложения. `true` — вернуть UI и multipart. */
 const SHOW_CONTACT_FORM_ATTACHMENT = false;
 
@@ -46,11 +52,119 @@ const DEFAULT_BUDGET_OPTIONS = [
   { value: 'discuss', label: 'Обсудим отдельно' },
 ] as const;
 
+type LabelledOption = { value: string; label: string };
+
+function resolveBudgetLabel(value: string, options: ReadonlyArray<LabelledOption>): string {
+  return (options.find(o => o.value === value)?.label ?? value) || '—';
+}
+
+function resolveServiceLabels(values: string[], options: ReadonlyArray<LabelledOption>): string {
+  if (values.length === 0) return '—';
+  return values
+    .filter(Boolean)
+    .map(v => options.find(o => o.value === v)?.label ?? v)
+    .join(', ');
+}
+
+function buildFormSubmitMessageText(fields: {
+  name: string;
+  phone: string;
+  email: string;
+  company: string;
+  services: string;
+  budget: string;
+  comment: string;
+}): string {
+  return [
+    `Имя: ${fields.name}`,
+    `Телефон: ${fields.phone}`,
+    `Email: ${fields.email}`,
+    `Компания: ${fields.company}`,
+    `Услуги: ${fields.services}`,
+    `Бюджет: ${fields.budget}`,
+    '',
+    'Комментарий:',
+    fields.comment,
+  ].join('\n');
+}
+
+function buildFormSubmitFormData(fields: {
+  name: string;
+  phone: string;
+  email: string;
+  company: string;
+  services: string;
+  budget: string;
+  message: string;
+  replyTo?: string;
+  attachment?: File;
+}): FormData {
+  const formData = new FormData();
+  /* AJAX без виджета reCAPTCHA — иначе FormSubmit часто отклоняет заявку «тихо» */
+  formData.append('_captcha', 'false');
+  formData.append('_subject', CONTACT_FORM_SUBJECT);
+  formData.append('name', fields.name);
+  formData.append('phone', fields.phone);
+  formData.append('email', fields.email);
+  formData.append('company', fields.company);
+  formData.append('services', fields.services);
+  formData.append('budget', fields.budget);
+  formData.append('message', fields.message);
+  if (fields.replyTo) {
+    formData.append('_replyto', fields.replyTo);
+  }
+  formData.append('_template', 'table');
+  if (fields.attachment) {
+    formData.append('attachment', fields.attachment, fields.attachment.name);
+  }
+  return formData;
+}
+
+type FormSubmitJsonResponse = { success?: boolean; ok?: boolean; message?: string };
+
+async function postFormSubmit(
+  submitUrl: string,
+  formData: FormData,
+  useClassicSubmit: boolean,
+): Promise<void> {
+  const res = await fetch(submitUrl, {
+    method: 'POST',
+    body: formData,
+    ...(useClassicSubmit ? {} : { headers: { Accept: 'application/json' } }),
+  });
+  const raw = await res.text();
+
+  if (useClassicSubmit) {
+    if (!res.ok) {
+      throw new Error(raw && raw.length < 400 ? raw : CONTACT_FORM_GENERIC_ERROR);
+    }
+    return;
+  }
+
+  let data: FormSubmitJsonResponse | null = null;
+  try {
+    data = raw ? (JSON.parse(raw) as FormSubmitJsonResponse) : null;
+  } catch {
+    /* не JSON — не считаем успехом при сомнительном ответе */
+  }
+  const looksLikeJson = /^\s*(?:\[|\{)/.test(raw);
+  const failed =
+    !res.ok ||
+    data?.success === false ||
+    data?.ok === false ||
+    (data == null && raw.length > 0 && !looksLikeJson);
+  if (failed) {
+    throw new Error(
+      data?.message ?? (raw && raw.length < 400 ? raw : null) ?? CONTACT_FORM_GENERIC_ERROR,
+    );
+  }
+}
+
 type ContactRequestFormProps = {
   className?: string;
   id?: string;
-  serviceOptions?: ReadonlyArray<{ value: string; label: string }>;
-  budgetOptions?: ReadonlyArray<{ value: string; label: string }>;
+  serviceOptions?: ReadonlyArray<LabelledOption>;
+  budgetOptions?: ReadonlyArray<LabelledOption>;
 };
 
 function PaperclipIcon() {
@@ -149,97 +263,47 @@ function ContactRequestForm({
     const phoneTrimmed = phone.trim();
     const emailTrimmed = email.trim();
     if (!phoneTrimmed && !emailTrimmed) {
-      setSubmitError('Укажите номер телефона или email — так мы сможем с вами связаться.');
+      setSubmitError(CONTACT_FORM_NEED_PHONE_OR_EMAIL);
       return;
     }
 
-    const budgetLabel = (budgetOptions.find(o => o.value === budget)?.label ?? budget) || '—';
-    const serviceLabels =
-      services.length > 0
-        ? services
-            .filter(Boolean)
-            .map(v => serviceOptions.find(o => o.value === v)?.label ?? v)
-            .join(', ')
-        : '—';
+    const budgetLabel = resolveBudgetLabel(budget, budgetOptions);
+    const serviceLabels = resolveServiceLabels(services, serviceOptions);
+    const companyTrimmed = company.trim();
+    const commentTrimmed = comment.trim();
+    const dash = '—';
+    const phoneField = phoneTrimmed || dash;
+    const emailField = emailTrimmed || dash;
 
-    const bodyLines = [
-      `Имя: ${name}`,
-      `Телефон: ${phoneTrimmed || '—'}`,
-      `Email: ${emailTrimmed || '—'}`,
-      `Компания: ${company.trim() || '—'}`,
-      `Услуги: ${serviceLabels}`,
-      `Бюджет: ${budgetLabel}`,
-      '',
-      'Комментарий:',
-      comment.trim() || '—',
-    ];
-    const messageText = bodyLines.join('\n');
-
-    const formData = new FormData();
-    /* AJAX без виджета reCAPTCHA — иначе FormSubmit часто отклоняет заявку «тихо» */
-    formData.append('_captcha', 'false');
-    formData.append('_subject', 'Новая заявка с сайта 4-it');
-    formData.append('name', name);
-    formData.append('phone', phoneTrimmed || '—');
-    formData.append('email', emailTrimmed || '—');
-    formData.append('company', company.trim() || '—');
-    formData.append('services', serviceLabels);
-    formData.append('budget', budgetLabel);
-    formData.append('message', messageText);
-    if (emailTrimmed) {
-      formData.append('_replyto', emailTrimmed);
-    }
-    formData.append('_template', 'table');
+    const messageText = buildFormSubmitMessageText({
+      name,
+      phone: phoneField,
+      email: emailField,
+      company: companyTrimmed || dash,
+      services: serviceLabels,
+      budget: budgetLabel,
+      comment: commentTrimmed || dash,
+    });
 
     const file = fileInputRef.current?.files?.[0];
-    if (file) {
-      formData.append('attachment', file, file.name);
-    }
+    const formData = buildFormSubmitFormData({
+      name,
+      phone: phoneField,
+      email: emailField,
+      company: companyTrimmed || dash,
+      services: serviceLabels,
+      budget: budgetLabel,
+      message: messageText,
+      ...(emailTrimmed ? { replyTo: emailTrimmed } : {}),
+      ...(file ? { attachment: file } : {}),
+    });
 
     const useClassicSubmit = Boolean(file);
     const submitUrl = useClassicSubmit ? CONTACT_FORM_CLASSIC_URL : CONTACT_FORM_SUBMIT_URL;
 
     setIsSubmitting(true);
     try {
-      const res = await fetch(submitUrl, {
-        method: 'POST',
-        body: formData,
-        ...(useClassicSubmit
-          ? {}
-          : {
-              headers: { Accept: 'application/json' },
-            }),
-      });
-      const raw = await res.text();
-
-      if (useClassicSubmit) {
-        if (!res.ok) {
-          throw new Error(
-            raw && raw.length < 400 ? raw : 'Не удалось отправить форму. Попробуйте позже.'
-          );
-        }
-      } else {
-        type SubmitJson = { success?: boolean; ok?: boolean; message?: string };
-        let data: SubmitJson | null = null;
-        try {
-          data = raw ? (JSON.parse(raw) as SubmitJson) : null;
-        } catch {
-          /* не JSON — не считаем успехом при сомнительном ответе */
-        }
-        const looksLikeJson = /^\s*(?:\[|\{)/.test(raw);
-        const failed =
-          !res.ok ||
-          data?.success === false ||
-          data?.ok === false ||
-          (data == null && raw.length > 0 && !looksLikeJson);
-        if (failed) {
-          throw new Error(
-            data?.message ??
-              (raw && raw.length < 400 ? raw : null) ??
-              'Не удалось отправить форму. Попробуйте позже.'
-          );
-        }
-      }
+      await postFormSubmit(submitUrl, formData, useClassicSubmit);
       setSubmitSuccess(true);
       setName('');
       setPhone('');
@@ -251,7 +315,7 @@ function ContactRequestForm({
       setFileName(null);
       if (fileInputRef.current) fileInputRef.current.value = '';
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : 'Ошибка отправки. Попробуйте позже.');
+      setSubmitError(err instanceof Error ? err.message : CONTACT_FORM_CATCH_ERROR);
     } finally {
       setIsSubmitting(false);
     }

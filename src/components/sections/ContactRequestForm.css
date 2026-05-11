@@ -1,3 +1,7 @@
+/**
+ * Styles for `ContactRequestForm.tsx`: section padding, intro + form grid, honeypot,
+ * feedback banners, field rows, consent line, optional attachment UI, submit row.
+ */
 .section-wrapper__contact-request-form {
   padding: 84px 42px 42px;
 }

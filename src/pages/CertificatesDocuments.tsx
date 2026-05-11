@@ -14,6 +14,7 @@ import {
   CERTIFICATE_DOCUMENT_PAGE_ROWS,
   type CertificateCardEntry,
 } from '@/constants/certificateCards';
+import { routePaths } from '@/constants/routePaths';
 import { PUBLIC_DOWNLOAD_DOCS } from '@/constants/publicDocuments';
 
 import './CertificatesDocuments.css';
@@ -85,7 +86,7 @@ export default function CertificatesDocuments() {
   }, [hash]);
 
   useLayoutEffect(() => {
-    if (pathname !== '/certificates') return;
+    if (pathname !== routePaths.certificates) return;
     if (hash === '#policies') scrollToSectionId(SECTION_IDS.documents);
     else scrollToSectionId(SECTION_IDS.gallery);
   }, [hash, pathname]);
@@ -102,7 +103,7 @@ export default function CertificatesDocuments() {
   return (
     <PageLayout>
       <PageHeadingBar
-        breadcrumbs={[{ label: '4-it.by', to: '/' }, { label: 'Сертификаты и документы' }]}
+        breadcrumbs={[{ label: '4-it.by', to: routePaths.home }, { label: 'Сертификаты и документы' }]}
         title="Сертификаты и документы"
       />
 
@@ -111,12 +112,12 @@ export default function CertificatesDocuments() {
           <nav className="cert-doc-page__sidebar" aria-label="Разделы страницы">
             <ul className="cert-doc-page__nav-list">
               <li>
-                <Link to="/certificates#certificates" className={navClass('certificates')}>
+                <Link to={`${routePaths.certificates}#certificates`} className={navClass('certificates')}>
                   Сертификаты
                 </Link>
               </li>
               <li>
-                <Link to="/certificates#policies" className={navClass('policies')}>
+                <Link to={`${routePaths.certificates}#policies`} className={navClass('policies')}>
                   Политика конфиденциальности
                 </Link>
               </li>

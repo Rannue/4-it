@@ -3,8 +3,6 @@
  * Глобальные токены, типографика и .section-wrapper* — в ./styles/index.css
  */
 
-/* ─── Оболочка приложения ─── */
-
 .app {
   min-height: 100vh;
   color: var(--color-text-main);
@@ -12,18 +10,12 @@
   padding-top: var(--header-height, 88px);
 }
 
-/* ─── Герой (только главная) ─── */
-
 .hero {
   box-sizing: border-box;
 }
 
 .hero-grid {
   --hero-grid-radius: 8px;
-  /*
-    Нижняя полоса (пустая ячейка + текстура): на широком экране ~6vh,
-    при сужении окна дополнительно «растёт вверх» (больше высоты ряда).
-  */
   --hero-grid-bottom-row: min(22vh, calc(6vh + max(0px, 1000px - 100vw) * 0.072));
 
   display: grid;
@@ -76,6 +68,11 @@
   font-size: clamp(12px, calc(100vw * 14 / 1400), 14px);
   line-height: 1.38;
   overflow-wrap: break-word;
+}
+
+.hero-grid__bitrix-mark {
+  padding: 2px 6px;
+  background-color: #0062ba;
 }
 
 /*

@@ -12,6 +12,9 @@ import WorkProcessSection from '@/components/sections/WorkProcessSection';
 import type { ServiceItem } from '@/components/sections/ServicesSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 
+// constants
+import { routePaths } from '@/constants/routePaths';
+
 // assets
 import ArrowRightIcon from '@/assets/icons/arrow-up-right.svg';
 
@@ -22,23 +25,23 @@ const SERVICES: ServiceItem[] = [
     title: 'Внедрение Битрикс24',
     description:
       'Оптимизируем работу вашей компании с помощью Битрикс24. Установим, настроим и интегрируем CRM-систему под ваши бизнес-процессы. Обучим сотрудников, подключим телефонию и мессенджеры',
-    to: '/bitrix24/implementation',
+    to: routePaths.bitrix24Implementation,
     ariaLabel: 'Перейти к внедрению Битрикс24',
     tags: [
-      { label: 'Внедрение и настройка Битрикс24', to: '/bitrix24/implementation' },
-      { label: 'Поддержка Битрикс24', to: '/technical-support' },
+      { label: 'Внедрение и настройка Битрикс24', to: routePaths.bitrix24Implementation },
+      { label: 'Поддержка Битрикс24', to: routePaths.technicalSupport },
     ],
   },
   {
     title: 'Кибербезопасность',
     description:
       'Комплексные решения для защиты информационных систем от кибератак, утечек данных и несанкционированного доступа. Работаем в соответствии с законодательством Республики Беларусь, применяя передовые технологии защиты.',
-    to: '/cybersecurity',
+    to: routePaths.cyber.root,
     ariaLabel: 'Перейти к разделу Кибербезопасность',
     tags: [
-      { label: 'Аудит инфраструктуры и информационной безопасности', to: '/cybersecurity/audit' },
-      { label: 'Аттестация системы защиты информации', to: '/cybersecurity/certification' },
-      { label: 'Поставка и внедрение СЗИ и оборудования', to: '/cybersecurity/delivery' },
+      { label: 'Аудит инфраструктуры и информационной безопасности', to: routePaths.cyber.audit },
+      { label: 'Аттестация системы защиты информации', to: routePaths.cyber.certification },
+      { label: 'Поставка и внедрение СЗИ и оборудования', to: routePaths.cyber.delivery },
     ],
   },
   {
@@ -47,16 +50,16 @@ const SERVICES: ServiceItem[] = [
       'Создаём современные и функциональные сайты для вашего бизнеса. Подберём готовое решение или разработаем проект с нуля, учитывая ваши задачи и требования. Настроим интеграции, обеспечим удобное управление и адаптивный дизайн.',
     tags: [
       /* Временно без разделов: снимите `disabled`, когда маршруты будут готовы */
-      { label: 'Корпоративные сайты', to: '/#home', disabled: true },
-      { label: 'Интернет-магазины', to: '/websites/online-store' },
-      { label: 'B2B порталы', to: '/#services-dev-b2b', disabled: true },
+      { label: 'Корпоративные сайты', to: routePaths.anchors.home, disabled: true },
+      { label: 'Интернет-магазины', to: routePaths.websitesOnlineStore },
+      { label: 'B2B порталы', to: routePaths.anchors.servicesDevB2b, disabled: true },
     ],
   },
   {
     title: 'Электронный документооборот с ЭЦП',
     description:
       'Мы предоставляем услугу внедрения электронного документооборота с использованием ЭЦП. Помогаем IT-компаниям перейти на юридически значимые цифровые документы, наладить безопасный обмен и подписание, а также обеспечить поддержку для стабильной работы.',
-    to: '/edms-signature',
+    to: routePaths.edmsSignature,
     ariaLabel: 'Перейти к разделу электронного документооборота с ЭЦП',
   },
 ];
@@ -87,9 +90,7 @@ function App() {
                 <div className="hero-grid__cell">
                   <h1>
                     Внедрение{' '}
-                    <span style={{ backgroundColor: '#0062BA', padding: '2px 6px' }}>
-                      Битрикс24
-                    </span>
+                    <span className="hero-grid__bitrix-mark">Битрикс24</span>
                     <br /> Кибербезопасность <br />
                     Комплексные IT Услуги
                   </h1>

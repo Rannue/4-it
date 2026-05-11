@@ -1,6 +1,9 @@
 // react
 import { Route, Routes, Navigate } from 'react-router-dom';
 
+// constants
+import { routePaths } from '@/constants/routePaths';
+
 // components
 import CybersecurityPage from '@/pages/cybersecurity';
 import CybersecurityAuditPage from '@/pages/cybersecurity/Audit';
@@ -22,58 +25,38 @@ import CyberCulturePage from '@/pages/cybersecurity/delivery/CyberCulture';
 import SupplyOfServersAndSwitchesPage from '@/pages/cybersecurity/delivery/SupplyOfServersAndSwitches';
 
 export function CybersecurityRoutes() {
+  const c = routePaths.cyber;
   return (
     <Routes>
-      <Route path="/cybersecurity" element={<CybersecurityPage />} />
-      <Route path="/cybersecurity/audit" element={<CybersecurityAuditPage />} />
-      <Route path="/cybersecurity/design-szi" element={<CybersecurityDesignSziPage />} />
-      <Route path="/cybersecurity/create-szi" element={<CybersecurityCreateSziPage />} />
-      <Route path="/cybersecurity/attestation-szi" element={<SecondaryCertificationPage />} />
+      <Route path={c.root} element={<CybersecurityPage />} />
+      <Route path={c.audit} element={<CybersecurityAuditPage />} />
+      <Route path={c.designSzi} element={<CybersecurityDesignSziPage />} />
+      <Route path={c.createSzi} element={<CybersecurityCreateSziPage />} />
+      <Route path={c.attestationSziLegacy} element={<SecondaryCertificationPage />} />
+      <Route path={c.attestationSzi} element={<SecondaryCertificationPage />} />
+      <Route path={c.infrastructureEffectiveness} element={<SecurityAssessmentPage />} />
+      <Route path={c.securityAssessment} element={<SecurityAssessmentPage />} />
+      <Route path={c.sziDocumentsReview} element={<SZIDocumentsReviewPage />} />
+      <Route path={c.siem} element={<CybersecuritySiemPage />} />
+      <Route path={c.dlp} element={<CybersecurityDlpPage />} />
+      <Route path={c.pam} element={<CybersecurityPamPage />} />
+      <Route path={c.firewall} element={<FirewallPage />} />
+      <Route path={c.antivirus} element={<AntivirusProtectionPage />} />
+      <Route path={c.backup} element={<BackupPage />} />
       <Route
-        path="/cybersecurity/certification/attestation-szi"
-        element={<SecondaryCertificationPage />}
+        path={c.networkScreensLegacy}
+        element={<Navigate to={c.firewall} replace />}
       />
+      <Route path={c.linearEncryption} element={<CybersecurityNetworkScreensPage />} />
+      <Route path={c.certification} element={<CertificationOfInformationSecurityToolsPage />} />
+      <Route path={c.deliveryLegacy} element={<Navigate to={c.delivery} replace />} />
+      <Route path={c.delivery} element={<CybersecurityDeliveryPage />} />
+      <Route path={c.deliveryCyberCulture} element={<CyberCulturePage />} />
       <Route
-        path="/cybersecurity/infrastructure-effectiveness"
-        element={<SecurityAssessmentPage />}
+        path={c.cyberCultureLegacy}
+        element={<Navigate to={c.deliveryCyberCulture} replace />}
       />
-      <Route
-        path="/cybersecurity/certification/security-assessment"
-        element={<SecurityAssessmentPage />}
-      />
-      <Route
-        path="/cybersecurity/certification/szi-documents-review"
-        element={<SZIDocumentsReviewPage />}
-      />
-      <Route path="/cybersecurity/siem" element={<CybersecuritySiemPage />} />
-      <Route path="/cybersecurity/dlp" element={<CybersecurityDlpPage />} />
-      <Route path="/cybersecurity/pam" element={<CybersecurityPamPage />} />
-      <Route path="/cybersecurity/firewall" element={<FirewallPage />} />
-      <Route path="/cybersecurity/antivirus" element={<AntivirusProtectionPage />} />
-      <Route path="/cybersecurity/backup" element={<BackupPage />} />
-      <Route
-        path="/cybersecurity/network-screens"
-        element={<Navigate to="/cybersecurity/firewall" replace />}
-      />
-      <Route
-        path="/cybersecurity/linear-encryption"
-        element={<CybersecurityNetworkScreensPage />}
-      />
-      <Route
-        path="/cybersecurity/certification"
-        element={<CertificationOfInformationSecurityToolsPage />}
-      />
-      <Route path="/delivery" element={<Navigate to="/cybersecurity/delivery" replace />} />
-      <Route path="/cybersecurity/delivery" element={<CybersecurityDeliveryPage />} />
-      <Route path="/cybersecurity/delivery/cyber-culture" element={<CyberCulturePage />} />
-      <Route
-        path="/cybersecurity/cyber-culture"
-        element={<Navigate to="/cybersecurity/delivery/cyber-culture" replace />}
-      />
-      <Route
-        path="/cybersecurity/servers-and-switches"
-        element={<SupplyOfServersAndSwitchesPage />}
-      />
+      <Route path={c.serversAndSwitches} element={<SupplyOfServersAndSwitchesPage />} />
     </Routes>
   );
 }

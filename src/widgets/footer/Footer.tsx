@@ -17,6 +17,7 @@ import {
   SITE_PHONE,
   YANDEX_MAPS_OPEN_URL,
 } from '@/constants/siteContacts';
+import { routePaths } from '@/constants/routePaths';
 
 // assets
 import logo4it from '@/assets/logo-4it.svg';
@@ -41,11 +42,11 @@ const POLICY_LINKS = [
 ] as const;
 
 const MAIN_NAV = [
-  { kind: 'router' as const, to: '/', label: 'Главная' },
+  { kind: 'router' as const, to: routePaths.home, label: 'Главная' },
   { kind: 'anchor' as const, href: '#about', label: 'Компания' },
   { kind: 'anchor' as const, href: '#services', label: 'Услуги' },
   { kind: 'anchor' as const, href: '#portfolio', label: 'Портфолио' },
-  { kind: 'router' as const, to: '/contacts', label: 'Контакты' },
+  { kind: 'router' as const, to: routePaths.contacts, label: 'Контакты' },
 ];
 
 type ServiceLink = { label: string } & ({ to: string } | { href: string });
@@ -73,13 +74,13 @@ const SERVICE_COLUMNS: ServiceColumn[] = [
   {
     title: 'Кибербезопасность',
     links: [
-      { label: 'Аудит инфраструктуры и информационной безопасности', to: '/cybersecurity/audit' },
-      { label: 'Аттестация системы защиты информации', to: '/cybersecurity/certification' },
-      { label: 'Поставка и внедрение СЗИ и оборудования', to: '/cybersecurity/delivery' },
+      { label: 'Аудит инфраструктуры и информационной безопасности', to: routePaths.cyber.audit },
+      { label: 'Аттестация системы защиты информации', to: routePaths.cyber.certification },
+      { label: 'Поставка и внедрение СЗИ и оборудования', to: routePaths.cyber.delivery },
     ],
   },
   {
-    titleLink: { to: '/edms-signature', label: 'Электронный документооборот с ЭЦП' },
+    titleLink: { to: routePaths.edmsSignature, label: 'Электронный документооборот с ЭЦП' },
     links: [],
   },
 ];
@@ -134,7 +135,7 @@ function Footer() {
             <div className="footer__top">
               <div className="footer__top-inner">
                 <div className="footer__brand-block">
-                  <Link to="/" className="footer__brand">
+                  <Link to={routePaths.home} className="footer__brand">
                     <img src={logo4it} alt="4-IT" className="footer__logo" />
                   </Link>
                   <nav className="footer__nav" aria-label="Основное меню">

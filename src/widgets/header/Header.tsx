@@ -10,6 +10,7 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 
 // constants
+import { routePaths } from '@/constants/routePaths';
 import { SOCIAL_LINKS } from '@/constants/socialLinks';
 
 // components
@@ -122,7 +123,7 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
       </ul>
       <ul className="nav-menu__list">
         <li>
-          <Link to="/clients">Клиенты</Link>
+          <Link to={routePaths.clients}>Клиенты</Link>
         </li>
         {SHOW_COMPANY_REVIEWS_AND_BLOG ? (
           <li>
@@ -132,7 +133,7 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
       </ul>
       <ul className="nav-menu__list">
         <li>
-          <Link to="/certificates">Сертификаты и документы</Link>
+          <Link to={routePaths.certificates}>Сертификаты и документы</Link>
         </li>
         {SHOW_COMPANY_REVIEWS_AND_BLOG ? (
           <li>
@@ -148,10 +149,10 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
         <p className="nav-menu__group-title">Битрикс24</p>
         <ul className="nav-menu__sublist">
           <li>
-            <Link to="/bitrix24/implementation">Внедрение и настройка Битрикс24</Link>
+            <Link to={routePaths.bitrix24Implementation}>Внедрение и настройка Битрикс24</Link>
           </li>
           <li>
-            <Link to="/technical-support">Поддержка Битрикс24</Link>
+            <Link to={routePaths.technicalSupport}>Поддержка Битрикс24</Link>
           </li>
         </ul>
       </div>
@@ -159,7 +160,7 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
         <p className="nav-menu__group-title">Разработка сайтов</p>
         <ul className="nav-menu__sublist">
           <li>
-            <Link to="/websites/online-store">Разработка интернет-магазина</Link>
+            <Link to={routePaths.websitesOnlineStore}>Разработка интернет-магазина</Link>
           </li>
           <li>
             <span className="nav-menu__sublist-item--disabled" aria-disabled="true">
@@ -174,25 +175,25 @@ const NAV_CONTENT: Record<NavItemKey, ReactNode> = {
         </ul>
       </div>
       <div className="nav-menu__group">
-        <Link to="/cybersecurity" className="nav-menu__group-title nav-menu__group-title--link">
+        <Link to={routePaths.cyber.root} className="nav-menu__group-title nav-menu__group-title--link">
           Кибербезопасность
         </Link>
         <ul className="nav-menu__sublist">
           <li>
-            <Link to="/cybersecurity/audit">
+            <Link to={routePaths.cyber.audit}>
               Аудит инфраструктуры и информационной безопасности
             </Link>
           </li>
           <li>
-            <Link to="/cybersecurity/certification">Аттестация системы защиты информации</Link>
+            <Link to={routePaths.cyber.certification}>Аттестация системы защиты информации</Link>
           </li>
           <li>
-            <Link to="/cybersecurity/delivery">Поставка и внедрение СЗИ и оборудования</Link>
+            <Link to={routePaths.cyber.delivery}>Поставка и внедрение СЗИ и оборудования</Link>
           </li>
         </ul>
       </div>
       <div className="nav-menu__group">
-        <Link to="/edms-signature" className="nav-menu__group-title nav-menu__group-title--link">
+        <Link to={routePaths.edmsSignature} className="nav-menu__group-title nav-menu__group-title--link">
           Электронный документооборот с ЭЦП
         </Link>
       </div>
@@ -212,7 +213,7 @@ function Header() {
 
   const panelKey: NavItemKey | null = activeMenu ?? (NAV_MENU_ALWAYS_VISIBLE ? 'Услуги' : null);
 
-  const contactsNavActive = location.pathname === '/contacts';
+  const contactsNavActive = location.pathname === routePaths.contacts;
 
   const closeMobileMenu = useCallback(() => {
     setMobileMenuOpen(false);
@@ -278,14 +279,14 @@ function Header() {
       <div className="app-header__bar">
         <div className="app-left-part">
           <div className="app-header__logo">
-            <Link to="/" onClick={closeMobileMenu}>
+            <Link to={routePaths.home} onClick={closeMobileMenu}>
               <img src={logo4it} alt="4-IT" />
             </Link>
           </div>
           <div className="app-header__nav-wrapper">
             <nav className="app-header__nav">
               <Link
-                to="/"
+                to={routePaths.home}
                 className="app-header__nav-item"
                 onMouseEnter={() => setActiveMenu(null)}
               >
@@ -320,7 +321,7 @@ function Header() {
               </button>
               {SHOW_CASES_NAV_LINK ? (
                 <Link
-                  to="/#cases"
+                  to={routePaths.anchors.cases}
                   className="app-header__nav-item"
                   onMouseEnter={() => setActiveMenu(null)}
                 >
@@ -328,7 +329,7 @@ function Header() {
                 </Link>
               ) : null}
               <Link
-                to="/contacts"
+                to={routePaths.contacts}
                 className={[
                   'app-header__nav-item',
                   contactsNavActive ? 'app-header__nav-item--active' : '',
@@ -424,14 +425,14 @@ function Header() {
                   )}
                 </div>
                 {SHOW_CASES_NAV_LINK ? (
-                  <Link to="/#cases" className="mobile-menu__link-row" onClick={closeMobileMenu}>
+                  <Link to={routePaths.anchors.cases} className="mobile-menu__link-row" onClick={closeMobileMenu}>
                     Кейсы
                   </Link>
                 ) : null}
-                <Link to="/clients" className="mobile-menu__link-row" onClick={closeMobileMenu}>
+                <Link to={routePaths.clients} className="mobile-menu__link-row" onClick={closeMobileMenu}>
                   Клиенты
                 </Link>
-                <Link to="/contacts" className="mobile-menu__link-row" onClick={closeMobileMenu}>
+                <Link to={routePaths.contacts} className="mobile-menu__link-row" onClick={closeMobileMenu}>
                   Контакты
                 </Link>
               </div>
