@@ -3,10 +3,6 @@
   padding-block: clamp(56px, 10vw, 100px);
 }
 
-.clients--embedded {
-  padding-top: 0;
-}
-
 .clients__header-inner {
   box-sizing: border-box;
   margin-inline: auto;

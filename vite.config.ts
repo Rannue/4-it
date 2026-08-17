@@ -6,9 +6,9 @@ import react from "@vitejs/plugin-react";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: '/4-it/',
+  base: mode === 'production' ? '/4-it/' : '/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -26,4 +26,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));

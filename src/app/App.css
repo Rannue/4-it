@@ -61,10 +61,10 @@
 
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: minmax(40px, 1fr) minmax(40px, 1.8fr) 74px;
+  grid-template-rows: minmax(40px, 1fr) minmax(40px, 1.8fr) auto;
   width: 100%;
   /* Высота «экрана» героя: 100vh минус шапка и отступы (значение под макет, не только --header-height) */
-  height: calc(100vh - 146px);
+  height: calc(100vh - 104px);
   overflow: hidden;
   border-radius: var(--hero-grid-radius);
   background-color: var(--color-primary);
@@ -143,7 +143,15 @@
 
 .hero-grid__button-container {
   display: flex;
-  gap: 16px;
+  flex-direction: row;
+  width: 100%;
+  gap: 12px;
+}
+
+.hero-grid__button-container > .btn--full {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
 }
 
 /* CTA в герое: без радиального оверлея кнопки; на hover — только поворот иконки */
@@ -280,6 +288,7 @@
 
   .hero-grid__button-container {
     width: 100%;
-    justify-content: flex-start;
+    flex-direction: row;
+    gap: 10px;
   }
 }

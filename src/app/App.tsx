@@ -99,14 +99,23 @@ function App() {
                   </div>
                   <div className="hero-grid__cell">
                     <div className="hero-grid__button-container">
-                      {/* Temporarily hidden: callback CTA */}
                       <Button
+                        className="btn--full"
                         color="var(--color-white)"
                         textColor="#01111E"
                         href="#contacts"
                         iconRight={<img src={ArrowRightIcon} alt="" />}
                       >
                         Оставить заявку
+                      </Button>
+                      <Button
+                        className="btn--full"
+                        color="var(--color-white)"
+                        textColor="#01111E"
+                        href="#contacts"
+                        iconRight={<img src={ArrowRightIcon} alt="" />}
+                      >
+                        Заказать звонок
                       </Button>
                     </div>
                   </div>
