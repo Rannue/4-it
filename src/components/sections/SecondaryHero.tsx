@@ -2,11 +2,14 @@
 import type { ReactNode } from 'react';
 
 // components
-import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
 import Button from '@/shared/ui/Button';
+
+// constants
+import { CRM_FORM_URL } from '@/constants/siteContacts';
 import InteractiveTexture from '@/shared/ui/InteractiveTexture';
 
 // assets
+import ArrowRightIcon from '@/assets/icons/arrow-up-right.svg';
 import texture from '@/assets/img/texture.png';
 
 // local
@@ -27,31 +30,19 @@ type SecondaryHeroProps = {
 function RequestCtaButton() {
   return (
     <Button
-      className="btn--full"
-      color="#ffffff"
+      className="btn--full btn--secondary btn-text-base"
+      color="var(--color-white)"
       textColor="#01111E"
-      href="#contacts"
-      iconRight={<ArrowLongRightIcon />}
+      href={CRM_FORM_URL}
+      target="_blank"
+      iconRight={<img src={ArrowRightIcon} alt="" style={{ height: '24px', width: '24px' }} />}
     >
       Оставить заявку
     </Button>
   );
 }
 
-function HeroMainColumn({
-  breadcrumbs,
-  title,
-  description,
-  descriptionSecondary,
-}: {
-  breadcrumbs: BreadcrumbItem[];
-  title: string;
-  description?: ReactNode;
-  descriptionSecondary?: ReactNode;
-}) {
-  const hasDescription = description != null && description !== '';
-  const hasDescriptionSecondary = descriptionSecondary != null && descriptionSecondary !== '';
-
+function HeroMainColumn({ breadcrumbs, title }: { breadcrumbs: BreadcrumbItem[]; title: string }) {
   return (
     <div className="hero-secondary-grid__cell hero-secondary-grid__cell--main">
       <div className="hero-secondary__content">
@@ -59,6 +50,25 @@ function HeroMainColumn({
           <HeroBreadcrumbs items={breadcrumbs} />
           <h1 className="hero-secondary__title">{title}</h1>
         </div>
+      </div>
+    </div>
+  );
+}
+
+/** Описание услуги: на десктопе — отдельная ячейка слева от картинки с кнопкой; на мобильном — свой ряд. */
+function HeroDescriptionColumn({
+  description,
+  descriptionSecondary,
+}: {
+  description?: ReactNode;
+  descriptionSecondary?: ReactNode;
+}) {
+  const hasDescription = description != null && description !== '';
+  const hasDescriptionSecondary = descriptionSecondary != null && descriptionSecondary !== '';
+
+  return (
+    <div className="hero-secondary-grid__cell hero-secondary-grid__cell--description">
+      <div className="hero-secondary__content">
         <div className="hero-secondary__description-cta">
           {hasDescription ? <p className="hero-secondary__description">{description}</p> : null}
           {hasDescriptionSecondary ? (
@@ -88,7 +98,7 @@ function HeroAsideColumn() {
   );
 }
 
-/** Пустая ячейка сетки; слот — модификатор в SecondaryHero.css (r1c2, r1c3, r3c2, r3c3). */
+/** Пустая ячейка сетки; слот — модификатор в SecondaryHero.css (r1c2, r1c3, r3c3). */
 function HeroGridSlot({ slot, band }: { slot: string; band?: boolean }) {
   return (
     <div
@@ -104,7 +114,11 @@ function HeroGridSlot({ slot, band }: { slot: string; band?: boolean }) {
   );
 }
 
-/** Порядок детей: 2×3 на широком экране; ниже 900px — правила в CSS. */
+/**
+ * Порядок детей: r1c2, r1c3 (верхняя полоса), main (заголовок), aside (картинка + кнопка,
+ * нижний правый слот), description (описание, нижний левый слот), r3c3 (заполнитель).
+ * Ниже 900px — одна колонка, правила в CSS.
+ */
 function HeroGrid({
   breadcrumbs,
   title,
@@ -120,14 +134,9 @@ function HeroGrid({
     <div className="hero-secondary-grid">
       <HeroGridSlot slot="r1c2" />
       <HeroGridSlot slot="r1c3" />
-      <HeroMainColumn
-        breadcrumbs={breadcrumbs}
-        title={title}
-        description={description}
-        descriptionSecondary={descriptionSecondary}
-      />
+      <HeroMainColumn breadcrumbs={breadcrumbs} title={title} />
       <HeroAsideColumn />
-      <HeroGridSlot slot="r3c2" band />
+      <HeroDescriptionColumn description={description} descriptionSecondary={descriptionSecondary} />
       <HeroGridSlot slot="r3c3" band />
     </div>
   );

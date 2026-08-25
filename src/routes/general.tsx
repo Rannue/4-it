@@ -13,6 +13,7 @@ import Bitrix24ImplementationPage from '@/pages/bitrix24/Implementation';
 import EDMSWithSignaturePage from '@/pages/EDMSWithSignature';
 import OnlineStorePage from '@/pages/websites/OnlineStore';
 import VirtualizationPage from '@/pages/cybersecurity/delivery/Virtualization';
+import SecurityComplexPage from '@/pages/solutions/SecurityComplex';
 import ContactsPage from '@/pages/Contacts';
 import ClientsPage from '@/pages/Clients';
 import CertificatesDocumentsPage from '@/pages/CertificatesDocuments';
@@ -31,6 +32,7 @@ export function GeneralRoutes() {
       <Route path={p.edmsSignature} element={<EDMSWithSignaturePage />} />
       <Route path={p.websitesOnlineStore} element={<OnlineStorePage />} />
       <Route path={p.virtualization} element={<VirtualizationPage />} />
+      <Route path={p.solutionsSecurityComplex} element={<SecurityComplexPage />} />
     </Routes>
   );
 }

@@ -4,6 +4,7 @@ import Button from '@/shared/ui/Button';
 // data
 import type { SupportPlanFeatureRow } from '@/constants/supportPlans';
 import { SUPPORT_DIRECTION_CARDS, SUPPORT_PLAN_FEATURE_ROWS_START } from '@/constants/supportPlans';
+import { CRM_FORM_URL } from '@/constants/siteContacts';
 
 import './SupportPlansSection.css';
 
@@ -93,7 +94,8 @@ function SupportPlansSection({ variant = 'section' }: SupportPlansSectionProps) 
                       className="support-plans-card__btn"
                       color="#01111E"
                       textColor="#ffffff"
-                      href="#contacts"
+                      href={CRM_FORM_URL}
+                      target="_blank"
                     >
                       Оставить заявку
                     </Button>

@@ -168,6 +168,7 @@ function StackedFeatureCardsSection({
                       ) : null}
                       <Button
                         href={card.ctaHref}
+                        target="_blank"
                         className="stacked-feature-cards__cta"
                         color="#01111E"
                         textColor="#ffffff"

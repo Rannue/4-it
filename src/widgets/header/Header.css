@@ -52,10 +52,8 @@
 
 .app-header__logo img {
   display: block;
+  height: 32px;
   width: auto;
-  height: auto;
-  max-height: 40px;
-  max-width: 100%;
 }
 
 .app-header__nav-wrapper {
@@ -70,7 +68,7 @@
 .app-header__nav-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: none;
   border: none;
   padding: 0;
@@ -78,6 +76,17 @@
   cursor: pointer;
   color: var(--color-text-main);
   text-decoration: none;
+}
+
+.app-header__nav-item-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.app-header__nav-item--services .app-header__nav-item-icon {
+  color: currentColor;
 }
 
 .app-header__nav-item:hover {

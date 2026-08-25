@@ -10,6 +10,9 @@ export const SITE_LEGAL_ADDRESS = '220074, г. Минск, ул. Харьков�
 
 export const SITE_EMAIL = 'info@4-it.by' as const;
 
+/** Форма заявки в Битрикс24 (открывается в новой вкладке). */
+export const CRM_FORM_URL = 'https://b24-4sgsxg.b24site.online/crm_form_gwiuj/' as const;
+
 export const SITE_PHONE = {
   e164: '+375445554416',
   display: '+375 (44) 555 44 16',

@@ -1,3 +1,6 @@
+// react
+import { Link } from 'react-router-dom';
+
 // components
 import Button from '@/shared/ui/Button';
 import ScrollReveal from '@/shared/ui/ScrollReveal';
@@ -14,9 +17,10 @@ import ServicesSection from '@/components/sections/ServicesSection';
 
 // constants
 import { routePaths } from '@/constants/routePaths';
+import { CRM_FORM_URL } from '@/constants/siteContacts';
 
 // assets
-import ArrowRightIcon from '@/assets/icons/arrow-up-right.svg';
+import ArrowRightIcon from '@/assets/icons/ic - arrow-up-right.svg';
 
 import './App.css';
 
@@ -84,15 +88,15 @@ function App() {
                   </div>
                   <div className="hero-grid__cell">
                     <p className="hero-grid__lead">
-                      Специализируемся на кибербезопасности и внедрении CRM на базе Bitrix24, а также
-                      разрабатываем сайты, интернет-магазины и B2B-порталы, выполняем интеграции и
-                      настраиваем обмен данными между системами.
+                      Специализируемся на кибербезопасности: проводим аудит и аттестацию систем,
+                      внедряем средства защиты и специализированное оборудование. Также внедряем
+                      Bitrix24, разрабатываем сайты, B2B-порталы и интеграции с безопасным обменом
+                      данными.
                     </p>
                   </div>
                   <div className="hero-grid__cell">
                     <h1>
-                      Внедрение{' '}
-                      <span className="hero-grid__bitrix-mark">Битрикс24</span>
+                      s Внедрение <span className="hero-grid__bitrix-mark">Битрикс24</span>
                       <br /> Кибербезопасность <br />
                       Комплексные IT Услуги
                     </h1>
@@ -100,22 +104,14 @@ function App() {
                   <div className="hero-grid__cell">
                     <div className="hero-grid__button-container">
                       <Button
-                        className="btn--full"
+                        className="btn--full btn--secondary btn-text-base"
                         color="var(--color-white)"
                         textColor="#01111E"
-                        href="#contacts"
+                        href={CRM_FORM_URL}
+                        target="_blank"
                         iconRight={<img src={ArrowRightIcon} alt="" />}
                       >
                         Оставить заявку
-                      </Button>
-                      <Button
-                        className="btn--full"
-                        color="var(--color-white)"
-                        textColor="#01111E"
-                        href="#contacts"
-                        iconRight={<img src={ArrowRightIcon} alt="" />}
-                      >
-                        Заказать звонок
                       </Button>
                     </div>
                   </div>
@@ -139,6 +135,41 @@ function App() {
         <ScrollReveal>
           <ServicesSection items={SERVICES} />
         </ScrollReveal>
+
+        <section id="solutions" className="solutions">
+          <div className="solutions__container section-wrapper">
+            <h1 className="solutions__title">Решения 4-IT</h1>
+            <div className="solutiont-content">
+              <div className="solution-card">
+                <div className="solution-card__container">
+                  <div className="solution-card__content">
+                    <h4>Программно-аппаратный комплекс информационной безопасности «под ключ»</h4>
+                    <p className="solution-card__p">
+                      Мы предлагаем готовое решение для защиты информационных систем в соответствии
+                      с Приказом ОАЦ №66 и директивой Президента РБ. Приобретение на условиях
+                      лизинга совместно с{' '}
+                      <a
+                        href="https://www.alizing.by/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="solution-card__partner-link"
+                      >
+                        ООО «Активлизинг»
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                <div className="solution-card__button">
+                  <Link to={routePaths.solutionsSecurityComplex} className="solution-card__more">
+                    <span className="solution-card__more-label">Подробнее</span>
+                    <img src={ArrowRightIcon} alt="" className="solution-card__more-arrow" />
+                  </Link>
+                </div>
+              </div>
+              <div className="solution-card"></div>
+            </div>
+          </div>
+        </section>
 
         <ScrollReveal>
           <WorkProcessSection />

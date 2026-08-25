@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom';
 
 // components
-import ContactRequestForm from '@/components/sections/ContactRequestForm';
 
 // data
 import {
@@ -128,7 +127,6 @@ function ExternalTextLink({ href, children }: { href: string; children: string }
 function Footer() {
   return (
     <>
-      <ContactRequestForm id="contacts" />
       <footer className="footer">
         <div className="footer__wrap">
           <div className="footer__panel">

@@ -57,14 +57,14 @@
 
 .hero-grid {
   --hero-grid-radius: 0;
-  --hero-grid-bottom-row: min(22vh, calc(6vh + max(0px, 1000px - 100vw) * 0.072));
+  --hero-grid-bottom-row: min(28vh, calc(14vh + max(0px, 1000px - 100vw) * 0.072));
 
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: minmax(40px, 1fr) minmax(40px, 1.8fr) auto;
+  grid-template-rows: minmax(40px, 1fr) minmax(40px, 1.5fr) max(auto, var(--hero-grid-bottom-row));
   width: 100%;
   /* Высота «экрана» героя: 100vh минус шапка и отступы (значение под макет, не только --header-height) */
-  height: calc(100vh - 104px);
+  height: calc(100vh - 112px);
   overflow: hidden;
   border-radius: var(--hero-grid-radius);
   background-color: var(--color-primary);
@@ -110,9 +110,9 @@
   overflow-wrap: break-word;
 }
 
-.hero-grid__bitrix-mark {
+.hero-grid__mark {
   padding: 2px 6px;
-  background-color: #0062ba;
+  background-color: #00449c;
 }
 
 /*
@@ -291,4 +291,77 @@
     flex-direction: row;
     gap: 10px;
   }
+}
+
+.solutions {
+  background-color: var(--color-primary);
+}
+
+.solutions__container {
+  max-width: 1684px;
+  margin: 0 auto;
+}
+
+.solutions__title {
+  color: #ffffff;
+  margin-bottom: 42px;
+}
+
+.solutiont-content {
+  display: flex;
+  gap: 24px;
+}
+
+.solution-card {
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.solution-card__more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.solution-card__more-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #01111e;
+  transition: color 0.2s ease;
+}
+
+.solution-card__more-arrow {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.solution-card__more:hover .solution-card__more-label {
+  color: #2e7cf6;
+}
+
+.solution-card__more:hover .solution-card__more-arrow {
+  transform: rotate(45deg);
+}
+
+.solution-card__container {
+  padding: 24px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: var(--color-primary50);
+}
+
+.solution-card__p {
+  color: var(--color-text-secondary);
+  margin-top: 8px;
 }

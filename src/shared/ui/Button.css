@@ -2,13 +2,13 @@
   position: relative;
   display: inline-flex;
   box-sizing: border-box;
-  height: 40px;
-  padding: 0 22px;
+  height: 48px;
+  padding: 14px 22px;
   align-items: center;
   gap: 8px;
   border-radius: 4px;
   cursor: pointer;
-  background: var(--btn-bg, var(--color-btn-primary));
+  background: #001633;
   color: var(--btn-fg, var(--color-white));
   border: 1px solid var(--btn-border, transparent);
   overflow: hidden;
@@ -21,6 +21,7 @@ a.btn {
 }
 
 a.btn:hover {
+  background: #00449c;
   color: var(--btn-fg, var(--color-white));
 }
 
@@ -59,6 +60,7 @@ a.btn:hover {
 }
 
 .btn--secondary {
+  padding: 14px 14px 14px 22px;
   color: var(--color-text-main);
   background: var(--color-white);
 }
@@ -111,14 +113,12 @@ a.btn:hover {
 }
 
 .btn--secondary {
-  border-color: var(--color-border-subtle);
-  background: rgba(15, 23, 42, 0.8);
+  background: #ffffff;
   color: var(--color-text-main);
 }
 
 .btn--secondary:hover:not(.btn--disabled) {
-  background: rgba(15, 23, 42, 1);
-  border-color: rgba(148, 163, 184, 0.9);
+  background: #ffffff;
 }
 
 .btn--outline {
@@ -142,6 +142,10 @@ a.btn:hover {
   cursor: not-allowed;
   opacity: 0.6;
   box-shadow: none;
+}
+
+.btn-text-base {
+  font-size: var(--font-size-base);
 }
 
 .btn__label {

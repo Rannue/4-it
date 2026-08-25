@@ -12,6 +12,7 @@ import { Link, useLocation } from 'react-router-dom';
 // constants
 import { routePaths } from '@/constants/routePaths';
 import { SOCIAL_LINKS } from '@/constants/socialLinks';
+import { CRM_FORM_URL } from '@/constants/siteContacts';
 
 // components
 import Button from '@/shared/ui/Button';
@@ -21,6 +22,7 @@ import ArrowLongRightIcon from '@/shared/icons/ArrowLongRightIcon';
 import logo4it from '@/assets/logo-4it.svg';
 import instagramIcon from '@/assets/icons/instagram.svg';
 import linkedinIcon from '@/assets/icons/lin.svg';
+import icMenuIcon from '@/assets/icons/ic - menu.svg';
 
 import './Header.css';
 
@@ -285,25 +287,19 @@ function Header() {
           </div>
           <div className="app-header__nav-wrapper">
             <nav className="app-header__nav">
-              <Link
-                to={routePaths.home}
-                className="app-header__nav-item"
-                onMouseEnter={() => setActiveMenu(null)}
-              >
-                Главная
-              </Link>
               <button
                 type="button"
                 className={[
                   'app-header__nav-item',
+                  'app-header__nav-item--services',
                   activeMenu === 'Услуги' ? 'app-header__nav-item--open' : '',
                 ]
                   .filter(Boolean)
                   .join(' ')}
                 onMouseEnter={() => setActiveMenu('Услуги')}
               >
+                <img src={icMenuIcon} alt="" className="app-header__nav-item-icon" />
                 Услуги
-                <NavChevron />
               </button>
               <button
                 type="button"
@@ -317,7 +313,6 @@ function Header() {
                 onMouseEnter={() => setActiveMenu('Компания')}
               >
                 Компания
-                <NavChevron />
               </button>
               {SHOW_CASES_NAV_LINK ? (
                 <Link
@@ -357,7 +352,7 @@ function Header() {
         </div>
         <div className="app-right-part">
           <p>+375 (44) 555 44 16</p>
-          <Button href="#contacts">Оставить заявку</Button>
+          <Button className="btn-text-base" href={CRM_FORM_URL} target="_blank">Оставить заявку</Button>
         </div>
       </div>
 
@@ -438,7 +433,7 @@ function Header() {
               </div>
               <div className="mobile-menu__footer">
                 <div className="mobile-menu__cta">
-                  <Button href="#contacts" onClick={closeMobileMenu}>
+                  <Button className="btn-text-base" href={CRM_FORM_URL} target="_blank" onClick={closeMobileMenu}>
                     Оставить заявку
                   </Button>
                 </div>

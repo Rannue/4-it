@@ -16,6 +16,9 @@ import type { ReactNode } from 'react';
 // components
 import type { StackedFeatureCard } from '@/components/sections/StackedFeatureCardsSection';
 
+// constants
+import { CRM_FORM_URL } from '@/constants/siteContacts';
+
 // assets
 import oneFillIcon from '@/assets/icons/1-filled.svg';
 import twoFillIcon from '@/assets/icons/2-filled.svg';
@@ -35,7 +38,7 @@ export const PHISHMAN_PRODUCT_LINE: readonly StackedFeatureCard[] = [
     title: 'PHISHMAN BASE',
     description: 'Редакция с базовым функционалом',
     ctaLabel: 'Оставить заявку',
-    ctaHref: '#contacts',
+    ctaHref: CRM_FORM_URL,
     features: [
       {
         text: 'Быстрый старт:',
@@ -55,7 +58,7 @@ export const PHISHMAN_PRODUCT_LINE: readonly StackedFeatureCard[] = [
     title: 'PHISHMAN ENTERPRISE',
     description: 'Редакция с продвинутым функционалом',
     ctaLabel: 'Оставить заявку',
-    ctaHref: '#contacts',
+    ctaHref: CRM_FORM_URL,
     features: [
       {
         text: 'Быстрый старт:',

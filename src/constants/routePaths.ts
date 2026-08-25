@@ -13,6 +13,7 @@ export const routePaths = {
   edmsSignature: '/edms-signature',
   websitesOnlineStore: '/websites/online-store',
   virtualization: '/virtualization',
+  solutionsSecurityComplex: '/solutions/security-complex',
   anchors: {
     cases: '/#cases',
     home: '/#home',

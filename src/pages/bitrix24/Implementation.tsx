@@ -10,6 +10,9 @@ import StackedFeatureCardsSection, {
 } from '@/components/sections/StackedFeatureCardsSection';
 import CardsGridSectionDark from '@/components/grids/CardsGridSectionDark';
 
+// constants
+import { CRM_FORM_URL } from '@/constants/siteContacts';
+
 // assets
 import bitrixBoxImg from '@/assets/img/bitrix.png';
 import timeIllustration from '@/assets/img/illustrations/time.svg';
@@ -31,7 +34,7 @@ const BITRIX24_IMPLEMENTATION_TIERS: readonly StackedFeatureCard[] = [
     description:
       'Подходит для компаний, которые только начинают работать с CRM и хотят быстро запустить основные функции.',
     ctaLabel: 'Оставить заявку',
-    ctaHref: '#contacts',
+    ctaHref: CRM_FORM_URL,
     features: [
       { text: 'Развертывание и настройка портала' },
       { text: 'Добавление сотрудников (до 10 сотрудников)' },
@@ -45,7 +48,7 @@ const BITRIX24_IMPLEMENTATION_TIERS: readonly StackedFeatureCard[] = [
     description:
       'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
     ctaLabel: 'Оставить заявку',
-    ctaHref: '#contacts',
+    ctaHref: CRM_FORM_URL,
     features: [
       { text: 'Cбор и анализ требований' },
       { text: 'Подготовка проектной документации' },
@@ -69,7 +72,7 @@ const BITRIX24_IMPLEMENTATION_TIERS: readonly StackedFeatureCard[] = [
     description:
       'Подходит компаниям, которым нужна структурированная CRM с настроенными воронками продаж и ролями пользователей.',
     ctaLabel: 'Оставить заявку',
-    ctaHref: '#contacts',
+    ctaHref: CRM_FORM_URL,
     features: [
       { text: 'Cбор и анализ требований' },
       { text: 'Настройка и подключение телефонии' },
@@ -245,7 +248,7 @@ function Bitrix24ImplementationPage() {
         footer={
           <>
             Не уверены, какое решение выбрать?{' '}
-            <a href="#contacts" className="cta-links-list__footer-link">
+            <a href={CRM_FORM_URL} target="_blank" rel="noopener noreferrer" className="cta-links-list__footer-link">
               Оставьте заявку
             </a>{' '}
             на консультацию, и мы подберём оптимальное решение под задачи вашего бизнеса.

@@ -4,6 +4,9 @@ import type { ReactNode } from 'react';
 // components
 import type { StackedFeatureCard } from '@/components/sections/StackedFeatureCardsSection';
 
+// constants
+import { CRM_FORM_URL } from '@/constants/siteContacts';
+
 // assets
 import oneFillIcon from '@/assets/icons/1-filled.svg';
 import twoFillIcon from '@/assets/icons/2-filled.svg';
@@ -21,7 +24,7 @@ export const ONLINE_STORE_STACKED_CARDS: readonly StackedFeatureCard[] = [
       </>
     ),
     ctaLabel: 'Оставить заявку',
-    ctaHref: '#contacts',
+    ctaHref: CRM_FORM_URL,
     features: [
       {
         text: 'Быстрый запуск проекта',
@@ -48,7 +51,7 @@ export const ONLINE_STORE_STACKED_CARDS: readonly StackedFeatureCard[] = [
       </>
     ),
     ctaLabel: 'Оставить заявку',
-    ctaHref: '#contacts',
+    ctaHref: CRM_FORM_URL,
     features: [
       {
         text: 'Гибкую структуру каталога товаров и категорий',

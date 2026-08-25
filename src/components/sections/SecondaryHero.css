@@ -8,7 +8,6 @@
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  margin-bottom: 42px;
   background-color: var(--color-primary);
   overflow-x: hidden;
 }
@@ -25,28 +24,35 @@
   margin: 0 auto;
   min-width: 0;
   overflow: hidden;
-  border-right: 0.5px solid rgba(255, 255, 255, 0.3);
-  border-left: 0.5px solid rgba(255, 255, 255, 0.3);
   container-type: inline-size;
   container-name: hero-secondary;
 }
 
 .hero-secondary-grid {
   border-radius: 0;
-  background: var(--color-primary);
-  height: calc(100vh - 144px);
+  height: calc(100vh - 112px);
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr);
-  grid-template-rows: 42px minmax(0, 1fr) 42px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: 42px minmax(0, 1fr) minmax(0, 1fr) 42px;
   width: 100%;
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
   overflow: hidden;
+  /*
+    Линии сетки: 1px между ячейками (gap) + 1px рамка снаружи. Цвет один на все линии:
+    белая 30% поверх primary, без двойной накатки полупрозрачных бордов.
+  */
+  --hero-grid-line: rgba(255, 255, 255, 0.3);
+  gap: 1px;
+  border: 1px solid var(--hero-grid-line);
+  background:
+    linear-gradient(var(--hero-grid-line), var(--hero-grid-line)),
+    var(--color-primary);
 }
 
 .hero-secondary-grid__cell {
-  border: 0.5px solid rgba(255, 255, 255, 0.3);
+  background: var(--color-primary);
   color: var(--color-white);
   display: flex;
   flex-direction: column;
@@ -56,10 +62,51 @@
 }
 
 .hero-secondary-grid__cell--main {
+  grid-column: 1 / -1;
+  grid-row: 2;
   justify-content: flex-start;
   min-height: 0;
   min-width: 0;
   align-self: stretch;
+}
+
+/*
+  Пустые слоты верхней полосы и нижней полосы занимают явные позиции,
+  чтобы нижняя полоса шла во всю ширину (иначе правый нижний угол остаётся без линии).
+*/
+.hero-secondary-grid__cell--r1c2 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.hero-secondary-grid__cell--r1c3 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.hero-secondary-grid__cell--r3c3 {
+  grid-column: 1 / -1;
+  grid-row: 4;
+}
+
+/* Картинка + кнопка «Оставить заявку» — в нижней ячейке правой колонки */
+.hero-secondary-grid__cell--aside {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/* Описание услуги — в ячейке слева от картинки с кнопкой */
+.hero-secondary-grid__cell--description {
+  grid-column: 1;
+  grid-row: 3;
+  justify-content: flex-end;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* Текст описания прижат к низу ячейки (content растянут на всю высоту). */
+.hero-secondary-grid__cell--description .hero-secondary__content {
+  justify-content: flex-end;
 }
 
 .hero-secondary__content {
@@ -87,7 +134,7 @@
   font-weight: 500;
   line-height: 1.12;
   text-transform: uppercase;
-  font-size: clamp(1.25rem, 5cqw + 0.65rem, 3.75rem);
+  /* font-size: clamp(1.25rem, 5cqw + 0.65rem, 3.75rem); */
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
@@ -127,8 +174,8 @@
 
 .hero-secondary__description {
   margin: 0;
-  font-size: 18px;
-  line-height: 140%;
+  font-size: 16px;
+  line-height: 150%;
   font-weight: 400;
   overflow-wrap: break-word;
   word-break: break-word;
@@ -145,7 +192,7 @@
 /* Планшет: колонка aside уже не min 260px — меньше риск переполнения */
 @media (max-width: 1200px) {
   .hero-secondary-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(180px, 38%);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     height: auto;
     min-height: min(calc(100vh - 132px), 900px);
   }
@@ -172,8 +219,8 @@
 }
 
 /*
-  Одна колонка × 3 ряда: верх и низ — по одной ячейке (r1c3 / r3c3 на всю ширину), aside скрыт.
-  Брейкпоинт 900px.
+  Одна колонка × 4 ряда: r1c3 сверху, main (заголовок), description (описание + CTA), r3c3 снизу.
+  aside скрыт. Брейкпоинт 900px.
 */
 @media (max-width: 900px) {
   .hero-secondary__cols-wrapper {
@@ -183,7 +230,7 @@
   .hero-secondary-grid {
     height: auto;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: 42px minmax(0, 1fr) 42px;
+    grid-template-rows: 42px minmax(0, 1fr) minmax(0, 1fr) 42px;
     min-height: min(calc(100vh - 108px), 880px);
   }
 
@@ -208,13 +255,14 @@
     display: none;
   }
 
-  .hero-secondary-grid__cell--r3c2 {
-    display: none;
+  .hero-secondary-grid__cell--description {
+    grid-column: 1;
+    grid-row: 3;
   }
 
   .hero-secondary-grid__cell--r3c3 {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 4;
   }
 
   .hero-secondary__content {
@@ -259,20 +307,14 @@
     margin-bottom: 24px;
   }
 
-  .hero-secondary__cols {
-    border-left: none;
-    border-right: none;
-  }
-
   .hero-secondary-grid {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: 16px minmax(0, 1fr) 16px;
+    grid-template-rows: 16px minmax(0, 1fr) minmax(0, 1fr) 16px;
     height: auto;
     min-height: min(calc(100vh - 88px), 720px);
   }
 
   .hero-secondary-grid__cell--r1c2,
-  .hero-secondary-grid__cell--r3c2,
   .hero-secondary-grid__cell--aside {
     display: none;
   }
@@ -286,7 +328,7 @@
   .hero-secondary-grid__cell--r3c3 {
     display: flex;
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 4;
   }
 
   .hero-secondary-grid__cell--main {
@@ -306,9 +348,9 @@
     gap: 16px;
   }
 
-  .hero-secondary__title {
+  /* .hero-secondary__title {
     font-size: clamp(1.05rem, 10cqw + 0.35rem, 2rem);
-  }
+  } */
 
   .hero-secondary__description {
     font-size: var(--font-size-sm);
@@ -330,7 +372,7 @@
     padding: 16px 12px;
   }
 
-  .hero-secondary__title {
+  /* .hero-secondary__title {
     font-size: clamp(1rem, 11cqw + 0.25rem, 1.65rem);
-  }
+  } */
 }
